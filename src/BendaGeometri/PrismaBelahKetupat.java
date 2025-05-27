@@ -1,77 +1,69 @@
 package BendaGeometri;
 
-/**
- * 
- */
-public class PrismaBelahKetupat extends BelahKetupat implements IBenda3D {
 
-	/**
-	 * Default constructor
-	 */
-	public PrismaBelahKetupat() {
-            super();
-	}
+public class PrismaBelahKetupat extends BelahKetupat {
+    private double tinggi;
+    private double luasAlas;
+    private double kelilingAlas;
+    private double volume;
+    private double luasPermukaan;
 
-	/**
-	 * 
-	 */
-	private double tinggi;
+    public PrismaBelahKetupat() {
+        super();
+        this.tinggi = 0;
+    }
 
-
-
-// Constructor
-    public PrismaBelahKetupat(double diagonal1, double diagonal2, double tinggi, double sisi) {
+    public PrismaBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggi) {
         super(diagonal1, diagonal2, sisi);
         this.tinggi = tinggi;
     }
 
-    // Calculate the volume of the prism
-    @Override
+    public PrismaBelahKetupat(int diagonal1, int diagonal2, int sisi, int tinggi) {
+        super(diagonal1, diagonal2, sisi);
+        this.tinggi = tinggi;
+    }
+
     public double menghitungVolume() {
-        double luasAlas = super.menghitungLuas(); // Area of the rhombus base
-        return luasAlas * tinggi;
+        luasAlas = super.menghitungLuas();
+        volume = luasAlas * tinggi;
+        return volume;
     }
 
-    public double menghitungVolume(double luasAlas, double tinggi) {
-        return luasAlas * tinggi;
+    public double menghitungVolume(double diagonal1, double diagonal2, double tinggi) {
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        volume = luasAlas * tinggi;
+        return volume;
     }
 
-    public double menghitungVolume(double d1, double d2, double tinggi) {
-        double luasAlas = super.menghitungLuas(d1, d2);
-        return luasAlas * tinggi;
-       
+    public double menghitungVolume(int diagonal1, int diagonal2, int tinggi) {
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        volume = luasAlas * tinggi;
+        return volume;
+
     }
 
-    // Calculate the surface area of the prism
-    @Override
     public double menghitungLuasPermukaan() {
-        double luasAlas = this.getLuas(); // Area of the rhombus base
-        double kelilingAlas = this.getKeliling(); 
-        return (2 * luasAlas) + (kelilingAlas * tinggi);
+        luasAlas = super.menghitungLuas();
+        kelilingAlas = super.menghitungKeliling();
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggi;
+        return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double d1, double d2, double tinggi) {
-            double luasAlas = super.menghitungLuas(d1, d2);
-            double kelilingAlas = 4 * Math.sqrt(Math.pow(d1 / 2, 2) + Math.pow(d2 / 2, 2));
-            return (2 * luasAlas) + (kelilingAlas * tinggi);
+    public double menghitungLuasPermukaan(double diagonal1, double diagonal2, double sisi, double tinggi) {
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        kelilingAlas = super.menghitungKeliling(sisi);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggi;
+        return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double d1, double d2, double tinggi, double sisi) {
-            double luasAlas = super.menghitungLuas(d1, d2);
-            double kelilingAlas = super.menghitungKeliling(sisi);
-            return (2 * luasAlas) + (kelilingAlas * tinggi);
+    public double menghitungLuasPermukaan(int diagonal1, int diagonal2, int sisi, int tinggi) {
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        kelilingAlas = super.menghitungKeliling(sisi);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggi;
+        return luasPermukaan;
     }
-
-    // Print the volume of the prism
-    @Override
-    public void mencetakVolume() {
-        System.out.println("Volume: " + menghitungVolume());
+     @Override
+    public String getNamaBenda() {
+        return "Prisma Belah Ketupat";
     }
-
-    // Print the surface area of the prism
-    @Override
-    public void mencetakLuasPermukaan() {
-        System.out.println("Luas Permukaan: " + menghitungLuasPermukaan());
-    }
-
 }

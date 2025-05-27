@@ -1,147 +1,93 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
+public class LimasJajaranGenjang extends JajaranGenjang {
+	private double tinggiLimas;
+	private double luasAlas;
+	private double luasPermukaan;
+	private double volume;
 
-/**
- * 
- */
-public class LimasJajaranGenjang extends JajaranGenjang implements IBenda3D {
-
-	/**
-	 * Default constructor
-	 */
 	public LimasJajaranGenjang() {
 		super();
-		this.tinggi = 0;
-		
+		this.tinggiLimas = 0;
+
 	}
 
-	/**
-	 * 
-	 */
-	private double tinggi;
-
-	/**
-	 * 
-	 */
-	private JajaranGenjang bendaAlas;
-
-	/**
-	 * @param bendaAlas 
-	 * @param tinggi
-	 */
-	public LimasJajaranGenjang(double panjang_alas, double tinggi_alas, double sisi_miring_alas, double tinggi) {
-		super(panjang_alas, tinggi_alas, sisi_miring_alas);
-		this.tinggi = tinggi;
+	public LimasJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiLimas) {
+		super(panjangAlas, tinggiAlas, sisiMiringAlas);
+		this.tinggiLimas = tinggiLimas;
 	}
 
-	/**
-	 * @param bendaAlas 
-	 * @param tinggi
-	 */
-	public LimasJajaranGenjang(int panjang_alas, int tinggi_alas, int sisi_miring_alas, int tinggi) {
-		super(panjang_alas, tinggi_alas, sisi_miring_alas);
-		this.tinggi = tinggi;
+	public LimasJajaranGenjang(int panjangAlas, int tinggiAlas, int sisiMiringAlas, int tinggiLimas) {
+		super(panjangAlas, tinggiAlas, sisiMiringAlas);
+		this.tinggiLimas = tinggiLimas;
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
-	public float menghitungVolume() {
-		double luasAlas = bendaAlas.menghitungLuas();
-		return (1/3.0) * luasAlas * tinggi;
+	public double menghitungVolume() {
+		luasAlas = super.menghitungLuas();
+		volume = (1 / 3.0) * luasAlas * tinggiLimas;
+		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	public double menghitungVolume(int panjang_alas, int tinggi_alas, int tinggi) {
-		double luasAlas = bendaAlas.menghitungLuas(panjang_alas, tinggi_alas);
-		return (1/3.0) * luasAlas * tinggi;
+	public double menghitungVolume(int panjangAlas, int tinggiAlas, int tinggiLimas) {
+		luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+		volume = (1 / 3.0) * luasAlas * tinggiLimas;
+		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	public double menghitungVolume(double panjang_alas, double tinggi_alas, double tinggi) {
-		double luasAlas = bendaAlas.menghitungLuas(panjang_alas, tinggi_alas);
-		return (1/3.0) * luasAlas * tinggi;
+	public double menghitungVolume(double panjangAlas, double tinggiAlas, double tinggiLimas) {
+		luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+		volume = (1 / 3.0) * luasAlas * tinggiLimas;
+		return volume;
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
 	public double menghitungLuasPermukaan() {
-		float luasAlas =  super.menghitungLuas();
-		float alas =  super.getAlas();
-		float tinggiAlas =  super.getTinggi();
-		float miring =  super.getMiring();
-		
-		// Menghitung luas segitiga pada sisi tegak
-		float luasSegitiga1 = (1/2.0) * alas * tinggi;
-		float luasSegitiga2 = (1/2.0) * miring * tinggi;
-		float luasSegitiga3 = (1/2.0) * alas * tinggi;
-		float luasSegitiga4 = (1/2.0) * miring * tinggi;
-		
-		return luasAlas + luasSegitiga1 + luasSegitiga2 + luasSegitiga3 + luasSegitiga4;
+		luasAlas = super.menghitungLuas();
+		double alas = super.alas;
+		double tinggiAlas = super.tinggi;
+		double sisiMiring = super.sisiMiring;
+		double tinggiSisiMiring = (alas * tinggiAlas) / sisiMiring;
+		double jarakKeAlas = tinggiAlas / 2.0;
+		double jarakKeSisiMiring = tinggiSisiMiring / 2.0;
+		double slantHeightAlas = Math.sqrt(Math.pow(tinggiLimas, 2) + Math.pow(jarakKeAlas, 2));
+		double slantHeightSisiMiring = Math.sqrt(Math.pow(tinggiLimas, 2) + Math.pow(jarakKeSisiMiring, 2));
+		double luasSegitigaAlas = 0.5 * alas * slantHeightAlas;
+		double luasSegitigaSisiMiring = 0.5 * sisiMiring * slantHeightSisiMiring;
+
+		luasPermukaan = luasAlas + 2 * luasSegitigaAlas + 2 * luasSegitigaSisiMiring;
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-
-	public double menghitungLuasPermukaan(double panjang_alas, double tinggi_alas, double sisi_miring_alas, double tinggi) {
-		float luasAlas =  super.menghitungLuas(panjang_alas, tinggi_alas);
-	
+	public double menghitungLuasPermukaan(double panjangAlas, double tinggiAlas, double sisiMiringAlas,
+			double tinggiLimas) {
+		double luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+		double tinggiSisiMiring = (panjangAlas * tinggiAlas) / sisiMiringAlas;
+		double jarakKeAlas = tinggiAlas / 2.0;
+		double jarakKeSisiMiring = tinggiSisiMiring / 2.0;
+		double slantHeightAlas = Math.sqrt(Math.pow(tinggiLimas, 2) + Math.pow(jarakKeAlas, 2));
+		double slantHeightSisiMiring = Math.sqrt(Math.pow(tinggiLimas, 2) + Math.pow(jarakKeSisiMiring, 2));
+		double luasSegitigaAlas = 0.5 * panjangAlas * slantHeightAlas;
+		double luasSegitigaSisiMiring = 0.5 * sisiMiringAlas * slantHeightSisiMiring;
 		
-		// Menghitung luas segitiga pada sisi tegak
-		float luasSegitiga1 = (1/2.0) * panjang_alas * tinggi;
-		float luasSegitiga2 = (1/2.0) * sisi_miring_alas * tinggi;
-		float luasSegitiga3 = (1/2.0) * panjang_alas * tinggi;
-		float luasSegitiga4 = (1/2.0) * sisi_miring_alas * tinggi;
-		
-		return luasAlas + luasSegitiga1 + luasSegitiga2 + luasSegitiga3 + luasSegitiga4;
+		luasPermukaan = luasAlas + 2 * luasSegitigaAlas + 2 * luasSegitigaSisiMiring;
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
+	public double menghitungLuasPermukaan(int panjangAlas, int tinggiAlas, int sisiMiringAlas, int tinggiLimas) {
+			double luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+		double tinggiSisiMiring = (panjangAlas * tinggiAlas) / sisiMiringAlas;
+		double jarakKeAlas = tinggiAlas / 2.0;
+		double jarakKeSisiMiring = tinggiSisiMiring / 2.0;
+		double slantHeightAlas = Math.sqrt(Math.pow(tinggiLimas, 2) + Math.pow(jarakKeAlas, 2));
+		double slantHeightSisiMiring = Math.sqrt(Math.pow(tinggiLimas, 2) + Math.pow(jarakKeSisiMiring, 2));
+		double luasSegitigaAlas = 0.5 * panjangAlas * slantHeightAlas;
+		double luasSegitigaSisiMiring = 0.5 * sisiMiringAlas * slantHeightSisiMiring;
+		
+		luasPermukaan = luasAlas + 2 * luasSegitigaAlas + 2 * luasSegitigaSisiMiring;
+		return luasPermukaan;
+	}
+
 	@Override
-	public double menghitungLuasPermukaan(int panjang_alas, int tinggi_alas, int sisi_miring_alas, int tinggi) {
-		float luasAlas =  super.menghitungLuas(panjang_alas, tinggi_alas);
-	
-		
-		// Menghitung luas segitiga pada sisi tegak
-		float luasSegitiga1 = (1/2.0) * panjang_alas * tinggi;
-		float luasSegitiga2 = (1/2.0) * sisi_miring_alas * tinggi;
-		float luasSegitiga3 = (1/2.0) * panjang_alas * tinggi;
-		float luasSegitiga4 = (1/2.0) * sisi_miring_alas * tinggi;
-		
-		return luasAlas + luasSegitiga1 + luasSegitiga2 + luasSegitiga3 + luasSegitiga4;
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakVolume() {
-		// TODO implement here
-		
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakLuasPermukaan() {
-		// TODO implement here
-		
+	public String getNamaBenda() {
+		return "Limas Jajaran Genjang";
 	}
 }

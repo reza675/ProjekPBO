@@ -1,127 +1,68 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
+public class PrismaJajaranGenjang extends JajaranGenjang {
+    private double tinggiPrisma;
+    private double luasAlas;
+    private double kelilingAlas;
+    private double volume;
+    private double luasPermukaan;
 
-/**
- * 
- */
-public class PrismaJajaranGenjang extends JajaranGenjang implements IBenda3D {
-
-    /**
-     * Default constructor
-     */
     public PrismaJajaranGenjang() {
         super();
         this.tinggiPrisma = 0;
     }
 
-    /**
-     * 
-     */
-    private double tinggiPrisma;
-
-    /**
-     * @param panjang_alas
-     * @param tinggi_alas
-     * @param sisi_miring_alas
-     * @param tinggiPrisma
-     */
-    public PrismaJajaranGenjang(double panjang_alas, double tinggi_alas, double sisi_miring_alas, double tinggiPrisma) {
-        super(panjang_alas, tinggi_alas, sisi_miring_alas);
+    public PrismaJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiPrisma) {
+        super(panjangAlas, tinggiAlas, sisiMiringAlas);
         this.tinggiPrisma = tinggiPrisma;
     }
 
-    /**
-     * @param panjang_alas
-     * @param tinggi_alas
-     * @param sisi_miring_alas
-     * @param tinggiPrisma
-     */
-    public PrismaJajaranGenjang(int panjang_alas, int tinggi_alas, int sisi_miring_alas, int tinggiPrisma) {
-        super(panjang_alas, tinggi_alas, sisi_miring_alas);
+    public PrismaJajaranGenjang(int panjangAlas, int tinggiAlas, int sisiMiringAlas, int tinggiPrisma) {
+        super(panjangAlas, tinggiAlas, sisiMiringAlas);
         this.tinggiPrisma = tinggiPrisma;
     }
 
-    /**
-     * @return
-     */
-    @Override
     public double menghitungVolume() {
-        return super.menghitungLuas() * tinggiPrisma;
+        luasAlas = super.menghitungLuas();
+        volume = luasAlas * tinggiPrisma;
+        return volume;
     }
 
-    /**
-     * @param panjang_alas
-     * @param tinggi_alas
-     * @param tinggiPrisma
-     * @return
-     */
-    public double menghitungVolume(double panjang_alas, double tinggi_alas, double tinggiPrisma) {
-        double luasAlas = super.menghitungLuas(panjang_alas, tinggi_alas);
-        return luasAlas * tinggiPrisma;
+    public double menghitungVolume(double panjangAlas, double tinggiAlas, double tinggiPrisma) {
+        luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+        volume = luasAlas * tinggiPrisma;
+        return volume;
     }
 
-    /**
-     * @param panjang_alas
-     * @param tinggi_alas
-     * @param tinggiPrisma
-     * @return
-     */
-    public double menghitungVolume(int panjang_alas, int tinggi_alas, int tinggiPrisma) {
-        double luasAlas = super.menghitungLuas(panjang_alas, tinggi_alas);
-        return luasAlas * tinggiPrisma;
+    public double menghitungVolume(int panjangAlas, int tinggiAlas, int tinggiPrisma) {
+        luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+        volume = luasAlas * tinggiPrisma;
+        return volume;
     }
 
-    /**
-     * @return
-     */
-    @Override
     public double menghitungLuasPermukaan() {
-        float luasAlas = super.menghitungLuas();
-        float keliling = super.menghitungKeliling();
-        return 2 * luasAlas + keliling * tinggiPrisma;
+        luasAlas = super.menghitungLuas();
+        kelilingAlas = super.menghitungKeliling();
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        return luasPermukaan;
     }
 
-    /**
-     * @param panjang_alas
-     * @param tinggi_alas
-     * @param sisi_miring_alas
-     * @param tinggiPrisma
-     * @return
-     */
-    public double menghitungLuasPermukaan(double panjang_alas, double tinggi_alas, double sisi_miring_alas, double tinggiPrisma) {
-        double luasAlas = super.menghitungLuas(panjang_alas, tinggi_alas);
-        double keliling = super.menghitungKeliling(panjang_alas, sisi_miring_alas);
-        return 2 * luasAlas + keliling * tinggiPrisma;
+    public double menghitungLuasPermukaan(double panjangAlas, double tinggiAlas, double sisiMiringAlas,
+            double tinggiPrisma) {
+        luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+        kelilingAlas = super.menghitungKeliling(panjangAlas, sisiMiringAlas);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        return luasPermukaan;
     }
 
-    /**
-     * @param panjang_alas
-     * @param tinggi_alas
-     * @param sisi_miring_alas
-     * @param tinggiPrisma
-     * @return
-     */
-    public double menghitungLuasPermukaan(int panjang_alas, int tinggi_alas, int sisi_miring_alas, int tinggiPrisma) {
-        double luasAlas = super.menghitungLuas(panjang_alas, tinggi_alas);
-        double keliling = super.menghitungKeliling(panjang_alas, sisi_miring_alas);
-        return 2 * luasAlas + keliling * tinggiPrisma;
+    public double menghitungLuasPermukaan(int panjangAlas, int tinggiAlas, int sisiMiringAlas, int tinggiPrisma) {
+        luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
+        kelilingAlas = super.menghitungKeliling(panjangAlas, sisiMiringAlas);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        return luasPermukaan;
     }
-
-    /**
-     * @return
-     */
-    @Override
-    public void mencetakVolume() {
-        System.out.printf("Volume Prisma Jajaran Genjang: %.2f\n", menghitungVolume());
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public void mencetakLuasPermukaan() {
-        System.out.printf("Luas Permukaan Prisma Jajaran Genjang: %.2f\n", menghitungLuasPermukaan());
+     @Override
+    public String getNamaBenda() {
+        return "Prisma Jajaran Genjang";
     }
 }

@@ -1,67 +1,65 @@
 package BendaGeometri;
 
-public class PrismaLayangLayang extends LayangLayang implements IBenda3D {
-
+public class PrismaLayangLayang extends LayangLayang {
     private double tinggi;
+    private double luasAlas;
+    private double kelilingAlas;
+    private double volume;
+    private double luasPermukaan;
 
-    public PrismaLayangLayang(double diagonal1, double diagonal2,double sisiPendek, double sisiPanjang,double tinggi) {
+    public PrismaLayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang,
+            double tinggi) {
         super(diagonal1, diagonal2, sisiPendek, sisiPanjang);
         this.tinggi = tinggi;
     }
 
-    public PrismaLayangLayang(int diagonal1, int diagonal2,int sisiPendek, int sisiPanjang,int tinggi) {
+    public PrismaLayangLayang(int diagonal1, int diagonal2, int sisiPendek, int sisiPanjang, int tinggi) {
         super(diagonal1, diagonal2, sisiPendek, sisiPanjang);
         this.tinggi = tinggi;
     }
 
-
-    public double menghitungVolume(double diagonal1, double diagonal2) {
-        double volume = super.getLuas() * tinggi;
+    public double menghitungVolume() {
+        luasAlas = super.menghitungLuas();
+        volume = luasAlas * tinggi;
         return volume;
     }
 
-    @Override
-    public double menghitungLuasPermukaan() {
-        return 2 * super.getLuas() + super.getKeliling() * tinggi;
-    }
-
-    public double menghitungLuasPermukaan(double diagonal1, double diagonal2, double sisi_pendek, double sisi_panjang) {
-        double luasBendaDasar = (diagonal1 * diagonal2) / 2;
-        double luasSisiPendek = (sisi_pendek * tinggi);
-        double luasSisiPanjang = (sisi_panjang * tinggi);
-
-        return 2 * luasBendaDasar + 2 * luasSisiPendek + 2 * luasSisiPanjang;
+    public double menghitungVolume(double diagonal1, double diagonal2) {
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        volume = luasAlas * tinggi;
+        return volume;
     }
 
     public double menghitungVolume(int diagonal1, int diagonal2) {
-        double luasAlas = (diagonal1 * diagonal2) / 2;
-        return luasAlas * tinggi;
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        volume = luasAlas * tinggi;
+        return volume;
     }
 
-    @Override
-    public double menghitungVolume() {
-        // TODO: Implement logic
-        return super.getLuas() * tinggi;
+    public double menghitungLuasPermukaan() {
+        luasAlas = super.menghitungLuas();
+        kelilingAlas = super.menghitungKeliling();
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggi;
+        return luasPermukaan;
+    }
+
+    public double menghitungLuasPermukaan(double diagonal1, double diagonal2, double sisi_pendek, double sisi_panjang) {
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        kelilingAlas = super.menghitungKeliling(sisi_pendek, sisi_panjang);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggi;
+        return luasPermukaan;
     }
 
     public double menghitungLuasPermukaan(int diagonal1, int diagonal2, int sisi_pendek, int sisi_panjang) {
-        // TODO: Implement logic
-
-        double luasBendaDasar = (diagonal1 * diagonal2) / 2;
-        double luasSisiPendek = (sisi_pendek * tinggi);
-        double luasSisiPanjang = (sisi_panjang * tinggi);
-
-        return 2 * luasBendaDasar + 2 * luasSisiPendek + 2 * luasSisiPanjang;
-
+        luasAlas = super.menghitungLuas(diagonal1, diagonal2);
+        kelilingAlas = super.menghitungKeliling(sisi_pendek, sisi_panjang);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggi;
+        return luasPermukaan;
     }
 
     @Override
-    public void mencetakVolume() {
-        System.out.println("Volume: " + menghitungVolume());
+    public String getNamaBenda() {
+        return "Prisma Layang-Layang";
     }
 
-    @Override
-    public void mencetakLuasPermukaan() {
-        System.out.println("Luas Permukaan: " + menghitungLuasPermukaan());
-    }
 }

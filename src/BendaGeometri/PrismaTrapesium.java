@@ -1,83 +1,72 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
-
-public class PrismaTrapesium extends Trapesium implements IBenda3D {
+public class PrismaTrapesium extends Trapesium {
     private double tinggiPrisma;
+    private double luasAlas;
+    private double kelilingAlas;
+    private double volume;
+    private double luasPermukaan;
+
     public PrismaTrapesium() {
         super();
         this.tinggiPrisma = 0;
     }
 
-    public PrismaTrapesium(Trapesium bendaAlas, double tinggiPrisma) {
-        super(
-            bendaAlas.getAlasAtas(), 
-            bendaAlas.getAlasBawah(), 
-            bendaAlas.getTinggi(), 
-            bendaAlas.getSisiKiri(), 
-            bendaAlas.getSisiKanan()
-        );
+    public PrismaTrapesium(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri, double sisiMiringKanan,
+            double tinggiPrisma) {
+        super(alasAtas, alasBawah, tinggiPrisma, sisiMiringKiri, sisiMiringKanan);
         this.tinggiPrisma = tinggiPrisma;
     }
-    public PrismaTrapesium(Trapesium bendaAlas, int tinggiPrisma) {
-        this(bendaAlas, (double) tinggiPrisma);
+
+    public PrismaTrapesium(int alasAtas, int alasBawah, int tinggi, int sisiMiringKiri, int sisiMiringKanan, int tinggiPrisma) {
+        super(alasAtas, alasBawah, tinggiPrisma, sisiMiringKiri, sisiMiringKanan);
+        this.tinggiPrisma = tinggiPrisma;
     }
 
-    public double getTinggiPrisma() {
-        return tinggiPrisma;
-    }
-
-    @Override
     public double menghitungVolume() {
-        return super.menghitungLuas() * tinggiPrisma;
+        luasAlas = super.menghitungLuas();
+        volume = luasAlas * tinggiPrisma;
+        return volume;
     }
 
-    @Override
-    public double menghitungVolume(double[] params) {
-        if (params.length >= 1) {
-            return super.menghitungLuas() * params[0]; 
-        }
-        return 0.0;
+    public double menghitungVolume(double alasAtas, double alasBawah, double tinggi, double tinggiPrisma) {
+        luasAlas = super.menghitungLuas(alasAtas, alasBawah, tinggi);
+        volume = luasAlas * tinggiPrisma;
+        return volume;
     }
 
-    @Override
-    public double menghitungVolume(int[] params) {
-        if (params.length >= 1) {
-            return menghitungVolume(new double[] { params[0] });
-        }
-        return 0.0;
+    public double menghitungVolume(int alasAtas, int alasBawah, int tinggi, int tinggiPrisma) {
+        luasAlas = super.menghitungLuas(alasAtas, alasBawah, tinggi);
+        volume = luasAlas * tinggiPrisma;
+        return volume;
     }
 
-    @Override
     public double menghitungLuasPermukaan() {
-        return 2 * super.menghitungLuas() + super.menghitungKeliling() * tinggiPrisma;
+        luasAlas = super.menghitungLuas();
+        kelilingAlas = super.menghitungKeliling();
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        return luasPermukaan;
+    }
+
+    public double menghitungLuasPermukaan(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri,
+            double sisiMiringKanan, double tinggiPrisma) {
+        luasAlas = super.menghitungLuas(alasAtas, alasBawah, tinggi);
+        kelilingAlas = super.menghitungKeliling(alasAtas, alasBawah, sisiMiringKanan, sisiMiringKiri);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        return luasPermukaan;
+    }
+
+    public double menghitungLuasPermukaan(int alasAtas, int alasBawah, int sisiMiringKiri, int sisiMiringKanan, int tinggi,
+            int tinggiPrisma) {
+        luasAlas = super.menghitungLuas(alasAtas, alasBawah, tinggi);
+        kelilingAlas = super.menghitungKeliling(alasAtas, alasBawah, sisiMiringKiri, sisiMiringKanan);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        return luasPermukaan;
     }
 
     @Override
-    public double menghitungLuasPermukaan(double[] params) {
-        if (params.length >= 1) {
-            return 2 * super.menghitungLuas() + super.menghitungKeliling() * params[0];
-        }
-        return 0.0;
+    public String getNamaBenda() {
+        return "Prisma Trapesium";
     }
 
-    @Override
-    public double menghitungLuasPermukaan(int[] params) {
-        if (params.length >= 1) {
-            return menghitungLuasPermukaan(new double[] { params[0] });
-        }
-        return 0.0;
-    }
-
-    @Override
-    public void mencetakVolume() {
-        System.out.printf("Volume Prisma Trapesium: %.2f\n", menghitungVolume());
-    }
-
-    // Cetak luas permukaan
-    @Override
-    public void mencetakLuasPermukaan() {
-        System.out.printf("Luas Permukaan Prisma Trapesium: %.2f\n", menghitungLuasPermukaan());
-    }
 }
