@@ -1,126 +1,68 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
+public class KerucutTerpancung extends Kerucut {
 
-/**
- * 
- */
-public class KerucutTerpancung extends Kerucut implements IBenda3D {
+	private double radiusAtas;
+	private double volume;
+	private double luasPermukaan;
 
-	/**
-	 * Default constructor
-	 */
 	public KerucutTerpancung() {
+		super();
+		this.radiusAtas = 0.0;
 	}
 
-	/**
-	 * 
-	 */
-	private double tinggi;
-
-	/**
-	 * 
-	 */
-	private Lingkaran alas;
-
-	/**
-	 * 
-	 */
-	private Kerucut pancungan;
-
-	/**
-	 * @param alas 
-	 * @param tinggi 
-	 * @param pancungan
-	 */
-	public KerucutTerpancung(Lingkaran alas, double tinggi, Kerucut pancungan) {
-		// TODO implement here
+	public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggi) {
+		super(radiusBawah, tinggi);
+		this.radiusAtas = radiusAtas;
 	}
 
-	/**
-	 * @param alas 
-	 * @param tinggi 
-	 * @param pancungan
-	 */
-	public KerucutTerpancung(Lingkaran alas, int tinggi, Kerucut pancungan) {
-		// TODO implement here
+	public KerucutTerpancung(int radiusAtas, int radiusBawah, int tinggi) {
+		super(radiusBawah, tinggi);
+		this.radiusAtas = radiusAtas;
 	}
 
-	/**
-	 * @return
-	 */
+	private double hitungVolumeCore(double r1, double r2, double h) {
+		volume = (1.0 / 3.0) * super.PI * h * (r1 * r1 + r1 * r2 + r2 * r2);
+		return volume;	
+	}
+
 	@Override
-	public float menghitungVolume() {
-		// TODO implement here
-		return 0.0f;
+	public double menghitungVolume() {
+		return hitungVolumeCore(this.radiusAtas, super.radius, super.tinggi);
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
+	public double menghitungVolume(double radiusAtas, double radiusBawah, double tinggi) {
+		return hitungVolumeCore(radiusAtas, radiusBawah, tinggi);
+	}
+
+	public double menghitungVolume(int radiusAtas, int radiusBawah, int tinggi) {
+		return hitungVolumeCore((double) radiusAtas,(double) radiusBawah,(double) tinggi);
+	}
+
+	private double hitungLuasPermukaanCore(double r1, double r2, double h) {
+		double s = Math.sqrt(h * h + (r2 - r1) * (r2 - r1));
+		double luasAtas = super.menghitungLuas(r1);
+		double luasBawah = super.menghitungLuas(r2);
+		double luasSelimut = super.PI * (r1 + r2) * s;
+		luasPermukaan = luasAtas + luasBawah + luasSelimut;
+		return luasPermukaan;
+	}
+
 	@Override
-	public double menghitungVolume(double params) {
-		// TODO implement here
-		return 0.0d;
+	public double menghitungLuasPermukaan() {
+		return hitungLuasPermukaanCore(this.radiusAtas, super.radius, super.tinggi);
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
+	public double menghitungLuasPermukaan(double radiusAtas, double radiusBawah, double tinggi) {
+		return hitungLuasPermukaanCore(radiusAtas, radiusBawah, tinggi);
+	}
+
+	public double menghitungLuasPermukaan(int radiusAtas, int radiusBawah, int tinggi) {
+		return hitungLuasPermukaanCore((double) radiusAtas,(double) radiusBawah,(double) tinggi);
+	}
+
 	@Override
-	public double menghitungVolume(int params) {
-		// TODO implement here
-		return 0.0d;
+	public String getNamaBenda() {
+		return "Kerucut Terpancung";
 	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public float menghitungLuasPermukaan() {
-		// TODO implement here
-		return 0.0f;
-	}
-
-	/**
-	 * @param params 
-	 * @return
-	 */
-	@Override
-	public double menghitungLuasPermukaan(double params) {
-		// TODO implement here
-		return 0.0d;
-	}
-
-	/**
-	 * @param params 
-	 * @return
-	 */
-	@Override
-	public double menghitungLuasPermukaan(int params) {
-		// TODO implement here
-		return 0.0d;
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakVolume() {
-		// TODO implement here
-		
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakLuasPermukaan() {
-		// TODO implement here
-		
-	}
-
 }

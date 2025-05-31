@@ -1,115 +1,58 @@
 package BendaGeometri;
 
-/**
- * 
- */
-public class Tabung extends Lingkaran implements IBenda3D {
+public class Tabung extends Lingkaran {
 
-	/**
-	 * Default constructor
-	 */
+	private double tinggi;
+	private double volume;
+	private double luasAlas;
+	private double selimut;
+	private double luasPermukaan;
+
 	public Tabung() {
 		super();
+		this.tinggi = 0;
 	}
 
-	/**
-	 * 
-	 */
-	private double tinggi;
-
-	/**
-	 * 
-	 */
-	/**
-	 * @param tinggi
-	 */
 	public Tabung(double radius, double tinggi) {
-		// TODO implement here
 		super(radius);
 		this.tinggi = tinggi;
 	}
 
-	/**
-	 * @param bendaAlas 
-	 * @param tinggi
-	 */
-	public Tabung(double radius, int tinggi) {
+	public Tabung(int radius, int tinggi) {
 		super(radius);
 		this.tinggi = tinggi;
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
 	public double menghitungVolume() {
-		double luasAlas = super.menghitungLuas();
-		return luasAlas * tinggi;
+		luasAlas = super.menghitungLuas();
+		volume = luasAlas* tinggi;
+		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	public double menghitungVolume(double tinggi) {
-		double luasAlas = super.menghitungLuas();
-		return luasAlas * tinggi;
+	public double menghitungVolume(int radius, int tinggi) {
+		luasAlas = super.menghitungLuas(radius);
+		volume = luasAlas* tinggi;
+		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	public double menghitungVolume(double tinggi, double jarijari) {
-		double luasAlas = super.menghitungLuas(jarijari);
-		return luasAlas * tinggi;
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
 	public double menghitungLuasPermukaan() {
-		double luasAlas = super.menghitungLuas();
-		double selimut = 2 * Math.PI * tinggi;
-		return 2*luasAlas + selimut;
+		luasAlas = 2 * super.menghitungLuas();
+		selimut = super.menghitungKeliling() * tinggi;
+		luasPermukaan = luasAlas + selimut;
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	public double menghitungLuasPermukaan(double tinggi) {
-		double luasAlas = super.menghitungLuas();
-		double selimut = 2 * Math.PI * tinggi;
-		return 2*luasAlas + selimut;
+
+	public double menghitungLuasPermukaan(int radius,int tinggi) {
+		luasAlas = 2 * super.menghitungLuas(radius);
+		selimut = super.menghitungKeliling(radius) * tinggi;
+		luasPermukaan = luasAlas + selimut;
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	public double menghitungLuasPermukaan(double tinggi, double radius) {
-		double luasAlas = super.menghitungLuas(radius);
-		double selimut = 2 * Math.PI * tinggi;
-		return 2*luasAlas + selimut;
-	}
-
-	/**
-	 * @return
-	 */
 	@Override
-	public void mencetakVolume() {
-		System.out.println("Volume Tabung: " + menghitungVolume());
-		
+	public String getNamaBenda() {
+		return "Tabung";
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakLuasPermukaan() {
-		System.out.println("LP Tabung: " + menghitungLuasPermukaan());
-		
-	}
 }

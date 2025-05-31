@@ -1,111 +1,48 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
+public class Bola extends Lingkaran {
 
-/**
- * 
- */
-public class Bola extends Lingkaran implements IBenda3D {
+	protected double luasAlas;
+	protected double volume;
+	protected double luasPermukaan;
 
-	/**
-	 * Default constructor
-	 */
 	public Bola() {
-            super();
+		super();
 	}
 
-	/**
-	 * 
-	 */
-	private double radius, volume, luas_permukaan;
-
-	/**
-	 * @param radius
-	 */
 	public Bola(double radius) {
-		// TODO implement here
-                super(radius);
+		super(radius);
 	}
-
-	/**
-	 * @param radius
-	 */
 	public Bola(int radius) {
-		// TODO implement here
-                super(radius);
+		super(radius);
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
 	public double menghitungVolume() {
-		// TODO implement here
-                this.volume =  (4.0/3.0) * super.getLuas() * radius;
+		luasAlas = super.menghitungLuas();
+		volume = (4.0 / 3.0) * luasAlas* radius;
+		return volume;
+	}
+	public double menghitungVolume(int radius) {
+		luasAlas = super.menghitungLuas(radius);
+		volume = (4.0 / 3.0) * luasAlas* radius;
 		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	
-	public double menghitungVolume(double radius) {
-		// TODO implement here
-		return 4.0/3.0 * super.menghitungLuas(radius) * radius;
-	}
-
-	/**
-	 * @param params 
-	 * @return
-	 */
-	
-	public double menghitungVolume(int radius) {
-		// TODO implement here
-		return 4.0/3.0 * super.menghitungLuas(radius) * radius;
-	}
-
-	
-	@Override
 	public double menghitungLuasPermukaan() {
-		// TODO implement here
-                this.luas_permukaan = 2 * super.getKeliling() * radius;
-                return this.luas_permukaan;
+		luasAlas = super.menghitungLuas();
+		luasPermukaan = 4 * luasAlas;
+		return luasPermukaan;
 	}
 
-	
 	public double menghitungLuasPermukaan(int radius) {
-		// TODO implement here
-		return 2 * super.menghitungKeliling(radius) * radius;
+		luasAlas = super.menghitungLuas(radius);
+		luasPermukaan = 4 * luasAlas;
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	
-	public double menghitungLuasPermukaan(double radius) {
-		// TODO implement here
-		return 2 * super.menghitungKeliling(radius) * radius;
-	}
-
-	/**
-	 * @return
-	 */
 	@Override
-	public void mencetakVolume() {
-		// TODO implement here
-                System.out.println("Volume Bola: " + this.volume);
-		
+	public String getNamaBenda() {
+		return "Bola";
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakLuasPermukaan() {
-		// TODO implement here
-		System.out.println("LP Bola: " + this.luas_permukaan);
-	}
 }

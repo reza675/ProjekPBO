@@ -35,7 +35,7 @@ public class Lingkaran extends Benda2D {
 
 	@Override
 	public double menghitungKeliling() {
-		keliling = (2 * PI * radius);
+		keliling = 2 * PI * radius;
 		return keliling;
 	}
 	public double menghitungKeliling(double radius) {
@@ -44,7 +44,8 @@ public class Lingkaran extends Benda2D {
 	}
 
 	public double menghitungKeliling(int radius) {
-		return 2 * PI * radius;
+		keliling = 2 * PI * radius;
+		return keliling;
 	}
 	@Override
 	public String getNamaBenda() {
