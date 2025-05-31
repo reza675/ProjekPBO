@@ -1,115 +1,69 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
+public class JuringBola extends Bola {
 
-/**
- * 
- */
-public class JuringBola extends Bola implements IBenda3D {
+	private double sudut;
+	private double volume;
+	private double luasPermukaan;
+	private double volumeBola;
+	private double luasPermukaanBola;
+	// valent : bola kok gaada yang menghitungVolume(double radius) sama luaspermukaannya
+	protected final double PI = 3.14; // valent : duh pake ini ga ya
 
-	/**
-	 * Default constructor
-	 */
 	public JuringBola() {
-            super();
+        super();
+		this.sudut = 0;
 	}
 
-	/**
-	 * 
-	 */
-	private double sudut, volume, luas_permukaan;
-
-	/**
-	 * @param radius 
-	 * @param sudut "dalam radian"
-	 */
 	public JuringBola(double radius, double sudut) {
+        super(radius);
 		this.sudut = sudut;
-                super(radius);
 	}
 
-	/**
-	 * @param radius 
-	 * @param sudut
-	 */
 	public JuringBola(int radius, int sudut) {
+        super(radius);
 		this.sudut = sudut;
-                super(radius);
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
 	public double menghitungVolume() {
-		// TODO implement here
-                this.volume = super.menghitungVolume() * (sudut / (2*Math.PI));
-		return this.volume;
+		volumeBola = super.menghitungVolume();
+		volume = volumeBola * (sudut / (2 * PI));
+		return volume;
 	}
-
-	/**
-	 * @param params 
-	 * @return
-	 */
-	
-	public double menghitungVolume(double sudut) {
-		return super.menghitungVolume() * (sudut / (2*Math.PI));
-	}
-
-	/**
-	 * @param params 
-	 * @return
-	 */
 	
 	public double menghitungVolume(double sudut, double radius) {
-		// TODO implement here
-		return super.menghitungVolume(radius) * (sudut / (2*Math.PI));
+		volumeBola = super.menghitungVolume(radius);
+		volume = volumeBola * (sudut / (2 * PI));
+		return volume;
 	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public double menghitungLuasPermukaan() {
-		// TODO implement here
-		this.luas_permukaan = super.menghitungLuasPermukaan() * (sudut / (2*Math.PI));
-                return this.luas_permukaan;
-	}
-
-	/**
-	 * @param params 
-	 * @return
-	 */
 	
-	public double menghitungLuasPermukaan(double sudut) {
-		return super.menghitungLuasPermukaan() * (sudut / (2*Math.PI));
+	public double menghitungVolume(int sudut, int radius) {
+		volumeBola = super.menghitungVolume(radius);
+		volume = volumeBola * (sudut / (2 * PI));
+		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
+	public double menghitungLuasPermukaan() {
+		luasPermukaanBola = super.menghitungLuasPermukaan();
+		luasPermukaan = luasPermukaanBola * (sudut / (2 * PI)) + PI * radius * radius; // valent : PI * radius * radius sebenarnya ada dalam lingkaran namun parent dari JuringBola adalah Bola.. Apakah rumus saya benar?
+		return luasPermukaan;
+	}
 	
 	public double menghitungLuasPermukaan(double sudut, double radius) {
-		// TODO implement here
-		return super.menghitungLuasPermukaan(radius) * (sudut / (2*Math.PI));
+		luasPermukaanBola = super.menghitungLuasPermukaan(radius);
+		luasPermukaan = luasPermukaanBola * (sudut / (2 * PI)) + PI * radius * radius;
+		return luasPermukaan;
+	}
+	
+	public double menghitungLuasPermukaan(int sudut, int radius) {
+		luasPermukaanBola = super.menghitungLuasPermukaan(radius);
+		luasPermukaan = luasPermukaanBola * (sudut / (2 * PI)) + PI * radius * radius;
+		return luasPermukaan;
 	}
 
 	@Override
-	public void mencetakVolume() {
-		// TODO implement here
-                System.out.println("Volume Juring Bola: " + this.volume);
-		
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakLuasPermukaan() {
-		// TODO implement here
-		System.out.println("LP Juring Bola: " + this.luas_permukaan);
+	public String getNamaBenda(){
+		return "Juring Bola";
 	}
 
 }

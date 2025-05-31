@@ -1,114 +1,61 @@
 package BendaGeometri;
 
-import java.io.*;
-import java.util.*;
+public class TemberengBola extends Bola {
 
-/**
- * 
- */
-public class TemberengBola extends Bola implements IBenda3D {
-
-	/**
-	 * Default constructor
-	 */
+	private double tinggi; // tinggi tembereng dari bidang potong ke puncak tembereng
+	private double volume;
+	private double luasPermukaan;
+	protected final double PI = 3.14; // valent : duh pake ini ga ya
+	
 	public TemberengBola() {
+		super();
+		this.tinggi = 0;
 	}
 
-	/**
-	 * 
-	 */
-	private double tinggi;
 
-	/**
-	 * @param radius 
-	 * @param tinggi
-	 */
 	public TemberengBola(double radius, double tinggi) {
-		// TODO implement here
+		super(radius);
+		this.tinggi = tinggi;
 	}
 
-	/**
-	 * @param radius 
-	 * @param tinggi
-	 */
 	public TemberengBola(int radius, int tinggi) {
-		// TODO implement here
+		super(radius);
+		this.tinggi = tinggi;
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
-	public float menghitungVolume() {
-		// TODO implement here
-		return 0.0f;
+	public double menghitungVolume() {
+		volume = ((tinggi * tinggi * PI) / 3) * (3 * radius - tinggi); // valent : rumus dari gpt gaada ngambil dari lingkaran maupun bola bang asli
+		return volume; 
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	@Override
-	public double menghitungVolume(double[] params) {
-		// TODO implement here
-		return 0.0d;
+	public double menghitungVolume(double radius, double tinggi) {
+		volume = ((tinggi * tinggi * PI) / 3) * (3 * radius - tinggi); // valent : rumus dari gpt gaada ngambil dari lingkaran maupun bola bang asli
+		return volume;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	@Override
-	public double menghitungVolume(int[] params) {
-		// TODO implement here
-		return 0.0d;
+	public double menghitungVolume(int radius, int tinggi) {
+		volume = ((tinggi * tinggi * PI) / 3) * (3 * radius - tinggi); // valent : rumus dari gpt gaada ngambil dari lingkaran maupun bola bang asli
+		return volume; 
 	}
 
-	/**
-	 * @return
-	 */
-	@Override
-	public float menghitungLuasPermukaan() {
-		// TODO implement here
-		return 0.0f;
+	public double menghitungLuasPermukaan() {
+		luasPermukaan = 2 * radius * tinggi * PI + radius * radius * PI; // valent : rumus dari gpt gaada ngambil dari lingkaran maupun bola bang asli
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	@Override
-	public double menghitungLuasPermukaan(double[] params) {
-		// TODO implement here
-		return 0.0d;
+	public double menghitungLuasPermukaan(double radius, double tinggi) {
+		luasPermukaan = 2 * radius * tinggi * PI + radius * radius * PI; // valent : rumus dari gpt gaada ngambil dari lingkaran maupun bola bang asli
+		return luasPermukaan;
 	}
 
-	/**
-	 * @param params 
-	 * @return
-	 */
-	@Override
-	public double menghitungLuasPermukaan(int[] params) {
-		// TODO implement here
-		return 0.0d;
+	public double menghitungLuasPermukaan(int radius, int tinggi) {
+		luasPermukaan = 2 * radius * tinggi * PI + radius * radius * PI; // valent : rumus dari gpt gaada ngambil dari lingkaran maupun bola bang asli
+		return luasPermukaan;
 	}
 
-	/**
-	 * @return
-	 */
 	@Override
-	public void mencetakVolume() {
-		// TODO implement here
-		
-	}
-
-	/**
-	 * @return
-	 */
-	@Override
-	public void mencetakLuasPermukaan() {
-		// TODO implement here
-		
+	public String getNamaBenda(){
+		return "Tembereng Bola";
 	}
 
 }
