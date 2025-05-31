@@ -22,6 +22,11 @@ public class Bola extends Lingkaran {
 		volume = (4.0 / 3.0) * luasAlas* radius;
 		return volume;
 	}
+	public double menghitungVolume(double radius) {
+		luasAlas = super.menghitungLuas(radius);
+		volume = (4.0 / 3.0) * luasAlas* radius;
+		return volume;
+	}
 	public double menghitungVolume(int radius) {
 		luasAlas = super.menghitungLuas(radius);
 		volume = (4.0 / 3.0) * luasAlas* radius;
@@ -30,6 +35,11 @@ public class Bola extends Lingkaran {
 
 	public double menghitungLuasPermukaan() {
 		luasAlas = super.menghitungLuas();
+		luasPermukaan = 4 * luasAlas;
+		return luasPermukaan;
+	}
+	public double menghitungLuasPermukaan(double radius) {
+		luasAlas = super.menghitungLuas(radius);
 		luasPermukaan = 4 * luasAlas;
 		return luasPermukaan;
 	}

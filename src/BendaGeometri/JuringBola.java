@@ -7,8 +7,6 @@ public class JuringBola extends Bola {
 	private double luasPermukaan;
 	private double volumeBola;
 	private double luasPermukaanBola;
-	// valent : bola kok gaada yang menghitungVolume(double radius) sama luaspermukaannya
-	protected final double PI = 3.14; // valent : duh pake ini ga ya
 
 	public JuringBola() {
         super();
@@ -27,37 +25,37 @@ public class JuringBola extends Bola {
 
 	public double menghitungVolume() {
 		volumeBola = super.menghitungVolume();
-		volume = volumeBola * (sudut / (2 * PI));
+		volume = volumeBola * (sudut / 360.0);
 		return volume;
 	}
 	
 	public double menghitungVolume(double sudut, double radius) {
 		volumeBola = super.menghitungVolume(radius);
-		volume = volumeBola * (sudut / (2 * PI));
+		volume = volumeBola * (sudut / 360.0);
 		return volume;
 	}
 	
 	public double menghitungVolume(int sudut, int radius) {
 		volumeBola = super.menghitungVolume(radius);
-		volume = volumeBola * (sudut / (2 * PI));
+		volume = volumeBola * (sudut / 360);
 		return volume;
 	}
 
 	public double menghitungLuasPermukaan() {
 		luasPermukaanBola = super.menghitungLuasPermukaan();
-		luasPermukaan = luasPermukaanBola * (sudut / (2 * PI)) + PI * radius * radius; // valent : PI * radius * radius sebenarnya ada dalam lingkaran namun parent dari JuringBola adalah Bola.. Apakah rumus saya benar?
+		luasPermukaan = luasPermukaanBola * (sudut / 360.0); 
 		return luasPermukaan;
 	}
 	
 	public double menghitungLuasPermukaan(double sudut, double radius) {
 		luasPermukaanBola = super.menghitungLuasPermukaan(radius);
-		luasPermukaan = luasPermukaanBola * (sudut / (2 * PI)) + PI * radius * radius;
+		luasPermukaan = luasPermukaanBola * (sudut / 360.0);
 		return luasPermukaan;
 	}
 	
 	public double menghitungLuasPermukaan(int sudut, int radius) {
 		luasPermukaanBola = super.menghitungLuasPermukaan(radius);
-		luasPermukaan = luasPermukaanBola * (sudut / (2 * PI)) + PI * radius * radius;
+		luasPermukaan = luasPermukaanBola * (sudut / 360);
 		return luasPermukaan;
 	}
 

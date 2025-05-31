@@ -1,56 +1,57 @@
 package BendaGeometri;
 
 public class CincinBola extends Bola {
-
-	private double radiusCincin;
+	private double tinggiCincin;
 	private double volume;
-	private double luas_permukaan;
-	private Bola bolaDalam;
-	protected final double PI = 3.14; // valent : duh pake ini ga ya
+	private double luasPermukaan;
+
 
 	public CincinBola() {
 		super();
-        bolaDalam = new Bola();
+		this.tinggiCincin = 0;
 	}
 
 
-	public CincinBola(double radiusBola, double radiusCincin) {
-        super(radiusBola);
-        this.radiusCincin = radiusCincin;
+	public CincinBola(double radius, double tinggiCincin) {
+        super(radius);
+		this.tinggiCincin = tinggiCincin;
                 
 	}
 
-	public CincinBola(int radiusBola, int radiusCincin) {
-        super(radiusBola);
-        this.radiusCincin = radiusCincin;
-        bolaDalam = new Bola(radiusCincin);
+	public CincinBola(int radius, int tinggiCincin) {
+        super(radius);
+		this.tinggiCincin = tinggiCincin;
 	}
 
 	public double menghitungVolume() {
-		this.volume =  (PI *this.radiusCincin*this.radiusCincin)/3.0 * (3*super.getRadius() - this.radiusCincin);
-        return this.volume;
+		double h = tinggiCincin;
+        double r = super.radius;
+        volume = PI * h * h * (r - h / 3.0);
+        return volume;
 	}
 	
-	public double menghitungVolume(double radiusCincin) {
-		return (PI *radiusCincin*radiusCincin)/3.0 * (3*super.getRadius() - radiusCincin);
+	public double menghitungVolume(double radius,double tinggiCincin) {
+        volume = PI * tinggiCincin * tinggiCincin * (radius - tinggiCincin / 3.0);
+        return volume;
+	}
+	public double menghitungVolume(int radius,int tinggiCincin) {
+        volume = PI * tinggiCincin * tinggiCincin * (radius - tinggiCincin / 3.0);
+        return volume;
 	}
 	
-	public double menghitungVolume(double radiusCincin, double radiusBola) {
-		return (PI *radiusCincin*radiusCincin)/3.0 * (3 * radiusBola - radiusCincin);
-	}
-
 	public double menghitungLuasPermukaan() {
-		
-		this.luas_permukaan = 2 * PI  * super.getRadius() * this.radiusCincin;
-        return this.luas_permukaan;
+		double h = tinggiCincin;
+        double r = super.radius;
+        luasPermukaan = 2 * PI * r * h;
+        return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double radiusCincin) {
-		return 2 * PI  * super.getRadius() * radiusCincin;
+	public double menghitungLuasPermukaan(double radius, double tinggiCincin) {
+		return 2 * PI  * radius * tinggiCincin;
 	}
 
-	public double menghitungLuasPermukaan(double radiusCincin, double radiusBola) {
-		return 2 * PI  * radiusBola * radiusCincin;
+	public double menghitungLuasPermukaan(int radius, int tinggiCincin) {
+		return 2 * PI  * radius * tinggiCincin;
 	}
 
 	@Override
