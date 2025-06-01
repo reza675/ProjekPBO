@@ -1,6 +1,6 @@
 package BendaGeometri;
 
-public class CincinBola extends Bola {
+public class CincinBola extends Bola {	
 	private double tinggiCincin;
 	private double volume;
 	private double luasPermukaan;
