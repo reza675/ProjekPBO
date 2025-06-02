@@ -3,6 +3,7 @@ package BendaGeometri;
 public class KerucutTerpancung extends Kerucut {
 
 	private double radiusAtas;
+	private double tinggiTerpancung;
 	private double volume;
 	private double luasPermukaan;
 
@@ -11,58 +12,59 @@ public class KerucutTerpancung extends Kerucut {
 		this.radiusAtas = 0.0;
 	}
 
-	public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggi) {
-		super(radiusBawah, tinggi);
+	public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggiTerpancung) {
+		super(radiusBawah, menghitungTinggiKerucutUtuh(radiusBawah, radiusAtas, tinggiTerpancung));
 		this.radiusAtas = radiusAtas;
+		this.tinggiTerpancung = tinggiTerpancung;
 	}
-
-	public KerucutTerpancung(int radiusAtas, int radiusBawah, int tinggi) {
-		super(radiusBawah, tinggi);
-		this.radiusAtas = radiusAtas;
-	}
-
-	private double hitungVolumeCore(double r1, double r2, double h) {
-		volume = (1.0 / 3.0) * super.PI * h * (r1 * r1 + r1 * r2 + r2 * r2);
-		return volume;	
-	}
+	private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) {
+        return (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
+    }
 
 	@Override
 	public double menghitungVolume() {
-		return hitungVolumeCore(this.radiusAtas, super.radius, super.tinggi);
+		double R = super.radius;      
+        double r = this.radiusAtas;    
+        double h = this.tinggiTerpancung;
+        volume = (1.0 / 3.0) * super.PI * h * (R * R + R * r + r * r);
+        return volume;
 	}
 
 	public double menghitungVolume(double radiusAtas, double radiusBawah, double tinggi) {
-		return hitungVolumeCore(radiusAtas, radiusBawah, tinggi);
-	}
-
-	public double menghitungVolume(int radiusAtas, int radiusBawah, int tinggi) {
-		return hitungVolumeCore((double) radiusAtas,(double) radiusBawah,(double) tinggi);
-	}
-
-	private double hitungLuasPermukaanCore(double r1, double r2, double h) {
-		double s = Math.sqrt(h * h + (r2 - r1) * (r2 - r1));
-		double luasAtas = super.menghitungLuas(r1);
-		double luasBawah = super.menghitungLuas(r2);
-		double luasSelimut = super.PI * (r1 + r2) * s;
-		luasPermukaan = luasAtas + luasBawah + luasSelimut;
-		return luasPermukaan;
+		double R = radiusBawah;
+        double r = radiusAtas;
+        double h = tinggi;
+        return (1.0 / 3.0) * super.PI * h * (R * R + R * r + r * r);
 	}
 
 	@Override
-	public double menghitungLuasPermukaan() {
-		return hitungLuasPermukaanCore(this.radiusAtas, super.radius, super.tinggi);
-	}
+    public double menghitungLuasPermukaan() {
+        double R = super.radius;
+        double r = this.radiusAtas;
+        double h = this.tinggiTerpancung;
+        double luasBawah = super.menghitungLuas(R);
+        double luasAtas = super.menghitungLuas(r);
 
-	public double menghitungLuasPermukaan(double radiusAtas, double radiusBawah, double tinggi) {
-		return hitungLuasPermukaanCore(radiusAtas, radiusBawah, tinggi);
-	}
+        double selisihRadius = R - r;
+        double s = Math.sqrt(h * h + selisihRadius * selisihRadius);
+        double luasSelimut = super.PI * (R + r) * s;
 
-	public double menghitungLuasPermukaan(int radiusAtas, int radiusBawah, int tinggi) {
-		return hitungLuasPermukaanCore((double) radiusAtas,(double) radiusBawah,(double) tinggi);
-	}
+        luasPermukaan = luasBawah + luasAtas + luasSelimut;
+        return luasPermukaan;
+    }
 
-	@Override
-	public String getNamaBenda() {
-		return "Kerucut Terpancung";
-	}
+    public double menghitungLuasPermukaan(double radiusAtas, double radiusBawah, double tinggiTerpancung) {
+        double luasBawah = super.menghitungLuas(radiusBawah);
+        double luasAtas = super.menghitungLuas(radiusAtas);
+        double selisihRadius = radiusBawah - radiusAtas;
+        double s = Math.sqrt(tinggiTerpancung * tinggiTerpancung + selisihRadius * selisihRadius);
+        double luasSelimut = super.PI * (radiusBawah + radiusAtas) * s;
+        luasPermukaan = luasBawah + luasAtas + luasSelimut;
+        return luasPermukaan;
+    }
+
+    @Override
+    public String getNamaBenda() {
+        return "Kerucut Terpancung";
+    }
 }

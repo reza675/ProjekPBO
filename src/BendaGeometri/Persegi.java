@@ -39,7 +39,6 @@ public class Persegi extends Benda2D {
 	public String getNamaBenda() {
 		return "Persegi";
 	}
-
 	public void prosesInputData() {
         Scanner inputData = new Scanner(System.in);
         while (true) {

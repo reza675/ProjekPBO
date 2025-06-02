@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
 import BendaGeometri.*;
 
 public class AplikasiBendaGeometri {
@@ -19,13 +14,22 @@ public class AplikasiBendaGeometri {
         // System.out.println("Volume Limas Jajaran Genjang = " + lj.menghitungVolume());
         // System.out.println("Luas Permukaan Limas Jajaran Genjang = " + lj.menghitungLuasPermukaan());
 
-        Bola bola = new Bola(10);
-        System.out.println("Luas Permukaan Bola = " + bola.menghitungLuasPermukaan(10));
-        System.out.println("Volume Bola = " + bola.menghitungVolume(10));
+        // Bola bola = new Bola(10);
+        // System.out.println("Luas Permukaan Bola = " + bola.menghitungLuasPermukaan(10));
+        // System.out.println("Volume Bola = " + bola.menghitungVolume(10));
         
-        JuringBola jb = new JuringBola(10, 90);
-        System.out.println("Luas Permukaan Juring Bola = " + jb.menghitungLuasPermukaan());
-        System.out.println("Volume Juring Bola = " + jb.menghitungVolume());
+        // JuringBola jb = new JuringBola(10, 90);
+        // System.out.println("Luas Permukaan Juring Bola = " + jb.menghitungLuasPermukaan());
+        // System.out.println("Volume Juring Bola = " + jb.menghitungVolume());
+
+         Persegi p = new Persegi(5);
+        System.out.println("Nama Benda: " + p.getNamaBenda());
+        System.out.println("Luas: " + p.menghitungLuas());
+        System.out.println("Keliling: " + p.menghitungKeliling());
+
+        p.prosesInputData();
+
+
     }
 
 }
