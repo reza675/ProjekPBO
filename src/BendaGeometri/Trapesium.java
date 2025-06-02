@@ -1,5 +1,8 @@
 package BendaGeometri;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Trapesium extends Benda2D {
 
     protected double alasAtas;
@@ -7,14 +10,6 @@ public class Trapesium extends Benda2D {
     protected double tinggi;
     protected double sisiMiringKiri;
     protected double sisiMiringKanan;
-    
-    public Trapesium() {
-        this.alasAtas = 0;
-        this.alasBawah = 0;
-        this.tinggi = 0;
-        this.sisiMiringKiri = 0;
-        this.sisiMiringKanan = 0;
-    }
 
     public Trapesium(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri, double sisiMiringKanan) {
         this.alasAtas = alasAtas;
@@ -24,27 +19,14 @@ public class Trapesium extends Benda2D {
         this.sisiMiringKanan = sisiMiringKanan;
     }
 
-    public Trapesium(int alasAtas, int alasBawah, int tinggi, int sisiMiringKiri, int sisiMiringKanan) {
-        this.alasAtas = alasAtas;
-        this.alasBawah = alasBawah;
-        this.tinggi = tinggi;
-        this.sisiMiringKiri = sisiMiringKiri;
-        this.sisiMiringKanan = sisiMiringKanan;
-    }
-
-    public double menghitungLuas(double alasAtas, double alasBawah, double tinggi) {
-        luas = 0.5 * (alasAtas + alasBawah) * tinggi;
-        return luas;
-    }
-
-    public double menghitungLuas(int alasAtas, int alasBawah, int tinggi) {
-        luas = 0.5 * (alasAtas + alasBawah) * tinggi;
-        return luas;
-    }
-
     @Override
     public double menghitungLuas() {
         luas = (0.5 * (alasAtas + alasBawah) * tinggi);
+        return luas;
+    }
+
+    public double menghitungLuas(double alasAtasBaru, double alasBawahBaru, double tinggiBaru) {
+        luas = 0.5 * (alasAtasBaru + alasBawahBaru) * tinggiBaru;
         return luas;
     }
 
@@ -54,13 +36,9 @@ public class Trapesium extends Benda2D {
         return keliling;
     }
 
-    public double menghitungKeliling(double alasAtas, double alasBawah, double sisiMiringKanan, double sisiMiringKiri) {
-        keliling = alasAtas + alasBawah + sisiMiringKanan + sisiMiringKiri;
-        return keliling;
-    }
-
-    public double menghitungKeliling(int alasAtas, int alasBawah, int sisiMiringKanan, int sisiMiringKiri) {
-        keliling = alasAtas + alasBawah + sisiMiringKanan + sisiMiringKiri;
+    public double menghitungKeliling(double alasAtasBaru, double alasBawahBaru, double sisiMiringKananBaru,
+            double sisiMiringKiriBaru) {
+        keliling = alasAtasBaru + alasBawahBaru + sisiMiringKananBaru + sisiMiringKiriBaru;
         return keliling;
     }
 
@@ -68,5 +46,64 @@ public class Trapesium extends Benda2D {
     public String getNamaBenda() {
         return "Trapesium";
     }
-    
+
+    public void prosesInputData() {
+        Scanner inputData = new Scanner(System.in);
+        while (true) {
+            System.out.print(
+                    "\nApakah Anda ingin mengubah nilai alasAtas, alasBawah, tinggi, sisiMiringKiri, dan sisiMiringKanan Trapesium? (Y/N): ");
+            String jawaban = inputData.nextLine();
+
+            if (jawaban.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan alasAtas baru: ");
+                        double alasAtasBaru = inputData.nextDouble();
+                        System.out.print("Masukkan alasBawah baru: ");
+                        double alasBawahBaru = inputData.nextDouble();
+                        System.out.print("Masukkan tinggi baru: ");
+                        double tinggiBaru = inputData.nextDouble();
+                        System.out.print("Masukkan sisiMiringKiri baru: ");
+                        double sisiMiringKiriBaru = inputData.nextDouble();
+                        System.out.print("Masukkan sisiMiringKanan baru: ");
+                        double sisiMiringKananBaru = inputData.nextDouble();
+                        inputData.nextLine();
+
+                        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 || sisiMiringKiriBaru <= 0
+                                || sisiMiringKananBaru <= 0) {
+                            System.out.println("Semua nilai harus lebih dari nol.\n");
+                            continue;
+                        }
+
+                        alasAtas = alasAtasBaru;
+                        alasBawah = alasBawahBaru;
+                        tinggi = tinggiBaru;
+                        sisiMiringKiri = sisiMiringKiriBaru;
+                        sisiMiringKanan = sisiMiringKananBaru;
+
+                        luas = menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
+                        keliling = menghitungKeliling(alasAtasBaru, alasBawahBaru, sisiMiringKananBaru,
+                                sisiMiringKiriBaru);
+
+                        System.out.printf("\nLuas Trapesium: %.2f\n", luas);
+                        System.out.printf("Keliling Trapesium: %.2f\n", keliling);
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input alas, tinggi, dan sisi miring harus berupa angka.");
+                        inputData.nextLine();
+                    }
+                }
+                break;
+            } else if (jawaban.equalsIgnoreCase("N")) {
+                luas = menghitungLuas();
+                keliling = menghitungKeliling();
+                System.out.printf("\nLuas Trapesium: %.2f\n", luas);
+                System.out.printf("Keliling Trapesium: %.2f\n", keliling);
+                break;
+            } else {
+                System.out.println("Jawaban hanya boleh Y atau N.\n");
+            }
+        }
+    }
+
 }

@@ -7,10 +7,6 @@ public class PrismaPersegiPanjang extends PersegiPanjang {
     private double volume;
     private double luasPermukaan;
 
-    public PrismaPersegiPanjang() {
-        super();
-        this.tinggiPrisma = 0;
-    }
 
     public PrismaPersegiPanjang(double panjang, double lebar, double tinggiPrisma) {
         super(panjang, lebar);

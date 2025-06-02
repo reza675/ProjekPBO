@@ -10,10 +10,6 @@ public class LimasPersegi extends Persegi {
 	private double volume;
 	private double luasPermukaan;
 
-	public LimasPersegi() {
-		super();
-		this.tinggi = 0;
-	}
 
 	public LimasPersegi(double sisi, double tinggi) {
 		super(sisi);

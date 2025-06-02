@@ -7,11 +7,6 @@ public class PersegiPanjang extends Benda2D {
 	protected double panjang;
 	protected double lebar;
 
-	public PersegiPanjang() {
-		this.panjang = 0;
-		this.lebar = 0;
-	}
-
 	public PersegiPanjang(double panjang, double lebar) {
 		this.panjang = panjang;
 		this.lebar = lebar;

@@ -6,11 +6,6 @@ public class LimasJajaranGenjang extends JajaranGenjang {
 	private double luasPermukaan;
 	private double volume;
 
-	public LimasJajaranGenjang() {
-		super();
-		this.tinggiLimas = 0;
-
-	}
 
 	public LimasJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiLimas) {
 		super(panjangAlas, tinggiAlas, sisiMiringAlas);

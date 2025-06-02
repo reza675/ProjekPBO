@@ -7,11 +7,6 @@ public class LimasBelahKetupat extends BelahKetupat {
 	private double luasPermukaan;
 	private double volume;
 
-	public LimasBelahKetupat() {
-		super();
-		this.tinggi = 0;
-	}
-
 	public LimasBelahKetupat(double d1, double d2, double sisi, double tinggi) {
 		super(d1, d2, sisi);
 		this.tinggi = tinggi;

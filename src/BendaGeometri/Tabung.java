@@ -8,11 +8,6 @@ public class Tabung extends Lingkaran {
 	private double selimut;
 	private double luasPermukaan;
 
-	public Tabung() {
-		super();
-		this.tinggi = 0;
-	}
-
 	public Tabung(double radius, double tinggi) {
 		super(radius);
 		this.tinggi = tinggi;
@@ -25,13 +20,13 @@ public class Tabung extends Lingkaran {
 
 	public double menghitungVolume() {
 		luasAlas = super.menghitungLuas();
-		volume = luasAlas* tinggi;
+		volume = luasAlas * tinggi;
 		return volume;
 	}
 
 	public double menghitungVolume(int radius, int tinggi) {
 		luasAlas = super.menghitungLuas(radius);
-		volume = luasAlas* tinggi;
+		volume = luasAlas * tinggi;
 		return volume;
 	}
 
@@ -42,8 +37,7 @@ public class Tabung extends Lingkaran {
 		return luasPermukaan;
 	}
 
-
-	public double menghitungLuasPermukaan(int radius,int tinggi) {
+	public double menghitungLuasPermukaan(int radius, int tinggi) {
 		luasAlas = 2 * super.menghitungLuas(radius);
 		selimut = super.menghitungKeliling(radius) * tinggi;
 		luasPermukaan = luasAlas + selimut;

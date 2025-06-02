@@ -8,11 +8,6 @@ public class PrismaBelahKetupat extends BelahKetupat {
     private double volume;
     private double luasPermukaan;
 
-    public PrismaBelahKetupat() {
-        super();
-        this.tinggi = 0;
-    }
-
     public PrismaBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggi) {
         super(diagonal1, diagonal2, sisi);
         this.tinggi = tinggi;

@@ -6,10 +6,6 @@ import java.util.Scanner;
 public class Persegi extends Benda2D {
 	protected double sisi;
 
-	public Persegi() {
-		this.sisi = 0;
-	}
-
 	public Persegi(double sisi) {
 		this.sisi = sisi;
 	}

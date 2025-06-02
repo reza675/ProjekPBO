@@ -5,12 +5,6 @@ public class TemberengBola extends Bola {
 	private double tinggi;
 	private double volume;
 	private double luasPermukaan;
-	
-	public TemberengBola() {
-		super();
-		this.tinggi = 0;
-	}
-
 
 	public TemberengBola(double radius, double tinggi) {
 		super(radius);
@@ -24,7 +18,7 @@ public class TemberengBola extends Bola {
 
 	public double menghitungVolume() {
 		volume = ((tinggi * tinggi * PI) / 3) * (3 * radius - tinggi);
-		return volume; 
+		return volume;
 	}
 
 	public double menghitungVolume(double radius, double tinggi) {
@@ -34,7 +28,7 @@ public class TemberengBola extends Bola {
 
 	public double menghitungVolume(int radius, int tinggi) {
 		volume = ((tinggi * tinggi * PI) / 3) * (3 * radius - tinggi);
-		return volume; 
+		return volume;
 	}
 
 	public double menghitungLuasPermukaan() {
@@ -53,7 +47,7 @@ public class TemberengBola extends Bola {
 	}
 
 	@Override
-	public String getNamaBenda(){
+	public String getNamaBenda() {
 		return "Tembereng Bola";
 	}
 

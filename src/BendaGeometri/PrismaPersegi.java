@@ -7,10 +7,6 @@ public class PrismaPersegi extends Persegi{
     private double volume;
     private double luasPermukaan;
 
-    public PrismaPersegi() {
-        super();
-        this.tinggiPrisma = 0;
-    }
 
     public PrismaPersegi(double sisi, double tinggiPrisma) {
         super(sisi);

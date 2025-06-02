@@ -7,11 +7,6 @@ public class PrismaJajaranGenjang extends JajaranGenjang {
     private double volume;
     private double luasPermukaan;
 
-    public PrismaJajaranGenjang() {
-        super();
-        this.tinggiPrisma = 0;
-    }
-
     public PrismaJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiPrisma) {
         super(panjangAlas, tinggiAlas, sisiMiringAlas);
         this.tinggiPrisma = tinggiPrisma;

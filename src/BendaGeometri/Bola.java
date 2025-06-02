@@ -6,10 +6,6 @@ public class Bola extends Lingkaran {
 	protected double volume;
 	protected double luasPermukaan;
 
-	public Bola() {
-		super();
-	}
-
 	public Bola(double radius) {
 		super(radius);
 	}

@@ -8,11 +8,6 @@ public class JuringBola extends Bola {
 	private double volumeBola;
 	private double luasPermukaanBola;
 
-	public JuringBola() {
-        super();
-		this.sudut = 0;
-	}
-
 	public JuringBola(double radius, double sudut) {
         super(radius);
 		this.sudut = sudut;
@@ -34,7 +29,7 @@ public class JuringBola extends Bola {
 		volume = volumeBola * (sudut / 360.0);
 		return volume;
 	}
-	
+
 	public double menghitungVolume(int sudut, int radius) {
 		volumeBola = super.menghitungVolume(radius);
 		volume = volumeBola * (sudut / 360);

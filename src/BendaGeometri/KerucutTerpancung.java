@@ -7,10 +7,6 @@ public class KerucutTerpancung extends Kerucut {
 	private double volume;
 	private double luasPermukaan;
 
-	public KerucutTerpancung() {
-		super();
-		this.radiusAtas = 0.0;
-	}
 
 	public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggiTerpancung) {
 		super(radiusBawah, menghitungTinggiKerucutUtuh(radiusBawah, radiusAtas, tinggiTerpancung));
