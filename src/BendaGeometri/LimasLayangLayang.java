@@ -20,9 +20,9 @@ public class LimasLayangLayang extends LayangLayang {
 		return volume;
 	}
 
-	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru, double tinggiLimasBaru) {
-		luasAlas = super.menghitungLuas(diagonal1, diagonal2);
-		volume = (1.0 / 3.0) * luasAlas * tinggiLimas;
+	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) {
+		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
+		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
 	}
 
@@ -44,8 +44,8 @@ public class LimasLayangLayang extends LayangLayang {
 		double proyeksiKeSisiPanjang = diagonal1Baru / 2.0;
 		double tinggiSegitigaPendek = Math.sqrt(Math.pow(tinggiLimasBaru, 2) + Math.pow(proyeksiKeSisiPendek, 2));
 		double tinggiSegitigaPanjang = Math.sqrt(Math.pow(tinggiLimasBaru, 2) + Math.pow(proyeksiKeSisiPanjang, 2));
-		double luasMukaPendek = sisiPendek * tinggiSegitigaPendek;
-		double luasMukaPanjang = sisiPanjang * tinggiSegitigaPanjang;
+		double luasMukaPendek = sisiPendekBaru * tinggiSegitigaPendek;
+		double luasMukaPanjang = sisiPanjangBaru * tinggiSegitigaPanjang;
 		luasPermukaan = luasAlas + luasMukaPendek + luasMukaPanjang;
 		return luasPermukaan;
 	}
@@ -80,7 +80,7 @@ public class LimasLayangLayang extends LayangLayang {
                             System.out.println("Semua nilai harus lebih dari nol.\n");
                             continue;
                         }
-                        volume = menghitungVolume(diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru, tinggiLimas);
+                        volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiLimasBaru);
                         luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru,tinggiLimasBaru);
                         System.out.printf("\nVolume Limas Layang-Layang: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Limas Layang-Layang: %.2f\n", luasPermukaan);
