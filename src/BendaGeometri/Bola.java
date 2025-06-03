@@ -1,5 +1,8 @@
 package BendaGeometri;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Bola extends Lingkaran {
 
 	protected double luasAlas;
@@ -9,23 +12,16 @@ public class Bola extends Lingkaran {
 	public Bola(double radius) {
 		super(radius);
 	}
-	public Bola(int radius) {
-		super(radius);
-	}
 
 	public double menghitungVolume() {
 		luasAlas = super.menghitungLuas();
-		volume = (4.0 / 3.0) * luasAlas* radius;
+		volume = (4.0 / 3.0) * luasAlas * radius;
 		return volume;
 	}
-	public double menghitungVolume(double radius) {
-		luasAlas = super.menghitungLuas(radius);
-		volume = (4.0 / 3.0) * luasAlas* radius;
-		return volume;
-	}
-	public double menghitungVolume(int radius) {
-		luasAlas = super.menghitungLuas(radius);
-		volume = (4.0 / 3.0) * luasAlas* radius;
+
+	public double menghitungVolume(double radiusBaru) {
+		luasAlas = super.menghitungLuas(radiusBaru);
+		volume = (4.0 / 3.0) * luasAlas * radiusBaru;
 		return volume;
 	}
 
@@ -34,14 +30,9 @@ public class Bola extends Lingkaran {
 		luasPermukaan = 4 * luasAlas;
 		return luasPermukaan;
 	}
-	public double menghitungLuasPermukaan(double radius) {
-		luasAlas = super.menghitungLuas(radius);
-		luasPermukaan = 4 * luasAlas;
-		return luasPermukaan;
-	}
 
-	public double menghitungLuasPermukaan(int radius) {
-		luasAlas = super.menghitungLuas(radius);
+	public double menghitungLuasPermukaan(double radiusBaru) {
+		luasAlas = super.menghitungLuas(radiusBaru);
 		luasPermukaan = 4 * luasAlas;
 		return luasPermukaan;
 	}
@@ -49,6 +40,45 @@ public class Bola extends Lingkaran {
 	@Override
 	public String getNamaBenda() {
 		return "Bola";
+	}
+
+	public void prosesInputDataUlang() {
+		Scanner inputData = new Scanner(System.in);
+		while (true) {
+			System.out.print("\nApakah Anda ingin mengubah nilai jari-jari bola? (Y/N): ");
+			String jawaban = inputData.nextLine();
+			if (jawaban.equalsIgnoreCase("Y")) {
+				while (true) {
+					try {
+						System.out.print("Masukkan jari-jari bola: ");
+						double radiusBaru = inputData.nextDouble();
+						inputData.nextLine();
+
+						if (radiusBaru <= 0) {
+							System.out.println("Radius harus lebih dari nol.\n");
+							continue;
+						}
+
+						volume = menghitungVolume(radiusBaru);
+						luasPermukaan = menghitungLuasPermukaan(radiusBaru);
+
+						System.out.printf("\nVolume Bola: %.2f\n", volume);
+						System.out.printf("Luas Permukaan Bola: %.2f\n", luasPermukaan);
+						break;
+					} catch (InputMismatchException e) {
+						System.out.println("Input harus berupa angka.");
+						inputData.nextLine();
+					}
+				}
+				break;
+			} else if (jawaban.equalsIgnoreCase("N")) {
+				volume = menghitungVolume();
+				luasPermukaan = menghitungLuasPermukaan();
+				break;
+			} else {
+				System.out.println("Jawaban hanya boleh Y atau N.\n");
+			}
+		}
 	}
 
 }
