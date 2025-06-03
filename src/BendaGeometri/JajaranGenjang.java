@@ -42,7 +42,7 @@ public class JajaranGenjang extends Benda2D {
 		return "Jajaran Genjang";
 	}
 
-	public void prosesInputData() {
+	public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print("\nApakah Anda ingin mengubah nilai alas, tinggi, dan sisi miring Jajaran Genjang? (Y/N): ");
@@ -61,9 +61,6 @@ public class JajaranGenjang extends Benda2D {
                             System.out.println("Nilai alas, tinggi, dan sisi miring harus lebih dari nol.\n");
                             continue;
                         }
-                        alas = alasBaru;
-                        tinggi = tinggiBaru;
-                        sisiMiring = sisiMiringBaru;
                         luas = menghitungLuas(alasBaru, tinggiBaru);
                         keliling = menghitungKeliling(alasBaru, sisiMiringBaru);
                         System.out.printf("\nLuas Jajaran Genjang: %.2f\n", luas);
@@ -78,8 +75,6 @@ public class JajaranGenjang extends Benda2D {
             } else if (jawaban.equalsIgnoreCase("N")) {
                 luas = menghitungLuas();
                 keliling = menghitungKeliling();
-                System.out.printf("\nLuas Jajaran Genjang: %.2f\n", luas);
-                System.out.printf("Keliling Jajaran Genjang: %.2f\n", keliling);
                 break;
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.\n");

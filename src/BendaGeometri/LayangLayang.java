@@ -5,49 +5,51 @@ import java.util.Scanner;
 
 public class LayangLayang extends Benda2D {
 
-	protected double diagonal1;
-	protected double diagonal2;
-	protected double sisiPendek;
-	protected double sisiPanjang;
+    protected double diagonal1;
+    protected double diagonal2;
+    protected double sisiPendek;
+    protected double sisiPanjang;
 
-	public LayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang) {
-		this.diagonal1 = diagonal1;
-		this.diagonal2 = diagonal2;
-		this.sisiPendek = sisiPendek;
-		this.sisiPanjang = sisiPanjang;
-	}
-	@Override
-	public double menghitungLuas() {
-		luas = (diagonal1 * diagonal2) / 2.0;
-		return luas;
-	}
+    public LayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang) {
+        this.diagonal1 = diagonal1;
+        this.diagonal2 = diagonal2;
+        this.sisiPendek = sisiPendek;
+        this.sisiPanjang = sisiPanjang;
+    }
 
-	public double menghitungLuas(double diagonal1Baru, double diagonal2Baru) {
-		luas = (diagonal1Baru * diagonal2Baru) / 2.0;
-		return luas;
-	}
+    @Override
+    public double menghitungLuas() {
+        luas = (diagonal1 * diagonal2) / 2.0;
+        return luas;
+    }
 
-	@Override
-	public double menghitungKeliling() {
-		keliling = 2 * (sisiPendek + sisiPanjang);
-		return keliling;
-	}	
+    public double menghitungLuas(double diagonal1Baru, double diagonal2Baru) {
+        luas = (diagonal1Baru * diagonal2Baru) / 2.0;
+        return luas;
+    }
 
-	public double menghitungKeliling(double sisiPendekBaru, double sisiPanjangBaru) {
-		keliling = 2 * (sisiPendekBaru + sisiPanjangBaru);
-		return keliling;
-	}
+    @Override
+    public double menghitungKeliling() {
+        keliling = 2 * (sisiPendek + sisiPanjang);
+        return keliling;
+    }
 
-	@Override
-	public String getNamaBenda() {
-		return "Layang-Layang";
-	}
+    public double menghitungKeliling(double sisiPendekBaru, double sisiPanjangBaru) {
+        keliling = 2 * (sisiPendekBaru + sisiPanjangBaru);
+        return keliling;
+    }
 
-	public void prosesInputData() {
+    @Override
+    public String getNamaBenda() {
+        return "Layang-Layang";
+    }
+
+    public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
 
         while (true) {
-            System.out.print("\nApakah Anda ingin mengubah nilai diagonal1, diagonal2, sisiPendek, dan sisiPanjang Layang-Layang? (Y/N): ");
+            System.out.print(
+                    "\nApakah Anda ingin mengubah nilai diagonal1, diagonal2, sisiPendek, dan sisiPanjang Layang-Layang? (Y/N): ");
             String jawaban = inputData.nextLine();
 
             if (jawaban.equalsIgnoreCase("Y")) {
@@ -68,11 +70,6 @@ public class LayangLayang extends Benda2D {
                             continue;
                         }
 
-                        diagonal1 = diagonal1Baru;
-                        diagonal2 = diagonal2Baru;
-                        sisiPendek = sisiPendekBaru;
-                        sisiPanjang = sisiPanjangBaru;
-
                         luas = menghitungLuas(diagonal1Baru, diagonal2Baru);
                         keliling = menghitungKeliling(sisiPendekBaru, sisiPanjangBaru);
 
@@ -90,8 +87,6 @@ public class LayangLayang extends Benda2D {
             } else if (jawaban.equalsIgnoreCase("N")) {
                 luas = menghitungLuas();
                 keliling = menghitungKeliling();
-                System.out.printf("\nLuas Layang-Layang: %.2f\n", luas);
-                System.out.printf("Keliling Layang-Layang: %.2f\n", keliling);
                 break;
 
             } else {

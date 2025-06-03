@@ -44,7 +44,7 @@ public class JuringLingkaran extends Lingkaran {
     public String getNamaBenda() {
         return "Juring Lingkaran";
     }
-    public void prosesInputData() {
+    public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
 
         while (true) {
@@ -64,8 +64,6 @@ public class JuringLingkaran extends Lingkaran {
                             System.out.println("Radius dan sudut juring harus lebih dari nol.\n");
                             continue;
                         }
-                        super.radius = radiusBaru;
-                        this.sudutJuring = sudutJuringBaru;
 
                         luas = menghitungLuas(radiusBaru, sudutJuringBaru);
                         keliling = menghitungKeliling(radiusBaru, sudutJuringBaru);
@@ -84,8 +82,6 @@ public class JuringLingkaran extends Lingkaran {
             } else if (jawaban.equalsIgnoreCase("N")) {
                 luas = menghitungLuas();
                 keliling = menghitungKeliling();
-                System.out.printf("\nLuas Juring Lingkaran: %.2f\n", luas);
-                System.out.printf("Keliling Juring Lingkaran: %.2f\n", keliling);
                 break;
 
             } else {

@@ -47,7 +47,7 @@ public class Trapesium extends Benda2D {
         return "Trapesium";
     }
 
-    public void prosesInputData() {
+    public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print(
@@ -74,13 +74,6 @@ public class Trapesium extends Benda2D {
                             System.out.println("Semua nilai harus lebih dari nol.\n");
                             continue;
                         }
-
-                        alasAtas = alasAtasBaru;
-                        alasBawah = alasBawahBaru;
-                        tinggi = tinggiBaru;
-                        sisiMiringKiri = sisiMiringKiriBaru;
-                        sisiMiringKanan = sisiMiringKananBaru;
-
                         luas = menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
                         keliling = menghitungKeliling(alasAtasBaru, alasBawahBaru, sisiMiringKananBaru,
                                 sisiMiringKiriBaru);

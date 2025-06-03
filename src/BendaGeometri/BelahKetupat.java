@@ -36,7 +36,7 @@ public class BelahKetupat extends Benda2D {
 	public String getNamaBenda() {
 		return "Belah Ketupat";
 	}
-	public void prosesInputData() {
+	public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print("\nApakah Anda ingin mengubah nilai diagonal1, diagonal2, dan sisi Belah Ketupat? (Y/N): ");
@@ -57,11 +57,6 @@ public class BelahKetupat extends Benda2D {
                             System.out.println("Diagonal dan sisi harus lebih dari nol.\n");
                             continue;
                         }
-
-                        diagonal1 = diagonal1Baru;
-                        diagonal2 = diagonal2Baru;
-                        sisi = sisiBaru;
-
                         luas = menghitungLuas(diagonal1Baru, diagonal2Baru);
                         keliling = menghitungKeliling(sisiBaru);
                         System.out.printf("\nLuas Belah Ketupat: %.2f\n", luas);
@@ -76,8 +71,6 @@ public class BelahKetupat extends Benda2D {
             } else if (jawaban.equalsIgnoreCase("N")) {
                 luas = menghitungLuas();
                 keliling = menghitungKeliling();
-                System.out.printf("\nLuas Belah Ketupat: %.2f\n", luas);
-                System.out.printf("Keliling Belah Ketupat: %.2f\n", keliling);
                 break;
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.\n");

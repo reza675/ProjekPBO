@@ -67,10 +67,6 @@ public class Segitiga extends Benda2D {
 							System.out.println("Semua nilai harus lebih dari nol.\n");
 							continue;
 						}
-						alas = alasBaru;
-						tinggi = tinggiBaru;
-						sisiMiring1 = sisi1Baru;
-						sisiMiring2 = sisi2Baru;
 						luas = menghitungLuas(alasBaru, tinggiBaru);
 						keliling = menghitungKeliling(alasBaru, sisi1Baru, sisi2Baru);
 						System.out.printf("\nLuas Segitiga: %.2f\n", luas);

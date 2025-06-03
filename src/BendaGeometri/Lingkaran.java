@@ -38,7 +38,7 @@ public class Lingkaran extends Benda2D {
 	public String getNamaBenda() {
 		return "Lingkaran";
 	}
-	public void prosesInputData() {
+	public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print("\nApakah Anda ingin mengubah nilai radius lingkaran? (Y/N): ");
@@ -54,7 +54,6 @@ public class Lingkaran extends Benda2D {
                             System.out.println("Radius harus lebih dari nol.\n");
                             continue;
                         }
-                        radius = radiusBaru;
                         luas = menghitungLuas(radiusBaru);
                         keliling = menghitungKeliling(radiusBaru);
                         System.out.printf("\nLuas Lingkaran: %.2f\n", luas);

@@ -68,8 +68,6 @@ public class TemberengLingkaran extends Lingkaran {
                             System.out.println("Radius dan sudut harus lebih dari nol.\n");
                             continue;
                         }
-                        super.radius = radiusBaru;
-                        this.sudut = sudutBaru;
                         luas = menghitungLuas(radiusBaru, sudutBaru);
                         keliling = menghitungKeliling(radiusBaru, sudutBaru);
                         System.out.printf("\nLuas Tembereng Lingkaran: %.2f\n", luas);

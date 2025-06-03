@@ -38,7 +38,7 @@ public class PersegiPanjang extends Benda2D {
 	public String getNamaBenda() {
 		return "Persegi Panjang";
 	}
-	public void prosesInputData() {
+	public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print("\nApakah Anda ingin mengubah nilai panjang dan lebar persegi panjang? (Y/N): ");
@@ -56,8 +56,6 @@ public class PersegiPanjang extends Benda2D {
                             System.out.println("panjang dan lebar harus lebih dari nol.\n");
                             continue;
                         }
-                        panjang = panjangBaru;
-						lebar = lebarBaru;
                         luas = menghitungLuas(panjangBaru, lebarBaru);
                         keliling = menghitungKeliling(panjangBaru, lebarBaru);
                         System.out.printf("\nLuas Persegi Panjang: %.2f\n", luas);
