@@ -6,11 +6,6 @@ public class LimasLayangLayang extends LayangLayang {
 	private double luasPermukaan;
 	private double volume;
 
-	public LimasLayangLayang() {
-		super();
-		this.tinggi = 0;
-	}
-
 	public LimasLayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang, double tinggi) {
 		super(diagonal1, diagonal2, sisiPendek, sisiPanjang);
 		this.tinggi = tinggi;

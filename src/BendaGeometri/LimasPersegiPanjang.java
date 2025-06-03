@@ -11,11 +11,6 @@ public class LimasPersegiPanjang extends PersegiPanjang {
 	private double volume;
 	private double luasPermukaan;
 
-	public LimasPersegiPanjang() {
-		super();
-		this.tinggi = 0;
-	}
-
 	public LimasPersegiPanjang(double panjang, double lebar, double tinggi) {
 		super(panjang, lebar);
 		this.tinggi = tinggi;

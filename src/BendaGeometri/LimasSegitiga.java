@@ -10,10 +10,6 @@ public class LimasSegitiga extends Segitiga {
 	private double volume;
 	private double luasPermukaan;
 
-	public LimasSegitiga() {
-		super();
-		this.tinggiLimas = 0;
-	}
 
 	public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2,
 			double tinggiLimas) {

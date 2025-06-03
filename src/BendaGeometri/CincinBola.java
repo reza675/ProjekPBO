@@ -1,16 +1,9 @@
 package BendaGeometri;
 
-public class CincinBola extends Bola {
+public class CincinBola extends Bola {	
 	private double tinggiCincin;
 	private double volume;
 	private double luasPermukaan;
-
-
-	public CincinBola() {
-		super();
-		this.tinggiCincin = 0;
-	}
-
 
 	public CincinBola(double radius, double tinggiCincin) {
         super(radius);

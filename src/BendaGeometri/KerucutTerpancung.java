@@ -1,68 +1,115 @@
 package BendaGeometri;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class KerucutTerpancung extends Kerucut {
 
-	private double radiusAtas;
-	private double volume;
-	private double luasPermukaan;
+    private double radiusAtas;
+    private double tinggiTerpancung;
+    private double volume;
+    private double luasPermukaan;
 
-	public KerucutTerpancung() {
-		super();
-		this.radiusAtas = 0.0;
-	}
+    public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggiTerpancung) {
+        super(radiusBawah, menghitungTinggiKerucutUtuh(radiusBawah, radiusAtas, tinggiTerpancung));
+        this.radiusAtas = radiusAtas;
+        this.tinggiTerpancung = tinggiTerpancung;
+    }
 
-	public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggi) {
-		super(radiusBawah, tinggi);
-		this.radiusAtas = radiusAtas;
-	}
+    private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) {
+        return (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
+    }
 
-	public KerucutTerpancung(int radiusAtas, int radiusBawah, int tinggi) {
-		super(radiusBawah, tinggi);
-		this.radiusAtas = radiusAtas;
-	}
+    @Override
+    public double menghitungVolume() {
+        double radiusBawah = super.radius;
+        double radiusAtas = this.radiusAtas;
+        double tinggiTerpancung = this.tinggiTerpancung;
+        volume = (1.0 / 3.0) * super.PI * tinggiTerpancung
+                * (radiusBawah * radiusBawah + radiusBawah * radiusAtas + radiusAtas * radiusAtas);
+        return volume;
+    }
 
-	private double hitungVolumeCore(double r1, double r2, double h) {
-		volume = (1.0 / 3.0) * super.PI * h * (r1 * r1 + r1 * r2 + r2 * r2);
-		return volume;	
-	}
+    public double menghitungVolume(double radiusAtasBaru, double radiusBawahBaru, double tinggiTerpancungBaru) {
+        volume = (1.0 / 3.0) * super.PI * tinggiTerpancungBaru * (radiusBawahBaru * radiusBawahBaru
+                + radiusBawahBaru * radiusAtasBaru + radiusAtasBaru * radiusAtasBaru);
+        return volume;
+    }
 
-	@Override
-	public double menghitungVolume() {
-		return hitungVolumeCore(this.radiusAtas, super.radius, super.tinggi);
-	}
+    @Override
+    public double menghitungLuasPermukaan() {
+        double radiusBawah = super.radius;
+        double radiusAtas = this.radiusAtas;
+        double tinggiTerpancung = this.tinggiTerpancung;
 
-	public double menghitungVolume(double radiusAtas, double radiusBawah, double tinggi) {
-		return hitungVolumeCore(radiusAtas, radiusBawah, tinggi);
-	}
+        double luasAlasBawah = super.menghitungLuas(radiusBawah);
+        double luasAlasAtas = super.menghitungLuas(radiusAtas);
+        double selisihRadius = radiusBawah - radiusAtas;
+        double sisiMiringTerpancung = Math.sqrt(tinggiTerpancung * tinggiTerpancung + selisihRadius * selisihRadius);
+        double luasSelimut = super.PI * (radiusBawah + radiusAtas) * sisiMiringTerpancung;
 
-	public double menghitungVolume(int radiusAtas, int radiusBawah, int tinggi) {
-		return hitungVolumeCore((double) radiusAtas,(double) radiusBawah,(double) tinggi);
-	}
+        luasPermukaan = luasAlasBawah + luasAlasAtas + luasSelimut;
+        return luasPermukaan;
+    }
 
-	private double hitungLuasPermukaanCore(double r1, double r2, double h) {
-		double s = Math.sqrt(h * h + (r2 - r1) * (r2 - r1));
-		double luasAtas = super.menghitungLuas(r1);
-		double luasBawah = super.menghitungLuas(r2);
-		double luasSelimut = super.PI * (r1 + r2) * s;
-		luasPermukaan = luasAtas + luasBawah + luasSelimut;
-		return luasPermukaan;
-	}
+    public double menghitungLuasPermukaan(double radiusAtasBaru, double radiusBawahBaru, double tinggiTerpancungBaru) {
+        double luasAlasBawah = super.menghitungLuas(radiusBawahBaru);
+        double luasAlasAtas = super.menghitungLuas(radiusAtasBaru);
+        double selisihRadius = radiusBawahBaru - radiusAtasBaru;
+        double sisiMiringTerpancung = Math
+                .sqrt(tinggiTerpancungBaru * tinggiTerpancungBaru + selisihRadius * selisihRadius);
+        double luasSelimut = super.PI * (radiusBawahBaru + radiusAtasBaru) * sisiMiringTerpancung;
 
-	@Override
-	public double menghitungLuasPermukaan() {
-		return hitungLuasPermukaanCore(this.radiusAtas, super.radius, super.tinggi);
-	}
+        luasPermukaan = luasAlasBawah + luasAlasAtas + luasSelimut;
+        return luasPermukaan;
+    }
 
-	public double menghitungLuasPermukaan(double radiusAtas, double radiusBawah, double tinggi) {
-		return hitungLuasPermukaanCore(radiusAtas, radiusBawah, tinggi);
-	}
+    @Override
+    public String getNamaBenda() {
+        return "Kerucut Terpancung";
+    }
 
-	public double menghitungLuasPermukaan(int radiusAtas, int radiusBawah, int tinggi) {
-		return hitungLuasPermukaanCore((double) radiusAtas,(double) radiusBawah,(double) tinggi);
-	}
+    public void prosesInputDataUlang() {
+        Scanner inputData = new Scanner(System.in);
+        while (true) {
+            System.out.print("\nApakah Anda ingin mengubah nilai jari-jari atas, jari-jari bawah, dan tinggi kerucut terpancung? (Y/N): ");
+            String jawaban = inputData.nextLine();
+            if (jawaban.equalsIgnoreCase("Y")) {
+                while (true) {
+                    try {
+                        System.out.print("Masukkan jari-jari atas: ");
+                        double radiusAtasBaru = inputData.nextDouble();
+                        System.out.print("Masukkan jari-jari bawah: ");
+                        double radiusBawahBaru = inputData.nextDouble();
+                        System.out.print("Masukkan tinggi kerucut terpancung: ");
+                        double tinggiTerpancungBaru = inputData.nextDouble();
+                        inputData.nextLine();
 
-	@Override
-	public String getNamaBenda() {
-		return "Kerucut Terpancung";
-	}
+                        if (radiusAtasBaru <= 0 || radiusBawahBaru <= 0 || tinggiTerpancungBaru <= 0
+                                || radiusAtasBaru >= radiusBawahBaru) {
+                            System.out.println("Nilai harus lebih dari nol dan jari-jari atas < jari-jari bawah.\n");
+                            continue;
+                        }
+
+                        volume = menghitungVolume(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
+                        luasPermukaan = menghitungLuasPermukaan(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
+
+                        System.out.printf("\nVolume Kerucut Terpancung: %.2f\n", volume);
+                        System.out.printf("Luas Permukaan Kerucut Terpancung: %.2f\n", luasPermukaan);
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Input harus berupa angka.");
+                        inputData.nextLine();
+                    }
+                }
+                break;
+            } else if (jawaban.equalsIgnoreCase("N")) {
+                volume = menghitungVolume();
+                luasPermukaan = menghitungLuasPermukaan();
+                break;
+            } else {
+                System.out.println("Jawaban hanya boleh Y atau N.\n");
+            }
+        }
+    }
 }
