@@ -36,7 +36,7 @@ public class AplikasiBendaGeometri {
         // p.prosesInputDataUlang();
 
         // Buat objek PrismaPersegi awal
-        Kerucut pp = new Kerucut(10, 20);
+        LimasTrapesium pp = new LimasTrapesium(10, 20, 30, 40, 50, 60);
         System.out.println("=== Keadaan Awal ===");
         System.out.println("Nama Benda: " + pp.getNamaBenda());
         System.out.printf("Luas Permukaan: %.2f\n", pp.menghitungLuasPermukaan());
