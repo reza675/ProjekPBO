@@ -74,7 +74,7 @@ public class LimasLayangLayang extends LayangLayang {
                         double sisiPendekBaru = inputData.nextDouble();
                         System.out.print("Masukkan sisi panjang layang-layang: ");
                         double sisiPanjangBaru = inputData.nextDouble();
-                        System.out.print("Masukkan tinggiLimas limas: ");
+                        System.out.print("Masukkan tinggi limas limas: ");
                         double tinggiLimasBaru = inputData.nextDouble();
                         inputData.nextLine();
 
