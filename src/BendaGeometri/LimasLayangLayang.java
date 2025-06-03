@@ -20,8 +20,10 @@ public class LimasLayangLayang extends LayangLayang {
 		return volume;
 	}
 
+
 	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) {
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
+
 		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
 	}
@@ -80,7 +82,9 @@ public class LimasLayangLayang extends LayangLayang {
                             System.out.println("Semua nilai harus lebih dari nol.\n");
                             continue;
                         }
+
                         volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiLimasBaru);
+
                         luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru,tinggiLimasBaru);
                         System.out.printf("\nVolume Limas Layang-Layang: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Limas Layang-Layang: %.2f\n", luasPermukaan);
