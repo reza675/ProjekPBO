@@ -36,21 +36,14 @@ public class AplikasiBendaGeometri {
         // p.prosesInputDataUlang();
 
         // Buat objek PrismaPersegi awal
-        PrismaJajaranGenjang pp = new PrismaJajaranGenjang(5, 4, 3, 10);
-
-        // Menampilkan keadaan awal (state awal)
+        Kerucut pp = new Kerucut(10, 20);
         System.out.println("=== Keadaan Awal ===");
         System.out.println("Nama Benda: " + pp.getNamaBenda());
         System.out.printf("Luas Permukaan: %.2f\n", pp.menghitungLuasPermukaan());
         System.out.printf("Volume: %.2f\n", pp.menghitungVolume());
 
-        // Ubah keadaan objek lewat input user
         pp.prosesInputDataUlang();
 
-        // Tampilkan ulang hasil hitung berdasarkan keadaan terbaru
-        System.out.println("\n=== Setelah Data Diubah ===");
-        System.out.printf("Luas Permukaan: %.2f\n", pp.menghitungLuasPermukaan());
-        System.out.printf("Volume: %.2f\n", pp.menghitungVolume());
 
     }
 
