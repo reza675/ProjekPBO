@@ -15,7 +15,7 @@ public class LimasPersegi extends Persegi {
 
 	public LimasPersegi() {
 		super();
-		this.tinggi = 0;
+		this.tinggiLimas = 0;
 	}
 
 	public LimasPersegi(double sisi, double tinggiLimas) {
