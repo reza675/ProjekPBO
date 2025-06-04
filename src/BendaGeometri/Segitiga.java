@@ -45,11 +45,11 @@ public class Segitiga extends Benda2D {
 		return "Segitiga";
 	}
 
-	public void prosesInputData() {
+	public void prosesInputDataUlang() {
 		Scanner inputData = new Scanner(System.in);
 		while (true) {
 			System.out.print(
-					"\nApakah Anda ingin mengubah nilai alas, tinggi, sisi miring 1, dan sisi miring 2 Segitiga? (Y/N): ");
+					"\nApakah Anda ingin mengubah nilai alas, tinggi, sisi miring1, dan sisi miring2 Segitiga? (Y/N): ");
 			String jawaban = inputData.nextLine();
 			if (jawaban.equalsIgnoreCase("Y")) {
 				while (true) {
@@ -85,7 +85,7 @@ public class Segitiga extends Benda2D {
 				System.out.printf("Keliling Segitiga: %.2f\n", keliling);
 				break;
 			} else {
-				System.out.println("Jawaban hanya boleh Y atau N.\n");
+				System.out.println("Jawaban hanya boleh Y atau N.");
 			}
 		}
 	}

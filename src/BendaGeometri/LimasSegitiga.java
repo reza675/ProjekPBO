@@ -12,43 +12,64 @@ public class LimasSegitiga extends Segitiga {
 	private double tinggiSisiMiring;
 	private double volume;
 	private double luasPermukaan;
+    private double sisiMiring;
 
 
-	public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2,
-			double tinggiLimas) {
+	public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2,double tinggiLimas) {
 		super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
 		this.tinggiLimas = tinggiLimas;
 	}
 
 	public double menghitungVolume() {
-		luasAlas = menghitungLuas();
-		volume = (1 / 3.0) * luasAlas * tinggiLimas;
+		luasAlas = super.menghitungLuas();
+		volume = (1.0 / 3.0) * luasAlas * tinggiLimas;
 		return volume;
 	}
 
 	public double menghitungVolume(double alasBaru, double tinggiSegitigaBaru, double tinggiLimasBaru) {
 		luasAlas = menghitungLuas(alasBaru, tinggiSegitigaBaru);
-		volume = (1 / 3.0) * luasAlas * tinggiLimasBaru;
+		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
 	}
 
+    private double menghitungSlantHeight(double sisi) {
+        luasAlas = super.menghitungLuas();
+        double tinggiKeSisi = (2.0 * luasAlas) / sisi;
+        double d = (2.0 / 3.0) * tinggiKeSisi;
+        return Math.sqrt(tinggiLimas * tinggiLimas + d * d);
+        
+    }
+
+
 	public double menghitungLuasPermukaan() {
-		luasAlas = super.menghitungLuas();
-		kelilingAlas = super.menghitungKeliling();
-		radiusDalam = (2 * luasAlas) / kelilingAlas;
-		tinggiSisiMiring = Math.sqrt(tinggiLimas * tinggiLimas + radiusDalam * radiusDalam);
-		luasPermukaan = luasAlas + 0.5 * kelilingAlas * tinggiSisiMiring;
-		return luasPermukaan;
+		double luasAlas = super.menghitungLuas();
+
+        double slantA = menghitungSlantHeight(super.alas);
+        double slantB = menghitungSlantHeight(super.sisiMiring1);
+        double slantC = menghitungSlantHeight(super.sisiMiring2);
+
+        double luasTegakA = 0.5 * super.alas * slantA;
+        double luasTegakB = 0.5 * super.sisiMiring1 * slantB;
+        double luasTegakC = 0.5 * super.sisiMiring2 * slantC;
+
+        luasPermukaan = luasAlas + luasTegakA + luasTegakB + luasTegakC;
+        return luasPermukaan;
 	}
 
 	public double menghitungLuasPermukaan(double alasBaru, double tinggiSegitigaBaru, double sisiMiring1Baru, double sisiMiring2Baru,
 			double tinggiLimasBaru) {
-		luasAlas = super.menghitungLuas(alasBaru, tinggiSegitigaBaru);
-		kelilingAlas = super.menghitungKeliling(alasBaru, sisiMiring1Baru, sisiMiring2Baru);
-		radiusDalam = (2 * luasAlas) / kelilingAlas;
-		tinggiSisiMiring = Math.sqrt(tinggiLimasBaru * tinggiLimasBaru + radiusDalam * radiusDalam);
-		luasPermukaan = luasAlas + 0.5 * kelilingAlas * tinggiSisiMiring;
-		return luasPermukaan;
+		double luasAlas = super.menghitungLuas(alasBaru, tinggiSegitigaBaru);
+
+        double slantA = menghitungSlantHeight(alasBaru);
+        double slantB = menghitungSlantHeight(sisiMiring1Baru);
+        double slantC = menghitungSlantHeight(sisiMiring2Baru);
+
+        double luasTegakA = 0.5 * alasBaru * slantA;
+        double luasTegakB = 0.5 * sisiMiring1Baru * slantB;
+        double luasTegakC = 0.5 * sisiMiring2Baru * slantC;
+
+        luasPermukaan = luasAlas + luasTegakA + luasTegakB + luasTegakC;
+        return luasPermukaan;
 	}
 
 	@Override
@@ -99,7 +120,7 @@ public class LimasSegitiga extends Segitiga {
                 luasPermukaan = menghitungLuasPermukaan();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

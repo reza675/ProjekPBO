@@ -10,8 +10,8 @@ public class PrismaSegitiga extends Segitiga {
     private double volume;
     private double luasPermukaan;
 
-    public PrismaSegitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2, double tinggiPrisma) {
-        super(alas, tinggiPrisma, sisiMiring1, sisiMiring2);
+    public PrismaSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiPrisma) {
+        super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -34,9 +34,7 @@ public class PrismaSegitiga extends Segitiga {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,
-            double sisiMiring2Baru,
-            double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,double sisiMiring2Baru,double tinggiPrismaBaru) {
         luasAlas = super.menghitungLuas(alasBaru, tinggiBaru);
         kelilingAlas = super.menghitungKeliling(alasBaru, sisiMiring1Baru, sisiMiring2Baru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
@@ -91,7 +89,7 @@ public class PrismaSegitiga extends Segitiga {
                 luasPermukaan = menghitungLuasPermukaan();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

@@ -65,25 +65,25 @@
 		}
 
 		public void prosesInputDataUlang() {
-			Scanner input = new Scanner(System.in);
+			Scanner inputData = new Scanner(System.in);
 			while (true) {
 				System.out.print("\nIngin mengubah alas atas, alas bawah, tinggi trapesium, dan tinggi limas? (Y/N): ");
-				String jawaban = input.nextLine();
+				String jawaban = inputData.nextLine();
 				if (jawaban.equalsIgnoreCase("Y")) {
 					while (true) {
 						try {
 							System.out.print("Masukkan alas atas baru: ");
-							double alasAtasBaru = input.nextDouble();
+							double alasAtasBaru = inputData.nextDouble();
 
 							System.out.print("Masukkan alas bawah baru: ");
-							double alasBawahBaru = input.nextDouble();
+							double alasBawahBaru = inputData.nextDouble();
 
 							System.out.print("Masukkan tinggi trapesium baru: ");
-							double tinggiTrapesiumBaru = input.nextDouble();
+							double tinggiTrapesiumBaru = inputData.nextDouble();
 
 							System.out.print("Masukkan tinggi limas baru: ");
-							double tinggiLimasBaru = input.nextDouble();
-							input.nextLine();
+							double tinggiLimasBaru = inputData.nextDouble();
+							inputData.nextLine();
 
 							if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiTrapesiumBaru <= 0 || tinggiLimasBaru <= 0) {
 								System.out.println("Semua nilai harus lebih dari 0.");
@@ -100,7 +100,7 @@
 							break;
 						} catch (InputMismatchException e) {
 							System.out.println("Input harus berupa angka.");
-							input.nextLine();
+							inputData.nextLine();
 						}
 					}
 					break;

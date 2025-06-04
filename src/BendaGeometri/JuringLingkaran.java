@@ -85,7 +85,7 @@ public class JuringLingkaran extends Lingkaran {
                 break;
 
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

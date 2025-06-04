@@ -21,6 +21,14 @@ public class PrismaPersegi extends Persegi {
         return volume;
     }
 
+    // public double getTinggiPrisma() {
+    //     return tinggiPrisma;
+    // }
+
+    // public void setTinggiPrisma(double tinggiPrisma) {
+    //     this.tinggiPrisma = tinggiPrisma;
+    // }
+
     public double menghitungVolume(double sisiBaru, double tinggiPrismaBaru) {
         luasAlas = super.menghitungLuas(sisiBaru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -63,8 +71,8 @@ public class PrismaPersegi extends Persegi {
                             System.out.println("Sisi dan tinggi harus lebih dari nol.\n");
                             continue;
                         }
-                        volume = menghitungVolume(sisiBaru,tinggiPrismaBaru);
-                        luasPermukaan = menghitungLuasPermukaan(sisiBaru,tinggiPrismaBaru);
+                        volume = menghitungVolume(sisiBaru, tinggiPrismaBaru);
+                        luasPermukaan = menghitungLuasPermukaan(sisiBaru, tinggiPrismaBaru);
                         System.out.printf("\nVolume Prisma Persegi: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Prisma Persegi: %.2f\n", luasPermukaan);
                         break;
@@ -79,7 +87,7 @@ public class PrismaPersegi extends Persegi {
                 luasPermukaan = menghitungLuasPermukaan();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

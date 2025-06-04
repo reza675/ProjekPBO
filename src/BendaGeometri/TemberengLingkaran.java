@@ -86,7 +86,7 @@ public class TemberengLingkaran extends Lingkaran {
                 System.out.printf("Keliling Tembereng Lingkaran: %.2f\n", keliling);
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

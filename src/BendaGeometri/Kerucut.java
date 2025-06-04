@@ -86,7 +86,7 @@ public class Kerucut extends Lingkaran {
 				luasPermukaan = menghitungLuasPermukaan();
 				break;
 			} else {
-				System.out.println("Jawaban hanya boleh Y atau N.\n");
+				System.out.println("Jawaban hanya boleh Y atau N.");
 			}
 		}
 	}

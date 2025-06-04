@@ -94,7 +94,7 @@ public class Trapesium extends Benda2D {
                 System.out.printf("Keliling Trapesium: %.2f\n", keliling);
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }
