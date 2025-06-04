@@ -80,10 +80,6 @@ public class TemberengLingkaran extends Lingkaran {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
-                System.out.printf("\nLuas Tembereng Lingkaran: %.2f\n", luas);
-                System.out.printf("Keliling Tembereng Lingkaran: %.2f\n", keliling);
                 break;
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.");

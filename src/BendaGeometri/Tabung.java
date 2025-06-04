@@ -79,8 +79,6 @@ public class Tabung extends Lingkaran {
 				}
 				break;
 			} else if (jawaban.equalsIgnoreCase("N")) {
-				volume = menghitungVolume();
-				luasPermukaan = menghitungLuasPermukaan();
 				break;
 			} else {
 				System.out.println("Jawaban hanya boleh Y atau N.");

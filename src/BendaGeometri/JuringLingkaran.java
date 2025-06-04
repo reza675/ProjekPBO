@@ -80,8 +80,6 @@ public class JuringLingkaran extends Lingkaran {
                 break;
 
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
                 break;
 
             } else {

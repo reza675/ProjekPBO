@@ -68,8 +68,6 @@ public class PersegiPanjang extends Benda2D {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
                 break;
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.");

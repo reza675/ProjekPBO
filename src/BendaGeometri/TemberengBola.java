@@ -68,13 +68,11 @@ public class TemberengBola extends Bola {
 						break;
 					} catch (InputMismatchException e) {
 						System.out.println("Input harus berupa angka.");
-						inputData.nextLine(); // clear buffer
+						inputData.nextLine(); 
 					}
 				}
 				break;
 			} else if (jawaban.equalsIgnoreCase("N")) {
-				volume = menghitungVolume();
-				luasPermukaan = menghitungLuasPermukaan();
 				break;
 			} else {
 				System.out.println("Jawaban hanya boleh Y atau N.");

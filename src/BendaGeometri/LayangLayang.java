@@ -85,8 +85,6 @@ public class LayangLayang extends Benda2D {
                 break;
 
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
                 break;
 
             } else {

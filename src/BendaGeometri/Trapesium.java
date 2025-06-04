@@ -88,10 +88,6 @@ public class Trapesium extends Benda2D {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
-                System.out.printf("\nLuas Trapesium: %.2f\n", luas);
-                System.out.printf("Keliling Trapesium: %.2f\n", keliling);
                 break;
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.");

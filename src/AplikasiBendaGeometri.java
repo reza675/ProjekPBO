@@ -83,7 +83,7 @@ public class AplikasiBendaGeometri {
                         jajaranGenjang.prosesInputDataUlang();
                         break;
                     case 5:
-                        Trapesium trapesium = new Trapesium(5, 8, 7, 6, 6);
+                        Trapesium trapesium = new Trapesium(5, 8, 10, 6, 6);
                         System.out.println("\n" + trapesium.getNamaBenda());
                         System.out.printf("Luas Trapesium: %.2f\n", trapesium.menghitungLuas());
                         System.out.printf("Keliling Trapesium: %.2f\n", trapesium.menghitungKeliling());
@@ -114,7 +114,8 @@ public class AplikasiBendaGeometri {
                         TemberengLingkaran temberengLingkaran = new TemberengLingkaran(20, 90);
                         System.out.println("\n" + temberengLingkaran.getNamaBenda());
                         System.out.printf("Luas Tembereng Lingkaran: %.2f\n", temberengLingkaran.menghitungLuas());
-                        System.out.printf("Keliling Tembereng Lingkaran: %.2f\n",temberengLingkaran.menghitungKeliling());
+                        System.out.printf("Keliling Tembereng Lingkaran: %.2f\n",
+                                temberengLingkaran.menghitungKeliling());
                         temberengLingkaran.prosesInputDataUlang();
                         break;
                     case 10:
@@ -128,46 +129,54 @@ public class AplikasiBendaGeometri {
                         PrismaSegitiga prismaSegitiga = new PrismaSegitiga(8, 10, 4, 4, 15);
                         System.out.println("\n" + prismaSegitiga.getNamaBenda());
                         System.out.printf("Volume Prisma Segitiga: %.2f\n", prismaSegitiga.menghitungVolume());
-                        System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n",prismaSegitiga.menghitungLuasPermukaan());
+                        System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n",
+                                prismaSegitiga.menghitungLuasPermukaan());
                         prismaSegitiga.prosesInputDataUlang();
                         break;
                     case 12:
                         LimasSegitiga limasSegitiga = new LimasSegitiga(15, 10, 5, 5, 12);
                         System.out.println("\n" + limasSegitiga.getNamaBenda());
                         System.out.printf("Volume Limas Segitiga: %.2f\n", limasSegitiga.menghitungVolume());
-                        System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n",limasSegitiga.menghitungLuasPermukaan());
+                        System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n",
+                                limasSegitiga.menghitungLuasPermukaan());
                         limasSegitiga.prosesInputDataUlang();
                         break;
                     case 13:
                         PrismaPersegi prismaPersegi = new PrismaPersegi(10, 5);
                         System.out.println("\n" + prismaPersegi.getNamaBenda());
-                        System.out.printf("Volume prisma persegi: %.2f\n",prismaPersegi.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma persegi: %.2f\n",prismaPersegi.menghitungLuasPermukaan());
+                        System.out.printf("Volume prisma persegi: %.2f\n", prismaPersegi.menghitungVolume());
+                        System.out.printf("Luas Permukaan prisma persegi: %.2f\n",
+                                prismaPersegi.menghitungLuasPermukaan());
                         prismaPersegi.prosesInputDataUlang();
                         break;
                     case 14:
                         LimasPersegi limasPersegi = new LimasPersegi(5, 10);
                         System.out.println("\n" + limasPersegi.getNamaBenda());
-                        System.out.printf("Volume limas persegi: %.2f\n",limasPersegi.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas persegi: %.2f\n",limasPersegi.menghitungLuasPermukaan());
+                        System.out.printf("Volume limas persegi: %.2f\n", limasPersegi.menghitungVolume());
+                        System.out.printf("Luas Permukaan limas persegi: %.2f\n",
+                                limasPersegi.menghitungLuasPermukaan());
                         limasPersegi.prosesInputDataUlang();
                         break;
                     case 15:
                         PrismaPersegiPanjang prismaPersegiPanjang = new PrismaPersegiPanjang(10, 5, 8);
                         System.out.println("\n" + prismaPersegiPanjang.getNamaBenda());
-                        System.out.printf("Volume prisma persegi panjang: %.2f\n",prismaPersegiPanjang.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma persegi panjang: %.2f\n",prismaPersegiPanjang.menghitungLuasPermukaan());
+                        System.out.printf("Volume prisma persegi panjang: %.2f\n",
+                                prismaPersegiPanjang.menghitungVolume());
+                        System.out.printf("Luas Permukaan prisma persegi panjang: %.2f\n",
+                                prismaPersegiPanjang.menghitungLuasPermukaan());
                         prismaPersegiPanjang.prosesInputDataUlang();
                         break;
                     case 16:
                         LimasPersegiPanjang limasPersegiPanjang = new LimasPersegiPanjang(8, 10, 12);
                         System.out.println("\n" + limasPersegiPanjang.getNamaBenda());
-                        System.out.printf("Volume limas persegi panjang: %.2f\n",limasPersegiPanjang.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n",limasPersegiPanjang.menghitungLuasPermukaan());
+                        System.out.printf("Volume limas persegi panjang: %.2f\n",
+                                limasPersegiPanjang.menghitungVolume());
+                        System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n",
+                                limasPersegiPanjang.menghitungLuasPermukaan());
                         limasPersegiPanjang.prosesInputDataUlang();
                         break;
+                    
                     default:
-
                         System.out.println("Menu tidak tersedia.\n");
                         break;
                 }

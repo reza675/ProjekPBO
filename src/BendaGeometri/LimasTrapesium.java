@@ -95,8 +95,8 @@
 							this.luasPermukaan = menghitungLuasPermukaan(alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru,
 									tinggiLimasBaru);
 
-							System.out.printf("Volume: %.2f\n", volume);
-							System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+							System.out.printf("Volume Limas Trapesium: %.2f\n", volume);
+							System.out.printf("Luas Permukaan Limas Trapesium: %.2f\n", luasPermukaan);
 							break;
 						} catch (InputMismatchException e) {
 							System.out.println("Input harus berupa angka.");
@@ -105,10 +105,6 @@
 					}
 					break;
 				} else if (jawaban.equalsIgnoreCase("N")) {
-					this.volume = menghitungVolume();
-					this.luasPermukaan = menghitungLuasPermukaan();
-					System.out.printf("Volume: %.2f\n", volume);
-					System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
 					break;
 				} else {
 					System.out.println("Jawaban harus Y atau N.");

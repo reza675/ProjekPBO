@@ -16,6 +16,7 @@ public class PrismaPersegiPanjang extends PersegiPanjang {
         this.tinggiPrisma = tinggiPrisma;
     }
 
+
     public double menghitungVolume() {
         luasAlas = super.menghitungLuas();
         volume = luasAlas * tinggiPrisma;
@@ -79,8 +80,6 @@ public class PrismaPersegiPanjang extends PersegiPanjang {
             }
             break;
         } else if (jawaban.equalsIgnoreCase("N")) {
-            volume = menghitungVolume();
-            luasPermukaan= menghitungLuasPermukaan();
             break;
         } else {
             System.out.println("Jawaban hanya boleh Y atau N.");
