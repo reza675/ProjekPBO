@@ -1,9 +1,8 @@
+import BendaGeometri.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
-import BendaGeometri.*;
 
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
@@ -175,8 +174,111 @@ public class AplikasiBendaGeometri {
                                 limasPersegiPanjang.menghitungLuasPermukaan());
                         limasPersegiPanjang.prosesInputDataUlang();
                         break;
-                    
-
+                    case 17:
+                        PrismaJajaranGenjang prismaJajaranGenjang = new PrismaJajaranGenjang(5, 9, 10, 12);
+                        System.out.println("\n" + prismaJajaranGenjang.getNamaBenda());
+                        System.out.printf("Volume prisma jajaran genjang: %.2f\n",prismaJajaranGenjang.menghitungVolume());
+                        System.out.printf("Luas Permukaan prisma jajaran genjang: %.2f\n",prismaJajaranGenjang.menghitungLuasPermukaan());
+                        prismaJajaranGenjang.prosesInputDataUlang();
+                        break;
+                    case 18:
+                        LimasJajaranGenjang limasJajaranGenjang = new LimasJajaranGenjang(7, 12, 10, 15);
+                        System.out.println("\n" + limasJajaranGenjang.getNamaBenda());
+                        System.out.printf("Volume limas jajaran genjang: %.2f\n",limasJajaranGenjang.menghitungVolume());
+                        System.out.printf("Luas Permukaan limas jajaran genjang: %.2f\n",limasJajaranGenjang.menghitungLuasPermukaan());
+                        limasJajaranGenjang.prosesInputDataUlang();
+                        break;
+                    case 19:
+                        PrismaTrapesium prismaTrapesium = new PrismaTrapesium(10, 10, 8, 6, 6, 12);
+                        System.out.println("\n" + prismaTrapesium.getNamaBenda());
+                        System.out.printf("Volume prisma trapesium: %.2f\n",prismaTrapesium.menghitungVolume());
+                        System.out.printf("Luas Permukaan prisma trapesium: %.2f\n",prismaTrapesium.menghitungLuasPermukaan());
+                        prismaTrapesium.prosesInputDataUlang();
+                        break;
+                    case 20:
+                        LimasTrapesium limasTrapesium = new LimasTrapesium(8, 8, 12, 10, 10, 12);
+                        System.out.println("\n" + limasTrapesium.getNamaBenda());
+                        System.out.printf("Volume limas trapesium: %.2f\n",limasTrapesium.menghitungVolume());
+                        System.out.printf("Luas Permukaan limas trapesium: %.2f\n",limasTrapesium.menghitungLuasPermukaan());
+                        limasTrapesium.prosesInputDataUlang();
+                        break;
+                    case 21:
+                        PrismaBelahKetupat prismaBelahKetupat = new PrismaBelahKetupat(8, 10, 12, 12);
+                        System.out.println("\n" + prismaBelahKetupat.getNamaBenda());
+                        System.out.printf("Volume prisma belah ketupat: %.2f\n",prismaBelahKetupat.menghitungVolume());
+                        System.out.printf("Luas Permukaan prisma belah ketupat: %.2f\n",prismaBelahKetupat.menghitungLuasPermukaan());
+                        prismaBelahKetupat.prosesInputDataUlang();
+                        break;
+                    case 22:
+                        LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(8, 10, 12, 12);
+                        System.out.println("\n" + limasBelahKetupat.getNamaBenda());
+                        System.out.printf("Volume limas belah ketupat: %.2f\n",limasBelahKetupat.menghitungVolume());
+                        System.out.printf("Luas Permukaan limas belah ketupat: %.2f\n",limasBelahKetupat.menghitungLuasPermukaan());
+                        limasBelahKetupat.prosesInputDataUlang();
+                        break;
+                    case 23:
+                        PrismaLayangLayang prismaLayangLayang = new PrismaLayangLayang(6, 8, 4, 8, 12);
+                        System.out.println("\n" + prismaLayangLayang.getNamaBenda());
+                        System.out.printf("Volume prisma layang layang: %.2f\n",prismaLayangLayang.menghitungVolume());
+                        System.out.printf("Luas Permukaan prisma layang layang: %.2f\n",prismaLayangLayang.menghitungLuasPermukaan());
+                        prismaLayangLayang.prosesInputDataUlang();
+                        break;
+                    case 24:
+                        LimasLayangLayang limasLayangLayang = new LimasLayangLayang(8, 10, 12, 12, 12);
+                        System.out.println("\n" + limasLayangLayang.getNamaBenda());
+                        System.out.printf("Volume limas layang layang: %.2f\n",limasLayangLayang.menghitungVolume());
+                        System.out.printf("Luas Permukaan limas layang layang: %.2f\n",limasLayangLayang.menghitungLuasPermukaan());
+                        limasLayangLayang.prosesInputDataUlang();
+                        break;
+                    case 25:
+                        Tabung tabung = new Tabung(7, 10);
+                        System.out.println("\n" + tabung.getNamaBenda());
+                        System.out.printf("Volume tabung: %.2f\n",tabung.menghitungVolume());
+                        System.out.printf("Luas Permukaan tabung: %.2f\n",tabung.menghitungLuasPermukaan());
+                        tabung.prosesInputDataUlang();
+                        break;
+                    case 26:
+                        Kerucut kerucut = new Kerucut(14, 10);
+                        System.out.println("\n" + kerucut.getNamaBenda());
+                        System.out.printf("Volume kerucut: %.2f\n",kerucut.menghitungVolume());
+                        System.out.printf("Luas Permukaan kerucut: %.2f\n",kerucut.menghitungLuasPermukaan());
+                        kerucut.prosesInputDataUlang();
+                        break;
+                    case 27:
+                        KerucutTerpancung kerucutTerpancung = new KerucutTerpancung(7, 14, 12);
+                        System.out.println("\n" + kerucutTerpancung.getNamaBenda());
+                        System.out.printf("Volume kerucut terpancung: %.2f\n",kerucutTerpancung.menghitungVolume());
+                        System.out.printf("Luas Permukaan kerucut terpancung: %.2f\n",kerucutTerpancung.menghitungLuasPermukaan());
+                        kerucutTerpancung.prosesInputDataUlang();
+                        break;
+                    case 28:
+                        Bola bola = new Bola(14);
+                        System.out.println("\n" + bola.getNamaBenda());
+                        System.out.printf("Volume bola: %.2f\n",bola.menghitungVolume());
+                        System.out.printf("Luas Permukaan bola: %.2f\n",bola.menghitungLuasPermukaan());
+                        bola.prosesInputDataUlang();
+                        break;
+                    case 29:
+                        TemberengBola temberengBola = new TemberengBola(7, 14);
+                        System.out.println("\n" + temberengBola.getNamaBenda());
+                        System.out.printf("Volume tembereng bola: %.2f\n",temberengBola.menghitungVolume());
+                        System.out.printf("Luas Permukaan tembereng bola: %.2f\n",temberengBola.menghitungLuasPermukaan());
+                        temberengBola.prosesInputDataUlang();
+                        break;
+                    case 30:
+                        JuringBola juringBola = new JuringBola(7, 30);
+                        System.out.println("\n" + juringBola.getNamaBenda());
+                        System.out.printf("Volume juring bola: %.2f\n",juringBola.menghitungVolume());
+                        System.out.printf("Luas Permukaan juring bola: %.2f\n",juringBola.menghitungLuasPermukaan());
+                        juringBola.prosesInputDataUlang();
+                        break;
+                    case 31:
+                        CincinBola cincinBola = new CincinBola(14, 15);
+                        System.out.println("\n" + cincinBola.getNamaBenda());
+                        System.out.printf("Volume cincin bola: %.2f\n",cincinBola.menghitungVolume());
+                        System.out.printf("Luas Permukaan cincin bola: %.2f\n",cincinBola.menghitungLuasPermukaan());
+                        cincinBola.prosesInputDataUlang();
+                        break;
                     case 32:
                         Benda2D bd1 = new Persegi(5);
                         Benda2D bd2 = new PersegiPanjang(5, 10);
