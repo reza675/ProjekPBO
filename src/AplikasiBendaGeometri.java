@@ -47,6 +47,7 @@ public class AplikasiBendaGeometri {
             System.out.println("| 30. Juring Bola                              |");
             System.out.println("| 31. Cincin Bola                              |");
             System.out.println("| 32. Polymorphism                             |");
+            System.out.println("| 33. Keluar                                   |");
             System.out.println("================================================");
             System.out.print("Masukkan pilihan menu: ");
             try {
@@ -302,6 +303,10 @@ public class AplikasiBendaGeometri {
                         System.out.println("Luas "+ bd8.getNamaBenda() +  " (bd8): " + bd8.menghitungLuas() + " dan Keliling : " + bd8.menghitungKeliling());
                         System.out.println("Luas "+ bd9.getNamaBenda() +  " (bd9): " + bd9.menghitungLuas() + " dan Keliling : " + bd9.menghitungKeliling());
                         System.out.println("Luas "+ bd10.getNamaBenda() +  " (bd10): " + bd10.menghitungLuas() + " dan Keliling : " + bd10.menghitungKeliling());
+                        break;
+                    case 33:
+                        System.out.println("Program telah berakhir");
+                        System.exit(0);
                         break;
 
                     default:
