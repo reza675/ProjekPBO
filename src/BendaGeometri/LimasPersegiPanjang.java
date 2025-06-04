@@ -95,7 +95,7 @@ public class LimasPersegiPanjang extends PersegiPanjang {
 				break;
 			} else {
 				System.out.println("Jawaban hanya boleh Y atau N.");
-			}
+			}  
 		}
 	}
 }

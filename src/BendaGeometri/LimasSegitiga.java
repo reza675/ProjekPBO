@@ -7,12 +7,8 @@ public class LimasSegitiga extends Segitiga {
 
 	private double tinggiLimas;
 	private double luasAlas;
-	private double kelilingAlas;
-	private double radiusDalam;
-	private double tinggiSisiMiring;
 	private double volume;
 	private double luasPermukaan;
-    private double sisiMiring;
 
 
 	public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2,double tinggiLimas) {
