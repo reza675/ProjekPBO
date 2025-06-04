@@ -176,6 +176,32 @@ public class AplikasiBendaGeometri {
                         limasPersegiPanjang.prosesInputDataUlang();
                         break;
                     
+
+                    case 32:
+                        Benda2D bd1 = new Persegi(5);
+                        Benda2D bd2 = new PersegiPanjang(5, 10);
+                        Benda2D bd3 = new Segitiga(8,10,8,8);
+                        Benda2D bd4 = new Lingkaran(5);
+                        Benda2D bd5 = new JuringLingkaran(7, 60);
+                        Benda2D bd6 = new TemberengLingkaran(14, 45);
+                        Benda2D bd7 = new Trapesium(5, 10, 8, 12,12);
+                        Benda2D bd8 = new BelahKetupat(8, 6, 10);
+                        Benda2D bd9 = new LayangLayang(5, 8, 10, 12);
+                        Benda2D bd10 = new JajaranGenjang(7,5,8);
+
+
+                        System.out.println("Luas "+ bd1.getNamaBenda() +  " (bd1): "  + bd1.menghitungLuas() + " dan Keliling : " + bd1.menghitungKeliling());
+                        System.out.println("Luas "+ bd2.getNamaBenda() +  " (bd2): " + bd2.menghitungLuas() +" dan Keliling : " + bd2.menghitungKeliling());
+                        System.out.println("Luas "+ bd3.getNamaBenda() +  " (bd3): " + bd3.menghitungLuas() + " dan Keliling : " + bd3.menghitungKeliling());
+                        System.out.println("Luas "+ bd4.getNamaBenda() +  " (bd4): " + bd4.menghitungLuas() + " dan Keliling : " + bd4.menghitungKeliling());
+                        System.out.println("Luas "+ bd5.getNamaBenda() +  " (bd5): " + bd5.menghitungLuas() + " dan Keliling : " + bd5.menghitungKeliling());
+                        System.out.println("Luas "+ bd6.getNamaBenda() +  " (bd6): " + bd6.menghitungLuas() + " dan Keliling : " + bd6.menghitungKeliling());
+                        System.out.println("Luas "+ bd7.getNamaBenda() +  " (bd7): " + bd7.menghitungLuas() + " dan Keliling : " + bd7.menghitungKeliling());
+                        System.out.println("Luas "+ bd8.getNamaBenda() +  " (bd8): " + bd8.menghitungLuas() + " dan Keliling : " + bd8.menghitungKeliling());
+                        System.out.println("Luas "+ bd9.getNamaBenda() +  " (bd9): " + bd9.menghitungLuas() + " dan Keliling : " + bd9.menghitungKeliling());
+                        System.out.println("Luas "+ bd10.getNamaBenda() +  " (bd10): " + bd10.menghitungLuas() + " dan Keliling : " + bd10.menghitungKeliling());
+                        break;
+
                     default:
                         System.out.println("Menu tidak tersedia.\n");
                         break;
