@@ -95,7 +95,7 @@
 							this.luasPermukaan = menghitungLuasPermukaan(alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru,
 									tinggiLimasBaru);
 
-							System.out.printf("Volume Limas Trapesium: %.2f\n", volume);
+							System.out.printf("\nVolume Limas Trapesium: %.2f\n", volume);
 							System.out.printf("Luas Permukaan Limas Trapesium: %.2f\n", luasPermukaan);
 							break;
 						} catch (InputMismatchException e) {
