@@ -574,7 +574,8 @@ public class AplikasiBendaGeometri {
             }
             case 27: {
                 double radiusAtas = randomDimensi();
-                double radiusBawah = radiusAtas + randomRange(1.0, 10.0 - radiusAtas);
+                double selisih = randomRange(0, 10);
+                double radiusBawah = radiusAtas + selisih;
                 double tinggi = randomDimensi();
                 return new KerucutTerpancung(radiusAtas, radiusBawah, tinggi);
             }
@@ -594,7 +595,8 @@ public class AplikasiBendaGeometri {
             }
             case 31: {
                 double radiusDalam = randomDimensi();
-                double radiusLuar = radiusDalam + randomRange(1.0, 10.0 - radiusDalam);
+                double selisih = randomRange(0, 10);
+                double radiusLuar = radiusDalam + selisih;
                 return new CincinBola(radiusDalam, radiusLuar);
             }
             
