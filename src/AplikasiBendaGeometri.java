@@ -11,7 +11,6 @@ public class AplikasiBendaGeometri {
         Scanner inputMenu = new Scanner(System.in);
         List<BendaGeometri> daftarBendaGeometri = new ArrayList<>();
         int pilihanMenu;
-        boolean isComplete = false;
         do {
             clearConsole();
             System.out.println("================================================");
