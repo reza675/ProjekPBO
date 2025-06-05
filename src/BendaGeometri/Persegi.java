@@ -6,7 +6,10 @@ import java.util.Scanner;
 public class Persegi extends Benda2D {
 	protected double sisi;
 
-	public Persegi(double sisi) {
+	public Persegi(double sisi) throws InputMismatchException  {
+        if (sisi <= 0) {
+            throw new InputMismatchException("Sisi harus lebih dari nol.");
+        }
 		this.sisi = sisi;
 	}
 	@Override
@@ -15,7 +18,10 @@ public class Persegi extends Benda2D {
 		return luas;
 	}
 
-	public double menghitungLuas(double sisiBaru) {
+	public double menghitungLuas(double sisiBaru) throws InputMismatchException {
+        if (sisiBaru <= 0) {
+            throw new InputMismatchException("Sisi harus lebih dari nol.");
+        }
 		luas = sisiBaru * sisiBaru;
 		return luas;
 	}
@@ -26,7 +32,10 @@ public class Persegi extends Benda2D {
 		return keliling;
 	}
 
-	public double menghitungKeliling(double sisiBaru) {
+	public double menghitungKeliling(double sisiBaru) throws InputMismatchException {
+        if (sisiBaru <= 0) {
+            throw new InputMismatchException("Sisi harus lebih dari nol.");
+        }
 		keliling = 4 * sisiBaru;
 		return keliling;
 	}
@@ -35,7 +44,7 @@ public class Persegi extends Benda2D {
 	public String getNamaBenda() {
 		return "Persegi";
 	}
-	public void prosesInputDataUlang() {
+	public void prosesInputDataUlang()  {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print("\nApakah Anda ingin mengubah nilai sisi persegi? (Y/N): ");
@@ -44,6 +53,7 @@ public class Persegi extends Benda2D {
             if (jawaban.equalsIgnoreCase("Y")) {
                 while (true) {
                     try {
+                        // InputMismatchException ex = new InputMismatchException();
                         System.out.print("Masukkan sisi persegi baru: ");
                         double sisiBaru = inputData.nextDouble();
                         inputData.nextLine();

@@ -31,6 +31,7 @@ public class LimasPersegi extends Persegi {
 	}
 
 
+
 	public double menghitungLuasPermukaan() {
 		luasAlas = super.menghitungLuas();
 		setengahSisi = super.sisi / 2;

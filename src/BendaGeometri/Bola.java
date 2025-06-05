@@ -3,13 +3,13 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Bola extends Lingkaran {
+public class Bola extends Lingkaran{
 
 	protected double luasAlas;
 	protected double volume;
 	protected double luasPermukaan;
 
-	public Bola(double radius) {
+	public Bola(double radius) throws InputMismatchException {
 		super(radius);
 	}
 
@@ -19,7 +19,10 @@ public class Bola extends Lingkaran {
 		return volume;
 	}
 
-	public double menghitungVolume(double radiusBaru) {
+	public double menghitungVolume(double radiusBaru) throws InputMismatchException {
+		if (radiusBaru <= 0) {
+			throw new InputMismatchException("Radius harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		volume = (4.0 / 3.0) * luasAlas * radiusBaru;
 		return volume;
@@ -31,7 +34,10 @@ public class Bola extends Lingkaran {
 		return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double radiusBaru) {
+	public double menghitungLuasPermukaan(double radiusBaru) throws InputMismatchException {
+		if (radiusBaru <= 0) {
+			throw new InputMismatchException("Radius harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		luasPermukaan = 4 * luasAlas;
 		return luasPermukaan;
@@ -79,4 +85,5 @@ public class Bola extends Lingkaran {
 		}
 	}
 
+	
 }
