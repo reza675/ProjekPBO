@@ -21,6 +21,16 @@ public class PrismaPersegi extends Persegi {
         return volume;
     }
 
+    public void setTinggiPrisma(double tinggiPrisma) {
+        this.tinggiPrisma = tinggiPrisma;
+    }
+    
+    public double getTinggiPrisma() {
+        return tinggiPrisma;
+    }
+
+
+
     public double menghitungVolume(double sisiBaru, double tinggiPrismaBaru) {
         luasAlas = super.menghitungLuas(sisiBaru);
         volume = luasAlas * tinggiPrismaBaru;

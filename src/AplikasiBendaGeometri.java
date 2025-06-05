@@ -106,12 +106,18 @@ public class AplikasiBendaGeometri {
                         layangLayang.prosesInputDataUlang();
                         break;
                     case 8:
-                        Lingkaran lingkaran = new Lingkaran(14);
-                        System.out.println("\n" + lingkaran.getNamaBenda());
-                        System.out.printf("Luas Lingkaran: %.2f\n", lingkaran.menghitungLuas());
-                        System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.menghitungKeliling());
-                        lingkaran.prosesInputDataUlang();
+                        try {
+                            Lingkaran lingkaran = new Lingkaran(14);
+                            System.out.println("\n" + lingkaran.getNamaBenda());
+                            System.out.printf("Luas Lingkaran: %.2f\n", lingkaran.menghitungLuas());
+                            System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.menghitungKeliling());
+                            lingkaran.prosesInputDataUlang();
+                        } catch (Exception e) {
+
+                            System.out.println(e.getMessage());
+                        }
                         break;
+
                     case 9:
                         TemberengLingkaran temberengLingkaran = new TemberengLingkaran(20, 90);
                         System.out.println("\n" + temberengLingkaran.getNamaBenda());
@@ -346,7 +352,7 @@ public class AplikasiBendaGeometri {
                                     "\nMemulai pemrosesan " + daftarBendaGeometri.size()
                                             + " objek geometri secara multi-thread...");
                             ThreadExecutor.processShapes(daftarBendaGeometri);
-                            
+
                         } else {
                             System.out.println("Tidak ada objek geometri yang berhasil digenerate.");
                         }
@@ -359,7 +365,7 @@ public class AplikasiBendaGeometri {
                 System.out.println("Input tidak valid. Harap masukkan angka sesuai pilihan.");
                 inputMenu.nextLine();
                 pilihanMenu = 0;
-            } 
+            }
         } while (konfirmasiLanjutMenu(inputMenu));
 
     }
@@ -397,7 +403,8 @@ public class AplikasiBendaGeometri {
     private static double randomAngle() {
         return 1.0 + Math.random() * 359.0;
     }
-      private static double randomRange(double min, double max) {
+
+    private static double randomRange(double min, double max) {
         return min + Math.random() * (max - min);
     }
 
@@ -599,12 +606,10 @@ public class AplikasiBendaGeometri {
                 double radiusLuar = radiusDalam + selisih;
                 return new CincinBola(radiusDalam, radiusLuar);
             }
-            
+
             default:
                 throw new IllegalArgumentException("Pilihan bentuk geometri tidak valid: " + choice);
         }
     }
-
-  
 
 }
