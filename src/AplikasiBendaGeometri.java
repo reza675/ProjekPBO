@@ -1,7 +1,7 @@
 import BendaGeometri.*;
 import Threading.ThreadExecutor;
-//import View.Benda2DGUI;
-import View.SplashScreen;
+import View.Benda2DGUI;
+//import View.SplashScreen;
 // import View.TestingManual;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class AplikasiBendaGeometri {
         });
          */
         SwingUtilities.invokeLater(() -> {
-            SplashScreen ui = new SplashScreen();
+            Benda2DGUI ui = new Benda2DGUI();
             ui.setLocationRelativeTo(null);
             ui.setVisible(true);
         });

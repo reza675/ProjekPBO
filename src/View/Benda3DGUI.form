@@ -106,7 +106,7 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,8 +116,8 @@
                   <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="229" max="-2" attributes="0"/>
-                  <EmptySpace pref="265" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="447" max="-2" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -131,7 +131,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Menu 2D"/>
+            <Property name="text" type="java.lang.String" value="Menu 3D"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -141,7 +141,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="benda2dTable">
+            <Component class="javax.swing.JTable" name="benda3dTable">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -153,7 +153,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="2" rowCount="10">
+                  <Table columnCount="2" rowCount="21">
                     <Column editable="true" title="No" type="java.lang.String">
                       <Data value="1"/>
                       <Data value="2"/>
@@ -165,18 +165,40 @@
                       <Data value="8"/>
                       <Data value="9"/>
                       <Data value="10"/>
+                      <Data value="11"/>
+                      <Data value="12"/>
+                      <Data value="13"/>
+                      <Data value="14"/>
+                      <Data value="15"/>
+                      <Data value="16"/>
+                      <Data value="17"/>
+                      <Data value="18"/>
+                      <Data value="19"/>
+                      <Data value="20"/>
+                      <Data value="21"/>
                     </Column>
                     <Column editable="true" title="Nama Benda" type="java.lang.String">
-                      <Data value="Segitiga"/>
-                      <Data value="Persegi"/>
-                      <Data value="Persegi Panjang"/>
-                      <Data value="Jajaran Genjang"/>
-                      <Data value="Trapesium"/>
-                      <Data value="Belah Ketupat"/>
-                      <Data value="Layang-Layang"/>
-                      <Data value="Lingkaran"/>
-                      <Data value="Tembereng Lingkaran"/>
-                      <Data value="Juring Lingkaran"/>
+                      <Data value="Prisma Segitiga"/>
+                      <Data value="Limas Segitiga"/>
+                      <Data value="Prisma Persegi"/>
+                      <Data value="Limas Persegi"/>
+                      <Data value="Prisma Persegi Panjang"/>
+                      <Data value="Limas Persegi Panjang"/>
+                      <Data value="Prisma Jajaran Genjang"/>
+                      <Data value="Limas Jajaran Genjang"/>
+                      <Data value="Prisma Trapesium"/>
+                      <Data value="Limas Trapesium"/>
+                      <Data value="Prisma Belah Ketupat"/>
+                      <Data value="Limas Belah Ketupat"/>
+                      <Data value="Prisma Layang-Layang"/>
+                      <Data value="Limas Layang-Layang"/>
+                      <Data value="Tabung"/>
+                      <Data value="Kerucut"/>
+                      <Data value="Kerucut Terpancung"/>
+                      <Data value="Bola"/>
+                      <Data value="Tembereng Bola"/>
+                      <Data value="Juring Bola"/>
+                      <Data value="Cincin Bola"/>
                     </Column>
                   </Table>
                 </Property>

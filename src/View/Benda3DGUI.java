@@ -8,12 +8,12 @@ package View;
  *
  * @author ASUS
  */
-public class Benda2DGUI extends javax.swing.JFrame {
+public class Benda3DGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Template
      */
-    public Benda2DGUI() {
+    public Benda3DGUI() {
         initComponents();
     }
 
@@ -31,7 +31,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        benda2dTable = new javax.swing.JTable();
+        benda3dTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -68,23 +68,34 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Menu 2D");
+        jLabel2.setText("Menu 3D");
 
-        benda2dTable.setBackground(new java.awt.Color(255, 255, 255));
-        benda2dTable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        benda2dTable.setForeground(new java.awt.Color(0, 0, 0));
-        benda2dTable.setModel(new javax.swing.table.DefaultTableModel(
+        benda3dTable.setBackground(new java.awt.Color(255, 255, 255));
+        benda3dTable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        benda3dTable.setForeground(new java.awt.Color(0, 0, 0));
+        benda3dTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Segitiga"},
-                {"2", "Persegi"},
-                {"3", "Persegi Panjang"},
-                {"4", "Jajaran Genjang"},
-                {"5", "Trapesium"},
-                {"6", "Belah Ketupat"},
-                {"7", "Layang-Layang"},
-                {"8", "Lingkaran"},
-                {"9", "Tembereng Lingkaran"},
-                {"10", "Juring Lingkaran"}
+                {"1", "Prisma Segitiga"},
+                {"2", "Limas Segitiga"},
+                {"3", "Prisma Persegi"},
+                {"4", "Limas Persegi"},
+                {"5", "Prisma Persegi Panjang"},
+                {"6", "Limas Persegi Panjang"},
+                {"7", "Prisma Jajaran Genjang"},
+                {"8", "Limas Jajaran Genjang"},
+                {"9", "Prisma Trapesium"},
+                {"10", "Limas Trapesium"},
+                {"11", "Prisma Belah Ketupat"},
+                {"12", "Limas Belah Ketupat"},
+                {"13", "Prisma Layang-Layang"},
+                {"14", "Limas Layang-Layang"},
+                {"15", "Tabung"},
+                {"16", "Kerucut"},
+                {"17", "Kerucut Terpancung"},
+                {"18", "Bola"},
+                {"19", "Tembereng Bola"},
+                {"20", "Juring Bola"},
+                {"21", "Cincin Bola"}
             },
             new String [] {
                 "No", "Nama Benda"
@@ -98,11 +109,11 @@ public class Benda2DGUI extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(benda2dTable);
-        if (benda2dTable.getColumnModel().getColumnCount() > 0) {
-            benda2dTable.getColumnModel().getColumn(0).setMinWidth(50);
-            benda2dTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-            benda2dTable.getColumnModel().getColumn(0).setMaxWidth(50);
+        jScrollPane1.setViewportView(benda3dTable);
+        if (benda3dTable.getColumnModel().getColumnCount() > 0) {
+            benda3dTable.getColumnModel().getColumn(0).setMinWidth(50);
+            benda3dTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+            benda3dTable.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -117,7 +128,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(jLabel2)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +136,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -153,14 +164,18 @@ public class Benda2DGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda3DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda3DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda3DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda3DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -169,7 +184,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Benda2DGUI ui = new Benda2DGUI();
+                Benda3DGUI ui = new Benda3DGUI();
                 ui.setLocationRelativeTo(null);
                 ui.setVisible(true);
             }
@@ -177,7 +192,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable benda2dTable;
+    private javax.swing.JTable benda3dTable;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
