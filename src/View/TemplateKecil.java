@@ -8,12 +8,12 @@ package View;
  *
  * @author ASUS
  */
-public class TempatTitip extends javax.swing.JFrame {
+public class TemplateKecil extends javax.swing.JFrame {
 
     /**
      * Creates new form Template
      */
-    public TempatTitip() {
+    public TemplateKecil() {
         initComponents();
     }
 
@@ -208,7 +208,7 @@ public class TempatTitip extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(73, 0, 330, 0);
+        jPanel1.setBounds(73, 0, 330, 605);
 
         setSize(new java.awt.Dimension(417, 612));
         setLocationRelativeTo(null);
@@ -231,14 +231,22 @@ public class TempatTitip extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TempatTitip.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TemplateKecil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TempatTitip.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TemplateKecil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TempatTitip.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TemplateKecil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TempatTitip.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TemplateKecil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -251,7 +259,7 @@ public class TempatTitip extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TempatTitip ui = new TempatTitip();
+                TemplateKecil ui = new TemplateKecil();
                 ui.setLocationRelativeTo(null);
                 ui.setVisible(true);
             }
