@@ -1,7 +1,7 @@
 import BendaGeometri.*;
 import Threading.ThreadExecutor;
-import View.TwoDimensionMenu;
-import View.TestingManual;
+import View.SplashScreen;
+// import View.TestingManual;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -13,14 +13,15 @@ public class AplikasiBendaGeometri {
     public static void main(String[] args) {
         
         // testing valent
-//        TwoDimensionMenu ui = new TwoDimensionMenu();
-//        ui.setLocationRelativeTo(null);
-//        ui.setVisible(true);
-        
-//        TestingManual ui = new TestingManual();
-
+        /*
         SwingUtilities.invokeLater(() -> {
             TestingManual ui = new TestingManual();
+            ui.setLocationRelativeTo(null);
+            ui.setVisible(true);
+        });
+         */
+        SwingUtilities.invokeLater(() -> {
+            SplashScreen ui = new SplashScreen();
             ui.setLocationRelativeTo(null);
             ui.setVisible(true);
         });

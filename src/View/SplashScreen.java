@@ -26,50 +26,57 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        startButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        startButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
-        startButton.setBackground(new java.awt.Color(51, 153, 255));
-        startButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        startButton.setForeground(new java.awt.Color(255, 255, 255));
-        startButton.setText("Start");
-        getContentPane().add(startButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 170, 50));
-
-        jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Kelompok 3/ IF-D");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
+        startButton1.setBackground(new java.awt.Color(51, 153, 255));
+        startButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        startButton1.setForeground(new java.awt.Color(255, 255, 255));
+        startButton1.setText("Start");
+        getContentPane().add(startButton1);
+        startButton1.setBounds(440, 410, 170, 50);
 
         jLabel4.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Valentino Abinata                / 123230013");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(270, 250, 358, 28);
 
         jLabel5.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Reza Rasendriya Adi Putra/ 123230030");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(270, 280, 357, 28);
 
         jLabel6.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Gusti Rama                            / 123230040");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(270, 310, 362, 28);
 
         jLabel7.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Gradiva Arya Wicaksana  / 123230089");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, -1, -1));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(270, 340, 354, 28);
+
+        jLabel3.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Kelompok 3/ IF-D");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(360, 170, 325, 55);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/SplashScreen.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 600));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1070, 600);
 
         setSize(new java.awt.Dimension(1084, 607));
         setLocationRelativeTo(null);
@@ -113,11 +120,11 @@ public class SplashScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton startButton;
+    private javax.swing.JButton startButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,7 +27,7 @@ public class Template extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         setSize(new java.awt.Dimension(1084, 607));
         setLocationRelativeTo(null);

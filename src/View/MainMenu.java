@@ -35,45 +35,52 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Main Menu");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(430, 160, 210, 55);
 
         polymorphismButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
         polymorphismButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         polymorphismButton.setForeground(new java.awt.Color(255, 255, 255));
         polymorphismButton.setText("Polymorphism");
-        getContentPane().add(polymorphismButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 80));
+        getContentPane().add(polymorphismButton);
+        polymorphismButton.setBounds(310, 330, 180, 80);
 
         twoDButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
         twoDButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         twoDButton.setForeground(new java.awt.Color(255, 255, 255));
         twoDButton.setText("Benda2D");
-        getContentPane().add(twoDButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 180, 80));
+        getContentPane().add(twoDButton);
+        twoDButton.setBounds(310, 230, 180, 80);
 
         threeDButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
         threeDButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         threeDButton.setForeground(new java.awt.Color(255, 255, 255));
         threeDButton.setText("Benda3D");
-        getContentPane().add(threeDButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 180, 80));
+        getContentPane().add(threeDButton);
+        threeDButton.setBounds(570, 230, 180, 80);
 
         exitButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
         exitButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         exitButton.setForeground(new java.awt.Color(255, 255, 255));
         exitButton.setText("Exit");
-        getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 180, 60));
+        getContentPane().add(exitButton);
+        exitButton.setBounds(440, 430, 180, 60);
 
         threadPoolButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
         threadPoolButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         threadPoolButton.setForeground(new java.awt.Color(255, 255, 255));
         threadPoolButton.setText("Thread Pool");
-        getContentPane().add(threadPoolButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 180, 80));
+        getContentPane().add(threadPoolButton);
+        threadPoolButton.setBounds(570, 330, 180, 80);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/SplashScreen.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 600));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1070, 600);
 
         setSize(new java.awt.Dimension(1084, 607));
         setLocationRelativeTo(null);
