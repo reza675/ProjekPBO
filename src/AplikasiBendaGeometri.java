@@ -1,10 +1,6 @@
 import BendaGeometri.*;
 import Threading.ThreadExecutor;
-import View.PolymorphismGUI;
-//import View.BendaGUI;
-//import View.Benda2DGUI;
-//import View.SplashScreen;
-// import View.TestingManual;
+import View.SplashScreen;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -16,20 +12,11 @@ public class AplikasiBendaGeometri {
     public static void main(String[] args) {
         
         // testing valent
-        /*
-        SwingUtilities.invokeLater(() -> {
-            TestingManual ui = new TestingManual();
-            ui.setLocationRelativeTo(null);
-            ui.setVisible(true);
-        });
-         */
-        SwingUtilities.invokeLater(() -> {
-            PolymorphismGUI ui = new PolymorphismGUI();
-            ui.setLocationRelativeTo(null);
-            ui.setVisible(true);
-        });
+        SplashScreen ui = new SplashScreen();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
         // testing valent
-        /*
+        
         Scanner inputMenu = new Scanner(System.in);
          List<BendaGeometri> daftarBendaGeometri = new ArrayList<>();
         int pilihanMenu;
@@ -635,7 +622,7 @@ public class AplikasiBendaGeometri {
 
             default:
                 throw new IllegalArgumentException("Pilihan bentuk geometri tidak valid: " + choice);
-        }*/
+        }
     }
 
 }

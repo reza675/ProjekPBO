@@ -46,6 +46,11 @@ public class ThreadGUI extends javax.swing.JFrame {
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/icons8-home-50.png"))); // NOI18N
         homeButton.setBorder(null);
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -166,11 +171,19 @@ public class ThreadGUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(73, 0, 1000, 605);
+        jPanel1.setBounds(73, 0, 1000, 580);
 
         setSize(new java.awt.Dimension(1084, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        MainMenu ui = new MainMenu();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.*;
+
 /**
  *
  * @author ASUS
@@ -47,6 +49,11 @@ public class MainMenu extends javax.swing.JFrame {
         polymorphismButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         polymorphismButton.setForeground(new java.awt.Color(255, 255, 255));
         polymorphismButton.setText("Polymorphism");
+        polymorphismButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                polymorphismButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(polymorphismButton);
         polymorphismButton.setBounds(310, 330, 180, 80);
 
@@ -54,6 +61,11 @@ public class MainMenu extends javax.swing.JFrame {
         twoDButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         twoDButton.setForeground(new java.awt.Color(255, 255, 255));
         twoDButton.setText("Benda2D");
+        twoDButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                twoDButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(twoDButton);
         twoDButton.setBounds(310, 230, 180, 80);
 
@@ -61,6 +73,11 @@ public class MainMenu extends javax.swing.JFrame {
         threeDButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         threeDButton.setForeground(new java.awt.Color(255, 255, 255));
         threeDButton.setText("Benda3D");
+        threeDButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                threeDButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(threeDButton);
         threeDButton.setBounds(570, 230, 180, 80);
 
@@ -68,6 +85,11 @@ public class MainMenu extends javax.swing.JFrame {
         exitButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         exitButton.setForeground(new java.awt.Color(255, 255, 255));
         exitButton.setText("Exit");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(exitButton);
         exitButton.setBounds(440, 430, 180, 60);
 
@@ -75,6 +97,11 @@ public class MainMenu extends javax.swing.JFrame {
         threadPoolButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         threadPoolButton.setForeground(new java.awt.Color(255, 255, 255));
         threadPoolButton.setText("Thread Pool");
+        threadPoolButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                threadPoolButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(threadPoolButton);
         threadPoolButton.setBounds(570, 330, 180, 80);
 
@@ -85,6 +112,53 @@ public class MainMenu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1084, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void twoDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoDButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Benda2DGUI ui = new Benda2DGUI();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+    }//GEN-LAST:event_twoDButtonActionPerformed
+
+    private void threeDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeDButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Benda3DGUI ui = new Benda3DGUI();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+    }//GEN-LAST:event_threeDButtonActionPerformed
+
+    private void polymorphismButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_polymorphismButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        PolymorphismGUI ui = new PolymorphismGUI();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+    }//GEN-LAST:event_polymorphismButtonActionPerformed
+
+    private void threadPoolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threadPoolButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        ThreadGUI ui = new ThreadGUI();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+    }//GEN-LAST:event_threadPoolButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(
+                this,
+                "Apakah Anda yakin ingin keluar?",
+                "Konfirmasi Keluar",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+        if (result == JOptionPane.YES_OPTION) {
+            System.exit(0); // Atau dispose();
+        }
+
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -41,6 +41,11 @@ public class SplashScreen extends javax.swing.JFrame {
         startButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         startButton1.setForeground(new java.awt.Color(255, 255, 255));
         startButton1.setText("Start");
+        startButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(startButton1);
         startButton1.setBounds(440, 410, 170, 50);
 
@@ -81,6 +86,14 @@ public class SplashScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1084, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        MainMenu ui = new MainMenu();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+    }//GEN-LAST:event_startButton1ActionPerformed
 
     /**
      * @param args the command line arguments
