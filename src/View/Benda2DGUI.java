@@ -8,12 +8,12 @@ package View;
  *
  * @author ASUS
  */
-public class TwoDimensionMenu extends javax.swing.JFrame {
+public class Benda2DGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Template
      */
-    public TwoDimensionMenu() {
+    public Benda2DGUI() {
         initComponents();
     }
 
@@ -45,7 +45,7 @@ public class TwoDimensionMenu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(null);
 
-        jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("nb.diff.sidebar.changed.color"));
+        jPanel2.setBackground(new java.awt.Color(30, 75, 112));
 
         homeButton.setBackground(javax.swing.UIManager.getDefaults().getColor("nb.diff.sidebar.changed.color"));
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,21 +231,23 @@ public class TwoDimensionMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TwoDimensionMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TwoDimensionMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TwoDimensionMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TwoDimensionMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Benda2DGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TwoDimensionMenu ui = new TwoDimensionMenu();
+                Benda2DGUI ui = new Benda2DGUI();
                 ui.setLocationRelativeTo(null);
                 ui.setVisible(true);
             }

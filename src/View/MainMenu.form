@@ -45,7 +45,7 @@
     <Component class="javax.swing.JButton" name="polymorphismButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c4" green="92" id="Actions.Blue" palette="3" red="35" type="palette"/>
+          <Color blue="c4" green="92" red="35" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>
@@ -64,7 +64,7 @@
     <Component class="javax.swing.JButton" name="twoDButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c4" green="92" id="Actions.Blue" palette="3" red="35" type="palette"/>
+          <Color blue="c4" green="92" red="35" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>
@@ -83,7 +83,7 @@
     <Component class="javax.swing.JButton" name="threeDButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c4" green="92" id="Actions.Blue" palette="3" red="35" type="palette"/>
+          <Color blue="c4" green="92" red="35" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>
@@ -102,7 +102,7 @@
     <Component class="javax.swing.JButton" name="exitButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="50" green="54" id="Actions.Red" palette="3" red="c7" type="palette"/>
+          <Color blue="50" green="54" red="c7" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>
@@ -121,7 +121,7 @@
     <Component class="javax.swing.JButton" name="threadPoolButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c4" green="92" id="Actions.Blue" palette="3" red="35" type="palette"/>
+          <Color blue="c4" green="92" red="35" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>

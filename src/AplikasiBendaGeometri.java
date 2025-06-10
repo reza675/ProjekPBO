@@ -1,5 +1,6 @@
 import BendaGeometri.*;
 import Threading.ThreadExecutor;
+//import View.Benda2DGUI;
 import View.SplashScreen;
 // import View.TestingManual;
 

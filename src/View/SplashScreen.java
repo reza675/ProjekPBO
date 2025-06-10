@@ -37,7 +37,7 @@ public class SplashScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        startButton1.setBackground(new java.awt.Color(51, 153, 255));
+        startButton1.setBackground(new java.awt.Color(110, 163, 197));
         startButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         startButton1.setForeground(new java.awt.Color(255, 255, 255));
         startButton1.setText("Start");

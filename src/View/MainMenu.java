@@ -43,35 +43,35 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(430, 160, 210, 55);
 
-        polymorphismButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        polymorphismButton.setBackground(new java.awt.Color(53, 146, 196));
         polymorphismButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         polymorphismButton.setForeground(new java.awt.Color(255, 255, 255));
         polymorphismButton.setText("Polymorphism");
         getContentPane().add(polymorphismButton);
         polymorphismButton.setBounds(310, 330, 180, 80);
 
-        twoDButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        twoDButton.setBackground(new java.awt.Color(53, 146, 196));
         twoDButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         twoDButton.setForeground(new java.awt.Color(255, 255, 255));
         twoDButton.setText("Benda2D");
         getContentPane().add(twoDButton);
         twoDButton.setBounds(310, 230, 180, 80);
 
-        threeDButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        threeDButton.setBackground(new java.awt.Color(53, 146, 196));
         threeDButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         threeDButton.setForeground(new java.awt.Color(255, 255, 255));
         threeDButton.setText("Benda3D");
         getContentPane().add(threeDButton);
         threeDButton.setBounds(570, 230, 180, 80);
 
-        exitButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
+        exitButton.setBackground(new java.awt.Color(199, 84, 80));
         exitButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         exitButton.setForeground(new java.awt.Color(255, 255, 255));
         exitButton.setText("Exit");
         getContentPane().add(exitButton);
         exitButton.setBounds(440, 430, 180, 60);
 
-        threadPoolButton.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        threadPoolButton.setBackground(new java.awt.Color(53, 146, 196));
         threadPoolButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         threadPoolButton.setForeground(new java.awt.Color(255, 255, 255));
         threadPoolButton.setText("Thread Pool");
