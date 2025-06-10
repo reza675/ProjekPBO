@@ -1,6 +1,7 @@
 import BendaGeometri.*;
 import Threading.ThreadExecutor;
-import View.BendaGUI;
+import View.PolymorphismGUI;
+//import View.BendaGUI;
 //import View.Benda2DGUI;
 //import View.SplashScreen;
 // import View.TestingManual;
@@ -23,7 +24,7 @@ public class AplikasiBendaGeometri {
         });
          */
         SwingUtilities.invokeLater(() -> {
-            BendaGUI ui = new BendaGUI();
+            PolymorphismGUI ui = new PolymorphismGUI();
             ui.setLocationRelativeTo(null);
             ui.setVisible(true);
         });
