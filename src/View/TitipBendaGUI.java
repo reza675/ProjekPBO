@@ -6,77 +6,37 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 /**
  *
  * @author ASUS
  */
-public class BendaGUI extends javax.swing.JFrame {
+public class TitipBendaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Template
      */
-    private JPanel loopPanel;
-    private JPanel frameBawah;
-    private JPanel sidebar;
-    public BendaGUI() {
+    private javax.swing.JPanel loopPanel;
+    
+    public TitipBendaGUI() {
         initComponents();
-
-        setLayout(new BorderLayout());
-
-        loopPanel = new JPanel();
-        frameBawah = new JPanel();
-        sidebar = new JPanel();
-
-        // Atur tata letak frameBawah ke null
-        frameBawah.setLayout(null);
-
-        // Atur warna sidebar
-        sidebar.setBackground(new Color(30, 75, 112));
-
-        // Atur tata letak loopPanel ke GridLayout
-        loopPanel.setLayout(new GridLayout(0, 2));
-        loopPanel.setBackground(Color.WHITE);
+        
+        loopPanel = new javax.swing.JPanel();
+        loopPanel.setLayout(new GridLayout(0, 1, 5, 5)); // Rows: auto, Columns: 1, Hgap: 5, Vgap: 5
+        loopPanel.setBackground(Color.BLACK);
         loopPanel.setForeground(Color.BLACK);
         int jumlahField = 5;
         for (int i = 1; i <= jumlahField; i++) {
             JLabel label = new JLabel("Input " + i + ":");
             loopPanel.add(label);
-
-            JTextField textField = new JTextField();
-            loopPanel.add(textField);
         }
+        // Add loopPanel to the main frame.  Crucially important!  Specify a layout if needed.
+        add(loopPanel, BorderLayout.NORTH); // Or another appropriate layout constraint
+        JLabel labelasda = new JLabel("asda");
+        add(labelasda, BorderLayout.SOUTH); //Added labelasda with layout
+        revalidate(); // Update the layout
+        repaint();    // Redraw the frame
 
-        // Tambahkan loopPanel ke frameBawah
-        loopPanel.setBounds(70, 0, 300, 100); // Atur posisi dan ukuran loopPanel
-        frameBawah.add(loopPanel);
 
-        // Tambahkan sidebar ke frameBawah
-        frameBawah.add(sidebar);
-
-        // Tambahkan frameBawah ke JFrame di BorderLayout.SOUTH
-        add(frameBawah, BorderLayout.SOUTH);
-
-        // Tambahkan listener untuk mengatur tinggi sidebar setelah frame ditampilkan
-        addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                sidebar.setBounds(0, 0, 70, frameBawah.getHeight());
-                frameBawah.setPreferredSize(new Dimension(frameBawah.getWidth(), 100)); //Atur tinggi frameBawah
-                frameBawah.revalidate();
-                frameBawah.repaint();
-            }
-        });
-
-        // Atur ukuran frameBawah secara manual
-        frameBawah.setPreferredSize(new Dimension(getWidth(), 100));
-
-        revalidate();
-        repaint();
-
-        
-        
     }
 
     /**
@@ -97,6 +57,8 @@ public class BendaGUI extends javax.swing.JFrame {
         luasLabel2 = new javax.swing.JLabel();
         tidakButton = new javax.swing.JButton();
         yaButton = new javax.swing.JButton();
+        inputLabel = new javax.swing.JLabel();
+        inputTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -127,7 +89,7 @@ public class BendaGUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 70, 370);
+        jPanel2.setBounds(0, 0, 70, 605);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -161,21 +123,37 @@ public class BendaGUI extends javax.swing.JFrame {
         yaButton.setForeground(new java.awt.Color(255, 255, 255));
         yaButton.setText("Ya");
 
+        inputLabel.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        inputLabel.setForeground(new java.awt.Color(0, 0, 0));
+        inputLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        inputLabel.setText("Masukkan Alas Baru :");
+
+        inputTextField.setBackground(new java.awt.Color(255, 255, 255));
+        inputTextField.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        inputTextField.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(namaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(yaButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tidakButton))
-                    .addComponent(kelilingLabel)
-                    .addComponent(luasLabel)
-                    .addComponent(luasLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(yaButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tidakButton))
+                            .addComponent(kelilingLabel)
+                            .addComponent(luasLabel)
+                            .addComponent(luasLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(inputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(inputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -193,11 +171,15 @@ public class BendaGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tidakButton)
                     .addComponent(yaButton))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputLabel)
+                    .addComponent(inputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(73, 0, 540, 370);
+        jPanel1.setBounds(73, 0, 540, 0);
 
         setSize(new java.awt.Dimension(627, 612));
         setLocationRelativeTo(null);
@@ -220,14 +202,46 @@ public class BendaGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitipBendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitipBendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitipBendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitipBendaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -264,7 +278,7 @@ public class BendaGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                BendaGUI ui = new BendaGUI();
+                TitipBendaGUI ui = new TitipBendaGUI();
                 ui.setLocationRelativeTo(null);
                 ui.setVisible(true);
             }
@@ -273,6 +287,8 @@ public class BendaGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton homeButton;
+    private javax.swing.JLabel inputLabel;
+    private javax.swing.JTextField inputTextField;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel kelilingLabel;
