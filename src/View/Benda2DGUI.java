@@ -4,7 +4,10 @@
  */
 package View;
 
+import BendaGeometri.Lingkaran;
+import BendaGeometri.Persegi;
 import BendaGeometri.PersegiPanjang;
+import BendaGeometri.Segitiga;
 
 /**
  *
@@ -265,15 +268,59 @@ public class Benda2DGUI extends javax.swing.JFrame {
     }
     
     private void segitigaButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        String[] labels = {"Alas", "Tinggi", "Sisi 1", "Sisi 2"};
+    String[] defaults = {"6.0", "8.0", "5.0", "5.0"};
+    
+    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
+        Segitiga s = new Segitiga(values[0], values[1], values[2], values[3]);
+        return new ShapeCalculatorDialog.CalculationResult(
+            s.getNamaBenda(),
+            String.format("Alas: %.2f\nTinggi: %.2f\nSisi 1: %.2f\nSisi 2: %.2f\n", 
+                          values[0], values[1], values[2], values[3]),
+            s.menghitungLuas(),
+            s.menghitungKeliling(),
+            "Method tanpa parameter"
+        );
+    };
+    
+    new ShapeCalculatorDialog(this, "Segitiga", labels, defaults, calculator).setVisible(true);
     }
     
     private void persegiButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        String[] labels = {"Sisi"};
+    String[] defaults = {"5.0"};
+    
+    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
+        Persegi p = new Persegi(values[0]);
+        return new ShapeCalculatorDialog.CalculationResult(
+            p.getNamaBenda(),
+            String.format("Sisi: %.2f", values[0]),
+            p.menghitungLuas(),
+            p.menghitungKeliling(),
+            "Method tanpa parameter"
+        );
+    };
+    
+    new ShapeCalculatorDialog(this, "Persegi", labels, defaults, calculator).setVisible(true);
     }
     
     private void persegiPanjangButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+       String[] labels = {"Panjang", "Lebar"};
+    String[] defaults = {"5.0", "8.0"};
+    
+    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
+        PersegiPanjang pp = new PersegiPanjang(values[0], values[1]);
+        return new ShapeCalculatorDialog.CalculationResult(
+            pp.getNamaBenda(),
+            String.format("Panjang: %.2f\nLebar: %.2f", values[0], values[1]),
+            pp.menghitungLuas(),
+            pp.menghitungKeliling(),
+            "Method tanpa parameter"
+        );
+    };
+    
+    new ShapeCalculatorDialog(this, "Persegi Panjang", labels, defaults, calculator).setVisible(true);
+
     }
     
     private void jajaranGenjangButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
@@ -293,7 +340,21 @@ public class Benda2DGUI extends javax.swing.JFrame {
     }
     
     private void lingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+         String[] labels = {"Jari-jari"};
+    String[] defaults = {"7.0"};
+    
+    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
+        Lingkaran l = new Lingkaran(values[0]);
+        return new ShapeCalculatorDialog.CalculationResult(
+            l.getNamaBenda(),
+            String.format("Jari-jari: %.2f", values[0]),
+            l.menghitungLuas(),
+            l.menghitungKeliling(),
+            "Method tanpa parameter"
+        );
+    };
+    
+    new ShapeCalculatorDialog(this, "Lingkaran", labels, defaults, calculator).setVisible(true);
     }
     
     private void temberengLingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
