@@ -4,6 +4,11 @@
  */
 package View;
 
+import java.util.HashMap;
+import java.util.Map;
+import BendaGeometri.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -103,6 +108,11 @@ public class Benda2DGUI extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        benda2dTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                benda2dTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(benda2dTable);
         if (benda2dTable.getColumnModel().getColumnCount() > 0) {
             benda2dTable.getColumnModel().getColumn(0).setMinWidth(50);
@@ -135,7 +145,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(73, 0, 350, 605);
+        jPanel1.setBounds(73, 0, 350, 597);
 
         setSize(new java.awt.Dimension(436, 612));
         setLocationRelativeTo(null);
@@ -148,6 +158,54 @@ public class Benda2DGUI extends javax.swing.JFrame {
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void benda2dTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_benda2dTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = benda2dTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            String bendaTabel = benda2dTable.getValueAt(selectedRow, 1).toString();
+            Benda2D benda = null;
+            switch (bendaTabel) {
+                case "Segitiga":
+                    benda = new Segitiga(10, 15, 12, 14);
+                    break;
+                case "Persegi":
+                    benda = new Persegi(10);
+                    break;
+                case "Persegi Panjang":
+                    benda = new PersegiPanjang(10, 5);
+                    break;
+                case "Jajaran Genjang":
+                    benda = new JajaranGenjang(10, 6, 8);
+                    break;
+                case "Trapesium":
+                    benda = new Trapesium(10, 6, 8, 5, 7);
+                    break;
+                case "Belah Ketupat":
+                    benda = new BelahKetupat(6, 8, 10);
+                    break;
+                case "Layang-Layang":
+                    benda = new LayangLayang(6, 8, 5, 5);
+                    break;
+                case "Lingkaran":
+                    benda = new Lingkaran(7);
+                    break;
+                case "Tembereng Lingkaran":
+                    benda = new TemberengLingkaran(7, 60);
+                    break;
+                case "Juring Lingkaran":
+                    benda = new JuringLingkaran(7, 60);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Bentuk tidak dikenali: " + bendaTabel);
+                    return;
+            }
+            this.dispose();
+            BendaGUI ui = new BendaGUI(benda);
+            ui.setLocationRelativeTo(null);
+            ui.setVisible(true);
+        }
+    }//GEN-LAST:event_benda2dTableMouseClicked
 
     /**
      * @param args the command line arguments
