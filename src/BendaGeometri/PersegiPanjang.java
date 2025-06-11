@@ -7,6 +7,10 @@ public class PersegiPanjang extends Benda2D implements Runnable {
 	protected double panjang;
 	protected double lebar;
 	private volatile boolean calculated = false;
+        
+    public String[] getParameterNames(){
+        return new String[] {"panjang", "lebar"};
+    }
 
     public PersegiPanjang(double panjang, double lebar) throws InputMismatchException {
         if (panjang <= 0 || lebar <= 0) {

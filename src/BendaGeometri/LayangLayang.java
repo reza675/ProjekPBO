@@ -110,4 +110,9 @@ public class LayangLayang extends Benda2D implements Runnable {
         System.out.printf("Keliling %s: %.2f\n", getNamaBenda(), keliling);
         prosesInputDataUlang();
     }
+
+    @Override
+    public String[] getParameterNames() {
+        return new String[] {"diagonal1", "diagonal2", "sisiPendek", "sisiPanjang"};
+    }
 }

@@ -93,4 +93,9 @@ public class Lingkaran extends Benda2D implements Runnable{
             }
         }
     }
+
+    @Override
+    public String[] getParameterNames() {
+        return new String[] {"radius"};
+    }
 }

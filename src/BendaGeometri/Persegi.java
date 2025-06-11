@@ -92,4 +92,9 @@ public class Persegi extends Benda2D implements Runnable {
             }
         }
     }
+
+    @Override
+    public String[] getParameterNames() {
+        return new String[] {"sisi"};
+    }
 }

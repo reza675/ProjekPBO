@@ -201,7 +201,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
                     return;
             }
             this.dispose();
-            BendaGUI ui = new BendaGUI(benda);
+            BendaGUIOLD ui = new BendaGUIOLD(benda);
             ui.setLocationRelativeTo(null);
             ui.setVisible(true);
         }

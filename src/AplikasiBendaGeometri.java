@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import View.SplashScreen;
 
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
         
         // testing valent
-        // SplashScreen ui = new SplashScreen();
-        // ui.setLocationRelativeTo(null);
-        // ui.setVisible(true);
+        SplashScreen ui = new SplashScreen();
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
         // testing valent
 
         Scanner inputMenu = new Scanner(System.in);

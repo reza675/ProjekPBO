@@ -96,4 +96,9 @@ public class JajaranGenjang extends Benda2D implements Runnable {
 		System.out.printf("Keliling awal Jajaran Genjang: %.2f\n", menghitungKeliling());
 		prosesInputDataUlang();
 	}
+
+    @Override
+    public String[] getParameterNames() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

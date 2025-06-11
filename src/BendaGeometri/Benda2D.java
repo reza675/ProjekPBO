@@ -7,7 +7,8 @@ public abstract class Benda2D implements BendaGeometri {
 	@Override
 	public abstract double menghitungLuas();
 	@Override
-	public abstract double menghitungKeliling();  
+	public abstract double menghitungKeliling();
 	public abstract String getNamaBenda();
+        public abstract String[] getParameterNames();
 	
 }

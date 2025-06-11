@@ -104,4 +104,9 @@ public class BelahKetupat extends Benda2D implements Runnable {
 			System.out.println("Input tidak valid. Pastikan memasukkan angka yang benar.");
 		}
 	}
+
+    @Override
+    public String[] getParameterNames() {
+        return new String[] {"diagonal1", "diagonal2", "sisi"};
+    }
 }
