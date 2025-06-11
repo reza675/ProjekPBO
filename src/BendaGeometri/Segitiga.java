@@ -10,7 +10,10 @@ public class Segitiga extends Benda2D {
 	protected double sisiMiring1;
 	protected double sisiMiring2;
 
-	public Segitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2) {
+	public Segitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2) throws InputMismatchException {
+		if (alas <= 0 || tinggi <= 0 || sisiMiring1 <= 0 || sisiMiring2 <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		this.alas = alas;
 		this.tinggi = tinggi;
 		this.sisiMiring1 = sisiMiring1;
@@ -23,7 +26,10 @@ public class Segitiga extends Benda2D {
 		return luas;
 	}
 
-	public double menghitungLuas(double alasBaru, double tinggiBaru) {
+	public double menghitungLuas(double alasBaru, double tinggiBaru) throws InputMismatchException {
+		if (alasBaru <= 0 || tinggiBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luas = 0.5 * alasBaru * tinggiBaru;
 		return luas;
 
@@ -35,7 +41,11 @@ public class Segitiga extends Benda2D {
 		return keliling;
 	}
 
-	public double menghitungKeliling(double alasBaru, double sisiMiring1Baru, double sisiMiring2Baru) {
+	public double menghitungKeliling(double alasBaru, double sisiMiring1Baru, double sisiMiring2Baru)
+			throws InputMismatchException {
+		if (alasBaru <= 0 || sisiMiring1Baru <= 0 || sisiMiring2Baru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		keliling = alasBaru + sisiMiring1Baru + sisiMiring2Baru;
 		return keliling;
 	}
@@ -55,26 +65,26 @@ public class Segitiga extends Benda2D {
 				while (true) {
 					try {
 						System.out.print("Masukkan alas baru: ");
-						double alasBaru = inputData.nextDouble();
+						String inputAlas = inputData.nextLine();
+						double alasBaru = Double.parseDouble(inputAlas);
 						System.out.print("Masukkan tinggi baru: ");
-						double tinggiBaru = inputData.nextDouble();
+						String inputTinggi = inputData.nextLine();
+						double tinggiBaru = Double.parseDouble(inputTinggi);
 						System.out.print("Masukkan sisi miring 1 baru: ");
-						double sisi1Baru = inputData.nextDouble();
+						String inputSisiMiring1 = inputData.nextLine();
+						double sisi1Baru = Double.parseDouble(inputSisiMiring1);
 						System.out.print("Masukkan sisi miring 2 baru: ");
-						double sisi2Baru = inputData.nextDouble();
-						inputData.nextLine();
-						if (alasBaru <= 0 || tinggiBaru <= 0 || sisi1Baru <= 0 || sisi2Baru <= 0) {
-							System.out.println("Semua nilai harus lebih dari nol.\n");
-							continue;
-						}
+						String inputSisiMiring2 = inputData.nextLine();
+						double sisi2Baru = Double.parseDouble(inputSisiMiring2);
 						luas = menghitungLuas(alasBaru, tinggiBaru);
 						keliling = menghitungKeliling(alasBaru, sisi1Baru, sisi2Baru);
 						System.out.printf("\nLuas Segitiga: %.2f\n", luas);
 						System.out.printf("Keliling Segitiga: %.2f\n", keliling);
 						break;
+					} catch (NumberFormatException e) {
+						System.out.println("Input harus berupa angka.");
 					} catch (InputMismatchException e) {
-						System.out.println("Input alas, tinggi, dan sisi miring harus berupa angka.");
-						inputData.nextLine();
+						System.out.println(e.getMessage());
 					}
 				}
 				break;

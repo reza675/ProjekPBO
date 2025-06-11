@@ -123,7 +123,6 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.menghitungKeliling());
                             lingkaran.prosesInputDataUlang();
                         } catch (Exception e) {
-
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -321,12 +320,34 @@ public class AplikasiBendaGeometri {
                         Benda2D bd8 = new BelahKetupat(8, 6, 10);
                         Benda2D bd9 = new LayangLayang(5, 8, 10, 12);
                         Benda2D bd10 = new JajaranGenjang(7, 5, 8);
-                        
+                        /*
                         Persegi p = (Persegi) bd1;
                         double sisi = p.sisi;
-                        PrismaPersegi bd11 = new PrismaPersegi(sisi, 5);
-                        System.out.println("Volume " + bd11.getNamaBenda() + " (bd11): " + bd11.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd11.menghitungLuasPermukaan());
+                        Segitiga s = (Segitiga) bd3;
+                        double alas = s.alas;
+                        Segitiga bd11 = new PrismaSegitiga();
+                        Segitiga bd12 = new LimasSegitiga(8, 8);
+                        Persegi bd13 = new PrismaPersegi(sisi, 5);
+                        Persegi bd14 = new LimasPersegi(sisi, 10);
+                        PersegiPanjang bd15 = new PrismaPersegiPanjang();
+                        PersegiPanjang bd16 = new LimasPersegiPanjang();
+                        JajaranGenjang bd17 = new PrismaJajarangGenjang();
+                        JajarangGenjang bd18 = new LimasJajarangGenjang();
+                        Trapesium bd19 = new PrismaTrapesium();
+                        Trapesium bd20 = new LimasTrapesium(); 
+                        BelahKetupat bd21 = new PrismaBelahKetupat();
+                        BelahKetupat bd22 = new LimasBelahKetupat();
+                        LayangLayang bd23 = new PrismaLayangLayang();
+                        LayangLayang bd24 = new LimasLayangLayang();
+                        Lingkaran bd25 = new Tabung();
+                        Lingkaran bd26 = new Kerucut();
+                        Lingkaran bd27 = new KerucutTerpancung();
+                        Lingkaran bd28 = new Bola();
+                        Lingkaran bd29 = new TemberengBola();
+                        Lingkaran bd30 = new JuringBola();
+                        Lingkaran bd31 = new CincinBola();
+                         apa pakai generate ya
+                        */
 
                         System.out.println("Luas " + bd1.getNamaBenda() + " (bd1): " + bd1.menghitungLuas()
                                 + " dan Keliling : " + bd1.menghitungKeliling());
@@ -348,6 +369,50 @@ public class AplikasiBendaGeometri {
                                 + " dan Keliling : " + bd9.menghitungKeliling());
                         System.out.println("Luas " + bd10.getNamaBenda() + " (bd10): " + bd10.menghitungLuas()
                                 + " dan Keliling : " + bd10.menghitungKeliling());
+                        /*
+                        System.out.println("Volume " + bd11.getNamaBenda() + " (bd11): " + bd11.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd11.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd12.getNamaBenda() + " (bd12): " + bd12.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd12.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd13.getNamaBenda() + " (bd13): " + bd13.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd13.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd14.getNamaBenda() + " (bd14): " + bd14.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd14.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd15.getNamaBenda() + " (bd15): " + bd15.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd15.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd16.getNamaBenda() + " (bd16): " + bd16.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd16.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd17.getNamaBenda() + " (bd17): " + bd17.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd17.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd18.getNamaBenda() + " (bd18): " + bd18.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd18.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd19.getNamaBenda() + " (bd19): " + bd19.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd19.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd20.getNamaBenda() + " (bd20): " + bd20.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd20.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd21.getNamaBenda() + " (bd21): " + bd21.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd21.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd22.getNamaBenda() + " (bd22): " + bd22.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd22.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd23.getNamaBenda() + " (bd23): " + bd23.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd23.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd24.getNamaBenda() + " (bd24): " + bd24.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd24.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd25.getNamaBenda() + " (bd25): " + bd25.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd25.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd26.getNamaBenda() + " (bd26): " + bd26.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd26.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd27.getNamaBenda() + " (bd27): " + bd27.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd27.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd28.getNamaBenda() + " (bd28): " + bd28.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd28.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd29.getNamaBenda() + " (bd29): " + bd29.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd29.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd30.getNamaBenda() + " (bd30): " + bd30.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd30.menghitungLuasPermukaan());
+                        System.out.println("Volume " + bd31.getNamaBenda() + " (bd31): " + bd31.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd31.menghitungLuasPermukaan());
+                         */
                         break;
                     case 33:
                         System.out.print("Masukkan jumlah objek per bentuk geometri untuk digenerate: ");

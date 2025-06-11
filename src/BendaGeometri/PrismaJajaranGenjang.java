@@ -10,8 +10,11 @@ public class PrismaJajaranGenjang extends JajaranGenjang {
     private double volume;
     private double luasPermukaan;
 
-    public PrismaJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiPrisma) {
+    public PrismaJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiPrisma) throws InputMismatchException {
         super(panjangAlas, tinggiAlas, sisiMiringAlas);
+        if (tinggiPrisma <= 0) {
+            throw new InputMismatchException("Tinggi Prisma harus lebih dari nol.");
+        }
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -21,7 +24,10 @@ public class PrismaJajaranGenjang extends JajaranGenjang {
         return volume;
     }
 
-    public double menghitungVolume(double panjangAlasBaru, double tinggiAlasBaru, double tinggiPrismaBaru) {
+    public double menghitungVolume(double panjangAlasBaru, double tinggiAlasBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
         volume = luasAlas * tinggiPrismaBaru;
         return volume;
@@ -35,7 +41,10 @@ public class PrismaJajaranGenjang extends JajaranGenjang {
     }
 
     public double menghitungLuasPermukaan(double panjangAlas, double tinggiAlas, double sisiMiringAlas,
-            double tinggiPrisma) {
+            double tinggiPrisma) throws InputMismatchException {
+        if (panjangAlas <= 0 || tinggiAlas <= 0 || sisiMiringAlas <= 0 || tinggiPrisma <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
         kelilingAlas = super.menghitungKeliling(panjangAlas, sisiMiringAlas);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
@@ -65,11 +74,6 @@ public class PrismaJajaranGenjang extends JajaranGenjang {
                     double tinggiPrismaBaru = inputData.nextDouble();
                     inputData.nextLine();
 
-                    if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 ||
-                        sisiMiringAlasBaru <= 0 || tinggiPrismaBaru <= 0) {
-                        System.out.println("Semua nilai harus lebih dari nol.\n");
-                        continue;
-                    }
                     volume = menghitungVolume(panjangAlasBaru, tinggiAlasBaru, tinggiPrismaBaru);
                     luasPermukaan = menghitungLuasPermukaan(panjangAlasBaru,tinggiAlasBaru,sisiMiringAlasBaru,tinggiPrismaBaru);
 
@@ -77,8 +81,7 @@ public class PrismaJajaranGenjang extends JajaranGenjang {
                     System.out.printf("Luas Permukaan Prisma Jajaran Genjang: %.2f\n", luasPermukaan);
                     break;
                 } catch (InputMismatchException e) {
-                    System.out.println("Input harus berupa angka.");
-                    inputData.nextLine();
+                    System.out.println(e.getMessage());
                 }
             }
             break;
