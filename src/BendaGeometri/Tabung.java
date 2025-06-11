@@ -15,14 +15,17 @@ public class Tabung extends Lingkaran implements Runnable {
 	private volatile boolean calculated = false;
 	private final Object lock = new Object();
 
-	public Tabung(double radius, double tinggiTabung) {
+	public Tabung(double radius, double tinggiTabung) throws InputMismatchException {
 		super(radius);
+		if (tinggiTabung <= 0) {
+			throw new InputMismatchException("Tinggi tabung harus lebih dari nol.");
+		}
 		this.tinggiTabung = tinggiTabung;
 	}
 
 	@Override
 	public void run() {
-		synchronized(lock) {
+		synchronized (lock) {
 			// Calculate both volume and surface area in the thread
 			volume = menghitungVolume();
 			luasPermukaan = menghitungLuasPermukaan();
@@ -35,25 +38,27 @@ public class Tabung extends Lingkaran implements Runnable {
 	}
 
 	public void waitForCalculation() throws InterruptedException {
-		synchronized(lock) {
+		synchronized (lock) {
 			while (!calculated) {
-				System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda() + " calculations...");
+				System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda()
+						+ " calculations...");
 				lock.wait();
 			}
-			System.out.println("Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
+			System.out.println(
+					"Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
 			System.out.printf("Volume: %.2f\n", volume);
 			System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
 		}
 	}
 
 	public boolean isCalculated() {
-		synchronized(lock) {
+		synchronized (lock) {
 			return calculated;
 		}
 	}
 
 	public double getVolume() {
-		synchronized(lock) {
+		synchronized (lock) {
 			if (!calculated) {
 				throw new IllegalStateException("Calculations not yet complete");
 			}
@@ -62,7 +67,7 @@ public class Tabung extends Lingkaran implements Runnable {
 	}
 
 	public double getLuasPermukaan() {
-		synchronized(lock) {
+		synchronized (lock) {
 			if (!calculated) {
 				throw new IllegalStateException("Calculations not yet complete");
 			}
@@ -76,7 +81,10 @@ public class Tabung extends Lingkaran implements Runnable {
 		return volume;
 	}
 
-	public double menghitungVolume(double radiusBaru, double tinggiTabungBaru) {
+	public double menghitungVolume(double radiusBaru, double tinggiTabungBaru) throws InputMismatchException {
+		if (radiusBaru <= 0) {
+			throw new InputMismatchException("Radius harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		volume = luasAlas * tinggiTabungBaru;
 		return volume;
@@ -89,7 +97,10 @@ public class Tabung extends Lingkaran implements Runnable {
 		return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double radiusBaru, double tinggiTabungBaru) {
+	public double menghitungLuasPermukaan(double radiusBaru, double tinggiTabungBaru) throws InputMismatchException {
+		if (radiusBaru <= 0 || tinggiTabungBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luasAlas = 2 * super.menghitungLuas(radiusBaru);
 		selimut = super.menghitungKeliling(radiusBaru) * tinggiTabungBaru;
 		luasPermukaan = luasAlas + selimut;
@@ -110,15 +121,11 @@ public class Tabung extends Lingkaran implements Runnable {
 				while (true) {
 					try {
 						System.out.print("Masukkan jari-jari tabung: ");
-						double radiusBaru = inputData.nextDouble();
+						String inputRadius = inputData.nextLine();
+						double radiusBaru = Double.parseDouble(inputRadius);
 						System.out.print("Masukkan tinggi tabung: ");
-						double tinggiTabungBaru = inputData.nextDouble();
-						inputData.nextLine();
-
-						if (radiusBaru <= 0 || tinggiTabungBaru <= 0) {
-							System.out.println("Semua nilai harus lebih dari nol.\n");
-							continue;
-						}
+						String inputTinggiPrisma = inputData.nextLine();
+						double tinggiTabungBaru = Double.parseDouble(inputTinggiPrisma);
 
 						volume = menghitungVolume(radiusBaru, tinggiTabungBaru);
 						luasPermukaan = menghitungLuasPermukaan(radiusBaru, tinggiTabungBaru);
@@ -126,9 +133,10 @@ public class Tabung extends Lingkaran implements Runnable {
 						System.out.printf("\nVolume Tabung: %.2f\n", volume);
 						System.out.printf("Luas Permukaan Tabung: %.2f\n", luasPermukaan);
 						break;
-					} catch (InputMismatchException e) {
+					} catch (NumberFormatException e) {
 						System.out.println("Input harus berupa angka.");
-						inputData.nextLine();
+					} catch (InputMismatchException e) {
+						System.out.println(e.getMessage());
 					}
 				}
 				break;

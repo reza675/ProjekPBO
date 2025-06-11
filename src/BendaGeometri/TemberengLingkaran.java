@@ -3,8 +3,9 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TemberengLingkaran extends Lingkaran {
+public class TemberengLingkaran extends Lingkaran implements Runnable {
     private double sudut;
+    private volatile boolean isRunning;
 
     public TemberengLingkaran(double radius, double sudut) throws InputMismatchException {
         super(radius);
@@ -12,6 +13,7 @@ public class TemberengLingkaran extends Lingkaran {
             throw new InputMismatchException("Semua nilai harus lebih dari nol.");
         }
         this.sudut = sudut;
+        this.isRunning = true;
     }
 
     @Override
@@ -59,13 +61,14 @@ public class TemberengLingkaran extends Lingkaran {
         return "Tembereng Lingkaran";
     }
 
-    public void prosesInputData() {
+    @Override
+    public void run() {
         Scanner inputData = new Scanner(System.in);
-        while (true) {
+        while (isRunning) {
             System.out.print("\nApakah Anda ingin mengubah nilai radius dan sudut Tembereng Lingkaran? (Y/N): ");
             String jawaban = inputData.nextLine();
             if (jawaban.equalsIgnoreCase("Y")) {
-                while (true) {
+                while (isRunning) {
                     try {
                         System.out.print("Masukkan radius baru: ");
                         String inputRadiusBaru = inputData.nextLine();
@@ -91,5 +94,14 @@ public class TemberengLingkaran extends Lingkaran {
                 System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
+    }
+
+    public void stop() {
+        this.isRunning = false;
+    }
+
+    @Deprecated
+    public void prosesInputData() {
+        run();
     }
 }

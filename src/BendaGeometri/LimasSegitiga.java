@@ -11,8 +11,11 @@ public class LimasSegitiga extends Segitiga implements Runnable {
     private double luasPermukaan;
     private volatile boolean calculated = false;
 
-    public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiLimas) {
+    public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiLimas) throws InputMismatchException {
         super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
+        if (tinggiLimas <= 0) {
+            throw new InputMismatchException("Tinggi limas harus lebih dari nol.");
+        }
         this.tinggiLimas = tinggiLimas;
     }
 
@@ -22,7 +25,10 @@ public class LimasSegitiga extends Segitiga implements Runnable {
         return volume;
     }
 
-    public double menghitungVolume(double alasBaru, double tinggiSegitigaBaru, double tinggiLimasBaru) {
+    public double menghitungVolume(double alasBaru, double tinggiSegitigaBaru, double tinggiLimasBaru) throws InputMismatchException {
+        if (alasBaru <= 0 || tinggiSegitigaBaru <= 0 || tinggiLimasBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = menghitungLuas(alasBaru, tinggiSegitigaBaru);
         volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
         return volume;
@@ -52,7 +58,10 @@ public class LimasSegitiga extends Segitiga implements Runnable {
     }
 
 
-    public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru, double tinggiLimasBaru) {
+    public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru, double tinggiLimasBaru) throws InputMismatchException {
+        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiPendekBaru <= 0 || sisiPanjangBaru <= 0 || tinggiLimasBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         double proyeksiKeSisiPendek = diagonal2Baru / 2.0;
         double proyeksiKeSisiPanjang = diagonal1Baru / 2.0;
@@ -66,7 +75,6 @@ public class LimasSegitiga extends Segitiga implements Runnable {
 
     @Override
     public void run() {
-        // Calculate both volume and surface area in the thread
         volume = menghitungVolume();
         luasPermukaan = menghitungLuasPermukaan();
         calculated = true;
@@ -93,22 +101,21 @@ public class LimasSegitiga extends Segitiga implements Runnable {
                 while (true) {
                     try {
                         System.out.print("Masukkan panjang alas segitiga: ");
-                        double alasBaru = inputData.nextDouble();
+                        String inputAlas = inputData.nextLine();
+                        double alasBaru = Double.parseDouble(inputAlas);
                         System.out.print("Masukkan tinggi segitiga: ");
-                        double tinggiSegitigaBaru = inputData.nextDouble();
+                        String inputTinggiSegitiga = inputData.nextLine();
+                        double tinggiSegitigaBaru = Double.parseDouble(inputTinggiSegitiga);
                         System.out.print("Masukkan sisi miring 1 segitiga: ");
-                        double sisiMiring1Baru = inputData.nextDouble();
+                        String inputSisiMiring1 = inputData.nextLine();
+                        double sisiMiring1Baru = Double.parseDouble(inputSisiMiring1);
                         System.out.print("Masukkan sisi miring 2 segitiga: ");
-                        double sisiMiring2Baru = inputData.nextDouble();
+                        String inputSisiMiring2 = inputData.nextLine();
+                        double sisiMiring2Baru = Double.parseDouble(inputSisiMiring2);
                         System.out.print("Masukkan tinggi limas: ");
-                        double tinggiLimasBaru = inputData.nextDouble();
-                        inputData.nextLine();
-
-                        if (alasBaru <= 0 || tinggiSegitigaBaru <= 0 || sisiMiring1Baru <= 0 || sisiMiring2Baru <= 0
-                                || tinggiLimasBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
+                        String inputTinggiLimas = inputData.nextLine();
+                        double tinggiLimasBaru = Double.parseDouble(inputTinggiLimas);
+                       
                         volume = menghitungVolume(alasBaru, tinggiSegitigaBaru, tinggiLimasBaru);
                         luasPermukaan = menghitungLuasPermukaan(alasBaru, tinggiSegitigaBaru, sisiMiring1Baru,
                                 sisiMiring2Baru, tinggiLimasBaru);
@@ -116,9 +123,10 @@ public class LimasSegitiga extends Segitiga implements Runnable {
                         System.out.printf("\nVolume Limas Segitiga: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n", luasPermukaan);
                         break;
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println("Input harus berupa angka.");
-                        inputData.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

@@ -3,13 +3,16 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CincinBola extends Bola {
+public class CincinBola extends Bola implements Runnable {
 	private double tinggiCincinBola;
 	private double volume;
 	private double luasPermukaan;
 
-	public CincinBola(double radius, double tinggiCincinBola) {
+	public CincinBola(double radius, double tinggiCincinBola) throws InputMismatchException {
 		super(radius);
+		if (tinggiCincinBola <= 0) {
+			throw new InputMismatchException("Tinggi cincin bola harus lebih dari nol.");
+		}
 		this.tinggiCincinBola = tinggiCincinBola;
 
 	}
@@ -20,7 +23,10 @@ public class CincinBola extends Bola {
 		return volume;
 	}
 
-	public double menghitungVolume(double radiusBola, double tinggiCincinBolaBaru) {
+	public double menghitungVolume(double radiusBola, double tinggiCincinBolaBaru) throws InputMismatchException {
+		if (radiusBola <= 0 || tinggiCincinBolaBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		volume = PI * tinggiCincinBolaBaru * tinggiCincinBolaBaru * (radiusBola - tinggiCincinBolaBaru / 3.0);
 		return volume;
 	}
@@ -31,8 +37,13 @@ public class CincinBola extends Bola {
 		return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double radiusBaru, double tinggiCincinBolaBaru) {
-		return 2 * PI * radiusBaru * tinggiCincinBolaBaru;
+	public double menghitungLuasPermukaan(double radiusBaru, double tinggiCincinBolaBaru)
+			throws InputMismatchException {
+		if (radiusBaru <= 0 || tinggiCincinBolaBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
+		luasPermukaan = 2 * PI * radiusBaru * tinggiCincinBolaBaru;
+		return luasPermukaan;
 	}
 
 	@Override
@@ -49,15 +60,11 @@ public class CincinBola extends Bola {
 				while (true) {
 					try {
 						System.out.print("Masukkan jari-jari bola: ");
-						double radiusBaru = inputData.nextDouble();
+						String inputRadius = inputData.nextLine();
+						double radiusBaru = Double.parseDouble(inputRadius);
 						System.out.print("Masukkan tinggi cincin bola: ");
-						double tinggiBaru = inputData.nextDouble();
-						inputData.nextLine();
-
-						if (radiusBaru <= 0 || tinggiBaru <= 0) {
-							System.out.println("Semua nilai harus lebih dari nol.\n");
-							continue;
-						}
+						String inputTinggi = inputData.nextLine();
+						double tinggiBaru = Double.parseDouble(inputTinggi);
 
 						volume = menghitungVolume(radiusBaru, tinggiBaru);
 						luasPermukaan = menghitungLuasPermukaan(radiusBaru, tinggiBaru);
@@ -65,9 +72,10 @@ public class CincinBola extends Bola {
 						System.out.printf("\nVolume Cincin Bola: %.2f\n", volume);
 						System.out.printf("Luas Permukaan Cincin Bola: %.2f\n", luasPermukaan);
 						break;
-					} catch (InputMismatchException e) {
+					} catch (NumberFormatException e) {
 						System.out.println("Input harus berupa angka.");
-						inputData.nextLine();
+					} catch (InputMismatchException e) {
+						System.out.println(e.getMessage());
 					}
 				}
 				break;
@@ -76,6 +84,23 @@ public class CincinBola extends Bola {
 			} else {
 				System.out.println("Jawaban hanya boleh Y atau N.");
 			}
+		}
+	}
+
+	@Override
+	public void run() {
+		Scanner inputData = new Scanner(System.in);
+		try {
+			System.out.println("\nMenghitung Cincin Bola...");
+			System.out.printf("Volume Cincin Bola awal: %.2f\n", menghitungVolume());
+			System.out.printf("Luas Permukaan Cincin Bola awal: %.2f\n", menghitungLuasPermukaan());
+			
+			prosesInputDataUlang();
+			
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		} finally {
+			inputData.close();
 		}
 	}
 }

@@ -10,8 +10,11 @@ public class LimasBelahKetupat extends BelahKetupat implements Runnable {
 	private double luasPermukaan;
 	private double volume;
 
-	public LimasBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiLimas) {
+	public LimasBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiLimas) throws InputMismatchException {
 		super(diagonal1, diagonal2, sisi);
+        if (tinggiLimas <= 0) {
+            throw new InputMismatchException("Tinggi limas harus lebih dari nol.");
+        }
 		this.tinggiLimas = tinggiLimas;
 	}
 
@@ -21,7 +24,10 @@ public class LimasBelahKetupat extends BelahKetupat implements Runnable {
 		return volume;
 	}
 
-	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) {
+	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) throws InputMismatchException {
+        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiLimasBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
 		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
@@ -37,7 +43,10 @@ public class LimasBelahKetupat extends BelahKetupat implements Runnable {
         return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru, double sisiBaru) {
+	public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru, double sisiBaru) throws InputMismatchException {
+        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiLimasBaru <= 0 || sisiBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         double setengahDiagonal1 = diagonal1Baru / 2.0;
         double setengahDiagonal2 = diagonal2Baru / 2.0;
@@ -62,28 +71,28 @@ public class LimasBelahKetupat extends BelahKetupat implements Runnable {
                 while (true) {
                     try {
                         System.out.print("Masukkan diagonal1 baru: ");
-                        double diagonal1Baru = inputData.nextDouble();
+                        String inputDiagonal1 = inputData.nextLine();
+                        double diagonal1Baru = Double.parseDouble(inputDiagonal1);
                         System.out.print("Masukkan diagonal2 baru: ");
-                        double diagonal2Baru = inputData.nextDouble();
+                        String inputDiagonal2 = inputData.nextLine();
+                        double diagonal2Baru = Double.parseDouble(inputDiagonal2);
                         System.out.print("Masukkan sisi baru: ");
-                        double sisiBaru = inputData.nextDouble();
+                        String inputSisi = inputData.nextLine();
+                        double sisiBaru = Double.parseDouble(inputSisi);
                         System.out.print("Masukkan tinggi limas baru: ");
-                        double tinggiLimasBaru = inputData.nextDouble();
-                        inputData.nextLine();
-
-                        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiBaru <= 0 || tinggiLimasBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
+                        String inputTinggiLimas = inputData.nextLine();
+                        double tinggiLimasBaru = Double.parseDouble(inputTinggiLimas);
+                        
                         volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiLimasBaru);
                         luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, tinggiLimasBaru, sisiBaru);
 
                         System.out.printf("\nVolume Limas Belah Ketupat: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Limas Belah Ketupat: %.2f\n", luasPermukaan);
                         break;
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println("Input harus berupa angka.");
-                        inputData.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;
