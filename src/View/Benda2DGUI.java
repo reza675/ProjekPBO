@@ -184,7 +184,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
                 case "Belah Ketupat":
                     benda = new BelahKetupat(6, 8, 10);
                     break;
-                case "Layang-QLayang":
+                case "Layang-Layang":
                     benda = new LayangLayang(6, 8, 5, 5);
                     break;
                 case "Lingkaran":
