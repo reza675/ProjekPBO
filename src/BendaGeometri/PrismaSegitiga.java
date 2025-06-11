@@ -12,8 +12,11 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
     private volatile boolean calculated = false;
     private final Object lock = new Object();
 
-    public PrismaSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiPrisma) {
+    public PrismaSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiPrisma) throws InputMismatchException {
         super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
+        if (tinggiPrisma <= 0) {
+            throw new InputMismatchException("Tinggi prisma harus lebih dari nol.");
+        }
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -73,7 +76,10 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
         return volume;
     }
 
-    public double menghitungVolume(double alasBaru, double tinggiBaru, double tinggiPrismaBaru) {
+    public double menghitungVolume(double alasBaru, double tinggiBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (alasBaru <= 0 || tinggiBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(alasBaru, tinggiBaru);
         volume = luasAlas * tinggiPrismaBaru;
         return volume;
@@ -86,7 +92,10 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,double sisiMiring2Baru,double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,double sisiMiring2Baru,double tinggiPrismaBaru) throws InputMismatchException {
+        if (alasBaru <= 0 || tinggiBaru <= 0 || sisiMiring1Baru <= 0 || sisiMiring2Baru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(alasBaru, tinggiBaru);
         kelilingAlas = super.menghitungKeliling(alasBaru, sisiMiring1Baru, sisiMiring2Baru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
@@ -107,22 +116,21 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
                 while (true) {
                     try {
                         System.out.print("Masukkan panjang alas segitiga: ");
-                        double alasBaru = inputData.nextDouble();
+                        String inputAlas = inputData.nextLine();
+                        double alasBaru = Double.parseDouble(inputAlas);
                         System.out.print("Masukkan tinggi segitiga: ");
-                        double tinggiSegitigaBaru = inputData.nextDouble();
+                        String inputTinggiSegitiga = inputData.nextLine();
+                        double tinggiSegitigaBaru = Double.parseDouble(inputTinggiSegitiga);
                         System.out.print("Masukkan sisi miring 1 segitiga: ");
-                        double sisiMiring1Baru = inputData.nextDouble();
+                        String inputSisiMiring1 = inputData.nextLine();
+                        double sisiMiring1Baru = Double.parseDouble(inputSisiMiring1);
                         System.out.print("Masukkan sisi miring 2 segitiga: ");
-                        double sisiMiring2Baru = inputData.nextDouble();
+                         String inputSisiMiring2 = inputData.nextLine();
+                        double sisiMiring2Baru = Double.parseDouble(inputSisiMiring2);
                         System.out.print("Masukkan tinggi prisma: ");
-                        double tinggiPrismaBaru = inputData.nextDouble();
-                        inputData.nextLine();
-
-                        if (alasBaru <= 0 || tinggiSegitigaBaru <= 0 || sisiMiring1Baru <= 0 || sisiMiring2Baru <= 0
-                                || tinggiPrismaBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
+                         String inputTinggiPrisma = inputData.nextLine();
+                        double tinggiPrismaBaru = Double.parseDouble(inputTinggiPrisma);
+                        
                         volume = menghitungVolume(alasBaru, tinggiSegitigaBaru, tinggiPrismaBaru);
                         luasPermukaan = menghitungLuasPermukaan(alasBaru, tinggiSegitigaBaru, sisiMiring1Baru,
                                 sisiMiring2Baru, tinggiPrismaBaru);
@@ -130,9 +138,10 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
                         System.out.printf("\nVolume Prisma Segitiga: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n", luasPermukaan);
                         break;
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println("Input harus berupa angka.");
-                        inputData.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

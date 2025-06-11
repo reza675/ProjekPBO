@@ -119,14 +119,18 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements Runnable {
             while (true) {
                 try {
                     System.out.print("Masukkan panjang alas baru: ");
-                    double panjangAlasBaru = inputData.nextDouble();
+                    String inputPanjangAlas = inputData.nextLine();
+                    double panjangAlasBaru = Double.parseDouble(inputPanjangAlas);
                     System.out.print("Masukkan tinggi alas baru: ");
-                    double tinggiAlasBaru = inputData.nextDouble();
+                    String inputTinggiAlas = inputData.nextLine();
+                    double tinggiAlasBaru = Double.parseDouble(inputTinggiAlas);
                     System.out.print("Masukkan sisi miring alas baru: ");
-                    double sisiMiringAlasBaru = inputData.nextDouble();
+                    String inputSisiMiringAlas = inputData.nextLine();
+                    double sisiMiringAlasBaru = Double.parseDouble(inputSisiMiringAlas);
                     System.out.print("Masukkan tinggiPrisma baru: ");
-                    double tinggiPrismaBaru = inputData.nextDouble();
-                    inputData.nextLine();
+                    String inputTinggiPrisma = inputData.nextLine();
+                    double tinggiPrismaBaru = Double.parseDouble(inputTinggiPrisma);
+                   
 
                     volume = menghitungVolume(panjangAlasBaru, tinggiAlasBaru, tinggiPrismaBaru);
                     luasPermukaan = menghitungLuasPermukaan(panjangAlasBaru,tinggiAlasBaru,sisiMiringAlasBaru,tinggiPrismaBaru);
@@ -134,9 +138,11 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements Runnable {
                     System.out.printf("\nVolume Prisma Jajaran Genjang: %.2f\n", volume);
                     System.out.printf("Luas Permukaan Prisma Jajaran Genjang: %.2f\n", luasPermukaan);
                     break;
-                } catch (InputMismatchException e) {
-                    System.out.println(e.getMessage());
-                }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
+                    }
             }
             break;
         } else if (jawaban.equalsIgnoreCase("N")) {

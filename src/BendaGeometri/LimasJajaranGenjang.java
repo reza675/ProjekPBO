@@ -12,8 +12,11 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 	private double luasPermukaan;
 	private double volume;
 
-	public LimasJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiLimas) {
+	public LimasJajaranGenjang(double panjangAlas, double tinggiAlas, double sisiMiringAlas, double tinggiLimas) throws InputMismatchException {
 		super(panjangAlas, tinggiAlas, sisiMiringAlas);
+		if (tinggiLimas <= 0) {
+			throw new InputMismatchException("Tinggi limas harus lebih dari nol.");
+		}
 		this.tinggiLimas = tinggiLimas;
 	}
 
@@ -23,7 +26,10 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 		return volume;
 	}
 
-	public double menghitungVolume(double panjangAlasBaru, double tinggiAlasBaru, double tinggiLimasBaru) {
+	public double menghitungVolume(double panjangAlasBaru, double tinggiAlasBaru, double tinggiLimasBaru) throws InputMismatchException {
+		if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || tinggiLimasBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
 		volume = (1 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
@@ -46,7 +52,10 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 	}
 
 	public double menghitungLuasPermukaan(double panjangAlasBaru, double tinggiAlasBaru, double sisiMiringAlasBaru,
-			double tinggiLimasBaru) {
+			double tinggiLimasBaru) throws InputMismatchException {
+		if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || sisiMiringAlasBaru <= 0 || tinggiLimasBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		double luasAlasBaru = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
         double jarakTengahKeTepiAlas = tinggiAlasBaru / 2.0;
         double jarakTengahKeTepiSisiMiring = panjangAlasBaru / 2.0;
@@ -75,20 +84,18 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 				while (true) {
 					try {
 						System.out.print("Masukkan panjang alas baru: ");
-						double panjangAlasBaru = inputData.nextDouble();
+						String inputPanjangAlas = inputData.nextLine();
+						double panjangAlasBaru = Double.parseDouble(inputPanjangAlas);
 						System.out.print("Masukkan tinggi alas baru: ");
-						double tinggiAlasBaru = inputData.nextDouble();
+						String inputTinggiAlas = inputData.nextLine();
+						double tinggiAlasBaru = Double.parseDouble(inputTinggiAlas);
 						System.out.print("Masukkan sisi miring alas baru: ");
-						double sisiMiringAlasBaru = inputData.nextDouble();
+						String inputSisiMiringAlas = inputData.nextLine();
+						double sisiMiringAlasBaru = Double.parseDouble(inputSisiMiringAlas);
 						System.out.print("Masukkan tinggi limas baru: ");
-						double tinggiLimasBaru = inputData.nextDouble();
-						inputData.nextLine();
-
-						if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 ||
-								sisiMiringAlasBaru <= 0 || tinggiLimasBaru <= 0) {
-							System.out.println("Semua nilai harus lebih dari nol.\n");
-							continue;
-						}
+						String inputTinggiLimas = inputData.nextLine();
+						double tinggiLimasBaru = Double.parseDouble(inputTinggiLimas);
+						
 						volume = menghitungVolume(panjangAlasBaru, tinggiAlasBaru, tinggiLimasBaru);
 						luasPermukaan = menghitungLuasPermukaan(panjangAlasBaru, tinggiAlasBaru, sisiMiringAlasBaru,
 								tinggiLimasBaru);
@@ -96,10 +103,11 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 						System.out.printf("\nVolume Limas Jajaran Genjang: %.2f\n", volume);
 						System.out.printf("Luas Permukaan Limas Jajaran Genjang: %.2f\n", luasPermukaan);
 						break;
-					} catch (InputMismatchException e) {
-						System.out.println("Input harus berupa angka.");
-						inputData.nextLine();
-					}
+					} catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
+                    }
 				}
 				break;
 			} else if (jawaban.equalsIgnoreCase("N")) {

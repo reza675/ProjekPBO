@@ -11,7 +11,6 @@ public class Bola extends Lingkaran implements Runnable {
 	protected double luasAlas;
 	protected double volume;
 	protected double luasPermukaan;
-	// protected double jariJari;
 	private volatile boolean calculated = false;
 
 	@Override
@@ -27,11 +26,12 @@ public class Bola extends Lingkaran implements Runnable {
 
 	public boolean isCalculated() {
 		return calculated;
-        }
+	}
+
 	public Bola(double radius) throws InputMismatchException {
 		super(radius);
 	}
-        
+
 	public double menghitungVolume() {
 		luasAlas = super.menghitungLuas();
 		volume = (4.0 / 3.0) * luasAlas * radius;
@@ -76,23 +76,19 @@ public class Bola extends Lingkaran implements Runnable {
 				while (true) {
 					try {
 						System.out.print("Masukkan jari-jari bola: ");
-						double radiusBaru = inputData.nextDouble();
-						inputData.nextLine();
-
-						if (radiusBaru <= 0) {
-							System.out.println("Radius harus lebih dari nol.\n");
-							continue;
-						}
-
+						String inputRadius = inputData.nextLine();
+						double radiusBaru = Double.parseDouble(inputRadius);
+						
 						volume = menghitungVolume(radiusBaru);
 						luasPermukaan = menghitungLuasPermukaan(radiusBaru);
 
 						System.out.printf("\nVolume Bola: %.2f\n", volume);
 						System.out.printf("Luas Permukaan Bola: %.2f\n", luasPermukaan);
 						break;
-					} catch (InputMismatchException e) {
+					} catch (NumberFormatException e) {
 						System.out.println("Input harus berupa angka.");
-						inputData.nextLine();
+					} catch (InputMismatchException e) {
+						System.out.println(e.getMessage());
 					}
 				}
 				break;
@@ -104,5 +100,4 @@ public class Bola extends Lingkaran implements Runnable {
 		}
 	}
 
-	
 }

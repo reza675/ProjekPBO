@@ -14,15 +14,18 @@ public class Kerucut extends Lingkaran implements Runnable {
 	private volatile boolean calculated = false;
 	private final Object lock = new Object();
 
-	public Kerucut(double radius, double tinggiKerucut) {
+	public Kerucut(double radius, double tinggiKerucut) throws InputMismatchException {
 		super(radius);
+		if (tinggiKerucut <= 0) {
+			throw new InputMismatchException("Tinggi kerucut harus lebih dari nol.");
+		}
 		this.tinggiKerucut = tinggiKerucut;
 		this.sisiMiring = Math.sqrt(radius * radius + tinggiKerucut * tinggiKerucut);
 	}
 
 	@Override
 	public void run() {
-		synchronized(lock) {
+		synchronized (lock) {
 			// Calculate both volume and surface area in the thread
 			volume = menghitungVolume();
 			luasPermukaan = menghitungLuasPermukaan();
@@ -35,25 +38,27 @@ public class Kerucut extends Lingkaran implements Runnable {
 	}
 
 	public void waitForCalculation() throws InterruptedException {
-		synchronized(lock) {
+		synchronized (lock) {
 			while (!calculated) {
-				System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda() + " calculations...");
+				System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda()
+						+ " calculations...");
 				lock.wait();
 			}
-			System.out.println("Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
+			System.out.println(
+					"Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
 			System.out.printf("Volume: %.2f\n", volume);
 			System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
 		}
 	}
 
 	public boolean isCalculated() {
-		synchronized(lock) {
+		synchronized (lock) {
 			return calculated;
 		}
 	}
 
 	public double getVolume() {
-		synchronized(lock) {
+		synchronized (lock) {
 			if (!calculated) {
 				throw new IllegalStateException("Calculations not yet complete");
 			}
@@ -62,7 +67,7 @@ public class Kerucut extends Lingkaran implements Runnable {
 	}
 
 	public double getLuasPermukaan() {
-		synchronized(lock) {
+		synchronized (lock) {
 			if (!calculated) {
 				throw new IllegalStateException("Calculations not yet complete");
 			}
@@ -76,7 +81,10 @@ public class Kerucut extends Lingkaran implements Runnable {
 		return volume;
 	}
 
-	public double menghitungVolume(double radiusBaru, double tinggiKerucutBaru) {
+	public double menghitungVolume(double radiusBaru, double tinggiKerucutBaru) throws InputMismatchException {
+		if (radiusBaru <= 0 || tinggiKerucutBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		volume = (1.0 / 3.0) * luasAlas * tinggiKerucutBaru;
 		return volume;
@@ -90,7 +98,10 @@ public class Kerucut extends Lingkaran implements Runnable {
 		return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double tinggiKerucutBaru, double radiusBaru) {
+	public double menghitungLuasPermukaan(double tinggiKerucutBaru, double radiusBaru) throws InputMismatchException {
+		if (radiusBaru <= 0 || tinggiKerucutBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		sisiMiring = Math.sqrt(tinggiKerucutBaru * tinggiKerucutBaru + radiusBaru * radiusBaru);
 		luasSelimut = (super.menghitungKeliling(radiusBaru) / 2.0) * sisiMiring;
@@ -112,15 +123,11 @@ public class Kerucut extends Lingkaran implements Runnable {
 				while (true) {
 					try {
 						System.out.print("Masukkan jari-jari kerucut: ");
-						double radiusBaru = inputData.nextDouble();
+						String inputRadius = inputData.nextLine();
+						double radiusBaru = Double.parseDouble(inputRadius);
 						System.out.print("Masukkan tinggi kerucut: ");
-						double tinggiKerucutBaru = inputData.nextDouble();
-						inputData.nextLine();
-
-						if (radiusBaru <= 0 || tinggiKerucutBaru <= 0) {
-							System.out.println("Semua nilai harus lebih dari nol.\n");
-							continue;
-						}
+						String inputTinggiKerucut = inputData.nextLine();
+						double tinggiKerucutBaru = Double.parseDouble(inputTinggiKerucut);
 
 						volume = menghitungVolume(radiusBaru, tinggiKerucutBaru);
 						luasPermukaan = menghitungLuasPermukaan(tinggiKerucutBaru, radiusBaru);
@@ -128,9 +135,10 @@ public class Kerucut extends Lingkaran implements Runnable {
 						System.out.printf("\nVolume Kerucut: %.2f\n", volume);
 						System.out.printf("Luas Permukaan Kerucut: %.2f\n", luasPermukaan);
 						break;
-					} catch (InputMismatchException e) {
+					} catch (NumberFormatException e) {
 						System.out.println("Input harus berupa angka.");
-						inputData.nextLine();
+					} catch (InputMismatchException e) {
+						System.out.println(e.getMessage());
 					}
 				}
 				break;

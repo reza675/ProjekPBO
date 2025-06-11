@@ -14,15 +14,19 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     private volatile boolean calculated = false;
     private final Object lock = new Object();
 
-    public PrismaTrapesium(double alasAtas, double alasBawah, double tinggiTrapesium, double sisiMiringKiri, double sisiMiringKanan,
-            double tinggiPrisma) {
+    public PrismaTrapesium(double alasAtas, double alasBawah, double tinggiTrapesium, double sisiMiringKiri,
+            double sisiMiringKanan,
+            double tinggiPrisma) throws InputMismatchException {
         super(alasAtas, alasBawah, tinggiTrapesium, sisiMiringKiri, sisiMiringKanan);
+        if (tinggiPrisma <= 0) {
+            throw new InputMismatchException("Tinggi prisma harus lebih dari nol.");
+        }
         this.tinggiPrisma = tinggiPrisma;
     }
 
     @Override
     public void run() {
-        synchronized(lock) {
+        synchronized (lock) {
             // Calculate both volume and surface area in the thread
             volume = menghitungVolume();
             luasPermukaan = menghitungLuasPermukaan();
@@ -35,25 +39,27 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     }
 
     public void waitForCalculation() throws InterruptedException {
-        synchronized(lock) {
+        synchronized (lock) {
             while (!calculated) {
-                System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda() + " calculations...");
+                System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda()
+                        + " calculations...");
                 lock.wait();
             }
-            System.out.println("Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
+            System.out.println(
+                    "Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
             System.out.printf("Volume: %.2f\n", volume);
             System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
         }
     }
 
     public boolean isCalculated() {
-        synchronized(lock) {
+        synchronized (lock) {
             return calculated;
         }
     }
 
     public double getVolume() {
-        synchronized(lock) {
+        synchronized (lock) {
             if (!calculated) {
                 throw new IllegalStateException("Calculations not yet complete");
             }
@@ -62,7 +68,7 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     }
 
     public double getLuasPermukaan() {
-        synchronized(lock) {
+        synchronized (lock) {
             if (!calculated) {
                 throw new IllegalStateException("Calculations not yet complete");
             }
@@ -76,7 +82,11 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
         return volume;
     }
 
-    public double menghitungVolume(double alasAtasBaru, double alasBawahBaru, double tinggiBaru, double tinggiPrismaBaru) {
+    public double menghitungVolume(double alasAtasBaru, double alasBawahBaru, double tinggiBaru,
+            double tinggiPrismaBaru) throws InputMismatchException {
+        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
         volume = luasAlas * tinggiPrismaBaru;
         return volume;
@@ -89,8 +99,13 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double alasAtasBaru, double alasBawahBaru, double tinggiBaru, double sisiMiringKiriBaru,
-            double sisiMiringKananBaru, double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double alasAtasBaru, double alasBawahBaru, double tinggiBaru,
+            double sisiMiringKiriBaru,
+            double sisiMiringKananBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 || sisiMiringKiriBaru <= 0
+                || sisiMiringKananBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
         kelilingAlas = super.menghitungKeliling(alasAtasBaru, alasBawahBaru, sisiMiringKananBaru, sisiMiringKiriBaru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
@@ -106,39 +121,41 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print(
-                "\nApakah Anda ingin mengubah nilai alas atas, alas bawah, tinggi, sisi miring kiri, sisi miring kanan, dan tinggi prisma pada Prisma Trapesium? (Y/N): ");
+                    "\nApakah Anda ingin mengubah nilai alas atas, alas bawah, tinggi, sisi miring kiri, sisi miring kanan, dan tinggi prisma pada Prisma Trapesium? (Y/N): ");
             String jawaban = inputData.nextLine();
             if (jawaban.equalsIgnoreCase("Y")) {
                 while (true) {
                     try {
                         System.out.print("Masukkan alas atas baru: ");
-                        double alasAtasBaru = inputData.nextDouble();
+                        String inputAlasAtas = inputData.nextLine();
+                        double alasAtasBaru = Double.parseDouble(inputAlasAtas);
                         System.out.print("Masukkan alas bawah baru: ");
-                        double alasBawahBaru = inputData.nextDouble();
+                        String inputAlasBawah = inputData.nextLine();
+                        double alasBawahBaru = Double.parseDouble(inputAlasBawah);
                         System.out.print("Masukkan tinggi trapesium (alas) baru: ");
-                        double tinggiBaru = inputData.nextDouble();
+                        String inputTinggi = inputData.nextLine();
+                        double tinggiBaru = Double.parseDouble(inputTinggi);
                         System.out.print("Masukkan sisi miring kiri baru: ");
-                        double sisiKiriBaru = inputData.nextDouble();
+                        String inputSisiKiri = inputData.nextLine();
+                        double sisiKiriBaru = Double.parseDouble(inputSisiKiri);
                         System.out.print("Masukkan sisi miring kanan baru: ");
-                        double sisiKananBaru = inputData.nextDouble();
+                        String inputSisiKanan = inputData.nextLine();
+                        double sisiKananBaru = Double.parseDouble(inputSisiKanan);
                         System.out.print("Masukkan tinggi prisma baru: ");
-                        double tinggiPrismaBaru = inputData.nextDouble();
-                        inputData.nextLine();
+                        String inputTinggiPrisma = inputData.nextLine();
+                        double tinggiPrismaBaru = Double.parseDouble(inputTinggiPrisma);
 
-                        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 ||
-                            sisiKiriBaru <= 0 || sisiKananBaru <= 0 || tinggiPrismaBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
                         volume = menghitungVolume(alasAtasBaru, alasBawahBaru, tinggiBaru, tinggiPrismaBaru);
-                        luasPermukaan = menghitungLuasPermukaan(alasAtasBaru, alasBawahBaru, tinggiBaru, sisiKiriBaru, sisiKananBaru, tinggiPrismaBaru);
+                        luasPermukaan = menghitungLuasPermukaan(alasAtasBaru, alasBawahBaru, tinggiBaru, sisiKiriBaru,
+                                sisiKananBaru, tinggiPrismaBaru);
 
                         System.out.printf("\nVolume Prisma Trapesium: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Prisma Trapesium: %.2f\n", luasPermukaan);
                         break;
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println("Input harus berupa angka.");
-                        inputData.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

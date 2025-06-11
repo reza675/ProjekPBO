@@ -25,7 +25,6 @@ public class PrismaBelahKetupat extends BelahKetupat implements Runnable {
     @Override
     public void run() {
         synchronized(lock) {
-            // Calculate both volume and surface area in the thread
             volume = menghitungVolume();
             luasPermukaan = menghitungLuasPermukaan();
             calculated = true;
@@ -118,20 +117,26 @@ public class PrismaBelahKetupat extends BelahKetupat implements Runnable {
                 while (true) {
                     try {
                         System.out.print("Masukkan diagonal1 baru: ");
-                        double diagonal1Baru = inputData.nextDouble();
+                        String inputDiagonal1 = inputData.nextLine();
+                        double diagonal1Baru = Double.parseDouble(inputDiagonal1);
                         System.out.print("Masukkan diagonal2 baru: ");
-                        double diagonal2Baru = inputData.nextDouble();
+                        String inputDiagonal2 = inputData.nextLine();
+                        double diagonal2Baru = Double.parseDouble(inputDiagonal2);
                         System.out.print("Masukkan sisi baru: ");
-                        double sisiBaru = inputData.nextDouble();
+                        String inputSisiBaru = inputData.nextLine();
+                        double sisiBaru = Double.parseDouble(inputSisiBaru);
                         System.out.print("Masukkan tinggi prisma baru: ");
-                        double tinggiPrismaBaru = inputData.nextDouble();
-                        inputData.nextLine();
+                        String inputTinggiPrisma = inputData.nextLine();
+                        double tinggiPrismaBaru = Double.parseDouble(inputTinggiPrisma);;
+
                         volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiPrismaBaru);
                         luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, sisiBaru, tinggiPrismaBaru);
 
                         System.out.printf("\nVolume Prisma Belah Ketupat: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Prisma Belah Ketupat: %.2f\n", luasPermukaan);
                         break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
                     } catch (InputMismatchException e) {
                         System.out.println(e.getMessage());
                     }

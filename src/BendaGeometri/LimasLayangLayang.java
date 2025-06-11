@@ -9,8 +9,11 @@ public class LimasLayangLayang extends LayangLayang implements Runnable {
 	private double luasPermukaan;
 	private double volume;
 
-	public LimasLayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang, double tinggiLimas) {
+	public LimasLayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang, double tinggiLimas) throws InputMismatchException {
 		super(diagonal1, diagonal2, sisiPendek, sisiPanjang);
+		if (tinggiLimas <= 0) {
+			throw new InputMismatchException("Tinggi limas harus lebih dari nol.");
+		}
 		this.tinggiLimas = tinggiLimas;
 	}
 
@@ -21,9 +24,11 @@ public class LimasLayangLayang extends LayangLayang implements Runnable {
 	}
 
 
-	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) {
+	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) throws InputMismatchException {
+		if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiLimasBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
-
 		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
 	}
@@ -40,7 +45,10 @@ public class LimasLayangLayang extends LayangLayang implements Runnable {
 		return luasPermukaan;
 	}
 
-	public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru, double tinggiLimasBaru) {
+	public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru, double tinggiLimasBaru) throws InputMismatchException {
+		if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiPendekBaru <= 0 || sisiPanjangBaru <= 0 || tinggiLimasBaru <= 0) {
+			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+		}
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
 		double proyeksiKeSisiPendek = diagonal2Baru / 2.0;
 		double proyeksiKeSisiPanjang = diagonal1Baru / 2.0;
@@ -67,31 +75,30 @@ public class LimasLayangLayang extends LayangLayang implements Runnable {
                 while (true) {
                     try {
                         System.out.print("Masukkan diagonal1 layang-layang: ");
-                        double diagonal1Baru = inputData.nextDouble();
+						String inputDiagonal1 = inputData.nextLine();
+						double diagonal1Baru = Double.parseDouble(inputDiagonal1);
                         System.out.print("Masukkan diagonal2 layang-layang: ");
-                        double diagonal2Baru = inputData.nextDouble();
+						String inputDiagonal2 = inputData.nextLine();
+                        double diagonal2Baru = Double.parseDouble(inputDiagonal2);
                         System.out.print("Masukkan sisi pendek layang-layang: ");
-                        double sisiPendekBaru = inputData.nextDouble();
+						String inputSisiPendek = inputData.nextLine();
+                        double sisiPendekBaru = Double.parseDouble(inputSisiPendek);
                         System.out.print("Masukkan sisi panjang layang-layang: ");
-                        double sisiPanjangBaru = inputData.nextDouble();
+						String inputSisiPanjang = inputData.nextLine();
+                        double sisiPanjangBaru = Double.parseDouble(inputSisiPanjang);
                         System.out.print("Masukkan tinggi limas limas: ");
-                        double tinggiLimasBaru = inputData.nextDouble();
-                        inputData.nextLine();
-
-                        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiPendekBaru <= 0 || sisiPanjangBaru <= 0 || tinggiLimasBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
+						String inputTinggiLimas = inputData.nextLine();
+                        double tinggiLimasBaru = Double.parseDouble(inputTinggiLimas);
 
                         volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiLimasBaru);
-
                         luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru,tinggiLimasBaru);
                         System.out.printf("\nVolume Limas Layang-Layang: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Limas Layang-Layang: %.2f\n", luasPermukaan);
                         break;
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println("Input harus berupa angka.");
-                        inputData.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

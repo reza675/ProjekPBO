@@ -3,16 +3,34 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrismaPersegi extends Persegi {
+public class PrismaPersegi extends Persegi implements Runnable{
     private double tinggiPrisma;
     private double luasAlas;
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
+    private volatile boolean calculated = false;
 
-    public PrismaPersegi(double sisi, double tinggiPrisma) {
+    public PrismaPersegi(double sisi, double tinggiPrisma) throws InputMismatchException {
         super(sisi);
+        if (tinggiPrisma <= 0) {
+            throw new InputMismatchException("Tinggi prisma harus lebih dari nol.");
+        }
         this.tinggiPrisma = tinggiPrisma;
+    }
+
+    @Override
+    public void run() {
+        volume = menghitungVolume();
+        luasPermukaan = menghitungLuasPermukaan();
+        calculated = true;
+        System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+        System.out.printf("Volume: %.2f\n", volume);
+        System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+    }
+
+    public boolean isCalculated() {
+        return calculated;
     }
 
     public double menghitungVolume() {
@@ -31,7 +49,10 @@ public class PrismaPersegi extends Persegi {
 
 
 
-    public double menghitungVolume(double sisiBaru, double tinggiPrismaBaru) {
+    public double menghitungVolume(double sisiBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(sisiBaru);
         volume = luasAlas * tinggiPrismaBaru;
         return volume;
@@ -44,7 +65,10 @@ public class PrismaPersegi extends Persegi {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double sisiBaru, double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double sisiBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(sisiBaru);
         kelilingAlas = super.menghitungKeliling(tinggiPrismaBaru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
@@ -65,22 +89,21 @@ public class PrismaPersegi extends Persegi {
                 while (true) {
                     try {
                         System.out.print("Masukkan sisi persegi: ");
-                        double sisiBaru = inputData.nextDouble();
+                        String inputSisi = inputData.nextLine();
+                        double sisiBaru = Double.parseDouble(inputSisi);
                         System.out.print("Masukkan tinggi prisma: ");
-                        double tinggiPrismaBaru = inputData.nextDouble();
-                        inputData.nextLine();
-                        if (sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
-                            System.out.println("Sisi dan tinggi harus lebih dari nol.\n");
-                            continue;
-                        }
+                        String inputTinggiPrisma = inputData.nextLine();
+                        double tinggiPrismaBaru = Double.parseDouble(inputTinggiPrisma);
+                        
                         volume = menghitungVolume(sisiBaru, tinggiPrismaBaru);
                         luasPermukaan = menghitungLuasPermukaan(sisiBaru, tinggiPrismaBaru);
                         System.out.printf("\nVolume Prisma Persegi: %.2f\n", volume);
                         System.out.printf("Luas Permukaan Prisma Persegi: %.2f\n", luasPermukaan);
                         break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
                     } catch (InputMismatchException e) {
-                        System.out.println("Input sisi dan tinggi harus berupa angka.");
-                        inputData.nextLine();
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;
