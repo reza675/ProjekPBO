@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Kerucut extends Lingkaran {
+public class Kerucut extends Benda2D implements Runnable {
 
 	protected double tinggiKerucut;
 	protected double luasAlas;
@@ -11,10 +11,63 @@ public class Kerucut extends Lingkaran {
 	protected double luasSelimut;
 	protected double volume;
 	protected double luasPermukaan;
+	private volatile boolean calculated = false;
+	private final Object lock = new Object();
 
 	public Kerucut(double radius, double tinggiKerucut) {
 		super(radius);
 		this.tinggiKerucut = tinggiKerucut;
+		this.sisiMiring = Math.sqrt(radius * radius + tinggiKerucut * tinggiKerucut);
+	}
+
+	@Override
+	public void run() {
+		synchronized(lock) {
+			// Calculate both volume and surface area in the thread
+			volume = menghitungVolume();
+			luasPermukaan = menghitungLuasPermukaan();
+			calculated = true;
+			System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+			System.out.printf("Volume: %.2f\n", volume);
+			System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+			lock.notifyAll(); // Notify waiting threads that calculation is complete
+		}
+	}
+
+	public void waitForCalculation() throws InterruptedException {
+		synchronized(lock) {
+			while (!calculated) {
+				System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda() + " calculations...");
+				lock.wait();
+			}
+			System.out.println("Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
+			System.out.printf("Volume: %.2f\n", volume);
+			System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+		}
+	}
+
+	public boolean isCalculated() {
+		synchronized(lock) {
+			return calculated;
+		}
+	}
+
+	public double getVolume() {
+		synchronized(lock) {
+			if (!calculated) {
+				throw new IllegalStateException("Calculations not yet complete");
+			}
+			return volume;
+		}
+	}
+
+	public double getLuasPermukaan() {
+		synchronized(lock) {
+			if (!calculated) {
+				throw new IllegalStateException("Calculations not yet complete");
+			}
+			return luasPermukaan;
+		}
 	}
 
 	public double menghitungVolume() {

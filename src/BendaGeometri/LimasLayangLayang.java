@@ -1,6 +1,6 @@
 package BendaGeometri;
 
-public class LimasLayangLayang extends LayangLayang {
+public class LimasLayangLayang extends LayangLayang implements Runnable {
 	private double tinggi;
 	private double luasAlas;
 	private double luasPermukaan;
@@ -73,5 +73,13 @@ public class LimasLayangLayang extends LayangLayang {
 	@Override
 	public String getNamaBenda() {
 		return "Limas Layang-Layang";
+	}
+
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
 	}
 }

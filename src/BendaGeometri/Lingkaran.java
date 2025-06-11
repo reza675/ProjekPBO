@@ -3,14 +3,30 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Lingkaran extends Benda2D {
+public class Lingkaran extends Benda2D implements Runnable {
 
 	protected double radius;
 	protected final double PI = 3.14;
+	private volatile boolean calculated = false;
 
 
 	public Lingkaran(double radius) {
 		this.radius = radius;
+	}
+
+	@Override
+	public void run() {
+		// Calculate both area and perimeter in the thread
+		luas = menghitungLuas();
+		keliling = menghitungKeliling();
+		calculated = true;
+		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+		System.out.printf("Luas: %.2f\n", luas);
+		System.out.printf("Keliling: %.2f\n", keliling);
+	}
+
+	public boolean isCalculated() {
+		return calculated;
 	}
 
 	@Override

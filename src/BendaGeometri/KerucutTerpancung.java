@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class KerucutTerpancung extends Kerucut {
+public class KerucutTerpancung extends Kerucut implements Runnable {
 
     private double radiusAtas;
     private double tinggiTerpancung;
@@ -110,6 +110,20 @@ public class KerucutTerpancung extends Kerucut {
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.\n");
             }
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            volume = menghitungVolume();
+            luasPermukaan = menghitungLuasPermukaan();
+            System.out.println("\n=== Hasil Perhitungan " + getNamaBenda() + " ===");
+            System.out.printf("Volume: %.2f\n", volume);
+            System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+            prosesInputDataUlang();
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan dalam perhitungan: " + e.getMessage());
         }
     }
 }

@@ -1,6 +1,6 @@
 package BendaGeometri;
 
-public class LimasBelahKetupat extends BelahKetupat {
+public class LimasBelahKetupat extends BelahKetupat implements Runnable {
 
 	private double tinggi;
 	private double luasAlas;
@@ -68,6 +68,14 @@ public class LimasBelahKetupat extends BelahKetupat {
 	@Override
 	public String getNamaBenda() {
 		return "Limas Jajaran Genjang";
+	}
+
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
 	}
 
 }

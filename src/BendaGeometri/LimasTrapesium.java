@@ -1,6 +1,6 @@
 package BendaGeometri;
 
-public class LimasTrapesium extends Trapesium {
+public class LimasTrapesium extends Trapesium implements Runnable {
 	private double tinggiLimas;
 	private double luasSegitigaAtas;
 	private double luasSegitigaBawah;
@@ -84,5 +84,13 @@ public class LimasTrapesium extends Trapesium {
 	@Override
 	public String getNamaBenda() {
 		return "Limas Trapesium";
+	}
+
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
 	}
 }

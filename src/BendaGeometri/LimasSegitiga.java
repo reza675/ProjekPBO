@@ -1,6 +1,9 @@
 package BendaGeometri;
 
-public class LimasSegitiga extends Segitiga {
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class LimasSegitiga extends Segitiga implements Runnable {
 
 	private double tinggiLimas;
 	private double luasAlas;
@@ -9,6 +12,7 @@ public class LimasSegitiga extends Segitiga {
 	private double tinggiSisiMiring;
 	private double volume;
 	private double luasPermukaan;
+	private volatile boolean calculated = false;
 
 
 	public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2,
@@ -68,6 +72,22 @@ public class LimasSegitiga extends Segitiga {
 		luasPermukaan = luasAlas + 0.5 * kelilingAlas * tinggiSisiMiring;
 		return luasPermukaan;
 	}
+
+	@Override
+	public void run() {
+		// Calculate both volume and surface area in the thread
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		calculated = true;
+		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+		System.out.printf("Volume: %.2f\n", volume);
+		System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+	}
+
+	public boolean isCalculated() {
+		return calculated;
+	}
+
 	@Override
 	public String getNamaBenda() {
 		return "Limas Segitiga";

@@ -1,6 +1,6 @@
 package BendaGeometri;
 
-public class LimasPersegiPanjang extends PersegiPanjang {
+public class LimasPersegiPanjang extends PersegiPanjang implements Runnable {
 
 	private double tinggi;
 	private double luasAlas;
@@ -72,5 +72,13 @@ public class LimasPersegiPanjang extends PersegiPanjang {
 	@Override
 	public String getNamaBenda() {
 		return "Limas Persegi Panjang";
+	}
+
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
 	}
 }
