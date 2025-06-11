@@ -5,6 +5,7 @@
 package View;
 
 import BendaGeometri.*;
+import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +34,8 @@ public class PolymorphismGUI extends javax.swing.JFrame {
         new Trapesium(5, 10, 8, 12, 12),
         new BelahKetupat(8, 6, 10),
         new LayangLayang(5, 8, 10, 12),
-        new JajaranGenjang(7, 5, 8)
+        new JajaranGenjang(7, 5, 8),
+        // new PrismaPersegi(, 5),
     };
     DefaultTableModel model = (DefaultTableModel) polymorphismTable.getModel();
     for (int i = 0; i < bendaArray.length; i++) {

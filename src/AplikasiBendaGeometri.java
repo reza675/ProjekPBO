@@ -1,22 +1,19 @@
 import BendaGeometri.*;
 import Threading.ThreadExecutor;
-import View.SplashScreen;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import javax.swing.SwingUtilities;
 
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
         
         // testing valent
-        SplashScreen ui = new SplashScreen();
-        ui.setLocationRelativeTo(null);
-        ui.setVisible(true);
+        // SplashScreen ui = new SplashScreen();
+        // ui.setLocationRelativeTo(null);
+        // ui.setVisible(true);
         // testing valent
-        
+
         Scanner inputMenu = new Scanner(System.in);
          List<BendaGeometri> daftarBendaGeometri = new ArrayList<>();
         int pilihanMenu;
@@ -73,11 +70,15 @@ public class AplikasiBendaGeometri {
                         segitiga.prosesInputDataUlang();
                         break;
                     case 2:
+                        try {
                         Persegi persegi = new Persegi(10);
                         System.out.println("\n" + persegi.getNamaBenda());
                         System.out.printf("Luas Persegi: %.2f\n", persegi.menghitungLuas());
                         System.out.printf("Keliling Persegi: %.2f\n", persegi.menghitungKeliling());
                         persegi.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 3:
                         PersegiPanjang persegiPanjang = new PersegiPanjang(10, 15);
@@ -320,6 +321,12 @@ public class AplikasiBendaGeometri {
                         Benda2D bd8 = new BelahKetupat(8, 6, 10);
                         Benda2D bd9 = new LayangLayang(5, 8, 10, 12);
                         Benda2D bd10 = new JajaranGenjang(7, 5, 8);
+                        
+                        Persegi p = (Persegi) bd1;
+                        double sisi = p.sisi;
+                        PrismaPersegi bd11 = new PrismaPersegi(sisi, 5);
+                        System.out.println("Volume " + bd11.getNamaBenda() + " (bd11): " + bd11.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd11.menghitungLuasPermukaan());
 
                         System.out.println("Luas " + bd1.getNamaBenda() + " (bd1): " + bd1.menghitungLuas()
                                 + " dan Keliling : " + bd1.menghitungKeliling());

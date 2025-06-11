@@ -59,10 +59,6 @@ public class Lingkaran extends Benda2D {
                         System.out.print("Masukkan radius lingkaran baru: ");
                         double radiusBaru = inputData.nextDouble();
                         inputData.nextLine();
-                        if (radiusBaru <= 0) {
-                            System.out.println("Radius harus lebih dari nol.\n");
-                            continue;
-                        }
                         luas = menghitungLuas(radiusBaru);
                         keliling = menghitungKeliling(radiusBaru);
                         System.out.printf("\nLuas Lingkaran: %.2f\n", luas);

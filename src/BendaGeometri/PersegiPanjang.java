@@ -3,11 +3,14 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PersegiPanjang extends Benda2D {
+public class PersegiPanjang extends Benda2D{
 	protected double panjang;
 	protected double lebar;
 
-	public PersegiPanjang(double panjang, double lebar) {
+	public PersegiPanjang(double panjang, double lebar) throws InputMismatchException {
+        if (panjang <= 0 || lebar <= 0) {
+            throw new InputMismatchException("panjang dan lebar harus lebih dari nol.");
+        }
 		this.panjang = panjang;
 		this.lebar = lebar;
 	}
@@ -18,7 +21,10 @@ public class PersegiPanjang extends Benda2D {
 		return luas;
 	}
 
-	public double menghitungLuas(double panjangBaru, double lebarBaru) {
+	public double menghitungLuas(double panjangBaru, double lebarBaru) throws InputMismatchException {
+        if (panjangBaru <= 0 || lebarBaru <= 0) {
+            throw new InputMismatchException("panjang dan lebar harus lebih dari nol.");
+        }
 		luas = panjangBaru * lebarBaru;
 		return luas;
 	}
@@ -29,7 +35,10 @@ public class PersegiPanjang extends Benda2D {
 		return keliling;
 	}
 
-	public double menghitungKeliling(double panjangBaru, double lebarBaru) {
+	public double menghitungKeliling(double panjangBaru, double lebarBaru) throws InputMismatchException {
+        if (panjangBaru <= 0 || lebarBaru <= 0) {
+            throw new InputMismatchException("panjang dan lebar harus lebih dari nol.");
+        }
 		keliling = 2 * (panjangBaru + lebarBaru);
 		return keliling;
 	}
@@ -52,10 +61,6 @@ public class PersegiPanjang extends Benda2D {
 						System.out.print("Masukkan lebar persegi panjang baru: ");
                         double lebarBaru = inputData.nextDouble();
                         inputData.nextLine();
-                        if (panjangBaru <= 0 || lebarBaru <= 0) {
-                            System.out.println("panjang dan lebar harus lebih dari nol.\n");
-                            continue;
-                        }
                         luas = menghitungLuas(panjangBaru, lebarBaru);
                         keliling = menghitungKeliling(panjangBaru, lebarBaru);
                         System.out.printf("\nLuas Persegi Panjang: %.2f\n", luas);
