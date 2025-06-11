@@ -238,6 +238,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         jPanel1.add(jPanel4);
         jPanel4.setBounds(10, 142, 980, 448);
 
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
