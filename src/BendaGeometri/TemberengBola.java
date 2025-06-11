@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TemberengBola extends Bola {
+public class TemberengBola extends Bola implements Runnable {
 
 	private double tinggiTemberengBola;
 	private double volume;
@@ -79,5 +79,25 @@ public class TemberengBola extends Bola {
 			}
 		}
 
+	}
+
+	@Override
+	public void run() {
+		Scanner inputData = new Scanner(System.in);
+		try {
+			System.out.println("\nMenghitung Tembereng Bola...");
+			volume = menghitungVolume();
+			luasPermukaan = menghitungLuasPermukaan();
+			
+			System.out.printf("\nVolume Tembereng Bola: %.2f\n", volume);
+			System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", luasPermukaan);
+			
+			prosesInputDataUlang();
+			
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		} finally {
+			inputData.close();
+		}
 	}
 }
