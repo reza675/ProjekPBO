@@ -124,7 +124,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void threeDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeDButtonActionPerformed
         // TODO add your handling code here:
         dispose();
-        Benda3DGUIOLD ui = new Benda3DGUIOLD();
+        Benda3DGUI ui = new Benda3DGUI();
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
     }//GEN-LAST:event_threeDButtonActionPerformed
