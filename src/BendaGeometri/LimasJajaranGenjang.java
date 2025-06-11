@@ -3,7 +3,10 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LimasJajaranGenjang extends JajaranGenjang {
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 	private double tinggiLimas;
 	private double luasAlas;
 	private double luasPermukaan;
@@ -105,5 +108,13 @@ public class LimasJajaranGenjang extends JajaranGenjang {
 				System.out.println("Jawaban hanya boleh Y atau N.");
 			}
 		}
+	}
+
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
 	}
 }

@@ -3,8 +3,9 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Persegi extends Benda2D {
-	public double sisi;
+public class Persegi extends Benda2D implements Runnable {
+	protected double sisi;
+	private volatile boolean calculated = false;
 
 	public Persegi(double sisi) throws InputMismatchException  {
         if (sisi <= 0) {
@@ -12,6 +13,22 @@ public class Persegi extends Benda2D {
         }
 		this.sisi = sisi;
 	}
+
+	@Override
+	public void run() {
+		// Calculate both area and perimeter in the thread
+		luas = menghitungLuas();
+		keliling = menghitungKeliling();
+		calculated = true;
+		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+		System.out.printf("Luas: %.2f\n", luas);
+		System.out.printf("Keliling: %.2f\n", keliling);
+	}
+
+	public boolean isCalculated() {
+		return calculated;
+	}
+
 	@Override
 	public double menghitungLuas() {
 		luas = (sisi * sisi);

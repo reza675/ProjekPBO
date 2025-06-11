@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class JajaranGenjang extends Benda2D {
+public class JajaranGenjang extends Benda2D implements Runnable {
 
 	protected double alas;
 	protected double tinggi;
@@ -87,5 +87,13 @@ public class JajaranGenjang extends Benda2D {
                 System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
+	}
+
+	@Override
+	public void run() {
+		System.out.println("\n=== Perhitungan Jajaran Genjang ===");
+		System.out.printf("Luas awal Jajaran Genjang: %.2f\n", menghitungLuas());
+		System.out.printf("Keliling awal Jajaran Genjang: %.2f\n", menghitungKeliling());
+		prosesInputDataUlang();
 	}
 }

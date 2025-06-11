@@ -3,42 +3,41 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LimasSegitiga extends Segitiga {
+public class LimasSegitiga extends Segitiga implements Runnable {
 
-	private double tinggiLimas;
-	private double luasAlas;
-	private double volume;
-	private double luasPermukaan;
+    private double tinggiLimas;
+    private double luasAlas;
+    private double volume;
+    private double luasPermukaan;
+    private volatile boolean calculated = false;
 
+    public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiLimas) {
+        super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
+        this.tinggiLimas = tinggiLimas;
+    }
 
-	public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2,double tinggiLimas) {
-		super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
-		this.tinggiLimas = tinggiLimas;
-	}
+    public double menghitungVolume() {
+        luasAlas = super.menghitungLuas();
+        volume = (1.0 / 3.0) * luasAlas * tinggiLimas;
+        return volume;
+    }
 
-	public double menghitungVolume() {
-		luasAlas = super.menghitungLuas();
-		volume = (1.0 / 3.0) * luasAlas * tinggiLimas;
-		return volume;
-	}
-
-	public double menghitungVolume(double alasBaru, double tinggiSegitigaBaru, double tinggiLimasBaru) {
-		luasAlas = menghitungLuas(alasBaru, tinggiSegitigaBaru);
-		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
-		return volume;
-	}
+    public double menghitungVolume(double alasBaru, double tinggiSegitigaBaru, double tinggiLimasBaru) {
+        luasAlas = menghitungLuas(alasBaru, tinggiSegitigaBaru);
+        volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
+        return volume;
+    }
 
     private double menghitungSlantHeight(double sisi) {
         luasAlas = super.menghitungLuas();
         double tinggiKeSisi = (2.0 * luasAlas) / sisi;
         double d = (2.0 / 3.0) * tinggiKeSisi;
         return Math.sqrt(tinggiLimas * tinggiLimas + d * d);
-        
+
     }
 
-
-	public double menghitungLuasPermukaan() {
-		double luasAlas = super.menghitungLuas();
+    public double menghitungLuasPermukaan() {
+        double luasAlas = super.menghitungLuas();
 
         double slantA = menghitungSlantHeight(super.alas);
         double slantB = menghitungSlantHeight(super.sisiMiring1);
@@ -50,30 +49,42 @@ public class LimasSegitiga extends Segitiga {
 
         luasPermukaan = luasAlas + luasTegakA + luasTegakB + luasTegakC;
         return luasPermukaan;
-	}
+    }
 
-	public double menghitungLuasPermukaan(double alasBaru, double tinggiSegitigaBaru, double sisiMiring1Baru, double sisiMiring2Baru,
-			double tinggiLimasBaru) {
-		double luasAlas = super.menghitungLuas(alasBaru, tinggiSegitigaBaru);
 
-        double slantA = menghitungSlantHeight(alasBaru);
-        double slantB = menghitungSlantHeight(sisiMiring1Baru);
-        double slantC = menghitungSlantHeight(sisiMiring2Baru);
-
-        double luasTegakA = 0.5 * alasBaru * slantA;
-        double luasTegakB = 0.5 * sisiMiring1Baru * slantB;
-        double luasTegakC = 0.5 * sisiMiring2Baru * slantC;
-
-        luasPermukaan = luasAlas + luasTegakA + luasTegakB + luasTegakC;
+    public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru, double tinggiLimasBaru) {
+        luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
+        double proyeksiKeSisiPendek = diagonal2Baru / 2.0;
+        double proyeksiKeSisiPanjang = diagonal1Baru / 2.0;
+        double tinggiSegitigaPendek = Math.sqrt(Math.pow(tinggiLimasBaru, 2) + Math.pow(proyeksiKeSisiPendek, 2));
+        double tinggiSegitigaPanjang = Math.sqrt(Math.pow(tinggiLimasBaru, 2) + Math.pow(proyeksiKeSisiPanjang, 2));
+        double luasMukaPendek = sisiPendekBaru * tinggiSegitigaPendek;
+        double luasMukaPanjang = sisiPanjangBaru * tinggiSegitigaPanjang;
+        luasPermukaan = luasAlas + luasMukaPendek + luasMukaPanjang;
         return luasPermukaan;
-	}
+    }
 
-	@Override
-	public String getNamaBenda() {
-		return "Limas Segitiga";
-	}
+    @Override
+    public void run() {
+        // Calculate both volume and surface area in the thread
+        volume = menghitungVolume();
+        luasPermukaan = menghitungLuasPermukaan();
+        calculated = true;
+        System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+        System.out.printf("Volume: %.2f\n", volume);
+        System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+    }
 
-	public void prosesInputDataUlang() {
+    public boolean isCalculated() {
+        return calculated;
+    }
+
+    @Override
+    public String getNamaBenda() {
+        return "Limas Segitiga";
+    }
+
+    public void prosesInputDataUlang() {
         Scanner inputData = new Scanner(System.in);
         while (true) {
             System.out.print("\nApakah Anda ingin mengubah nilai alas, tinggi segitiga, sisi miring 1, sisi miring 2, dan tinggi limas Limas Segitiga? (Y/N): ");

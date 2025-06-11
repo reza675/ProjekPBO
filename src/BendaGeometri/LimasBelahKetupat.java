@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LimasBelahKetupat extends BelahKetupat {
+public class LimasBelahKetupat extends BelahKetupat implements Runnable {
 
 	private double tinggiLimas;
 	private double luasAlas;
@@ -94,5 +94,13 @@ public class LimasBelahKetupat extends BelahKetupat {
             }
         }
     }
+
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
+	}
 
 }

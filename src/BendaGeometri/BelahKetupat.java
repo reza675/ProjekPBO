@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BelahKetupat extends Benda2D {
+public class BelahKetupat extends Benda2D implements Runnable {
 	protected double diagonal1;
 	protected double diagonal2;
 	protected double sisi;
@@ -73,5 +73,35 @@ public class BelahKetupat extends Benda2D {
                 System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
+	}
+
+	@Override
+	public void run() {
+		Scanner scanner = new Scanner(System.in);
+		try {
+			System.out.println("\n=== Input Data Belah Ketupat ===");
+			System.out.print("Masukkan diagonal1: ");
+			diagonal1 = scanner.nextDouble();
+			System.out.print("Masukkan diagonal2: ");
+			diagonal2 = scanner.nextDouble();
+			System.out.print("Masukkan sisi: ");
+			sisi = scanner.nextDouble();
+			
+			if (diagonal1 <= 0 || diagonal2 <= 0 || sisi <= 0) {
+				System.out.println("Diagonal dan sisi harus lebih dari nol.");
+				return;
+			}
+			
+			luas = menghitungLuas();
+			keliling = menghitungKeliling();
+			
+			System.out.printf("\nLuas Belah Ketupat: %.2f\n", luas);
+			System.out.printf("Keliling Belah Ketupat: %.2f\n", keliling);
+			
+			prosesInputDataUlang();
+			
+		} catch (InputMismatchException e) {
+			System.out.println("Input tidak valid. Pastikan memasukkan angka yang benar.");
+		}
 	}
 }

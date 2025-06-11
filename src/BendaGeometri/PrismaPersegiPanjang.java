@@ -3,17 +3,32 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrismaPersegiPanjang extends PersegiPanjang {
+public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
     private double tinggiPrisma;
     private double luasAlas;
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
-
+    private volatile boolean calculated = false;
 
     public PrismaPersegiPanjang(double panjang, double lebar, double tinggiPrisma) {
         super(panjang, lebar);
         this.tinggiPrisma = tinggiPrisma;
+    }
+
+    @Override
+    public void run() {
+        // Calculate both volume and surface area in the thread
+        volume = menghitungVolume();
+        luasPermukaan = menghitungLuasPermukaan();
+        calculated = true;
+        System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
+        System.out.printf("Volume: %.2f\n", volume);
+        System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+    }
+
+    public boolean isCalculated() {
+        return calculated;
     }
 
 

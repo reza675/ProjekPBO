@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LayangLayang extends Benda2D {
+public class LayangLayang extends Benda2D implements Runnable {
 
     protected double diagonal1;
     protected double diagonal2;
@@ -100,5 +100,14 @@ public class LayangLayang extends Benda2D {
                 System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
+    }
+
+    @Override
+    public void run() {
+        luas = menghitungLuas();
+        keliling = menghitungKeliling();
+        System.out.printf("\nLuas %s: %.2f\n", getNamaBenda(), luas);
+        System.out.printf("Keliling %s: %.2f\n", getNamaBenda(), keliling);
+        prosesInputDataUlang();
     }
 }

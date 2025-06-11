@@ -3,17 +3,18 @@
 	import java.util.InputMismatchException;
 	import java.util.Scanner;
 
-	public class LimasTrapesium extends Trapesium {
-		private double tinggiLimas;
-		private double luasSegitigaAtas;
-		private double luasSegitigaBawah;
-		private double luasSegitigaKiri;
-		private double luasSegitigaKanan;
-		private double selisihBasis;
-		private double tinggiSisiMiring;
-		private double luasAlas;
-		private double volume;
-		private double luasPermukaan;
+public class LimasTrapesium extends Trapesium implements Runnable{
+	private double tinggiLimas;
+	private double luasSegitigaAtas;
+	private double luasSegitigaBawah;
+	private double luasSegitigaKiri;
+	private double luasSegitigaKanan;
+	private double selisihBasis;
+	private double tinggiSisiMiring;
+	private double luasAlas;
+	private double volume;
+	private double luasPermukaan;
+
 
 		public LimasTrapesium(double alasAtas, double alasBawah, double tinggiTrapesium, double sisiKiri, double sisiKanan,
 				double tinggiLimas) {
@@ -111,4 +112,12 @@
 				}
 			}
 		}
+	
+	@Override
+	public void run() {
+		volume = menghitungVolume();
+		luasPermukaan = menghitungLuasPermukaan();
+		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
+		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
 	}
+}

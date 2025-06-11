@@ -3,8 +3,9 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class JuringLingkaran extends Lingkaran {
+public class JuringLingkaran extends Lingkaran implements Runnable {
     private double sudutJuring;
+    private boolean isRunning;
 
     public JuringLingkaran(double radius, double sudutJuring) throws InputMismatchException {
         super(radius);
@@ -12,11 +13,13 @@ public class JuringLingkaran extends Lingkaran {
             throw new InputMismatchException("Sudut juring harus lebih dari nol.");
         }
         this.sudutJuring = sudutJuring;
+        this.isRunning = true;
     }
 
     public JuringLingkaran(int radius, int sudutJuring) {
         super(radius);
         this.sudutJuring = sudutJuring;
+        this.isRunning = true;
     }
     @Override
     public double menghitungLuas() {
@@ -93,5 +96,33 @@ public class JuringLingkaran extends Lingkaran {
                 System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
+    }
+
+    @Override
+    public void run() {
+        while (isRunning) {
+            try {
+                System.out.println("\n=== " + getNamaBenda() + " Calculator ===");
+                luas = menghitungLuas();
+                keliling = menghitungKeliling();
+                
+                System.out.printf("Radius: %.2f\n", super.radius);
+                System.out.printf("Sudut Juring: %.2f derajat\n", sudutJuring);
+                System.out.printf("Luas: %.2f\n", luas);
+                System.out.printf("Keliling: %.2f\n", keliling);
+                
+                prosesInputDataUlang();
+                
+                // Sleep for a bit before next calculation
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted");
+                break;
+            }
+        }
+    }
+
+    public void stop() {
+        this.isRunning = false;
     }
 }
