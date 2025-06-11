@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import BendaGeometri.*;
+
 /**
  *
  * @author ASUS
@@ -20,9 +22,14 @@ public class BendaGUI extends javax.swing.JFrame {
     private JPanel loopPanel;
     private JPanel frameBawah;
     private JPanel sidebar;
-    public BendaGUI() {
-        initComponents();
 
+    public BendaGUI(Benda2D benda) {
+        initComponents();
+        String namaBenda = benda.getNamaBenda();
+        namaLabel.setText("Benda " + namaBenda);
+        luasLabel.setText("Luas " + namaBenda + " " + benda.menghitungLuas() + " cm2");
+        kelilingLabel.setText("Keliling " +  namaBenda + " " + benda.menghitungKeliling() + " cm");
+        luasLabel2.setText("<html> Apakah Anda ingin Mengubah Nilai ?Params dari " + namaBenda + " </html>");
         setLayout(new BorderLayout());
 
         loopPanel = new JPanel();
@@ -75,8 +82,6 @@ public class BendaGUI extends javax.swing.JFrame {
         revalidate();
         repaint();
 
-        
-        
     }
 
     /**
@@ -277,9 +282,9 @@ public class BendaGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                BendaGUI ui = new BendaGUI();
-                ui.setLocationRelativeTo(null);
-                ui.setVisible(true);
+//                BendaGUI ui = new BendaGUI();
+//                ui.setLocationRelativeTo(null);
+//                ui.setVisible(true);
             }
         });
     }
