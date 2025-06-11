@@ -6,17 +6,13 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Bola extends Lingkaranimplements Runnable {
+public class Bola extends Lingkaran implements Runnable {
 
 	protected double luasAlas;
 	protected double volume;
 	protected double luasPermukaan;
 	// protected double jariJari;
 	private volatile boolean calculated = false;
-
-	public Bola(double jariJari) {
-		super(jariJari);
-	}
 
 	@Override
 	public void run() {
@@ -31,6 +27,7 @@ public class Bola extends Lingkaranimplements Runnable {
 
 	public boolean isCalculated() {
 		return calculated;
+        }
 	public Bola(double radius) throws InputMismatchException {
 		super(radius);
 	}
@@ -70,4 +67,42 @@ public class Bola extends Lingkaranimplements Runnable {
 		return "Bola";
 	}
 
+	public void prosesInputDataUlang() {
+		Scanner inputData = new Scanner(System.in);
+		while (true) {
+			System.out.print("\nApakah Anda ingin mengubah nilai jari-jari bola? (Y/N): ");
+			String jawaban = inputData.nextLine();
+			if (jawaban.equalsIgnoreCase("Y")) {
+				while (true) {
+					try {
+						System.out.print("Masukkan jari-jari bola: ");
+						double radiusBaru = inputData.nextDouble();
+						inputData.nextLine();
+
+						if (radiusBaru <= 0) {
+							System.out.println("Radius harus lebih dari nol.\n");
+							continue;
+						}
+
+						volume = menghitungVolume(radiusBaru);
+						luasPermukaan = menghitungLuasPermukaan(radiusBaru);
+
+						System.out.printf("\nVolume Bola: %.2f\n", volume);
+						System.out.printf("Luas Permukaan Bola: %.2f\n", luasPermukaan);
+						break;
+					} catch (InputMismatchException e) {
+						System.out.println("Input harus berupa angka.");
+						inputData.nextLine();
+					}
+				}
+				break;
+			} else if (jawaban.equalsIgnoreCase("N")) {
+				break;
+			} else {
+				System.out.println("Jawaban hanya boleh Y atau N.");
+			}
+		}
+	}
+
+	
 }

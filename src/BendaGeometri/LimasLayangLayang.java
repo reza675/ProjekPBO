@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LimasLayangLayang extends LayangLayang implements Runnable {
-	private double tinggi;
+	private double tinggiLimas;
 	private double luasAlas;
 	private double luasPermukaan;
 	private double volume;
@@ -102,13 +102,15 @@ public class LimasLayangLayang extends LayangLayang implements Runnable {
             }
         }
     }
-	}
 
-	@Override
-	public void run() {
-		volume = menghitungVolume();
+        @Override
+        public void run() {
+            volume = menghitungVolume();
 		luasPermukaan = menghitungLuasPermukaan();
 		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
 		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
-	}
+        }
+	
+
+	
 }

@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Kerucut extends Benda2D implements Runnable {
+public class Kerucut extends Lingkaran implements Runnable {
 
 	protected double tinggiKerucut;
 	protected double luasAlas;
