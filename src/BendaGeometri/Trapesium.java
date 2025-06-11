@@ -11,7 +11,10 @@ public class Trapesium extends Benda2D {
     protected double sisiMiringKiri;
     protected double sisiMiringKanan;
 
-    public Trapesium(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri, double sisiMiringKanan) {
+    public Trapesium(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri, double sisiMiringKanan) throws InputMismatchException {
+        if (alasAtas <= 0 || alasBawah <= 0 || tinggi <= 0 || sisiMiringKiri <= 0 || sisiMiringKanan <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         this.alasAtas = alasAtas;
         this.alasBawah = alasBawah;
         this.tinggi = tinggi;
@@ -25,7 +28,10 @@ public class Trapesium extends Benda2D {
         return luas;
     }
 
-    public double menghitungLuas(double alasAtasBaru, double alasBawahBaru, double tinggiBaru) {
+    public double menghitungLuas(double alasAtasBaru, double alasBawahBaru, double tinggiBaru) throws InputMismatchException {
+        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 ) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luas = 0.5 * (alasAtasBaru + alasBawahBaru) * tinggiBaru;
         return luas;
     }
@@ -37,7 +43,10 @@ public class Trapesium extends Benda2D {
     }
 
     public double menghitungKeliling(double alasAtasBaru, double alasBawahBaru, double sisiMiringKananBaru,
-            double sisiMiringKiriBaru) {
+            double sisiMiringKiriBaru) throws InputMismatchException {
+        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || sisiMiringKiriBaru <= 0 || sisiMiringKananBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         keliling = alasAtasBaru + alasBawahBaru + sisiMiringKananBaru + sisiMiringKiriBaru;
         return keliling;
     }
@@ -58,22 +67,21 @@ public class Trapesium extends Benda2D {
                 while (true) {
                     try {
                         System.out.print("Masukkan alasAtas baru: ");
-                        double alasAtasBaru = inputData.nextDouble();
+                        String inputAlasAtasBaru = inputData.nextLine();
+                        double alasAtasBaru = Double.parseDouble(inputAlasAtasBaru);
                         System.out.print("Masukkan alasBawah baru: ");
-                        double alasBawahBaru = inputData.nextDouble();
+                        String inputAlasBawahBaru = inputData.nextLine();
+                        double alasBawahBaru = Double.parseDouble(inputAlasBawahBaru);
                         System.out.print("Masukkan tinggi baru: ");
-                        double tinggiBaru = inputData.nextDouble();
+                        String inputTinggiBaru = inputData.nextLine();
+                        double tinggiBaru = Double.parseDouble(inputTinggiBaru);
                         System.out.print("Masukkan sisiMiringKiri baru: ");
-                        double sisiMiringKiriBaru = inputData.nextDouble();
+                        String inputSisiMiringKiriBaru = inputData.nextLine();
+                        double sisiMiringKiriBaru = Double.parseDouble(inputSisiMiringKiriBaru);
                         System.out.print("Masukkan sisiMiringKanan baru: ");
-                        double sisiMiringKananBaru = inputData.nextDouble();
-                        inputData.nextLine();
+                        String inputSisiMiringKananBaru = inputData.nextLine();
+                        double sisiMiringKananBaru = Double.parseDouble(inputSisiMiringKananBaru);
 
-                        if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 || sisiMiringKiriBaru <= 0
-                                || sisiMiringKananBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
                         luas = menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
                         keliling = menghitungKeliling(alasAtasBaru, alasBawahBaru, sisiMiringKananBaru,
                                 sisiMiringKiriBaru);
@@ -81,10 +89,11 @@ public class Trapesium extends Benda2D {
                         System.out.printf("\nLuas Trapesium: %.2f\n", luas);
                         System.out.printf("Keliling Trapesium: %.2f\n", keliling);
                         break;
-                    } catch (InputMismatchException e) {
-                        System.out.println("Input alas, tinggi, dan sisi miring harus berupa angka.");
-                        inputData.nextLine();
-                    }
+                    } catch (NumberFormatException e) {
+						System.out.println("Input harus berupa angka.");
+					} catch (InputMismatchException e) {
+						System.out.println(e.getMessage());
+					}
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {

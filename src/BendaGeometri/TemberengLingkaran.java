@@ -6,8 +6,11 @@ import java.util.Scanner;
 public class TemberengLingkaran extends Lingkaran {
     private double sudut;
 
-    public TemberengLingkaran(double radius, double sudut) {
+    public TemberengLingkaran(double radius, double sudut) throws InputMismatchException {
         super(radius);
+        if (radius <= 0 || sudut <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         this.sudut = sudut;
     }
 
@@ -51,7 +54,6 @@ public class TemberengLingkaran extends Lingkaran {
         return keliling;
     }
 
-
     @Override
     public String getNamaBenda() {
         return "Tembereng Lingkaran";
@@ -66,22 +68,20 @@ public class TemberengLingkaran extends Lingkaran {
                 while (true) {
                     try {
                         System.out.print("Masukkan radius baru: ");
-                        double radiusBaru = inputData.nextDouble();
+                        String inputRadiusBaru = inputData.nextLine();
+                        double radiusBaru = Double.parseDouble(inputRadiusBaru);
                         System.out.print("Masukkan sudut baru (dalam derajat): ");
-                        double sudutBaru = inputData.nextDouble();
-                        inputData.nextLine();
-                        if (radiusBaru <= 0 || sudutBaru <= 0) {
-                            System.out.println("Radius dan sudut harus lebih dari nol.\n");
-                            continue;
-                        }
+                        String inputSudutBaru = inputData.nextLine();
+                        double sudutBaru = Double.parseDouble(inputSudutBaru);
                         luas = menghitungLuas(radiusBaru, sudutBaru);
                         keliling = menghitungKeliling(radiusBaru, sudutBaru);
                         System.out.printf("\nLuas Tembereng Lingkaran: %.2f\n", luas);
                         System.out.printf("Keliling Tembereng Lingkaran: %.2f\n", keliling);
                         break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
                     } catch (InputMismatchException e) {
-                        System.out.println("Input radius dan sudut harus berupa angka.");
-                        inputData.nextLine();
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

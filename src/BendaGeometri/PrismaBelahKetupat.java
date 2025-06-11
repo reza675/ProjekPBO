@@ -10,8 +10,11 @@ public class PrismaBelahKetupat extends BelahKetupat {
     private double volume;
     private double luasPermukaan;
 
-    public PrismaBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiPrisma) {
+    public PrismaBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiPrisma) throws InputMismatchException {
         super(diagonal1, diagonal2, sisi);
+        if (tinggiPrisma <= 0) {
+            throw new InputMismatchException("Tinggi prisma harus lebih dari nol.");
+        }
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -21,7 +24,10 @@ public class PrismaBelahKetupat extends BelahKetupat {
         return volume;
     }
 
-    public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiPrismaBaru) {
+    public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         volume = luasAlas * tinggiPrismaBaru;
         return volume;
@@ -34,7 +40,10 @@ public class PrismaBelahKetupat extends BelahKetupat {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiBaru, double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         kelilingAlas = super.menghitungKeliling(sisiBaru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
@@ -63,11 +72,6 @@ public class PrismaBelahKetupat extends BelahKetupat {
                         System.out.print("Masukkan tinggi prisma baru: ");
                         double tinggiPrismaBaru = inputData.nextDouble();
                         inputData.nextLine();
-
-                        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
-                            System.out.println("Semua nilai harus lebih dari nol.\n");
-                            continue;
-                        }
                         volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiPrismaBaru);
                         luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, sisiBaru, tinggiPrismaBaru);
 
@@ -75,8 +79,7 @@ public class PrismaBelahKetupat extends BelahKetupat {
                         System.out.printf("Luas Permukaan Prisma Belah Ketupat: %.2f\n", luasPermukaan);
                         break;
                     } catch (InputMismatchException e) {
-                        System.out.println("Input harus berupa angka.");
-                        inputData.nextLine();
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

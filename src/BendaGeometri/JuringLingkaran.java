@@ -65,15 +65,11 @@ public class JuringLingkaran extends Lingkaran {
                 while (true) {
                     try {
                         System.out.print("Masukkan radius baru: ");
-                        double radiusBaru = inputData.nextDouble();
+                        String inputRadiusBaru = inputData.nextLine();
+                        double radiusBaru = Double.parseDouble(inputRadiusBaru);
                         System.out.print("Masukkan sudut juring baru (dalam derajat): ");
-                        double sudutJuringBaru = inputData.nextDouble();
-                        inputData.nextLine(); 
-
-                        if (radiusBaru <= 0 || sudutJuringBaru <= 0) {
-                            System.out.println("Radius dan sudut juring harus lebih dari nol.\n");
-                            continue;
-                        }
+                        String inputJuringBaru = inputData.nextLine();
+                        double sudutJuringBaru = Double.parseDouble(inputJuringBaru);
 
                         luas = menghitungLuas(radiusBaru, sudutJuringBaru);
                         keliling = menghitungKeliling(radiusBaru, sudutJuringBaru);
@@ -82,9 +78,10 @@ public class JuringLingkaran extends Lingkaran {
                         System.out.printf("Keliling Juring Lingkaran: %.2f\n", keliling);
                         break;
 
+                    } catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
                     } catch (InputMismatchException e) {
-                        System.out.println("Input radius dan sudut juring harus berupa angka.");
-                        inputData.nextLine(); 
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;

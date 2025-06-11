@@ -46,25 +46,24 @@ public class BelahKetupat extends Benda2D {
                 while (true) {
                     try {
                         System.out.print("Masukkan diagonal1 baru: ");
-                        double diagonal1Baru = inputData.nextDouble();
+                        String inputDiagonal1Baru = inputData.nextLine();
+                        double diagonal1Baru = Double.parseDouble(inputDiagonal1Baru);
                         System.out.print("Masukkan diagonal2 baru: ");
-                        double diagonal2Baru = inputData.nextDouble();
+                        String inputDiagonal2Baru = inputData.nextLine();
+                        double diagonal2Baru = Double.parseDouble(inputDiagonal2Baru);
                         System.out.print("Masukkan sisi baru: ");
-                        double sisiBaru = inputData.nextDouble();
-                        inputData.nextLine();
+                        String inputSisiBaru = inputData.nextLine();
+                        double sisiBaru = Double.parseDouble(inputSisiBaru);
 
-                        if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiBaru <= 0) {
-                            System.out.println("Diagonal dan sisi harus lebih dari nol.\n");
-                            continue;
-                        }
                         luas = menghitungLuas(diagonal1Baru, diagonal2Baru);
                         keliling = menghitungKeliling(sisiBaru);
                         System.out.printf("\nLuas Belah Ketupat: %.2f\n", luas);
                         System.out.printf("Keliling Belah Ketupat: %.2f\n", keliling);
                         break;
+                     } catch (NumberFormatException e) {
+                        System.out.println("Input harus berupa angka.");
                     } catch (InputMismatchException e) {
-                        System.out.println("Input diagonal dan sisi harus berupa angka.");
-                        inputData.nextLine();
+                        System.out.println(e.getMessage());
                     }
                 }
                 break;
