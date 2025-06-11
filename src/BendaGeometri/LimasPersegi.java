@@ -83,6 +83,7 @@ public class LimasPersegi extends Persegi implements Runnable {
 	}
 
 
+
 	public double menghitungLuasPermukaan() {
 		luasAlas = super.menghitungLuas();
 		setengahSisi = super.sisi / 2;
@@ -135,11 +136,9 @@ public class LimasPersegi extends Persegi implements Runnable {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                volume = menghitungVolume();
-                luasPermukaan = menghitungLuasPermukaan();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

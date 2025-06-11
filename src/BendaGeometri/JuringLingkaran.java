@@ -7,8 +7,11 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
     private double sudutJuring;
     private boolean isRunning;
 
-    public JuringLingkaran(double radius, double sudutJuring) {
+    public JuringLingkaran(double radius, double sudutJuring) throws InputMismatchException {
         super(radius);
+        if (sudutJuring <= 0){
+            throw new InputMismatchException("Sudut juring harus lebih dari nol.");
+        }
         this.sudutJuring = sudutJuring;
         this.isRunning = true;
     }
@@ -24,7 +27,11 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
         return luas;
     }
 
-    public double menghitungLuas(double radiusBaru, double sudutJuringBaru) {
+    public double menghitungLuas(double radiusBaru, double sudutJuringBaru) throws InputMismatchException {
+        if (sudutJuringBaru <= 0 || radiusBaru <= 0) {
+            throw new InputMismatchException("Radius dan sudut juring harus lebih dari nol.");
+            
+        }
         luas = (sudutJuringBaru / 360.0) * super.menghitungLuas(radiusBaru);
         return luas;
     }
@@ -38,6 +45,9 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
     }
 
     public double menghitungKeliling(double radiusBaru, double sudutJuringBaru) {
+        if (sudutJuringBaru <= 0 || radiusBaru <= 0) {
+            throw new InputMismatchException("Radius dan sudut juring harus lebih dari nol.");
+        }
         double busur = super.menghitungKeliling(radiusBaru) * (sudutJuringBaru / 360.0);
         keliling = busur + 2 * radiusBaru;
         return keliling;
@@ -83,12 +93,10 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
                 break;
 
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
                 break;
 
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

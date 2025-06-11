@@ -10,7 +10,10 @@ public class Lingkaran extends Benda2D implements Runnable {
 	private volatile boolean calculated = false;
 
 
-	public Lingkaran(double radius) {
+	public Lingkaran(double radius) throws InputMismatchException {
+        if (radius <= 0) {
+            throw new InputMismatchException("Radius harus lebih dari nol.");
+        }
 		this.radius = radius;
 	}
 
@@ -35,7 +38,10 @@ public class Lingkaran extends Benda2D implements Runnable {
 		return luas;
 	}
 
-	public double menghitungLuas(double radiusBaru) {
+	public double menghitungLuas(double radiusBaru) throws InputMismatchException {
+        if (radiusBaru <= 0) {
+            throw new InputMismatchException("Radius harus lebih dari nol.");
+        }
 		luas = PI * radiusBaru * radiusBaru;
 		return luas;
 	}
@@ -45,7 +51,10 @@ public class Lingkaran extends Benda2D implements Runnable {
 		keliling = 2 * PI * radius;
 		return keliling;
 	}
-	public double menghitungKeliling(double radiusBaru) {
+	public double menghitungKeliling(double radiusBaru) throws InputMismatchException {
+        if (radiusBaru <= 0) {
+            throw new InputMismatchException("Radius harus lebih dari nol.");
+        }
 		keliling = 2 * PI * radiusBaru;
 		return keliling;
 	}
@@ -82,11 +91,9 @@ public class Lingkaran extends Benda2D implements Runnable {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

@@ -14,9 +14,9 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     private volatile boolean calculated = false;
     private final Object lock = new Object();
 
-    public PrismaTrapesium(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri, double sisiMiringKanan,
+    public PrismaTrapesium(double alasAtas, double alasBawah, double tinggiTrapesium, double sisiMiringKiri, double sisiMiringKanan,
             double tinggiPrisma) {
-        super(alasAtas, alasBawah, tinggiPrisma, sisiMiringKiri, sisiMiringKanan);
+        super(alasAtas, alasBawah, tinggiTrapesium, sisiMiringKiri, sisiMiringKanan);
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -143,11 +143,9 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                volume = menghitungVolume();
-                luasPermukaan = menghitungLuasPermukaan();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

@@ -20,7 +20,10 @@ public class TemberengLingkaran extends Lingkaran {
         return luas;
     }
 
-    public double menghitungLuas(double radiusBaru, double sudutBaru) {
+    public double menghitungLuas(double radiusBaru, double sudutBaru) throws InputMismatchException {
+        if (radiusBaru <= 0 || sudutBaru <= 0) {
+            throw new InputMismatchException("Radius dan sudut harus lebih dari nol.");
+        }
         double sudutRadian = Math.toRadians(sudutBaru);
         double luasJuringLingkaran = (sudutBaru / 360.0) * super.PI * radiusBaru * radiusBaru;
         double luasSegitiga = 0.5 * radiusBaru * radiusBaru * Math.sin(sudutRadian);
@@ -37,7 +40,10 @@ public class TemberengLingkaran extends Lingkaran {
         return keliling;
     }
 
-    public double menghitungKeliling(double radiusBaru, double sudutBaru) {
+    public double menghitungKeliling(double radiusBaru, double sudutBaru) throws InputMismatchException {
+        if (radiusBaru <= 0 || sudutBaru <= 0) {
+            throw new InputMismatchException("Radius dan sudut harus lebih dari nol.");
+        }
         double sudutRadian = Math.toRadians(sudutBaru);
         double panjangBusur = sudutRadian * radiusBaru;
         double taliBusur = 2 * radiusBaru * Math.sin(sudutRadian / 2);
@@ -80,13 +86,9 @@ public class TemberengLingkaran extends Lingkaran {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
-                System.out.printf("\nLuas Tembereng Lingkaran: %.2f\n", luas);
-                System.out.printf("Keliling Tembereng Lingkaran: %.2f\n", keliling);
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }

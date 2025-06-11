@@ -3,7 +3,10 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Bola extends Lingkaran implements Runnable {
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Bola extends Lingkaranimplements Runnable {
 
 	protected double luasAlas;
 	protected double volume;
@@ -28,21 +31,22 @@ public class Bola extends Lingkaran implements Runnable {
 
 	public boolean isCalculated() {
 		return calculated;
+	public Bola(double radius) throws InputMismatchException {
+		super(radius);
 	}
         
 	public double menghitungVolume() {
 		luasAlas = super.menghitungLuas();
-		volume = (4.0 / 3.0) * luasAlas* radius;
+		volume = (4.0 / 3.0) * luasAlas * radius;
 		return volume;
 	}
-	public double menghitungVolume(double radius) {
-		luasAlas = super.menghitungLuas(radius);
-		volume = (4.0 / 3.0) * luasAlas* radius;
-		return volume;
-	}
-	public double menghitungVolume(int radius) {
-		luasAlas = super.menghitungLuas(radius);
-		volume = (4.0 / 3.0) * luasAlas* radius;
+
+	public double menghitungVolume(double radiusBaru) throws InputMismatchException {
+		if (radiusBaru <= 0) {
+			throw new InputMismatchException("Radius harus lebih dari nol.");
+		}
+		luasAlas = super.menghitungLuas(radiusBaru);
+		volume = (4.0 / 3.0) * luasAlas * radiusBaru;
 		return volume;
 	}
 
@@ -51,14 +55,12 @@ public class Bola extends Lingkaran implements Runnable {
 		luasPermukaan = 4 * luasAlas;
 		return luasPermukaan;
 	}
-	public double menghitungLuasPermukaan(double radius) {
-		luasAlas = super.menghitungLuas(radius);
-		luasPermukaan = 4 * luasAlas;
-		return luasPermukaan;
-	}
 
-	public double menghitungLuasPermukaan(int radius) {
-		luasAlas = super.menghitungLuas(radius);
+	public double menghitungLuasPermukaan(double radiusBaru) throws InputMismatchException {
+		if (radiusBaru <= 0) {
+			throw new InputMismatchException("Radius harus lebih dari nol.");
+		}
+		luasAlas = super.menghitungLuas(radiusBaru);
 		luasPermukaan = 4 * luasAlas;
 		return luasPermukaan;
 	}
@@ -67,7 +69,5 @@ public class Bola extends Lingkaran implements Runnable {
 	public String getNamaBenda() {
 		return "Bola";
 	}
-
-   
 
 }

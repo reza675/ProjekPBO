@@ -31,12 +31,22 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
         return calculated;
     }
 
+
     public double menghitungVolume() {
         luasAlas = super.menghitungLuas();
         volume = luasAlas * tinggiPrisma;
         return volume;
     }
 
+    
+    public void setTinggiPrisma(double tinggiPrisma) {
+        this.tinggiPrisma = tinggiPrisma;
+    }
+    
+    public double getTinggiPrisma() {
+        return tinggiPrisma;
+    }
+    
     public double menghitungVolume(double panjangBaru, double lebarBaru, double tinggiPrismaBaru) {
         luasAlas = super.menghitungLuas(panjangBaru, lebarBaru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -94,11 +104,9 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
             }
             break;
         } else if (jawaban.equalsIgnoreCase("N")) {
-            volume = menghitungVolume();
-            luasPermukaan= menghitungLuasPermukaan();
             break;
         } else {
-            System.out.println("Jawaban hanya boleh Y atau N.\n");
+            System.out.println("Jawaban hanya boleh Y atau N.");
         }
     }
 }

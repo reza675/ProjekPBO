@@ -73,11 +73,9 @@ public class JajaranGenjang extends Benda2D implements Runnable {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
 	}

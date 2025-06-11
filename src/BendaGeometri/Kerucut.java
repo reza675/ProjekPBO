@@ -135,11 +135,9 @@ public class Kerucut extends Benda2D implements Runnable {
 				}
 				break;
 			} else if (jawaban.equalsIgnoreCase("N")) {
-				volume = menghitungVolume();
-				luasPermukaan = menghitungLuasPermukaan();
 				break;
 			} else {
-				System.out.println("Jawaban hanya boleh Y atau N.\n");
+				System.out.println("Jawaban hanya boleh Y atau N.");
 			}
 		}
 	}

@@ -12,8 +12,8 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
     private volatile boolean calculated = false;
     private final Object lock = new Object();
 
-    public PrismaSegitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2, double tinggiPrisma) {
-        super(alas, tinggi, sisiMiring1, sisiMiring2);
+    public PrismaSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiPrisma) {
+        super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -86,9 +86,7 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,
-            double sisiMiring2Baru,
-            double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,double sisiMiring2Baru,double tinggiPrismaBaru) {
         luasAlas = super.menghitungLuas(alasBaru, tinggiBaru);
         kelilingAlas = super.menghitungKeliling(alasBaru, sisiMiring1Baru, sisiMiring2Baru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
@@ -139,11 +137,9 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
                 }
                 break;
             } else if (jawaban.equalsIgnoreCase("N")) {
-                volume = menghitungVolume();
-                luasPermukaan = menghitungLuasPermukaan();
                 break;
             } else {
-                System.out.println("Jawaban hanya boleh Y atau N.\n");
+                System.out.println("Jawaban hanya boleh Y atau N.");
             }
         }
     }
