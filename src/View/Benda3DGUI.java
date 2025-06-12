@@ -108,7 +108,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaSegitigaButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaSegitigaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaSegitigaButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaSegitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaSegitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaSegitiga.png"))); // NOI18N
         prismaSegitigaButton.setBorder(null);
         prismaSegitigaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +120,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasSegitigaButton.setBackground(new java.awt.Color(31, 85, 72));
         limasSegitigaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasSegitigaButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasSegitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasSegitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasSegitiga.png"))); // NOI18N
         limasSegitigaButton.setBorder(null);
         limasSegitigaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +132,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaPersegiButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaPersegiButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaPersegiButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaPersegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaPersegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaPersegi.png"))); // NOI18N
         prismaPersegiButton.setBorder(null);
         prismaPersegiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +144,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasPersegiButton.setBackground(new java.awt.Color(31, 85, 72));
         limasPersegiButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasPersegiButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasPersegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasPersegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasPersegi.png"))); // NOI18N
         limasPersegiButton.setBorder(null);
         limasPersegiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +156,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaPersegiPanjangButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaPersegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaPersegiPanjangButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaPersegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaPersegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaPersegiPanjang.png"))); // NOI18N
         prismaPersegiPanjangButton.setBorder(null);
         prismaPersegiPanjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +168,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasPersegiPanjangButton.setBackground(new java.awt.Color(31, 85, 72));
         limasPersegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasPersegiPanjangButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasPersegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasPersegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasPersegiPanjang.png"))); // NOI18N
         limasPersegiPanjangButton.setBorder(null);
         limasPersegiPanjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +180,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaJajaranGenjangButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaJajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaJajaranGenjangButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaJajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaJajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaJajaranGenjang.png"))); // NOI18N
         prismaJajaranGenjangButton.setBorder(null);
         prismaJajaranGenjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +192,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasJajaranGenjangButton.setBackground(new java.awt.Color(31, 85, 72));
         limasJajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasJajaranGenjangButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasJajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasJajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasJajaranGenjang.png"))); // NOI18N
         limasJajaranGenjangButton.setBorder(null);
         limasJajaranGenjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +204,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaTrapesiumButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaTrapesiumButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaTrapesiumButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaTrapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaTrapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaTrapesium.png"))); // NOI18N
         prismaTrapesiumButton.setBorder(null);
         prismaTrapesiumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,7 +216,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasTrapesiumButton.setBackground(new java.awt.Color(31, 85, 72));
         limasTrapesiumButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasTrapesiumButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasTrapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasTrapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasTrapesium.png"))); // NOI18N
         limasTrapesiumButton.setBorder(null);
         limasTrapesiumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,7 +228,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaBelahKetupatButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaBelahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaBelahKetupatButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaBelahKetupat.png"))); // NOI18N
         prismaBelahKetupatButton.setBorder(null);
         prismaBelahKetupatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +240,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasBelahKetupatButton.setBackground(new java.awt.Color(31, 85, 72));
         limasBelahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasBelahKetupatButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
         limasBelahKetupatButton.setBorder(null);
         limasBelahKetupatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +252,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         prismaLayangLayangButton.setBackground(new java.awt.Color(31, 85, 72));
         prismaLayangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         prismaLayangLayangButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        prismaLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
         prismaLayangLayangButton.setBorder(null);
         prismaLayangLayangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,7 +264,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         limasLayangLayangButton.setBackground(new java.awt.Color(31, 85, 72));
         limasLayangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         limasLayangLayangButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        limasLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
         limasLayangLayangButton.setBorder(null);
         limasLayangLayangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +276,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         tabungButton.setBackground(new java.awt.Color(31, 85, 72));
         tabungButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         tabungButton.setForeground(new java.awt.Color(0, 0, 0));
-        tabungButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        tabungButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Tabung.png"))); // NOI18N
         tabungButton.setBorder(null);
         tabungButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +288,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         kerucutButton.setBackground(new java.awt.Color(31, 85, 72));
         kerucutButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         kerucutButton.setForeground(new java.awt.Color(0, 0, 0));
-        kerucutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        kerucutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Kerucut.png"))); // NOI18N
         kerucutButton.setBorder(null);
         kerucutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,7 +300,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         kerucutTerpancungButton.setBackground(new java.awt.Color(31, 85, 72));
         kerucutTerpancungButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         kerucutTerpancungButton.setForeground(new java.awt.Color(0, 0, 0));
-        kerucutTerpancungButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        kerucutTerpancungButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/KerucutTerpancung.png"))); // NOI18N
         kerucutTerpancungButton.setBorder(null);
         kerucutTerpancungButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,7 +312,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         bolaButton.setBackground(new java.awt.Color(31, 85, 72));
         bolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         bolaButton.setForeground(new java.awt.Color(0, 0, 0));
-        bolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        bolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Bola.png"))); // NOI18N
         bolaButton.setBorder(null);
         bolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,7 +324,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         temberengBolaButton.setBackground(new java.awt.Color(31, 85, 72));
         temberengBolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         temberengBolaButton.setForeground(new java.awt.Color(0, 0, 0));
-        temberengBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        temberengBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/TemberengBola.png"))); // NOI18N
         temberengBolaButton.setBorder(null);
         temberengBolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,7 +336,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         juringBolaButton.setBackground(new java.awt.Color(31, 85, 72));
         juringBolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         juringBolaButton.setForeground(new java.awt.Color(0, 0, 0));
-        juringBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        juringBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JuringBola.png"))); // NOI18N
         juringBolaButton.setBorder(null);
         juringBolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,7 +348,7 @@ public class Benda3DGUI extends javax.swing.JFrame {
         cincinBolaButton.setBackground(new java.awt.Color(31, 85, 72));
         cincinBolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         cincinBolaButton.setForeground(new java.awt.Color(0, 0, 0));
-        cincinBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        cincinBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/CincinBola.png"))); // NOI18N
         cincinBolaButton.setBorder(null);
         cincinBolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
