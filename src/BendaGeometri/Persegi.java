@@ -3,6 +3,8 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import View.*;
+
 public class Persegi extends Benda2D implements Runnable {
 	protected double sisi;
 	private volatile boolean calculated = false;

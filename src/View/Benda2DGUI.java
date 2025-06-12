@@ -12,6 +12,7 @@ import BendaGeometri.JuringLingkaran;
 import BendaGeometri.LayangLayang;
 import BendaGeometri.Lingkaran;
 import BendaGeometri.Persegi;
+import BendaGeometri.PersegiGUI;
 import BendaGeometri.PersegiPanjang;
 import BendaGeometri.Segitiga;
 import BendaGeometri.TemberengLingkaran;
@@ -357,44 +358,48 @@ public class Benda2DGUI extends javax.swing.JFrame {
     }
 
     private void persegiButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        double initialSisi = 5.0;
-
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
-            Persegi p = new Persegi(values[0]);
-            return new StaticCalculationDialog.CalculationResult(
-                    String.format("Sisi: %.2f", values[0]),
-                    p.menghitungLuas(),
-                    p.menghitungKeliling());
-        };
-
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
-                this,
-                "Persegi",
-                new String[] { "Sisi" },
-                new double[] { initialSisi },
-                staticCalculator);
-
-        staticDialog.setVisible(true);
-
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
-                Persegi p = new Persegi(values[0]);
-                return new StaticCalculationDialog.CalculationResult(
-                        String.format("Sisi: %.2f", values[0]),
-                        p.menghitungLuas(values[0]),
-                        p.menghitungKeliling(values[0]));
-            };
-
-            SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
-                        this,
-                        "Persegi",
-                        new String[] { "Sisi" },
-                        new double[] { initialSisi },
-                        dynamicCalculator);
-                dynamicDialog.setVisible(true);
-            });
-        }
+        Persegi persegi = new Persegi(10);
+        PersegiGUI ui = new PersegiGUI(persegi);
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+//        double initialSisi = 5.0;
+//
+//        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+//            Persegi p = new Persegi(values[0]);
+//            return new StaticCalculationDialog.CalculationResult(
+//                    String.format("Sisi: %.2f", values[0]),
+//                    p.menghitungLuas(),
+//                    p.menghitungKeliling());
+//        };
+//
+//        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+//                this,
+//                "Persegi",
+//                new String[] { "Sisi" },
+//                new double[] { initialSisi },
+//                staticCalculator);
+//
+//        staticDialog.setVisible(true);
+//
+//        if (staticDialog.shouldProceedToDynamic()) {
+//            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+//                Persegi p = new Persegi(values[0]);
+//                return new StaticCalculationDialog.CalculationResult(
+//                        String.format("Sisi: %.2f", values[0]),
+//                        p.menghitungLuas(values[0]),
+//                        p.menghitungKeliling(values[0]));
+//            };
+//
+//            SwingUtilities.invokeLater(() -> {
+//                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+//                        this,
+//                        "Persegi",
+//                        new String[] { "Sisi" },
+//                        new double[] { initialSisi },
+//                        dynamicCalculator);
+//                dynamicDialog.setVisible(true);
+//            });
+//        }
     }
 
     private void persegiPanjangButtonActionPerformed(java.awt.event.ActionEvent evt) {
