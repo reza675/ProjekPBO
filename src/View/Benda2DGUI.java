@@ -89,7 +89,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Menu 2D");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(390, 40, 220, 73);
@@ -100,9 +100,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         segitigaButton.setBackground(new java.awt.Color(31, 85, 72));
         segitigaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        segitigaButton.setForeground(new java.awt.Color(0, 0, 0));
+        segitigaButton.setForeground(new java.awt.Color(255, 255, 255));
         segitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        segitigaButton.setText("Segitiga");
         segitigaButton.setBorder(null);
+        segitigaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        segitigaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         segitigaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 segitigaButtonActionPerformed(evt);
@@ -112,9 +115,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         persegiButton.setBackground(new java.awt.Color(31, 85, 72));
         persegiButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        persegiButton.setForeground(new java.awt.Color(0, 0, 0));
+        persegiButton.setForeground(new java.awt.Color(255, 255, 255));
         persegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/persegi.png"))); // NOI18N
+        persegiButton.setText("Persegi");
         persegiButton.setBorder(null);
+        persegiButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        persegiButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         persegiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 persegiButtonActionPerformed(evt);
@@ -124,9 +130,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         persegiPanjangButton.setBackground(new java.awt.Color(31, 85, 72));
         persegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        persegiPanjangButton.setForeground(new java.awt.Color(0, 0, 0));
+        persegiPanjangButton.setForeground(new java.awt.Color(255, 255, 255));
         persegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PersegiPanjang.png"))); // NOI18N
+        persegiPanjangButton.setText("Persegi Panjang");
         persegiPanjangButton.setBorder(null);
+        persegiPanjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        persegiPanjangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         persegiPanjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 persegiPanjangButtonActionPerformed(evt);
@@ -136,9 +145,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         jajaranGenjangButton.setBackground(new java.awt.Color(31, 85, 72));
         jajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jajaranGenjangButton.setForeground(new java.awt.Color(0, 0, 0));
+        jajaranGenjangButton.setForeground(new java.awt.Color(255, 255, 255));
         jajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JajaranGenjang.png"))); // NOI18N
+        jajaranGenjangButton.setText("Jajaran Genjang");
         jajaranGenjangButton.setBorder(null);
+        jajaranGenjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jajaranGenjangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jajaranGenjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jajaranGenjangButtonActionPerformed(evt);
@@ -148,9 +160,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         trapesiumButton.setBackground(new java.awt.Color(31, 85, 72));
         trapesiumButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        trapesiumButton.setForeground(new java.awt.Color(0, 0, 0));
+        trapesiumButton.setForeground(new java.awt.Color(255, 255, 255));
         trapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Trapesium.png"))); // NOI18N
+        trapesiumButton.setText("Trapesium");
         trapesiumButton.setBorder(null);
+        trapesiumButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        trapesiumButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         trapesiumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trapesiumButtonActionPerformed(evt);
@@ -160,9 +175,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         belahKetupatButton.setBackground(new java.awt.Color(31, 85, 72));
         belahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        belahKetupatButton.setForeground(new java.awt.Color(0, 0, 0));
+        belahKetupatButton.setForeground(new java.awt.Color(255, 255, 255));
         belahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/BelahKetupat.png"))); // NOI18N
+        belahKetupatButton.setText("Belah Ketupat");
         belahKetupatButton.setBorder(null);
+        belahKetupatButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        belahKetupatButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         belahKetupatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 belahKetupatButtonActionPerformed(evt);
@@ -172,9 +190,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         layangLayangButton.setBackground(new java.awt.Color(31, 85, 72));
         layangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        layangLayangButton.setForeground(new java.awt.Color(0, 0, 0));
+        layangLayangButton.setForeground(new java.awt.Color(255, 255, 255));
         layangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LayangLayang.png"))); // NOI18N
+        layangLayangButton.setText("Layang-Layang");
         layangLayangButton.setBorder(null);
+        layangLayangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        layangLayangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         layangLayangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 layangLayangButtonActionPerformed(evt);
@@ -184,9 +205,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         lingkaranButton.setBackground(new java.awt.Color(31, 85, 72));
         lingkaranButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        lingkaranButton.setForeground(new java.awt.Color(0, 0, 0));
+        lingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
         lingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
+        lingkaranButton.setText("Lingkaran");
         lingkaranButton.setBorder(null);
+        lingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lingkaranButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         lingkaranButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lingkaranButtonActionPerformed(evt);
@@ -195,10 +219,13 @@ public class Benda2DGUI extends javax.swing.JFrame {
         jPanel3.add(lingkaranButton);
 
         temberengLingkaranButton.setBackground(new java.awt.Color(31, 85, 72));
-        temberengLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        temberengLingkaranButton.setForeground(new java.awt.Color(0, 0, 0));
+        temberengLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        temberengLingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
         temberengLingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/TemberengLingkaran.png"))); // NOI18N
+        temberengLingkaranButton.setText("Tembereng Lingkaran");
         temberengLingkaranButton.setBorder(null);
+        temberengLingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        temberengLingkaranButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         temberengLingkaranButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 temberengLingkaranButtonActionPerformed(evt);
@@ -208,9 +235,12 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         juringLingkaranButton.setBackground(new java.awt.Color(31, 85, 72));
         juringLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        juringLingkaranButton.setForeground(new java.awt.Color(0, 0, 0));
+        juringLingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
         juringLingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JuringLingkaran.png"))); // NOI18N
+        juringLingkaranButton.setText("Juring Lingkaran");
         juringLingkaranButton.setBorder(null);
+        juringLingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        juringLingkaranButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         juringLingkaranButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 juringLingkaranButtonActionPerformed(evt);

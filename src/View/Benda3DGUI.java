@@ -95,10 +95,10 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Menu 3D");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(390, 40, 220, 73);
+        jLabel2.setBounds(390, 20, 220, 73);
 
         jPanel4.setBackground(new java.awt.Color(142, 88, 65));
 
@@ -106,10 +106,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.setLayout(new java.awt.GridLayout(3, 0));
 
         prismaSegitigaButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaSegitigaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaSegitigaButton.setForeground(new java.awt.Color(0, 0, 0));
+        prismaSegitigaButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaSegitigaButton.setForeground(new java.awt.Color(255, 255, 255));
         prismaSegitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaSegitiga.png"))); // NOI18N
+        prismaSegitigaButton.setText("Prisma Segitiga");
         prismaSegitigaButton.setBorder(null);
+        prismaSegitigaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaSegitigaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaSegitigaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaSegitigaButtonActionPerformed(evt);
@@ -118,10 +121,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaSegitigaButton);
 
         limasSegitigaButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasSegitigaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasSegitigaButton.setForeground(new java.awt.Color(0, 0, 0));
+        limasSegitigaButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasSegitigaButton.setForeground(new java.awt.Color(255, 255, 255));
         limasSegitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasSegitiga.png"))); // NOI18N
+        limasSegitigaButton.setText("Limas Segitiga");
         limasSegitigaButton.setBorder(null);
+        limasSegitigaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasSegitigaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasSegitigaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasSegitigaButtonActionPerformed(evt);
@@ -130,10 +136,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasSegitigaButton);
 
         prismaPersegiButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaPersegiButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaPersegiButton.setForeground(new java.awt.Color(0, 0, 0));
+        prismaPersegiButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaPersegiButton.setForeground(new java.awt.Color(255, 255, 255));
         prismaPersegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaPersegi.png"))); // NOI18N
+        prismaPersegiButton.setText("Prisma Persegi");
         prismaPersegiButton.setBorder(null);
+        prismaPersegiButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaPersegiButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaPersegiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaPersegiButtonActionPerformed(evt);
@@ -142,10 +151,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaPersegiButton);
 
         limasPersegiButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasPersegiButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasPersegiButton.setForeground(new java.awt.Color(0, 0, 0));
+        limasPersegiButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasPersegiButton.setForeground(new java.awt.Color(255, 255, 255));
         limasPersegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasPersegi.png"))); // NOI18N
+        limasPersegiButton.setText("Limas Persegi");
         limasPersegiButton.setBorder(null);
+        limasPersegiButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasPersegiButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasPersegiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasPersegiButtonActionPerformed(evt);
@@ -154,10 +166,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasPersegiButton);
 
         prismaPersegiPanjangButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaPersegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaPersegiPanjangButton.setForeground(new java.awt.Color(0, 0, 0));
+        prismaPersegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaPersegiPanjangButton.setForeground(new java.awt.Color(255, 255, 255));
         prismaPersegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaPersegiPanjang.png"))); // NOI18N
+        prismaPersegiPanjangButton.setText("<html><center>Prisma Persegi Panjang<html><center>");
         prismaPersegiPanjangButton.setBorder(null);
+        prismaPersegiPanjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaPersegiPanjangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaPersegiPanjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaPersegiPanjangButtonActionPerformed(evt);
@@ -166,10 +181,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaPersegiPanjangButton);
 
         limasPersegiPanjangButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasPersegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasPersegiPanjangButton.setForeground(new java.awt.Color(0, 0, 0));
+        limasPersegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasPersegiPanjangButton.setForeground(new java.awt.Color(255, 255, 255));
         limasPersegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasPersegiPanjang.png"))); // NOI18N
+        limasPersegiPanjangButton.setText("<html><center>Limas Persegi Panjang<html><center>");
         limasPersegiPanjangButton.setBorder(null);
+        limasPersegiPanjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasPersegiPanjangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasPersegiPanjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasPersegiPanjangButtonActionPerformed(evt);
@@ -178,10 +196,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasPersegiPanjangButton);
 
         prismaJajaranGenjangButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaJajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaJajaranGenjangButton.setForeground(new java.awt.Color(0, 0, 0));
+        prismaJajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaJajaranGenjangButton.setForeground(new java.awt.Color(255, 255, 255));
         prismaJajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaJajaranGenjang.png"))); // NOI18N
+        prismaJajaranGenjangButton.setText("<html><center>Prisma Jajaran Genjang<html><center>");
         prismaJajaranGenjangButton.setBorder(null);
+        prismaJajaranGenjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaJajaranGenjangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaJajaranGenjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaJajaranGenjangButtonActionPerformed(evt);
@@ -190,10 +211,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaJajaranGenjangButton);
 
         limasJajaranGenjangButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasJajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasJajaranGenjangButton.setForeground(new java.awt.Color(0, 0, 0));
+        limasJajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasJajaranGenjangButton.setForeground(new java.awt.Color(255, 255, 255));
         limasJajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasJajaranGenjang.png"))); // NOI18N
+        limasJajaranGenjangButton.setText("<html><center>Limas Jajaran Genjang<center></html>");
         limasJajaranGenjangButton.setBorder(null);
+        limasJajaranGenjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasJajaranGenjangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasJajaranGenjangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasJajaranGenjangButtonActionPerformed(evt);
@@ -202,10 +226,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasJajaranGenjangButton);
 
         prismaTrapesiumButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaTrapesiumButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaTrapesiumButton.setForeground(new java.awt.Color(0, 0, 0));
+        prismaTrapesiumButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaTrapesiumButton.setForeground(new java.awt.Color(255, 255, 255));
         prismaTrapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaTrapesium.png"))); // NOI18N
+        prismaTrapesiumButton.setText("Prisma Trapesium");
         prismaTrapesiumButton.setBorder(null);
+        prismaTrapesiumButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaTrapesiumButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaTrapesiumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaTrapesiumButtonActionPerformed(evt);
@@ -214,10 +241,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaTrapesiumButton);
 
         limasTrapesiumButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasTrapesiumButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasTrapesiumButton.setForeground(new java.awt.Color(0, 0, 0));
+        limasTrapesiumButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasTrapesiumButton.setForeground(new java.awt.Color(255, 255, 255));
         limasTrapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasTrapesium.png"))); // NOI18N
+        limasTrapesiumButton.setText("Limas Trapesium");
         limasTrapesiumButton.setBorder(null);
+        limasTrapesiumButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasTrapesiumButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasTrapesiumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasTrapesiumButtonActionPerformed(evt);
@@ -226,10 +256,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasTrapesiumButton);
 
         prismaBelahKetupatButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaBelahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaBelahKetupatButton.setForeground(new java.awt.Color(0, 0, 0));
+        prismaBelahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaBelahKetupatButton.setForeground(new java.awt.Color(255, 255, 255));
         prismaBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaBelahKetupat.png"))); // NOI18N
+        prismaBelahKetupatButton.setText("<html><center>Prisma Belah Ketupat</html><center>");
         prismaBelahKetupatButton.setBorder(null);
+        prismaBelahKetupatButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaBelahKetupatButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaBelahKetupatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaBelahKetupatButtonActionPerformed(evt);
@@ -238,10 +271,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaBelahKetupatButton);
 
         limasBelahKetupatButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasBelahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasBelahKetupatButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
+        limasBelahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasBelahKetupatButton.setForeground(new java.awt.Color(255, 255, 255));
+        limasBelahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasPersegi.png"))); // NOI18N
+        limasBelahKetupatButton.setText("<html><center>Limas Belah Ketupat<html><center>");
         limasBelahKetupatButton.setBorder(null);
+        limasBelahKetupatButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasBelahKetupatButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasBelahKetupatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasBelahKetupatButtonActionPerformed(evt);
@@ -250,10 +286,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasBelahKetupatButton);
 
         prismaLayangLayangButton.setBackground(new java.awt.Color(31, 85, 72));
-        prismaLayangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        prismaLayangLayangButton.setForeground(new java.awt.Color(0, 0, 0));
-        prismaLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
+        prismaLayangLayangButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        prismaLayangLayangButton.setForeground(new java.awt.Color(255, 255, 255));
+        prismaLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PrismaLayangLayang.png"))); // NOI18N
+        prismaLayangLayangButton.setText("<html><center>Prisma Layang-Layang</html><center>");
         prismaLayangLayangButton.setBorder(null);
+        prismaLayangLayangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prismaLayangLayangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prismaLayangLayangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prismaLayangLayangButtonActionPerformed(evt);
@@ -262,10 +301,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(prismaLayangLayangButton);
 
         limasLayangLayangButton.setBackground(new java.awt.Color(31, 85, 72));
-        limasLayangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        limasLayangLayangButton.setForeground(new java.awt.Color(0, 0, 0));
-        limasLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
+        limasLayangLayangButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        limasLayangLayangButton.setForeground(new java.awt.Color(255, 255, 255));
+        limasLayangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LimasLayangLayang.png"))); // NOI18N
+        limasLayangLayangButton.setText("<html><center>Limas Layang-Layang<html><center>");
         limasLayangLayangButton.setBorder(null);
+        limasLayangLayangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        limasLayangLayangButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         limasLayangLayangButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limasLayangLayangButtonActionPerformed(evt);
@@ -274,10 +316,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(limasLayangLayangButton);
 
         tabungButton.setBackground(new java.awt.Color(31, 85, 72));
-        tabungButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        tabungButton.setForeground(new java.awt.Color(0, 0, 0));
+        tabungButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        tabungButton.setForeground(new java.awt.Color(255, 255, 255));
         tabungButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Tabung.png"))); // NOI18N
+        tabungButton.setText("Tabung");
         tabungButton.setBorder(null);
+        tabungButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tabungButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         tabungButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tabungButtonActionPerformed(evt);
@@ -286,10 +331,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(tabungButton);
 
         kerucutButton.setBackground(new java.awt.Color(31, 85, 72));
-        kerucutButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        kerucutButton.setForeground(new java.awt.Color(0, 0, 0));
+        kerucutButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        kerucutButton.setForeground(new java.awt.Color(255, 255, 255));
         kerucutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Kerucut.png"))); // NOI18N
+        kerucutButton.setText("Kerucut");
         kerucutButton.setBorder(null);
+        kerucutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        kerucutButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         kerucutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kerucutButtonActionPerformed(evt);
@@ -298,10 +346,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(kerucutButton);
 
         kerucutTerpancungButton.setBackground(new java.awt.Color(31, 85, 72));
-        kerucutTerpancungButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        kerucutTerpancungButton.setForeground(new java.awt.Color(0, 0, 0));
+        kerucutTerpancungButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        kerucutTerpancungButton.setForeground(new java.awt.Color(255, 255, 255));
         kerucutTerpancungButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/KerucutTerpancung.png"))); // NOI18N
+        kerucutTerpancungButton.setText("<html><center>Kerucut Terpancung<html><center>");
         kerucutTerpancungButton.setBorder(null);
+        kerucutTerpancungButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        kerucutTerpancungButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         kerucutTerpancungButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kerucutTerpancungButtonActionPerformed(evt);
@@ -310,10 +361,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(kerucutTerpancungButton);
 
         bolaButton.setBackground(new java.awt.Color(31, 85, 72));
-        bolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        bolaButton.setForeground(new java.awt.Color(0, 0, 0));
+        bolaButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        bolaButton.setForeground(new java.awt.Color(255, 255, 255));
         bolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Bola.png"))); // NOI18N
+        bolaButton.setText("Bola");
         bolaButton.setBorder(null);
+        bolaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bolaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         bolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bolaButtonActionPerformed(evt);
@@ -322,10 +376,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(bolaButton);
 
         temberengBolaButton.setBackground(new java.awt.Color(31, 85, 72));
-        temberengBolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        temberengBolaButton.setForeground(new java.awt.Color(0, 0, 0));
+        temberengBolaButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        temberengBolaButton.setForeground(new java.awt.Color(255, 255, 255));
         temberengBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/TemberengBola.png"))); // NOI18N
+        temberengBolaButton.setText("Tembereng Bola");
         temberengBolaButton.setBorder(null);
+        temberengBolaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        temberengBolaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         temberengBolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 temberengBolaButtonActionPerformed(evt);
@@ -334,10 +391,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(temberengBolaButton);
 
         juringBolaButton.setBackground(new java.awt.Color(31, 85, 72));
-        juringBolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        juringBolaButton.setForeground(new java.awt.Color(0, 0, 0));
+        juringBolaButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        juringBolaButton.setForeground(new java.awt.Color(255, 255, 255));
         juringBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JuringBola.png"))); // NOI18N
+        juringBolaButton.setText("Juring Bola");
         juringBolaButton.setBorder(null);
+        juringBolaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        juringBolaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         juringBolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 juringBolaButtonActionPerformed(evt);
@@ -346,10 +406,13 @@ public class Benda3DGUI extends javax.swing.JFrame {
         jPanel3.add(juringBolaButton);
 
         cincinBolaButton.setBackground(new java.awt.Color(31, 85, 72));
-        cincinBolaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        cincinBolaButton.setForeground(new java.awt.Color(0, 0, 0));
+        cincinBolaButton.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        cincinBolaButton.setForeground(new java.awt.Color(255, 255, 255));
         cincinBolaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/CincinBola.png"))); // NOI18N
+        cincinBolaButton.setText("Cincin Bola");
         cincinBolaButton.setBorder(null);
+        cincinBolaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cincinBolaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         cincinBolaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cincinBolaButtonActionPerformed(evt);
@@ -370,12 +433,12 @@ public class Benda3DGUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(10, 142, 980, 448);
+        jPanel4.setBounds(10, 120, 980, 470);
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -387,11 +450,11 @@ public class Benda3DGUI extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5);
-        jPanel5.setBounds(0, 130, 1000, 470);
+        jPanel5.setBounds(0, 100, 1000, 500);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(73, 0, 1000, 600);
