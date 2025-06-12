@@ -4,10 +4,18 @@
  */
 package View;
 
+import javax.swing.SwingUtilities;
+
+import BendaGeometri.BelahKetupat;
+import BendaGeometri.JajaranGenjang;
+import BendaGeometri.JuringLingkaran;
+import BendaGeometri.LayangLayang;
 import BendaGeometri.Lingkaran;
 import BendaGeometri.Persegi;
 import BendaGeometri.PersegiPanjang;
 import BendaGeometri.Segitiga;
+import BendaGeometri.TemberengLingkaran;
+import BendaGeometri.Trapesium;
 
 /**
  *
@@ -29,7 +37,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
@@ -68,19 +77,17 @@ public class Benda2DGUI extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(homeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(homeButton)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(homeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(homeButton)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 70, 605);
@@ -131,7 +138,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         persegiPanjangButton.setBackground(new java.awt.Color(31, 85, 72));
         persegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         persegiPanjangButton.setForeground(new java.awt.Color(255, 255, 255));
-        persegiPanjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PersegiPanjang.png"))); // NOI18N
+        persegiPanjangButton
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PersegiPanjang.png"))); // NOI18N
         persegiPanjangButton.setText("Persegi Panjang");
         persegiPanjangButton.setBorder(null);
         persegiPanjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -146,7 +154,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         jajaranGenjangButton.setBackground(new java.awt.Color(31, 85, 72));
         jajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jajaranGenjangButton.setForeground(new java.awt.Color(255, 255, 255));
-        jajaranGenjangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JajaranGenjang.png"))); // NOI18N
+        jajaranGenjangButton
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JajaranGenjang.png"))); // NOI18N
         jajaranGenjangButton.setText("Jajaran Genjang");
         jajaranGenjangButton.setBorder(null);
         jajaranGenjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -176,7 +185,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         belahKetupatButton.setBackground(new java.awt.Color(31, 85, 72));
         belahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         belahKetupatButton.setForeground(new java.awt.Color(255, 255, 255));
-        belahKetupatButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/BelahKetupat.png"))); // NOI18N
+        belahKetupatButton
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/BelahKetupat.png"))); // NOI18N
         belahKetupatButton.setText("Belah Ketupat");
         belahKetupatButton.setBorder(null);
         belahKetupatButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -191,7 +201,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         layangLayangButton.setBackground(new java.awt.Color(31, 85, 72));
         layangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         layangLayangButton.setForeground(new java.awt.Color(255, 255, 255));
-        layangLayangButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LayangLayang.png"))); // NOI18N
+        layangLayangButton
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LayangLayang.png"))); // NOI18N
         layangLayangButton.setText("Layang-Layang");
         layangLayangButton.setBorder(null);
         layangLayangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -221,7 +232,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         temberengLingkaranButton.setBackground(new java.awt.Color(31, 85, 72));
         temberengLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         temberengLingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
-        temberengLingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/TemberengLingkaran.png"))); // NOI18N
+        temberengLingkaranButton
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/TemberengLingkaran.png"))); // NOI18N
         temberengLingkaranButton.setText("Tembereng Lingkaran");
         temberengLingkaranButton.setBorder(null);
         temberengLingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -236,7 +248,8 @@ public class Benda2DGUI extends javax.swing.JFrame {
         juringLingkaranButton.setBackground(new java.awt.Color(31, 85, 72));
         juringLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         juringLingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
-        juringLingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JuringLingkaran.png"))); // NOI18N
+        juringLingkaranButton
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JuringLingkaran.png"))); // NOI18N
         juringLingkaranButton.setText("Juring Lingkaran");
         juringLingkaranButton.setBorder(null);
         juringLingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -251,19 +264,19 @@ public class Benda2DGUI extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 946,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(17, Short.MAX_VALUE)));
         jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 414,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(15, Short.MAX_VALUE)));
 
         jPanel1.add(jPanel4);
         jPanel4.setBounds(10, 142, 980, 448);
@@ -273,13 +286,11 @@ public class Benda2DGUI extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1000, Short.MAX_VALUE));
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 470, Short.MAX_VALUE));
 
         jPanel1.add(jPanel5);
         jPanel5.setBounds(0, 130, 1000, 470);
@@ -298,103 +309,447 @@ public class Benda2DGUI extends javax.swing.JFrame {
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
     }
-    
-    private void segitigaButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        String[] labels = {"Alas", "Tinggi", "Sisi 1", "Sisi 2"};
-    String[] defaults = {"6.0", "8.0", "5.0", "5.0"};
-    
-    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
-        Segitiga s = new Segitiga(values[0], values[1], values[2], values[3]);
-        return new ShapeCalculatorDialog.CalculationResult(
-            s.getNamaBenda(),
-            String.format("Alas: %.2f\nTinggi: %.2f\nSisi 1: %.2f\nSisi 2: %.2f\n", 
-                          values[0], values[1], values[2], values[3]),
-            s.menghitungLuas(),
-            s.menghitungKeliling(),
-            "Method tanpa parameter"
-        );
-    };
-    
-    new ShapeCalculatorDialog(this, "Segitiga", labels, defaults, calculator).setVisible(true);
-    }
-    
-    private void persegiButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        String[] labels = {"Sisi"};
-    String[] defaults = {"5.0"};
-    
-    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
-        Persegi p = new Persegi(values[0]);
-        return new ShapeCalculatorDialog.CalculationResult(
-            p.getNamaBenda(),
-            String.format("Sisi: %.2f", values[0]),
-            p.menghitungLuas(),
-            p.menghitungKeliling(),
-            "Method tanpa parameter"
-        );
-    };
-    
-    new ShapeCalculatorDialog(this, "Persegi", labels, defaults, calculator).setVisible(true);
-    }
-    
-    private void persegiPanjangButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-       String[] labels = {"Panjang", "Lebar"};
-    String[] defaults = {"5.0", "8.0"};
-    
-    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
-        PersegiPanjang pp = new PersegiPanjang(values[0], values[1]);
-        return new ShapeCalculatorDialog.CalculationResult(
-            pp.getNamaBenda(),
-            String.format("Panjang: %.2f\nLebar: %.2f", values[0], values[1]),
-            pp.menghitungLuas(),
-            pp.menghitungKeliling(),
-            "Method tanpa parameter"
-        );
-    };
-    
-    new ShapeCalculatorDialog(this, "Persegi Panjang", labels, defaults, calculator).setVisible(true);
 
+    private void segitigaButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
+        double initialAlas = 5.0;
+        double initialTinggi = 4.0;
+        double initialSisiMiring1 = 6.0;
+        double initialSisiMiring2 = 7.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            Segitiga s = new Segitiga(values[0], values[1], values[2], values[3]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring 1: %.2f, Sisi Miring 2: %.2f",
+                            values[0], values[1], values[2], values[3]),
+                    s.menghitungLuas(),
+                    s.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Segitiga",
+                new String[] { "Alas", "Tinggi", "Sisi Miring 1", "Sisi Miring 2" },
+                new double[] { initialAlas, initialTinggi, initialSisiMiring1, initialSisiMiring2 },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                Segitiga s = new Segitiga(values[0], values[1], values[2], values[3]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring 1: %.2f, Sisi Miring 2: %.2f",
+                                values[0], values[1], values[2], values[3]),
+                        s.menghitungLuas(values[0], values[1]),
+                        s.menghitungKeliling(values[0], values[2], values[3]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Segitiga",
+                        new String[] { "Alas", "Tinggi", "Sisi Miring 1", "Sisi Miring 2" },
+                        new double[] { initialAlas, initialTinggi, initialSisiMiring1, initialSisiMiring2 },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
+    private void persegiButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        double initialSisi = 5.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            Persegi p = new Persegi(values[0]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Sisi: %.2f", values[0]),
+                    p.menghitungLuas(),
+                    p.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Persegi",
+                new String[] { "Sisi" },
+                new double[] { initialSisi },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                Persegi p = new Persegi(values[0]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Sisi: %.2f", values[0]),
+                        p.menghitungLuas(values[0]),
+                        p.menghitungKeliling(values[0]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Persegi",
+                        new String[] { "Sisi" },
+                        new double[] { initialSisi },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
+    }
+
+    private void persegiPanjangButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        double initialPanjang = 5.0;
+        double initialLebar = 3.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            PersegiPanjang pp = new PersegiPanjang(values[0], values[1]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Panjang: %.2f, Lebar: %.2f", values[0], values[1]), // Fixed: Added comma separator
+                    pp.menghitungLuas(),
+                    pp.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Persegi Panjang",
+                new String[] { "Panjang", "Lebar" },
+                new double[] { initialPanjang, initialLebar },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                PersegiPanjang pp = new PersegiPanjang(values[0], values[1]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Panjang: %.2f, Lebar: %.2f", values[0], values[1]), // Fixed: Added comma
+                                                                                           // separator
+                        pp.menghitungLuas(values[0], values[1]),
+                        pp.menghitungKeliling(values[0], values[1]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Persegi Panjang",
+                        new String[] { "Panjang", "Lebar" },
+                        new double[] { initialPanjang, initialLebar },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
+    }
+
     private void jajaranGenjangButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        double initialAlas = 6.0;
+        double initialTinggi = 4.0;
+        double initialSisiMiring = 5.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            JajaranGenjang jg = new JajaranGenjang(values[0], values[1], values[2]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring: %.2f",
+                            values[0], values[1], values[2]),
+                    jg.menghitungLuas(),
+                    jg.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Jajaran Genjang",
+                new String[] { "Alas", "Tinggi", "Sisi Miring" },
+                new double[] { initialAlas, initialTinggi, initialSisiMiring },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                JajaranGenjang jg = new JajaranGenjang(values[0], values[1], values[2]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring: %.2f",
+                                values[0], values[1], values[2]),
+                        jg.menghitungLuas(values[0], values[1]),
+                        jg.menghitungKeliling(values[0], values[2]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Jajaran Genjang",
+                        new String[] { "Alas", "Tinggi", "Sisi Miring" },
+                        new double[] { initialAlas, initialTinggi, initialSisiMiring },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
     private void trapesiumButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        double initialAlasAtas = 4.0;
+        double initialAlasBawah = 8.0;
+        double initialTinggi = 5.0;
+        double initialSisiMiringKiri = 6.0;
+        double initialSisiMiringKanan = 6.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            Trapesium t = new Trapesium(values[0], values[1], values[2], values[3], values[4]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format(
+                            "Alas Atas: %.2f, Alas Bawah: %.2f, Tinggi: %.2f, Sisi Miring Kiri: %.2f, Sisi Miring Kanan: %.2f",
+                            values[0], values[1], values[2], values[3], values[4]),
+                    t.menghitungLuas(),
+                    t.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Trapesium",
+                new String[] { "Alas Atas", "Alas Bawah", "Tinggi", "Sisi Miring Kiri", "Sisi Miring Kanan" },
+                new double[] { initialAlasAtas, initialAlasBawah, initialTinggi, initialSisiMiringKiri,
+                        initialSisiMiringKanan },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                Trapesium t = new Trapesium(values[0], values[1], values[2], values[3], values[4]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format(
+                                "Alas Atas: %.2f, Alas Bawah: %.2f, Tinggi: %.2f, Sisi Miring Kiri: %.2f, Sisi Miring Kanan: %.2f",
+                                values[0], values[1], values[2], values[3], values[4]),
+                        t.menghitungLuas(values[0], values[1], values[2]),
+                        t.menghitungKeliling(values[0], values[1], values[3], values[4]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Trapesium",
+                        new String[] { "Alas Atas", "Alas Bawah", "Tinggi", "Sisi Miring Kiri", "Sisi Miring Kanan" },
+                        new double[] { initialAlasAtas, initialAlasBawah, initialTinggi, initialSisiMiringKiri,
+                                initialSisiMiringKanan },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
     private void belahKetupatButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        double initialDiagonal1 = 8.0;
+        double initialDiagonal2 = 6.0;
+        double initialSisi = 5.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            BelahKetupat bk = new BelahKetupat(values[0], values[1], values[2]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi: %.2f",
+                            values[0], values[1], values[2]),
+                    bk.menghitungLuas(),
+                    bk.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Belah Ketupat",
+                new String[] { "Diagonal 1", "Diagonal 2", "Sisi" },
+                new double[] { initialDiagonal1, initialDiagonal2, initialSisi },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                BelahKetupat bk = new BelahKetupat(values[0], values[1], values[2]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi: %.2f",
+                                values[0], values[1], values[2]),
+                        bk.menghitungLuas(values[0], values[1]),
+                        bk.menghitungKeliling(values[2]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Belah Ketupat",
+                        new String[] { "Diagonal 1", "Diagonal 2", "Sisi" },
+                        new double[] { initialDiagonal1, initialDiagonal2, initialSisi },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
     private void layangLayangButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        double initialDiagonal1 = 10.0;
+        double initialDiagonal2 = 6.0;
+        double initialSisiPendek = 5.0;
+        double initialSisiPanjang = 8.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            LayangLayang ll = new LayangLayang(values[0], values[1], values[2], values[3]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi Pendek: %.2f, Sisi Panjang: %.2f",
+                            values[0], values[1], values[2], values[3]),
+                    ll.menghitungLuas(),
+                    ll.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Layang-layang",
+                new String[] { "Diagonal 1", "Diagonal 2", "Sisi Pendek", "Sisi Panjang" },
+                new double[] { initialDiagonal1, initialDiagonal2, initialSisiPendek, initialSisiPanjang },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                LayangLayang ll = new LayangLayang(values[0], values[1], values[2], values[3]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi Pendek: %.2f, Sisi Panjang: %.2f",
+                                values[0], values[1], values[2], values[3]),
+                        ll.menghitungLuas(values[0], values[1]),
+                        ll.menghitungKeliling(values[2], values[3]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Layang-layang",
+                        new String[] { "Diagonal 1", "Diagonal 2", "Sisi Pendek", "Sisi Panjang" },
+                        new double[] { initialDiagonal1, initialDiagonal2, initialSisiPendek, initialSisiPanjang },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
     private void lingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-         String[] labels = {"Jari-jari"};
-    String[] defaults = {"7.0"};
-    
-    ShapeCalculatorDialog.ShapeCalculator calculator = values -> {
-        Lingkaran l = new Lingkaran(values[0]);
-        return new ShapeCalculatorDialog.CalculationResult(
-            l.getNamaBenda(),
-            String.format("Jari-jari: %.2f", values[0]),
-            l.menghitungLuas(),
-            l.menghitungKeliling(),
-            "Method tanpa parameter"
-        );
-    };
-    
-    new ShapeCalculatorDialog(this, "Lingkaran", labels, defaults, calculator).setVisible(true);
+        double initialRadius = 7.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            Lingkaran l = new Lingkaran(values[0]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Radius: %.2f", values[0]),
+                    l.menghitungLuas(),
+                    l.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Lingkaran",
+                new String[] { "Radius" },
+                new double[] { initialRadius },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                Lingkaran l = new Lingkaran(values[0]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Radius: %.2f", values[0]),
+                        l.menghitungLuas(values[0]),
+                        l.menghitungKeliling(values[0]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Lingkaran",
+                        new String[] { "Radius" },
+                        new double[] { initialRadius },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
     private void temberengLingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        double initialRadius = 10.0;
+        double initialSudut = 60.0;
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            TemberengLingkaran tl = new TemberengLingkaran(values[0], values[1]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Radius: %.2f, Sudut: %.2f°", values[0], values[1]),
+                    tl.menghitungLuas(),
+                    tl.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Tembereng Lingkaran",
+                new String[] { "Radius", "Sudut" },
+                new double[] { initialRadius, initialSudut },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                TemberengLingkaran tl = new TemberengLingkaran(values[0], values[1]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Radius: %.2f, Sudut: %.2f°", values[0], values[1]),
+                        tl.menghitungLuas(values[0], values[1]),
+                        tl.menghitungKeliling(values[0], values[1]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Tembereng Lingkaran",
+                        new String[] { "Radius", "Sudut" },
+                        new double[] { initialRadius, initialSudut },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
-    
+
     private void juringLingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        double initialRadius = 8.0;
+        double initialSudutJuring = 90.0; // dalam derajat
+
+        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+            JuringLingkaran jl = new JuringLingkaran(values[0], values[1]);
+            return new StaticCalculationDialog.CalculationResult(
+                    String.format("Radius: %.2f, Sudut Juring: %.2f°", values[0], values[1]),
+                    jl.menghitungLuas(),
+                    jl.menghitungKeliling());
+        };
+
+        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+                this,
+                "Juring Lingkaran",
+                new String[] { "Radius", "Sudut Juring (derajat)" },
+                new double[] { initialRadius, initialSudutJuring },
+                staticCalculator);
+
+        staticDialog.setVisible(true);
+
+        if (staticDialog.shouldProceedToDynamic()) {
+            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+                JuringLingkaran jl = new JuringLingkaran(values[0], values[1]);
+                return new StaticCalculationDialog.CalculationResult(
+                        String.format("Radius: %.2f, Sudut Juring: %.2f°", values[0], values[1]),
+                        jl.menghitungLuas(values[0], values[1]),
+                        jl.menghitungKeliling(values[0], values[1]));
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                        this,
+                        "Juring Lingkaran",
+                        new String[] { "Radius", "Sudut Juring (derajat)" },
+                        new double[] { initialRadius, initialSudutJuring },
+                        dynamicCalculator);
+                dynamicDialog.setVisible(true);
+            });
+        }
     }
 
     /**
@@ -437,6 +792,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new Benda2DGUI().setVisible(true);
             }

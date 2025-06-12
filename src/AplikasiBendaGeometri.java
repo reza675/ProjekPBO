@@ -9,9 +9,9 @@ import View.SplashScreen;
 
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
-        Bola bola = new Bola(14.0);
-        Thread thread = new Thread(bola);
-        thread.start();
+        // Bola bola = new Bola(14.0);
+        // Thread thread = new Thread(bola);
+        // thread.start();
         
         // testing valent
         SplashScreen ui = new SplashScreen();
