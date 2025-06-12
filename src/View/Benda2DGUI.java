@@ -108,7 +108,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         segitigaButton.setBackground(new java.awt.Color(31, 85, 72));
         segitigaButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         segitigaButton.setForeground(new java.awt.Color(255, 255, 255));
-        segitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/segitiga.png"))); // NOI18N
+        segitigaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/segitiga.png"))); // NOI18N
         segitigaButton.setText("Segitiga");
         segitigaButton.setBorder(null);
         segitigaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -123,7 +123,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         persegiButton.setBackground(new java.awt.Color(31, 85, 72));
         persegiButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         persegiButton.setForeground(new java.awt.Color(255, 255, 255));
-        persegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/persegi.png"))); // NOI18N
+        persegiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/persegi.png"))); // NOI18N
         persegiButton.setText("Persegi");
         persegiButton.setBorder(null);
         persegiButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -139,7 +139,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         persegiPanjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         persegiPanjangButton.setForeground(new java.awt.Color(255, 255, 255));
         persegiPanjangButton
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/PersegiPanjang.png"))); // NOI18N
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/PersegiPanjang.png"))); // NOI18N
         persegiPanjangButton.setText("Persegi Panjang");
         persegiPanjangButton.setBorder(null);
         persegiPanjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -155,7 +155,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         jajaranGenjangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jajaranGenjangButton.setForeground(new java.awt.Color(255, 255, 255));
         jajaranGenjangButton
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JajaranGenjang.png"))); // NOI18N
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/JajaranGenjang.png"))); // NOI18N
         jajaranGenjangButton.setText("Jajaran Genjang");
         jajaranGenjangButton.setBorder(null);
         jajaranGenjangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -170,7 +170,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         trapesiumButton.setBackground(new java.awt.Color(31, 85, 72));
         trapesiumButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         trapesiumButton.setForeground(new java.awt.Color(255, 255, 255));
-        trapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Trapesium.png"))); // NOI18N
+        trapesiumButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/Trapesium.png"))); // NOI18N
         trapesiumButton.setText("Trapesium");
         trapesiumButton.setBorder(null);
         trapesiumButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -186,7 +186,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         belahKetupatButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         belahKetupatButton.setForeground(new java.awt.Color(255, 255, 255));
         belahKetupatButton
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/BelahKetupat.png"))); // NOI18N
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/BelahKetupat.png"))); // NOI18N
         belahKetupatButton.setText("Belah Ketupat");
         belahKetupatButton.setBorder(null);
         belahKetupatButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -202,7 +202,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         layangLayangButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         layangLayangButton.setForeground(new java.awt.Color(255, 255, 255));
         layangLayangButton
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/LayangLayang.png"))); // NOI18N
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/LayangLayang.png"))); // NOI18N
         layangLayangButton.setText("Layang-Layang");
         layangLayangButton.setBorder(null);
         layangLayangButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -217,7 +217,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         lingkaranButton.setBackground(new java.awt.Color(31, 85, 72));
         lingkaranButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         lingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
-        lingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/Lingkaran.png"))); // NOI18N
+        lingkaranButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/Lingkaran.png"))); // NOI18N
         lingkaranButton.setText("Lingkaran");
         lingkaranButton.setBorder(null);
         lingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -233,7 +233,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         temberengLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         temberengLingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
         temberengLingkaranButton
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/TemberengLingkaran.png"))); // NOI18N
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/TemberengLingkaran.png"))); // NOI18N
         temberengLingkaranButton.setText("Tembereng Lingkaran");
         temberengLingkaranButton.setBorder(null);
         temberengLingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -249,7 +249,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
         juringLingkaranButton.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         juringLingkaranButton.setForeground(new java.awt.Color(255, 255, 255));
         juringLingkaranButton
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Images/JuringLingkaran.png"))); // NOI18N
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("../Assets/Images/JuringLingkaran.png"))); // NOI18N
         juringLingkaranButton.setText("Juring Lingkaran");
         juringLingkaranButton.setBorder(null);
         juringLingkaranButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -316,16 +316,16 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialSisiMiring1 = 6.0;
         double initialSisiMiring2 = 7.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             Segitiga s = new Segitiga(values[0], values[1], values[2], values[3]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring 1: %.2f, Sisi Miring 2: %.2f",
                             values[0], values[1], values[2], values[3]),
                     s.menghitungLuas(),
                     s.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Segitiga",
                 new String[] { "Alas", "Tinggi", "Sisi Miring 1", "Sisi Miring 2" },
@@ -334,10 +334,10 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 Segitiga s = new Segitiga(values[0], values[1], values[2], values[3]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring 1: %.2f, Sisi Miring 2: %.2f",
                                 values[0], values[1], values[2], values[3]),
                         s.menghitungLuas(values[0], values[1]),
@@ -345,7 +345,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Segitiga",
                         new String[] { "Alas", "Tinggi", "Sisi Miring 1", "Sisi Miring 2" },
@@ -359,15 +359,15 @@ public class Benda2DGUI extends javax.swing.JFrame {
     private void persegiButtonActionPerformed(java.awt.event.ActionEvent evt) {
         double initialSisi = 5.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             Persegi p = new Persegi(values[0]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Sisi: %.2f", values[0]),
                     p.menghitungLuas(),
                     p.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Persegi",
                 new String[] { "Sisi" },
@@ -376,17 +376,17 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 Persegi p = new Persegi(values[0]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Sisi: %.2f", values[0]),
                         p.menghitungLuas(values[0]),
                         p.menghitungKeliling(values[0]));
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Persegi",
                         new String[] { "Sisi" },
@@ -401,15 +401,15 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialPanjang = 5.0;
         double initialLebar = 3.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             PersegiPanjang pp = new PersegiPanjang(values[0], values[1]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Panjang: %.2f, Lebar: %.2f", values[0], values[1]), // Fixed: Added comma separator
                     pp.menghitungLuas(),
                     pp.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Persegi Panjang",
                 new String[] { "Panjang", "Lebar" },
@@ -418,10 +418,10 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 PersegiPanjang pp = new PersegiPanjang(values[0], values[1]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Panjang: %.2f, Lebar: %.2f", values[0], values[1]), // Fixed: Added comma
                                                                                            // separator
                         pp.menghitungLuas(values[0], values[1]),
@@ -429,7 +429,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Persegi Panjang",
                         new String[] { "Panjang", "Lebar" },
@@ -445,16 +445,16 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialTinggi = 4.0;
         double initialSisiMiring = 5.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             JajaranGenjang jg = new JajaranGenjang(values[0], values[1], values[2]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring: %.2f",
                             values[0], values[1], values[2]),
                     jg.menghitungLuas(),
                     jg.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Jajaran Genjang",
                 new String[] { "Alas", "Tinggi", "Sisi Miring" },
@@ -463,10 +463,10 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 JajaranGenjang jg = new JajaranGenjang(values[0], values[1], values[2]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Alas: %.2f, Tinggi: %.2f, Sisi Miring: %.2f",
                                 values[0], values[1], values[2]),
                         jg.menghitungLuas(values[0], values[1]),
@@ -474,7 +474,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Jajaran Genjang",
                         new String[] { "Alas", "Tinggi", "Sisi Miring" },
@@ -492,9 +492,9 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialSisiMiringKiri = 6.0;
         double initialSisiMiringKanan = 6.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             Trapesium t = new Trapesium(values[0], values[1], values[2], values[3], values[4]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format(
                             "Alas Atas: %.2f, Alas Bawah: %.2f, Tinggi: %.2f, Sisi Miring Kiri: %.2f, Sisi Miring Kanan: %.2f",
                             values[0], values[1], values[2], values[3], values[4]),
@@ -502,7 +502,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
                     t.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Trapesium",
                 new String[] { "Alas Atas", "Alas Bawah", "Tinggi", "Sisi Miring Kiri", "Sisi Miring Kanan" },
@@ -512,10 +512,10 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 Trapesium t = new Trapesium(values[0], values[1], values[2], values[3], values[4]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format(
                                 "Alas Atas: %.2f, Alas Bawah: %.2f, Tinggi: %.2f, Sisi Miring Kiri: %.2f, Sisi Miring Kanan: %.2f",
                                 values[0], values[1], values[2], values[3], values[4]),
@@ -524,7 +524,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Trapesium",
                         new String[] { "Alas Atas", "Alas Bawah", "Tinggi", "Sisi Miring Kiri", "Sisi Miring Kanan" },
@@ -541,16 +541,16 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialDiagonal2 = 6.0;
         double initialSisi = 5.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             BelahKetupat bk = new BelahKetupat(values[0], values[1], values[2]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi: %.2f",
                             values[0], values[1], values[2]),
                     bk.menghitungLuas(),
                     bk.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Belah Ketupat",
                 new String[] { "Diagonal 1", "Diagonal 2", "Sisi" },
@@ -559,10 +559,10 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 BelahKetupat bk = new BelahKetupat(values[0], values[1], values[2]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi: %.2f",
                                 values[0], values[1], values[2]),
                         bk.menghitungLuas(values[0], values[1]),
@@ -570,7 +570,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Belah Ketupat",
                         new String[] { "Diagonal 1", "Diagonal 2", "Sisi" },
@@ -587,16 +587,16 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialSisiPendek = 5.0;
         double initialSisiPanjang = 8.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             LayangLayang ll = new LayangLayang(values[0], values[1], values[2], values[3]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi Pendek: %.2f, Sisi Panjang: %.2f",
                             values[0], values[1], values[2], values[3]),
                     ll.menghitungLuas(),
                     ll.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Layang-layang",
                 new String[] { "Diagonal 1", "Diagonal 2", "Sisi Pendek", "Sisi Panjang" },
@@ -605,10 +605,10 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 LayangLayang ll = new LayangLayang(values[0], values[1], values[2], values[3]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Diagonal 1: %.2f, Diagonal 2: %.2f, Sisi Pendek: %.2f, Sisi Panjang: %.2f",
                                 values[0], values[1], values[2], values[3]),
                         ll.menghitungLuas(values[0], values[1]),
@@ -616,7 +616,7 @@ public class Benda2DGUI extends javax.swing.JFrame {
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Layang-layang",
                         new String[] { "Diagonal 1", "Diagonal 2", "Sisi Pendek", "Sisi Panjang" },
@@ -630,15 +630,15 @@ public class Benda2DGUI extends javax.swing.JFrame {
     private void lingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homeButtonActionPerformed
         double initialRadius = 7.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             Lingkaran l = new Lingkaran(values[0]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Radius: %.2f", values[0]),
                     l.menghitungLuas(),
                     l.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Lingkaran",
                 new String[] { "Radius" },
@@ -647,17 +647,17 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 Lingkaran l = new Lingkaran(values[0]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Radius: %.2f", values[0]),
                         l.menghitungLuas(values[0]),
                         l.menghitungKeliling(values[0]));
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Lingkaran",
                         new String[] { "Radius" },
@@ -672,15 +672,15 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialRadius = 10.0;
         double initialSudut = 60.0;
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             TemberengLingkaran tl = new TemberengLingkaran(values[0], values[1]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Radius: %.2f, Sudut: %.2f°", values[0], values[1]),
                     tl.menghitungLuas(),
                     tl.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Tembereng Lingkaran",
                 new String[] { "Radius", "Sudut" },
@@ -689,17 +689,17 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 TemberengLingkaran tl = new TemberengLingkaran(values[0], values[1]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Radius: %.2f, Sudut: %.2f°", values[0], values[1]),
                         tl.menghitungLuas(values[0], values[1]),
                         tl.menghitungKeliling(values[0], values[1]));
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Tembereng Lingkaran",
                         new String[] { "Radius", "Sudut" },
@@ -714,15 +714,15 @@ public class Benda2DGUI extends javax.swing.JFrame {
         double initialRadius = 8.0;
         double initialSudutJuring = 90.0; // dalam derajat
 
-        StaticCalculationDialog.ShapeCalculator staticCalculator = values -> {
+        DialogPerhitunganStatis.KalkulatorBentuk staticCalculator = values -> {
             JuringLingkaran jl = new JuringLingkaran(values[0], values[1]);
-            return new StaticCalculationDialog.CalculationResult(
+            return new DialogPerhitunganStatis.HasilPerhitungan(
                     String.format("Radius: %.2f, Sudut Juring: %.2f°", values[0], values[1]),
                     jl.menghitungLuas(),
                     jl.menghitungKeliling());
         };
 
-        StaticCalculationDialog staticDialog = new StaticCalculationDialog(
+        DialogPerhitunganStatis staticDialog = new DialogPerhitunganStatis(
                 this,
                 "Juring Lingkaran",
                 new String[] { "Radius", "Sudut Juring (derajat)" },
@@ -731,17 +731,17 @@ public class Benda2DGUI extends javax.swing.JFrame {
 
         staticDialog.setVisible(true);
 
-        if (staticDialog.shouldProceedToDynamic()) {
-            StaticCalculationDialog.ShapeCalculator dynamicCalculator = values -> {
+        if (staticDialog.apakahLanjutKeDinamis()) {
+            DialogPerhitunganStatis.KalkulatorBentuk dynamicCalculator = values -> {
                 JuringLingkaran jl = new JuringLingkaran(values[0], values[1]);
-                return new StaticCalculationDialog.CalculationResult(
+                return new DialogPerhitunganStatis.HasilPerhitungan(
                         String.format("Radius: %.2f, Sudut Juring: %.2f°", values[0], values[1]),
                         jl.menghitungLuas(values[0], values[1]),
                         jl.menghitungKeliling(values[0], values[1]));
             };
 
             SwingUtilities.invokeLater(() -> {
-                DynamicCalculationDialog dynamicDialog = new DynamicCalculationDialog(
+                DialogPerhitunganDinamis dynamicDialog = new DialogPerhitunganDinamis(
                         this,
                         "Juring Lingkaran",
                         new String[] { "Radius", "Sudut Juring (derajat)" },

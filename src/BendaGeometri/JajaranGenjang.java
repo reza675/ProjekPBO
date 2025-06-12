@@ -11,7 +11,7 @@ public class JajaranGenjang extends Benda2D implements Runnable {
 
 	public JajaranGenjang(double alas, double tinggi, double sisiMiring) throws InputMismatchException {
         if (alas <= 0 || tinggi <= 0 || sisiMiring <= 0) {
-            throw new InputMismatchException("Nilai alas, tinggi, dan sisi miring harus lebih dari nol.");
+            throw new InputMismatchException("Nilai alas, tinggi, dan sisi miring harus lebih dari nol dan berupa angka.");
         }
 		this.alas = alas;
 		this.tinggi = tinggi;

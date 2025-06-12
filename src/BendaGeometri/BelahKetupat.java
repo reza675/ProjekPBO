@@ -8,7 +8,10 @@ public class BelahKetupat extends Benda2D implements Runnable {
 	protected double diagonal2;
 	protected double sisi;
 
-	public BelahKetupat(double diagonal1, double diagonal2, double sisi) {
+	public BelahKetupat(double diagonal1, double diagonal2, double sisi) throws InputMismatchException {
+		if (diagonal1 <= 0 || diagonal2 <= 0 || sisi <= 0) {
+			throw new InputMismatchException("Diagonal1, diagonal2, dan sisi harus lebih dari nol dan berupa angka.");
+		}
 		this.diagonal1 = diagonal1;
 		this.diagonal2 = diagonal2;
 		this.sisi = sisi;
@@ -18,7 +21,10 @@ public class BelahKetupat extends Benda2D implements Runnable {
 		luas = (diagonal1 * diagonal2) / 2;
 		return luas;
 	}
-	public double menghitungLuas(double diagonal1Baru, double diagonal2Baru) {
+	public double menghitungLuas(double diagonal1Baru, double diagonal2Baru) throws InputMismatchException {
+		if (diagonal1Baru <= 0 || diagonal2Baru <= 0) {
+			throw new InputMismatchException("Diagonal1 dan diagonal2 harus lebih dari nol.");
+		}
 		luas = (diagonal1Baru * diagonal2Baru) / 2.0;
 		return luas;
 	}
@@ -27,7 +33,10 @@ public class BelahKetupat extends Benda2D implements Runnable {
 		keliling = (4 * sisi);
 		return keliling;
 	}
-	public double menghitungKeliling(double sisiBaru) {
+	public double menghitungKeliling(double sisiBaru) throws InputMismatchException {
+		if (sisiBaru <= 0) {
+			throw new InputMismatchException("Sisi harus lebih dari nol.");
+		}
 		keliling = (4 * sisiBaru);
 		return keliling;
 	}

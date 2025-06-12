@@ -11,7 +11,7 @@ public class CincinBola extends Bola implements Runnable {
 	public CincinBola(double radius, double tinggiCincinBola) throws InputMismatchException {
 		super(radius);
 		if (tinggiCincinBola <= 0) {
-			throw new InputMismatchException("Tinggi cincin bola harus lebih dari nol.");
+			throw new InputMismatchException("Tinggi cincin bola harus lebih dari nol dan berupa angka.");
 		}
 		this.tinggiCincinBola = tinggiCincinBola;
 

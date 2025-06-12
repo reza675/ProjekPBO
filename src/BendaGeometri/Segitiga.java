@@ -13,7 +13,7 @@ public class Segitiga extends Benda2D implements Runnable {
 
 	public Segitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2) throws InputMismatchException {
 		if (alas <= 0 || tinggi <= 0 || sisiMiring1 <= 0 || sisiMiring2 <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("alas, tinggi, sisi miring1, dan sisi miring2 harus lebih dari nol.");
 		}
 		this.alas = alas;
 		this.tinggi = tinggi;
