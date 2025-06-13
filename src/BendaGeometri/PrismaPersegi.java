@@ -51,7 +51,7 @@ public class PrismaPersegi extends Persegi implements Runnable{
 
     public double menghitungVolume(double sisiBaru, double tinggiPrismaBaru) throws InputMismatchException {
         if (sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Sisi dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(sisiBaru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -67,7 +67,7 @@ public class PrismaPersegi extends Persegi implements Runnable{
 
     public double menghitungLuasPermukaan(double sisiBaru, double tinggiPrismaBaru) throws InputMismatchException {
         if (sisiBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Sisi dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(sisiBaru);
         kelilingAlas = super.menghitungKeliling(tinggiPrismaBaru);

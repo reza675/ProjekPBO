@@ -33,7 +33,7 @@ public class LimasTrapesium extends Trapesium implements Runnable {
 	public double menghitungVolume(double alasAtasBaru, double alasBawahBaru, double tinggiTrapesiumBaru,
 			double tinggiLimasBaru) throws InputMismatchException {
 		if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiTrapesiumBaru <= 0 || tinggiLimasBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Alas atas, alas bawah, tinggi trapesium, dan tinggi limas harus lebih dari nol.");
 		}
 		luasAlas = menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru);
 		volume = (1 / 3.0) * luasAlas * tinggiLimasBaru;
@@ -55,7 +55,7 @@ public class LimasTrapesium extends Trapesium implements Runnable {
 	public double menghitungLuasPermukaan(double alasAtasBaru, double alasBawahBaru, double tinggiTrapesiumBaru,
 			double tinggiLimasBaru) throws InputMismatchException {
 		if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiTrapesiumBaru <= 0 || tinggiLimasBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Alas atas, alas bawah, tinggi trapesium, dan tinggi limas harus lebih dari nol.");
 		}
 		luasAlas = menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru);
 		luasSegitigaAtas = 0.5 * alasAtasBaru * tinggiLimasBaru;

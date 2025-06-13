@@ -81,7 +81,7 @@ public class PrismaLayangLayang extends LayangLayang implements Runnable {
 
     public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiPrismaBaru) throws InputMismatchException {
         if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Diagonal1, diagonal2, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -97,7 +97,7 @@ public class PrismaLayangLayang extends LayangLayang implements Runnable {
 
     public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double sisiPendekBaru, double sisiPanjangBaru,double tinggiPrismaBaru) throws InputMismatchException {
         if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || sisiPendekBaru <= 0 || sisiPanjangBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Diagonal1, diagonal2, sisi pendek, sisi panjang, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         kelilingAlas = super.menghitungKeliling(sisiPendekBaru, sisiPanjangBaru);

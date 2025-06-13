@@ -78,7 +78,7 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
 
     public double menghitungVolume(double alasBaru, double tinggiBaru, double tinggiPrismaBaru) throws InputMismatchException {
         if (alasBaru <= 0 || tinggiBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas, tinggi, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(alasBaru, tinggiBaru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -94,7 +94,7 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
 
     public double menghitungLuasPermukaan(double alasBaru, double tinggiBaru, double sisiMiring1Baru,double sisiMiring2Baru,double tinggiPrismaBaru) throws InputMismatchException {
         if (alasBaru <= 0 || tinggiBaru <= 0 || sisiMiring1Baru <= 0 || sisiMiring2Baru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas, tinggi, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(alasBaru, tinggiBaru);
         kelilingAlas = super.menghitungKeliling(alasBaru, sisiMiring1Baru, sisiMiring2Baru);

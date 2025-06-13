@@ -5,9 +5,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import View.HasilHitungStatisGUI;
-import View.SplashScreen;
-
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
         // Bola bola = new Bola(14.0);
@@ -20,17 +17,19 @@ public class AplikasiBendaGeometri {
         // ui.setVisible(true);
         // testing valent
 
-        
-    
-        
-        Benda2D persegi = new Persegi(5.0);
-        String[] label = {"Sisi"};
-        double[] nilai = {5.0};
-        
-        HasilHitungStatisGUI ui = new HasilHitungStatisGUI();
-        ui.setBentuk(persegi, "Persegi", label, nilai);
+        AplikasiBendaGeometriGUI ui = new AplikasiBendaGeometriGUI();
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
+    
+        
+        // Benda2D persegi = new Persegi(5.0);
+        // String[] label = {"Sisi"};
+        // double[] nilai = {5.0};
+        
+        // HasilHitungStatisGUI ui = new HasilHitungStatisGUI();
+        // ui.setBentuk(persegi, "Persegi", label, nilai);
+        // ui.setLocationRelativeTo(null);
+        // ui.setVisible(true);
 
         //Segitiga segitiga = new Segitiga(10, 15, 12, 14);
 

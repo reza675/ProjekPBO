@@ -83,7 +83,7 @@ public class Kerucut extends Lingkaran implements Runnable {
 
 	public double menghitungVolume(double radiusBaru, double tinggiKerucutBaru) throws InputMismatchException {
 		if (radiusBaru <= 0 || tinggiKerucutBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius baru dan tinggi kerucut harus lebih dari nol.");
 		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		volume = (1.0 / 3.0) * luasAlas * tinggiKerucutBaru;
@@ -100,7 +100,7 @@ public class Kerucut extends Lingkaran implements Runnable {
 
 	public double menghitungLuasPermukaan(double tinggiKerucutBaru, double radiusBaru) throws InputMismatchException {
 		if (radiusBaru <= 0 || tinggiKerucutBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius baru dan tinggi kerucut harus lebih dari nol.");
 		}
 		luasAlas = super.menghitungLuas(radiusBaru);
 		sisiMiring = Math.sqrt(tinggiKerucutBaru * tinggiKerucutBaru + radiusBaru * radiusBaru);

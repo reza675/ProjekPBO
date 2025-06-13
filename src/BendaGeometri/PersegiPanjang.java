@@ -10,7 +10,7 @@ public class PersegiPanjang extends Benda2D implements Runnable {
 
     public PersegiPanjang(double panjang, double lebar) throws InputMismatchException {
         if (panjang <= 0 || lebar <= 0) {
-            throw new InputMismatchException("panjang dan lebar harus lebih dari nol.");
+            throw new InputMismatchException("Panjang dan lebar harus lebih dari nol.");
         }
         this.panjang = panjang;
         this.lebar = lebar;
@@ -38,7 +38,7 @@ public class PersegiPanjang extends Benda2D implements Runnable {
 
     public double menghitungLuas(double panjangBaru, double lebarBaru) throws InputMismatchException {
         if (panjangBaru <= 0 || lebarBaru <= 0) {
-            throw new InputMismatchException("panjang dan lebar harus lebih dari nol.");
+            throw new InputMismatchException("Panjang dan lebar harus lebih dari nol.");
         }
         luas = panjangBaru * lebarBaru;
         return luas;
@@ -52,7 +52,7 @@ public class PersegiPanjang extends Benda2D implements Runnable {
 
     public double menghitungKeliling(double panjangBaru, double lebarBaru) throws InputMismatchException {
         if (panjangBaru <= 0 || lebarBaru <= 0) {
-            throw new InputMismatchException("panjang dan lebar harus lebih dari nol.");
+            throw new InputMismatchException("Panjang dan lebar harus lebih dari nol.");
         }
         keliling = 2 * (panjangBaru + lebarBaru);
         return keliling;

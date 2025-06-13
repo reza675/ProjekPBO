@@ -25,7 +25,7 @@ public class TemberengBola extends Bola implements Runnable {
 	public double menghitungVolume(double radiusBolaBaru, double tinggiTemberengBolaBaru)
 			throws InputMismatchException {
 		if (radiusBolaBaru <= 0 || tinggiTemberengBolaBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius dan tinggi tembereng bola harus lebih dari nol.");
 		}
 		volume = ((tinggiTemberengBolaBaru * tinggiTemberengBolaBaru * PI) / 3)
 				* (3 * radiusBolaBaru - tinggiTemberengBolaBaru);
@@ -40,7 +40,7 @@ public class TemberengBola extends Bola implements Runnable {
 	public double menghitungLuasPermukaan(double radiusBaru, double tinggiTemberengBolaBaru)
 			throws InputMismatchException {
 		if (radiusBaru <= 0 || tinggiTemberengBolaBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius dan tinggi tembereng bola harus lebih dari nol.");
 		}
 		luasPermukaan = 2 * radiusBaru * tinggiTemberengBolaBaru * PI + radiusBaru * radiusBaru * PI;
 		return luasPermukaan;

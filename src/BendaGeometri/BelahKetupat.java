@@ -10,7 +10,7 @@ public class BelahKetupat extends Benda2D implements Runnable {
 
 	public BelahKetupat(double diagonal1, double diagonal2, double sisi) throws InputMismatchException {
 		if (diagonal1 <= 0 || diagonal2 <= 0 || sisi <= 0) {
-			throw new InputMismatchException("Diagonal1, diagonal2, dan sisi harus lebih dari nol dan berupa angka.");
+			throw new InputMismatchException("Diagonal1, diagonal2, dan sisi harus lebih dari nol");
 		}
 		this.diagonal1 = diagonal1;
 		this.diagonal2 = diagonal2;

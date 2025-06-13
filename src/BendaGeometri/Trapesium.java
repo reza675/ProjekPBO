@@ -13,7 +13,7 @@ public class Trapesium extends Benda2D {
 
     public Trapesium(double alasAtas, double alasBawah, double tinggi, double sisiMiringKiri, double sisiMiringKanan) throws InputMismatchException {
         if (alasAtas <= 0 || alasBawah <= 0 || tinggi <= 0 || sisiMiringKiri <= 0 || sisiMiringKanan <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas atas, alas bawah, tinggi, sisi miring kiri, dan sisi miring kanan harus lebih dari nol.");
         }
         this.alasAtas = alasAtas;
         this.alasBawah = alasBawah;
@@ -30,7 +30,7 @@ public class Trapesium extends Benda2D {
 
     public double menghitungLuas(double alasAtasBaru, double alasBawahBaru, double tinggiBaru) throws InputMismatchException {
         if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 ) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas atas, alas bawah, dan tinggi harus lebih dari nol.");
         }
         luas = 0.5 * (alasAtasBaru + alasBawahBaru) * tinggiBaru;
         return luas;
@@ -45,7 +45,7 @@ public class Trapesium extends Benda2D {
     public double menghitungKeliling(double alasAtasBaru, double alasBawahBaru, double sisiMiringKananBaru,
             double sisiMiringKiriBaru) throws InputMismatchException {
         if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || sisiMiringKiriBaru <= 0 || sisiMiringKananBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas atas, alas bawah, tinggi, sisi miring kiri, dan sisi miring kanan harus lebih dari nol.");
         }
         keliling = alasAtasBaru + alasBawahBaru + sisiMiringKananBaru + sisiMiringKiriBaru;
         return keliling;

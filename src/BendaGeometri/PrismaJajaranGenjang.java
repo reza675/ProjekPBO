@@ -80,7 +80,7 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements Runnable {
 
     public double menghitungVolume(double panjangAlasBaru, double tinggiAlasBaru, double tinggiPrismaBaru) throws InputMismatchException {
         if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Panjang, tinggi alas, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -97,7 +97,7 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements Runnable {
     public double menghitungLuasPermukaan(double panjangAlas, double tinggiAlas, double sisiMiringAlas,
             double tinggiPrisma) throws InputMismatchException {
         if (panjangAlas <= 0 || tinggiAlas <= 0 || sisiMiringAlas <= 0 || tinggiPrisma <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Panjang, tinggi alas, sisi miring alas, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
         kelilingAlas = super.menghitungKeliling(panjangAlas, sisiMiringAlas);

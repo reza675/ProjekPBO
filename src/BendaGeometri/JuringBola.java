@@ -14,7 +14,7 @@ public class JuringBola extends Bola implements Runnable {
     public JuringBola(double radius, double sudutBola) throws InputMismatchException {
         super(radius);
         if (sudutBola <= 0) {
-            throw new InputMismatchException("Sudut juring bola harus lebih dari nol dan berupa angka.");
+            throw new InputMismatchException("Sudut juring bola harus lebih dari nol.");
         }
         this.sudutBola = sudutBola;
     }
