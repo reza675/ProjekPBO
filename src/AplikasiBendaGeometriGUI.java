@@ -1000,137 +1000,263 @@ public class AplikasiBendaGeometriGUI extends JFrame {
     }
 
     private void showThreadPoolDialog() {
-        JPanel inputPanel = new JPanel(new BorderLayout());
-        inputPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
+        JDialog dialog = new JDialog(this, "Thread Pool", true);
+        dialog.setLayout(new BorderLayout());
+        dialog.setSize(800, 600);
+        dialog.setLocationRelativeTo(this);
+
+        // Create components
+        String[] shapeNames = {
+            "Persegi", "PersegiPanjang", "Segitiga", "Lingkaran", "BelahKetupat",
+            "JajaranGenjang", "LayangLayang", "Trapesium", "Bola", "Kerucut",
+            "Tabung", "PrismaSegitiga", "PrismaPersegiPanjang", "LimasSegitiga",
+            "LimasPersegiPanjang"
+        };
+        
+        JList<String> shapeList = new JList<>(shapeNames);
+        shapeList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        shapeList.setFont(new Font("Poppins", Font.PLAIN, 14));
+        
+        JTextArea outputArea = new JTextArea(15, 40);
+        outputArea.setEditable(false);
+        outputArea.setFont(new Font("Poppins", Font.PLAIN, 14));
+        
+        JSpinner valueSpinner = new JSpinner(new SpinnerNumberModel(5.0, 0.1, 100.0, 0.1));
+        valueSpinner.setFont(new Font("Poppins", Font.PLAIN, 14));
+        
+        JButton runButton = createModernButton("Run Selected Shapes", BUTTON_COLOR_2);
+        runButton.setPreferredSize(new Dimension(200, 40));
+        
+        // Layout
+        JPanel controlPanel = new JPanel(new BorderLayout(10, 10));
+        controlPanel.setBackground(BACKGROUND_COLOR);
+        controlPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
+        
+        JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         inputPanel.setBackground(BACKGROUND_COLOR);
         
-        JLabel label = new JLabel("Masukkan jumlah objek per bentuk geometri:");
-        label.setFont(new Font("Poppins", Font.PLAIN, 16));
-        label.setForeground(TEXT_COLOR);
+        JLabel valueLabel = new JLabel("Base Value:");
+        valueLabel.setFont(new Font("Poppins", Font.PLAIN, 14));
+        inputPanel.add(valueLabel);
+        inputPanel.add(valueSpinner);
+        inputPanel.add(runButton);
         
-        JTextField inputField = new JTextField(10);
-        inputField.setFont(new Font("Poppins", Font.PLAIN, 16));
-        inputField.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(200, 200, 200)), 
-            new EmptyBorder(8, 12, 8, 12)
-        ));
+        controlPanel.add(new JScrollPane(shapeList), BorderLayout.CENTER);
+        controlPanel.add(inputPanel, BorderLayout.SOUTH);
         
-        inputPanel.add(label, BorderLayout.NORTH);
-        inputPanel.add(inputField, BorderLayout.CENTER);
+        dialog.add(controlPanel, BorderLayout.WEST);
+        dialog.add(new JScrollPane(outputArea), BorderLayout.CENTER);
         
-        int result = JOptionPane.showConfirmDialog(
-            this,
-            inputPanel,
-            "Thread Pool",
-            JOptionPane.OK_CANCEL_OPTION,
-            JOptionPane.PLAIN_MESSAGE
-        );
-        
-        if (result == JOptionPane.OK_OPTION) {
-            try {
-                int jumlah = Integer.parseInt(inputField.getText());
-                daftarBendaGeometri.clear();
-                
-                ExecutorService executor = Executors.newFixedThreadPool(4);
-                Random random = new Random();
-                
-                StringBuilder sb = new StringBuilder();
-                sb.append("HASIL THREAD POOL:\n\n");
-                
-                for (int i = 0; i < jumlah; i++) {
-                    int choice = random.nextInt(32) + 1;
-                    BendaGeometri benda = generateRandomBendaGeometri(choice);
-                    daftarBendaGeometri.add(benda);
-                    
-                    executor.execute(() -> {
-                        final String resultText;
-                        if (benda instanceof Benda2D) {
-                            Benda2D benda2D = (Benda2D) benda;
-                            resultText = String.format("• %s:\n  Luas = %.2f\n  Keliling = %.2f\n\n", 
-                                benda2D.getNamaBenda(), 
-                                benda2D.menghitungLuas(),
-                                benda2D.menghitungKeliling());
-                        } else if (benda instanceof Bola || benda instanceof Tabung || 
-                                 benda instanceof Kerucut || benda instanceof KerucutTerpancung ||
-                                 benda instanceof TemberengBola || benda instanceof JuringBola ||
-                                 benda instanceof CincinBola) {
-                            // Handle benda 3D
-                            if (benda instanceof Bola) {
-                                Bola bola = (Bola) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    bola.getNamaBenda(), 
-                                    bola.menghitungVolume(),
-                                    bola.menghitungLuasPermukaan());
-                            } else if (benda instanceof Tabung) {
-                                Tabung tabung = (Tabung) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    tabung.getNamaBenda(), 
-                                    tabung.menghitungVolume(),
-                                    tabung.menghitungLuasPermukaan());
-                            } else if (benda instanceof Kerucut) {
-                                Kerucut kerucut = (Kerucut) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    kerucut.getNamaBenda(), 
-                                    kerucut.menghitungVolume(),
-                                    kerucut.menghitungLuasPermukaan());
-                            } else if (benda instanceof KerucutTerpancung) {
-                                KerucutTerpancung kerucutTerpancung = (KerucutTerpancung) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    kerucutTerpancung.getNamaBenda(), 
-                                    kerucutTerpancung.menghitungVolume(),
-                                    kerucutTerpancung.menghitungLuasPermukaan());
-                            } else if (benda instanceof TemberengBola) {
-                                TemberengBola temberengBola = (TemberengBola) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    temberengBola.getNamaBenda(), 
-                                    temberengBola.menghitungVolume(),
-                                    temberengBola.menghitungLuasPermukaan());
-                            } else if (benda instanceof JuringBola) {
-                                JuringBola juringBola = (JuringBola) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    juringBola.getNamaBenda(), 
-                                    juringBola.menghitungVolume(),
-                                    juringBola.menghitungLuasPermukaan());
-                            } else if (benda instanceof CincinBola) {
-                                CincinBola cincinBola = (CincinBola) benda;
-                                resultText = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n", 
-                                    cincinBola.getNamaBenda(), 
-                                    cincinBola.menghitungVolume(),
-                                    cincinBola.menghitungLuasPermukaan());
-                            } else {
-                                resultText = "";
-                            }
-                        } else {
-                            resultText = "";
-                        }
-                        
-                        SwingUtilities.invokeLater(() -> {
-                            resultArea.append(resultText);
-                        });
-                    });
-                }
-                
-                executor.shutdown();
-                hitungUlangButton.setEnabled(false);
-                
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this,
-                    "Input harus berupa angka!",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+        // Event handling
+        runButton.addActionListener(e -> {
+            List<String> selected = shapeList.getSelectedValuesList();
+            if (selected.isEmpty()) {
+                JOptionPane.showMessageDialog(dialog, 
+                    "Silakan pilih minimal satu bentuk geometri!",
+                    "Peringatan",
+                    JOptionPane.WARNING_MESSAGE);
+                return;
             }
-        }
+            
+            double value = (Double) valueSpinner.getValue();
+            outputArea.setText(""); // Clear previous output
+            
+            ExecutorService executor = Executors.newFixedThreadPool(5);
+            
+            for (String shapeName : selected) {
+                try {
+                    BendaGeometri shape = createShape(shapeName, value);
+                    if (shape != null) {
+                        executor.execute(() -> {
+                            try {
+                                 if (shape instanceof PrismaSegitiga || shape instanceof PrismaPersegi || 
+                                         shape instanceof PrismaPersegiPanjang || shape instanceof PrismaJajaranGenjang ||
+                                         shape instanceof PrismaTrapesium || shape instanceof PrismaBelahKetupat ||
+                                         shape instanceof PrismaLayangLayang || shape instanceof LimasSegitiga ||
+                                         shape instanceof LimasPersegi || shape instanceof LimasPersegiPanjang ||
+                                         shape instanceof LimasJajaranGenjang || shape instanceof LimasTrapesium ||
+                                         shape instanceof LimasBelahKetupat || shape instanceof LimasLayangLayang ||
+                                         shape instanceof Bola || shape instanceof Kerucut ||
+                                         shape instanceof KerucutTerpancung || shape instanceof Tabung ||
+                                         shape instanceof TemberengBola || shape instanceof JuringBola ||
+                                         shape instanceof CincinBola) {
+                                    double volume = 0;
+                                    double luasPermukaan = 0;
+                                    
+                                    if (shape instanceof PrismaSegitiga) {
+                                        PrismaSegitiga prisma = (PrismaSegitiga) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof PrismaPersegi) {
+                                        PrismaPersegi prisma = (PrismaPersegi) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof PrismaPersegiPanjang) {
+                                        PrismaPersegiPanjang prisma = (PrismaPersegiPanjang) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof PrismaJajaranGenjang) {
+                                        PrismaJajaranGenjang prisma = (PrismaJajaranGenjang) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof PrismaTrapesium) {
+                                        PrismaTrapesium prisma = (PrismaTrapesium) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof PrismaBelahKetupat) {
+                                        PrismaBelahKetupat prisma = (PrismaBelahKetupat) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof PrismaLayangLayang) {
+                                        PrismaLayangLayang prisma = (PrismaLayangLayang) shape;
+                                        volume = prisma.menghitungVolume();
+                                        luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasSegitiga) {
+                                        LimasSegitiga limas = (LimasSegitiga) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasPersegi) {
+                                        LimasPersegi limas = (LimasPersegi) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasPersegiPanjang) {
+                                        LimasPersegiPanjang limas = (LimasPersegiPanjang) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasJajaranGenjang) {
+                                        LimasJajaranGenjang limas = (LimasJajaranGenjang) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasTrapesium) {
+                                        LimasTrapesium limas = (LimasTrapesium) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasBelahKetupat) {
+                                        LimasBelahKetupat limas = (LimasBelahKetupat) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof LimasLayangLayang) {
+                                        LimasLayangLayang limas = (LimasLayangLayang) shape;
+                                        volume = limas.menghitungVolume();
+                                        luasPermukaan = limas.menghitungLuasPermukaan();
+                                    } else if (shape instanceof Bola) {
+                                        Bola bola = (Bola) shape;
+                                        volume = bola.menghitungVolume();
+                                        luasPermukaan = bola.menghitungLuasPermukaan();
+                                    } else if (shape instanceof Kerucut) {
+                                        Kerucut kerucut = (Kerucut) shape;
+                                        volume = kerucut.menghitungVolume();
+                                        luasPermukaan = kerucut.menghitungLuasPermukaan();
+                                    } else if (shape instanceof KerucutTerpancung) {
+                                        KerucutTerpancung kerucut = (KerucutTerpancung) shape;
+                                        volume = kerucut.menghitungVolume();
+                                        luasPermukaan = kerucut.menghitungLuasPermukaan();
+                                    } else if (shape instanceof Tabung) {
+                                        Tabung tabung = (Tabung) shape;
+                                        volume = tabung.menghitungVolume();
+                                        luasPermukaan = tabung.menghitungLuasPermukaan();
+                                    } else if (shape instanceof TemberengBola) {
+                                        TemberengBola tembereng = (TemberengBola) shape;
+                                        volume = tembereng.menghitungVolume();
+                                        luasPermukaan = tembereng.menghitungLuasPermukaan();
+                                    } else if (shape instanceof JuringBola) {
+                                        JuringBola juring = (JuringBola) shape;
+                                        volume = juring.menghitungVolume();
+                                        luasPermukaan = juring.menghitungLuasPermukaan();
+                                    } else if (shape instanceof CincinBola) {
+                                        CincinBola cincin = (CincinBola) shape;
+                                        volume = cincin.menghitungVolume();
+                                        luasPermukaan = cincin.menghitungLuasPermukaan();
+                                    }
+                                    
+                                    String namaBenda = "";
+                                    if (shape instanceof PrismaSegitiga) namaBenda = "Prisma Segitiga";
+                                    else if (shape instanceof PrismaPersegi) namaBenda = "Prisma Persegi";
+                                    else if (shape instanceof PrismaPersegiPanjang) namaBenda = "Prisma Persegi Panjang";
+                                    else if (shape instanceof PrismaJajaranGenjang) namaBenda = "Prisma Jajaran Genjang";
+                                    else if (shape instanceof PrismaTrapesium) namaBenda = "Prisma Trapesium";
+                                    else if (shape instanceof PrismaBelahKetupat) namaBenda = "Prisma Belah Ketupat";
+                                    else if (shape instanceof PrismaLayangLayang) namaBenda = "Prisma Layang-Layang";
+                                    else if (shape instanceof LimasSegitiga) namaBenda = "Limas Segitiga";
+                                    else if (shape instanceof LimasPersegi) namaBenda = "Limas Persegi";
+                                    else if (shape instanceof LimasPersegiPanjang) namaBenda = "Limas Persegi Panjang";
+                                    else if (shape instanceof LimasJajaranGenjang) namaBenda = "Limas Jajaran Genjang";
+                                    else if (shape instanceof LimasTrapesium) namaBenda = "Limas Trapesium";
+                                    else if (shape instanceof LimasBelahKetupat) namaBenda = "Limas Belah Ketupat";
+                                    else if (shape instanceof LimasLayangLayang) namaBenda = "Limas Layang-Layang";
+                                    else if (shape instanceof Bola) namaBenda = "Bola";
+                                    else if (shape instanceof Kerucut) namaBenda = "Kerucut";
+                                    else if (shape instanceof KerucutTerpancung) namaBenda = "Kerucut Terpancung";
+                                    else if (shape instanceof Tabung) namaBenda = "Tabung";
+                                    else if (shape instanceof TemberengBola) namaBenda = "Tembereng Bola";
+                                    else if (shape instanceof JuringBola) namaBenda = "Juring Bola";
+                                    else if (shape instanceof CincinBola) namaBenda = "Cincin Bola";
+                                    
+                                    String result = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n",
+                                        namaBenda,
+                                        volume,
+                                        luasPermukaan);
+                                    SwingUtilities.invokeLater(() -> outputArea.append(result));
+                                } else if (shape instanceof Benda2D) {
+                                    Benda2D benda2D = (Benda2D) shape;
+                                    String result = String.format("• %s:\n  Luas = %.2f\n  Keliling = %.2f\n\n",
+                                        benda2D.getNamaBenda(),
+                                        benda2D.menghitungLuas(),
+                                        benda2D.menghitungKeliling());
+                                    SwingUtilities.invokeLater(() -> outputArea.append(result));
+                                }
+                            } catch (Exception ex) {
+                                SwingUtilities.invokeLater(() -> 
+                                    outputArea.append("Error: " + ex.getMessage() + "\n"));
+                            }
+                        });
+                    }
+                } catch (Exception ex) {
+                    outputArea.append("Error creating " + shapeName + ": " + ex.getMessage() + "\n");
+                }
+            }
+            
+            executor.shutdown();
+        });
+        
+        dialog.setVisible(true);
     }
-
-    private BendaGeometri generateRandomBendaGeometri(int choice) {
-        Random random = new Random();
-        double[] params = new double[5]; // Maksimal 5 parameter
-        
-        for (int i = 0; i < params.length; i++) {
-            params[i] = random.nextDouble() * 10 + 1; // Random antara 1-11
+    
+    private BendaGeometri createShape(String shapeName, double value) {
+        switch (shapeName) {
+            case "Persegi":
+                return new Persegi(value);
+            case "PersegiPanjang":
+                return new PersegiPanjang(value, value);
+            case "Segitiga":
+                return new Segitiga(value, value, value, value);
+            case "Lingkaran":
+                return new Lingkaran(value);
+            case "BelahKetupat":
+                return new BelahKetupat(value, value, value);
+            case "JajaranGenjang":
+                return new JajaranGenjang(value, value, value);
+            case "LayangLayang":
+                return new LayangLayang(value, value, value, value);
+            case "Trapesium":
+                return new Trapesium(value, value, value, value, value);
+            case "Bola":
+                return new Bola(value);
+            case "Kerucut":
+                return new Kerucut(value, value);
+            case "Tabung":
+                return new Tabung(value, value);
+            case "PrismaSegitiga":
+                return new PrismaSegitiga(value, value, value, value, value);
+            case "PrismaPersegiPanjang":
+                return new PrismaPersegiPanjang(value, value, value);
+            case "LimasSegitiga":
+                return new LimasSegitiga(value, value, value, value, value);
+            case "LimasPersegiPanjang":
+                return new LimasPersegiPanjang(value, value, value);
+            default:
+                return null;
         }
-        
-        return createBenda(choice, params);
     }
 
     public static void main(String[] args) {
