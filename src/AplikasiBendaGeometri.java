@@ -17,10 +17,9 @@ public class AplikasiBendaGeometri {
         // ui.setVisible(true);
         // testing valent
 
-        AplikasiBendaGeometriGUI ui = new AplikasiBendaGeometriGUI();
-        ui.setLocationRelativeTo(null);
-        ui.setVisible(true);
-    
+       SplashScreen ui = new SplashScreen();
+       ui.setLocationRelativeTo(null);
+       ui.setVisible(true);
         
         // Benda2D persegi = new Persegi(5.0);
         // String[] label = {"Sisi"};
