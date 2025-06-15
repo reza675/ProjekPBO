@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View;
+
 
 /**
  *
@@ -90,7 +90,7 @@ public class SplashScreen extends javax.swing.JFrame {
     private void startButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
-        MainMenu ui = new MainMenu();
+        AplikasiBendaGeometriGUI ui = new AplikasiBendaGeometriGUI();
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
     }//GEN-LAST:event_startButton1ActionPerformed

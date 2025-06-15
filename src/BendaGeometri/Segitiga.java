@@ -13,7 +13,7 @@ public class Segitiga extends Benda2D implements Runnable {
 
 	public Segitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2) throws InputMismatchException {
 		if (alas <= 0 || tinggi <= 0 || sisiMiring1 <= 0 || sisiMiring2 <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("alas, tinggi, sisi miring1, dan sisi miring2 harus lebih dari nol.");
 		}
 		this.alas = alas;
 		this.tinggi = tinggi;
@@ -44,7 +44,7 @@ public class Segitiga extends Benda2D implements Runnable {
 
 	public double menghitungLuas(double alasBaru, double tinggiBaru) throws InputMismatchException {
 		if (alasBaru <= 0 || tinggiBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Alas dan tinggi harus lebih dari nol.");
 		}
 		luas = 0.5 * alasBaru * tinggiBaru;
 		return luas;
@@ -60,7 +60,7 @@ public class Segitiga extends Benda2D implements Runnable {
 	public double menghitungKeliling(double alasBaru, double sisiMiring1Baru, double sisiMiring2Baru)
 			throws InputMismatchException {
 		if (alasBaru <= 0 || sisiMiring1Baru <= 0 || sisiMiring2Baru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Alas,sisi miring 1, dan sisi miring 2, dan tinggi harus lebih dari nol.");
 		}
 		keliling = alasBaru + sisiMiring1Baru + sisiMiring2Baru;
 		return keliling;

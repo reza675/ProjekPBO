@@ -30,7 +30,7 @@ public class LimasPersegiPanjang extends PersegiPanjang implements Runnable {
 
 	public double menghitungVolume(double panjangBaru, double lebarBaru, double tinggiLimasBaru) throws InputMismatchException {
 		if (panjangBaru <= 0 || lebarBaru <= 0 || tinggiLimasBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Panjang, lebar, dan tinggi limas harus lebih dari nol.");
 		}
 		luasAlas = menghitungLuas(panjangBaru, lebarBaru);
 		volume = (1 / 3.0) * luasAlas * tinggiLimasBaru;
@@ -49,7 +49,7 @@ public class LimasPersegiPanjang extends PersegiPanjang implements Runnable {
 
 	public double menghitungLuasPermukaan(double panjangBaru, double lebarBaru, double tinggiLimasBaru) throws InputMismatchException {
 		if (panjangBaru <= 0 || lebarBaru <= 0 || tinggiLimasBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Panjang, lebar, dan tinggi limas harus lebih dari nol.");
 		}
 		luasAlas = menghitungLuas(panjangBaru, lebarBaru);
 		sisiMiringPanjang = Math.sqrt(Math.pow(tinggiLimasBaru, 2) + Math.pow(lebarBaru / 2, 2));

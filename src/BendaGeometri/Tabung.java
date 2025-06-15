@@ -99,7 +99,7 @@ public class Tabung extends Lingkaran implements Runnable {
 
 	public double menghitungLuasPermukaan(double radiusBaru, double tinggiTabungBaru) throws InputMismatchException {
 		if (radiusBaru <= 0 || tinggiTabungBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius dan tinggi harus lebih dari nol.");
 		}
 		luasAlas = 2 * super.menghitungLuas(radiusBaru);
 		selimut = super.menghitungKeliling(radiusBaru) * tinggiTabungBaru;

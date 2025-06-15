@@ -28,7 +28,7 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 
 	public double menghitungVolume(double panjangAlasBaru, double tinggiAlasBaru, double tinggiLimasBaru) throws InputMismatchException {
 		if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || tinggiLimasBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Panjang alas, tinggi alas, dan tinggi limas harus lebih dari nol.");
 		}
 		luasAlas = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
 		volume = (1 / 3.0) * luasAlas * tinggiLimasBaru;
@@ -54,7 +54,7 @@ public class LimasJajaranGenjang extends JajaranGenjang implements Runnable {
 	public double menghitungLuasPermukaan(double panjangAlasBaru, double tinggiAlasBaru, double sisiMiringAlasBaru,
 			double tinggiLimasBaru) throws InputMismatchException {
 		if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || sisiMiringAlasBaru <= 0 || tinggiLimasBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Panjang alas, tinggi alas, sisi miring alas, dan tinggi limas harus lebih dari nol.");
 		}
 		double luasAlasBaru = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
         double jarakTengahKeTepiAlas = tinggiAlasBaru / 2.0;

@@ -85,7 +85,7 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     public double menghitungVolume(double alasAtasBaru, double alasBawahBaru, double tinggiBaru,
             double tinggiPrismaBaru) throws InputMismatchException {
         if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas atas, alas bawah, tinggi trapesium, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
         volume = luasAlas * tinggiPrismaBaru;
@@ -104,7 +104,7 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
             double sisiMiringKananBaru, double tinggiPrismaBaru) throws InputMismatchException {
         if (alasAtasBaru <= 0 || alasBawahBaru <= 0 || tinggiBaru <= 0 || sisiMiringKiriBaru <= 0
                 || sisiMiringKananBaru <= 0 || tinggiPrismaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Alas atas, alas bawah, tinggi trapesium, sisi miring kiri, sisi miring kanan, dan tinggi prisma harus lebih dari nol.");
         }
         luasAlas = super.menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
         kelilingAlas = super.menghitungKeliling(alasAtasBaru, alasBawahBaru, sisiMiringKananBaru, sisiMiringKiriBaru);

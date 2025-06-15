@@ -11,8 +11,11 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
     private double luasPermukaan;
     private volatile boolean calculated = false;
 
-    public PrismaPersegiPanjang(double panjang, double lebar, double tinggiPrisma) {
+    public PrismaPersegiPanjang(double panjang, double lebar, double tinggiPrisma) throws InputMismatchException {
         super(panjang, lebar);
+        if (tinggiPrisma <= 0) {
+            throw new InputMismatchException("Tinggi prisma harus lebih dari nol.");
+        }
         this.tinggiPrisma = tinggiPrisma;
     }
 
@@ -45,7 +48,10 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
         return tinggiPrisma;
     }
 
-    public double menghitungVolume(double panjangBaru, double lebarBaru, double tinggiPrismaBaru) {
+    public double menghitungVolume(double panjangBaru, double lebarBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (panjangBaru <= 0 || lebarBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Panjang, lebar, dan tinggi prisma harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(panjangBaru, lebarBaru);
         volume = luasAlas * tinggiPrismaBaru;
         return volume;
@@ -58,7 +64,10 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double panjangBaru, double lebarBaru, double tinggiPrismaBaru) {
+    public double menghitungLuasPermukaan(double panjangBaru, double lebarBaru, double tinggiPrismaBaru) throws InputMismatchException {
+        if (panjangBaru <= 0 || lebarBaru <= 0 || tinggiPrismaBaru <= 0) {
+            throw new InputMismatchException("Panjang, lebar, dan tinggi prisma harus lebih dari nol.");
+        }
         luasAlas = super.menghitungLuas(panjangBaru, lebarBaru);
         kelilingAlas = super.menghitungKeliling(panjangBaru, lebarBaru);
         luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;

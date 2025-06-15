@@ -26,7 +26,7 @@ public class LimasBelahKetupat extends BelahKetupat implements Runnable {
 
 	public double menghitungVolume(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru) throws InputMismatchException {
         if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiLimasBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Diagonal1, diagonal2, dan tinggi limas harus lebih dari nol.");
         }
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
 		volume = (1.0 / 3.0) * luasAlas * tinggiLimasBaru;
@@ -45,7 +45,7 @@ public class LimasBelahKetupat extends BelahKetupat implements Runnable {
 
 	public double menghitungLuasPermukaan(double diagonal1Baru, double diagonal2Baru, double tinggiLimasBaru, double sisiBaru) throws InputMismatchException {
         if (diagonal1Baru <= 0 || diagonal2Baru <= 0 || tinggiLimasBaru <= 0 || sisiBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Diagonal1, diagonal2, sisi, dan tinggi limas harus lebih dari nol.");
         }
 		luasAlas = super.menghitungLuas(diagonal1Baru, diagonal2Baru);
         double setengahDiagonal1 = diagonal1Baru / 2.0;

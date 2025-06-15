@@ -11,7 +11,7 @@ public class CincinBola extends Bola implements Runnable {
 	public CincinBola(double radius, double tinggiCincinBola) throws InputMismatchException {
 		super(radius);
 		if (tinggiCincinBola <= 0) {
-			throw new InputMismatchException("Tinggi cincin bola harus lebih dari nol.");
+			throw new InputMismatchException("Tinggi cincin bola harus lebih dari nol");
 		}
 		this.tinggiCincinBola = tinggiCincinBola;
 
@@ -25,7 +25,7 @@ public class CincinBola extends Bola implements Runnable {
 
 	public double menghitungVolume(double radiusBola, double tinggiCincinBolaBaru) throws InputMismatchException {
 		if (radiusBola <= 0 || tinggiCincinBolaBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius dan tinggi cincin bola harus lebih dari nol.");
 		}
 		volume = PI * tinggiCincinBolaBaru * tinggiCincinBolaBaru * (radiusBola - tinggiCincinBolaBaru / 3.0);
 		return volume;
@@ -40,7 +40,7 @@ public class CincinBola extends Bola implements Runnable {
 	public double menghitungLuasPermukaan(double radiusBaru, double tinggiCincinBolaBaru)
 			throws InputMismatchException {
 		if (radiusBaru <= 0 || tinggiCincinBolaBaru <= 0) {
-			throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+			throw new InputMismatchException("Radius dan tinggi cincin bola harus lebih dari nol.");
 		}
 		luasPermukaan = 2 * PI * radiusBaru * tinggiCincinBolaBaru;
 		return luasPermukaan;

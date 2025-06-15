@@ -7,14 +7,31 @@ import java.util.Scanner;
 
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
-        Bola bola = new Bola(14.0);
-        Thread thread = new Thread(bola);
-        thread.start();
+        // Bola bola = new Bola(14.0);
+        // Thread thread = new Thread(bola);
+        // thread.start();
         
         // testing valent
         // SplashScreen ui = new SplashScreen();
         // ui.setLocationRelativeTo(null);
         // ui.setVisible(true);
+        // testing valent
+
+       SplashScreen ui = new SplashScreen();
+       ui.setLocationRelativeTo(null);
+       ui.setVisible(true);
+        
+        // Benda2D persegi = new Persegi(5.0);
+        // String[] label = {"Sisi"};
+        // double[] nilai = {5.0};
+        
+        // HasilHitungStatisGUI ui = new HasilHitungStatisGUI();
+        // ui.setBentuk(persegi, "Persegi", label, nilai);
+        // ui.setLocationRelativeTo(null);
+        // ui.setVisible(true);
+
+        //Segitiga segitiga = new Segitiga(10, 15, 12, 14);
+
         // testing valent
 
     //     Scanner inputMenu = new Scanner(System.in);
@@ -346,7 +363,7 @@ public class AplikasiBendaGeometri {
     //                     Lingkaran bd26 = new Kerucut();
     //                     Lingkaran bd27 = new KerucutTerpancung();
     //                     Lingkaran bd28 = new Bola();
-    //                     Lingkaran bd29 = new TemberengBola();
+    //                     apakah ini bukan bola bd29 = new TemberengBola();
     //                     Lingkaran bd30 = new JuringBola();
     //                     Lingkaran bd31 = new CincinBola();
     //                      apa pakai generate ya

@@ -9,18 +9,23 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
     private double tinggiTerpancung;
     private double volume;
     private double luasPermukaan;
+    private static double selisihRadius;
 
     public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggiTerpancung)
             throws InputMismatchException {
         super(radiusBawah, menghitungTinggiKerucutUtuh(radiusBawah, radiusAtas, tinggiTerpancung));
         if (radiusAtas <= 0 || tinggiTerpancung <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Radius atas dan tinggi terpancung harus lebih dari nol.");
         }
         this.radiusAtas = radiusAtas;
         this.tinggiTerpancung = tinggiTerpancung;
     }
 
-    private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) {
+    private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) throws InputMismatchException {
+        selisihRadius = (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
+        if (selisihRadius <= 0) {
+            throw new InputMismatchException("Radius atas harus lebih besar dari radius bawah.");
+        }
         return (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
     }
 
@@ -37,7 +42,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
     public double menghitungVolume(double radiusAtasBaru, double radiusBawahBaru, double tinggiTerpancungBaru)
             throws InputMismatchException {
         if (radiusAtasBaru <= 0 || radiusBawahBaru <= 0 || tinggiTerpancungBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Radius atas, radius bawah, dan tinggi terpancung harus lebih dari nol.");
         }
         volume = (1.0 / 3.0) * super.PI * tinggiTerpancungBaru * (radiusBawahBaru * radiusBawahBaru
                 + radiusBawahBaru * radiusAtasBaru + radiusAtasBaru * radiusAtasBaru);
@@ -63,7 +68,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
     public double menghitungLuasPermukaan(double radiusAtasBaru, double radiusBawahBaru, double tinggiTerpancungBaru)
             throws InputMismatchException {
         if (radiusAtasBaru <= 0 || radiusBawahBaru <= 0 || tinggiTerpancungBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Radius atas, radius bawah, dan tinggi terpancung harus lebih dari nol.");
         }
         double luasAlasBawah = super.menghitungLuas(radiusBawahBaru);
         double luasAlasAtas = super.menghitungLuas(radiusAtasBaru);

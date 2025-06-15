@@ -7,12 +7,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Bola extends Lingkaran implements Runnable {
+	
 
 	protected double luasAlas;
 	protected double volume;
 	protected double luasPermukaan;
 	private volatile boolean calculated = false;
 
+	public Bola(double radius) throws InputMismatchException {
+		super(radius);
+	}
 	@Override
 	public void run() {
 		// Calculate both area and perimeter in the thread
@@ -24,13 +28,12 @@ public class Bola extends Lingkaran implements Runnable {
 		System.out.printf("Volume: %.2f\n", keliling);
 	}
 
+
 	public boolean isCalculated() {
 		return calculated;
 	}
 
-	public Bola(double radius) throws InputMismatchException {
-		super(radius);
-	}
+	
 
 	public double menghitungVolume() {
 		luasAlas = super.menghitungLuas();

@@ -13,7 +13,7 @@ public class LayangLayang extends Benda2D implements Runnable {
     public LayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang)
             throws InputMismatchException {
         if (diagonal1 <= 0 || diagonal2 <= 0 || sisiPendek <= 0 || sisiPanjang <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Diagonal1, diagonal2, sisi pendek, dan sisi panjang harus lebih dari nol.");
         }
         this.diagonal1 = diagonal1;
         this.diagonal2 = diagonal2;
@@ -29,7 +29,7 @@ public class LayangLayang extends Benda2D implements Runnable {
 
     public double menghitungLuas(double diagonal1Baru, double diagonal2Baru) throws InputMismatchException {
         if (diagonal1Baru <= 0 || diagonal2Baru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Diagonal1 dan diagonal2 harus lebih dari nol.");
         }
         luas = (diagonal1Baru * diagonal2Baru) / 2.0;
         return luas;
@@ -43,7 +43,7 @@ public class LayangLayang extends Benda2D implements Runnable {
 
     public double menghitungKeliling(double sisiPendekBaru, double sisiPanjangBaru) throws InputMismatchException {
         if (sisiPendekBaru <= 0 || sisiPanjangBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+            throw new InputMismatchException("Sisi pendek dan sisi panjang harus lebih dari nol.");
         }
         keliling = 2 * (sisiPendekBaru + sisiPanjangBaru);
         return keliling;

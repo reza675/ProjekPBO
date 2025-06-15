@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Persegi extends Benda2D implements Runnable {
-	protected double sisi;
+	public double sisi;
 	private volatile boolean calculated = false;
 
 	public Persegi(double sisi) throws InputMismatchException  {
