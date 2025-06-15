@@ -9,6 +9,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
     private double tinggiTerpancung;
     private double volume;
     private double luasPermukaan;
+    private static double selisihRadius;
 
     public KerucutTerpancung(double radiusAtas, double radiusBawah, double tinggiTerpancung)
             throws InputMismatchException {
@@ -20,7 +21,11 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
         this.tinggiTerpancung = tinggiTerpancung;
     }
 
-    private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) {
+    private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) throws InputMismatchException {
+        selisihRadius = (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
+        if (selisihRadius <= 0) {
+            throw new InputMismatchException("Radius atas harus lebih besar dari radius bawah.");
+        }
         return (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
     }
 

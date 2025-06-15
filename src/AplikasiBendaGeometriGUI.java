@@ -987,16 +987,168 @@ public class AplikasiBendaGeometriGUI extends JFrame {
         StringBuilder sb = new StringBuilder();
         sb.append("HASIL POLYMORPHISM:\n\n");
         
+        sb.append("BENDA 2D:\n");
         for (Benda2D b : benda2Ds) {
             sb.append("• ").append(b.getNamaBenda())
               .append(":\n")
-              .append("  Luas = ").append(String.format("%.2f", b.menghitungLuas()))
-              .append("\n  Keliling = ").append(String.format("%.2f", b.menghitungKeliling()))
-              .append("\n\n");
+              .append("  - Luas: ").append(String.format("%.2f", b.menghitungLuas())).append(" cm²\n")
+              .append("  - Keliling: ").append(String.format("%.2f", b.menghitungKeliling())).append(" cm\n\n");
+        }
+
+        sb.append("\nBenda 3D:\n");
+        Segitiga segitiga = new PrismaSegitiga(8, 10, 8, 8, 12);
+        sb.append("• Prisma Segitiga:\n");
+        if (segitiga instanceof PrismaSegitiga) {
+            PrismaSegitiga prisma = (PrismaSegitiga) segitiga;
+            sb.append("  - Volume: ").append(String.format("%.2f", prisma.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", prisma.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Segitiga segitiga2 = new LimasSegitiga(8, 10, 8, 8, 12);
+        sb.append("• Limas Segitiga:\n");
+        if (segitiga2 instanceof LimasSegitiga) {
+            LimasSegitiga limas = (LimasSegitiga) segitiga2;
+            sb.append("  - Volume: ").append(String.format("%.2f", limas.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", limas.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Persegi persegi = new PrismaPersegi(5, 5);
+        sb.append("• Prisma Persegi:\n");
+        if (persegi instanceof PrismaPersegi) {
+            PrismaPersegi prisma = (PrismaPersegi) persegi;
+            sb.append("  - Volume: ").append(String.format("%.2f", prisma.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", prisma.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Persegi persegi2 = new LimasPersegi(5, 10);
+        sb.append("• Limas Persegi:\n");
+        if (persegi2 instanceof LimasPersegi) {
+            LimasPersegi limas = (LimasPersegi) persegi2;
+            sb.append("  - Volume: ").append(String.format("%.2f", limas.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", limas.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+        PersegiPanjang persegiPanjang = new PrismaPersegiPanjang(5, 10, 8);
+        sb.append("• Prisma Persegi Panjang:\n");
+        if (persegiPanjang instanceof PrismaPersegiPanjang) {
+            PrismaPersegiPanjang prisma = (PrismaPersegiPanjang) persegiPanjang;
+            sb.append("  - Volume: ").append(String.format("%.2f", prisma.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", prisma.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        PersegiPanjang persegiPanjang2 = new LimasPersegiPanjang(5, 10, 8);
+        sb.append("• Limas Persegi Panjang:\n");
+        if (persegiPanjang2 instanceof LimasPersegiPanjang) {
+            LimasPersegiPanjang limas = (LimasPersegiPanjang) persegiPanjang2;
+            sb.append("  - Volume: ").append(String.format("%.2f", limas.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", limas.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        BelahKetupat belahKetupat = new PrismaBelahKetupat(8, 6, 10, 12);
+        sb.append("• Prisma Belah Ketupat:\n");
+        if (belahKetupat instanceof PrismaBelahKetupat) {
+            PrismaBelahKetupat prisma = (PrismaBelahKetupat) belahKetupat;
+            sb.append("  - Volume: ").append(String.format("%.2f", prisma.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", prisma.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        BelahKetupat belahKetupat2 = new LimasBelahKetupat(8, 6, 10, 12);
+        sb.append("• Limas Belah Ketupat:\n");
+        if (belahKetupat2 instanceof LimasBelahKetupat) {
+            LimasBelahKetupat limas = (LimasBelahKetupat) belahKetupat2;
+            sb.append("  - Volume: ").append(String.format("%.2f", limas.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", limas.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        LayangLayang layangLayang = new PrismaLayangLayang(5, 8, 10, 12, 15);
+        sb.append("• Prisma Layang-layang:\n");
+        if (layangLayang instanceof PrismaLayangLayang) {
+            PrismaLayangLayang prisma = (PrismaLayangLayang) layangLayang;
+            sb.append("  - Volume: ").append(String.format("%.2f", prisma.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", prisma.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        LayangLayang layangLayang2 = new LimasLayangLayang(5, 8, 10, 12, 15);
+        sb.append("• Limas Layang-layang:\n");
+        if (layangLayang2 instanceof LimasLayangLayang) {
+            LimasLayangLayang limas = (LimasLayangLayang) layangLayang2;
+            sb.append("  - Volume: ").append(String.format("%.2f", limas.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", limas.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Trapesium trapesium = new PrismaTrapesium(5, 10, 8, 12, 12, 15);
+        sb.append("• Prisma Trapesium:\n");
+        if (trapesium instanceof PrismaTrapesium) {
+            PrismaTrapesium prisma = (PrismaTrapesium) trapesium;
+            sb.append("  - Volume: ").append(String.format("%.2f", prisma.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", prisma.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Trapesium trapesium2 = new LimasTrapesium(5, 10, 8, 12, 12, 15);
+        sb.append("• Limas Trapesium:\n");
+        if (trapesium2 instanceof LimasTrapesium) {
+            LimasTrapesium limas = (LimasTrapesium) trapesium2;
+            sb.append("  - Volume: ").append(String.format("%.2f", limas.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", limas.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Lingkaran lingkaranBola = new Bola(7);
+        sb.append("• Bola:\n");
+        if (lingkaranBola instanceof Bola) {
+            Bola bola = (Bola) lingkaranBola;
+            sb.append("  - Volume: ").append(String.format("%.2f", bola.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", bola.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Bola cincinBola = new CincinBola(7, 12);
+        sb.append("• Cincin Bola:\n");
+        if (cincinBola instanceof CincinBola) {
+            CincinBola cincin = (CincinBola) cincinBola;
+            sb.append("  - Volume: ").append(String.format("%.2f", cincin.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", cincin.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Bola jurBola = new JuringBola(21,90);
+        sb.append("• Juring Bola:\n");
+        if (jurBola instanceof JuringBola) {
+            JuringBola juring = (JuringBola) jurBola;
+            sb.append("  - Volume: ").append(String.format("%.2f", juring.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", juring.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Bola temBola = new TemberengBola(7, 5);
+        sb.append("• Tembereng Bola:\n");
+        if (temBola instanceof TemberengBola) {
+            TemberengBola tembereng = (TemberengBola) temBola;
+            sb.append("  - Volume: ").append(String.format("%.2f", tembereng.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", tembereng.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Lingkaran lingkaranTabung = new Tabung(14, 5);
+        sb.append("• Tabung:\n");
+        if (lingkaranTabung instanceof Tabung) {
+            Tabung tabung = (Tabung) lingkaranTabung;
+            sb.append("  - Volume: ").append(String.format("%.2f", tabung.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", tabung.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Lingkaran lingkaranKerucut = new Kerucut(7, 12);
+        sb.append("• Kerucut:\n");
+        if (lingkaranKerucut instanceof Kerucut) {
+            Kerucut kerucut = (Kerucut) lingkaranKerucut;
+            sb.append("  - Volume: ").append(String.format("%.2f", kerucut.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", kerucut.menghitungLuasPermukaan())).append(" cm²\n\n");
+        }
+
+        Kerucut kerPancung = new KerucutTerpancung(7, 10, 6);
+        sb.append("• Kerucut Terpancung:\n");
+        if (kerPancung instanceof KerucutTerpancung) {
+            KerucutTerpancung kerPancung1 = (KerucutTerpancung) kerPancung;
+            sb.append("  - Volume: ").append(String.format("%.2f", kerPancung1.menghitungVolume())).append(" cm³\n")
+              .append("  - Luas Permukaan: ").append(String.format("%.2f", kerPancung1.menghitungLuasPermukaan())).append(" cm²\n\n");
         }
         
         resultArea.setText(sb.toString());
-        hitungUlangButton.setEnabled(false);
+        cardLayout.show(cardPanel, "result");
     }
 
     private void showThreadPoolDialog() {
