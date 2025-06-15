@@ -39,7 +39,7 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
     @Override
     public double menghitungKeliling() {
         double sudutRadian = Math.toRadians(sudut);
-        double panjangBusur = sudutRadian * super.radius;
+        double panjangBusur = (sudut / 360.0) * 2 * super.PI * super.radius;
         double taliBusur = 2 * super.radius * Math.sin(sudutRadian / 2);
         keliling = panjangBusur + taliBusur;
         return keliling;
@@ -50,7 +50,7 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
             throw new InputMismatchException("Radius dan sudut harus lebih dari nol.");
         }
         double sudutRadian = Math.toRadians(sudutBaru);
-        double panjangBusur = sudutRadian * radiusBaru;
+        double panjangBusur = (sudutBaru / 360.0) * 2 * super.PI * radiusBaru;
         double taliBusur = 2 * radiusBaru * Math.sin(sudutRadian / 2);
         keliling = panjangBusur + taliBusur;
         return keliling;
