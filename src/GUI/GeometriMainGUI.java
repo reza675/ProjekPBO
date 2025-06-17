@@ -27,7 +27,6 @@ public class GeometriMainGUI extends JFrame {
     private Map<String, JButton> btnHitungUlangKananMap = new HashMap<>();
     private JButton btnClear;
 
-    // Mapping menu ke class, parameter default, dan label parameter
     private static class GeometriInfo {
         String className;
         String[] paramLabels;
@@ -67,8 +66,7 @@ public class GeometriMainGUI extends JFrame {
         turunanMap.put("Belah Ketupat", new String[] { "Prisma Belah Ketupat", "Limas Belah Ketupat" });
         turunanMap.put("Trapesium", new String[] { "Prisma Trapesium", "Limas Trapesium" });
         turunanMap.put("Layang Layang", new String[] { "Prisma Layang Layang", "Limas Layang Layang" });
-        turunanMap.put("Lingkaran", new String[] { "Tabung", "Kerucut", "Bola", "Juring Lingkaran",
-                "Tembereng Lingkaran", "Juring Bola", "Tembereng Bola", "Cincin Bola", "Kerucut Terpancung" });
+        turunanMap.put("Lingkaran", new String[] { "Juring Lingkaran", "Tembereng Lingkaran", "Bola", "Juring Bola", "Tembereng Bola", "Tabung", "Kerucut", "Kerucut Terpancung" });
         turunanMap.put("Polymorphism", new String[] {});
         turunanMap.put("Thread", new String[] {});
 
@@ -452,7 +450,7 @@ public class GeometriMainGUI extends JFrame {
                             showErrorDialog(cause != null ? cause.getMessage() : ex.getMessage());
                             return;
                         }
-                        String result = getResultString(obj, info, values);
+                        String result = buildOverloadedResultString(obj, info, values);
                         area.setText(result);
                     } catch (Exception ex) {
                         showErrorDialog(ex.getMessage());
@@ -521,7 +519,7 @@ public class GeometriMainGUI extends JFrame {
                             showErrorDialog(cause != null ? cause.getMessage() : ex.getMessage());
                             return;
                         }
-                        String result = getResultString(obj, info, values);
+                        String result = buildOverloadedResultString(obj, info, values);
                         area.setText(result);
                     } catch (Exception ex) {
                         showErrorDialog(ex.getMessage());
@@ -854,7 +852,7 @@ public class GeometriMainGUI extends JFrame {
         StringBuilder sb = new StringBuilder();
         // Tampilkan parameter input
         for (int i = 0; i < info.paramLabels.length; i++) {
-            sb.append(info.paramLabels[i]).append(": ").append(paramValues[i]).append(" cm\n");
+            sb.append(info.paramLabels[i]).append(": ").append(paramValues[i]).append("\n");
         }
         sb.append("\n");
         // Tampilkan hasil perhitungan
@@ -867,14 +865,28 @@ public class GeometriMainGUI extends JFrame {
     }
 
     private Double[] showInputDialog(GeometriInfo info) {
-        JPanel panel = new JPanel(new GridLayout(info.paramLabels.length, 2, 8, 8));
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        String rawClassName = info.className.substring(info.className.lastIndexOf('.') + 1);
+        String formattedClassName = rawClassName.replaceAll("([A-Z])", " $1").trim();
+
+        JLabel titleLabel = new JLabel(formattedClassName);
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel inputPanel = new JPanel(new GridLayout(info.paramLabels.length, 2, 8, 8));
+        inputPanel.setBorder(new EmptyBorder(15, 0, 0, 0));
         JTextField[] fields = new JTextField[info.paramLabels.length];
         for (int i = 0; i < info.paramLabels.length; i++) {
-            panel.add(new JLabel(info.paramLabels[i]));
+            inputPanel.add(new JLabel(info.paramLabels[i]));
             fields[i] = new JTextField(info.defaultValues[i].toString());
-            panel.add(fields[i]);
+            inputPanel.add(fields[i]);
         }
-        int res = JOptionPane.showConfirmDialog(this, panel, "Input Parameter", JOptionPane.OK_CANCEL_OPTION,
+        mainPanel.add(inputPanel, BorderLayout.CENTER);
+
+        int res = JOptionPane.showConfirmDialog(this, mainPanel, "Hitung Ulang", JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
         if (res != JOptionPane.OK_OPTION)
             return null;
@@ -892,6 +904,156 @@ public class GeometriMainGUI extends JFrame {
 
     private void showErrorDialog(String msg) {
         JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    // Helper method to create Class<?>[] for reflection
+    private Class<?>[] createParamTypes(int count) {
+        Class<?>[] types = new Class<?>[count];
+        Arrays.fill(types, double.class);
+        return types;
+    }
+
+    // New method to handle overloaded calculations and build result string
+    private String buildOverloadedResultString(Object obj, GeometriInfo info, Double[] values) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Parameter Input:\n");
+        for (int i = 0; i < info.paramLabels.length; i++) {
+            sb.append(info.paramLabels[i]).append(": ").append(values[i]).append("\n");
+        }
+        sb.append("\nHasil Perhitungan (Overload):\n");
+        if (obj instanceof PrismaSegitiga) {
+            PrismaSegitiga ps = (PrismaSegitiga) obj;
+            sb.append("Volume: ").append(String.format("%.2f", ps.menghitungVolume(values[0], values[1], values[4]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", ps.menghitungLuasPermukaan(values[0], values[1], values[2], values[3], values[4]))).append("\n");
+        } else if (obj instanceof PrismaPersegi) {
+            PrismaPersegi pp = (PrismaPersegi) obj;
+            sb.append("Volume: ").append(String.format("%.2f", pp.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", pp.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        } else if (obj instanceof PrismaPersegiPanjang) {
+            PrismaPersegiPanjang ppp = (PrismaPersegiPanjang) obj;
+            sb.append("Volume: ").append(String.format("%.2f", ppp.menghitungVolume(values[0], values[1], values[2]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", ppp.menghitungLuasPermukaan(values[0], values[1], values[2]))).append("\n");
+        } else if (obj instanceof PrismaJajaranGenjang) {
+            PrismaJajaranGenjang pjg = (PrismaJajaranGenjang) obj;
+            sb.append("Volume: ").append(String.format("%.2f", pjg.menghitungVolume(values[0], values[1], values[3]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", pjg.menghitungLuasPermukaan(values[0], values[1], values[2], values[3]))).append("\n");
+        } else if (obj instanceof PrismaBelahKetupat) {
+            PrismaBelahKetupat pbk = (PrismaBelahKetupat) obj;
+            sb.append("Volume: ").append(String.format("%.2f", pbk.menghitungVolume(values[0], values[1], values[3]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", pbk.menghitungLuasPermukaan(values[0], values[1], values[2], values[3]))).append("\n");
+        } else if (obj instanceof PrismaTrapesium) {
+            PrismaTrapesium pt = (PrismaTrapesium) obj;
+            sb.append("Volume: ").append(String.format("%.2f", pt.menghitungVolume(values[0], values[1], values[2], values[5]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", pt.menghitungLuasPermukaan(values[0], values[1], values[2], values[3], values[4], values[5]))).append("\n");
+        } else if (obj instanceof PrismaLayangLayang) {
+            PrismaLayangLayang pll = (PrismaLayangLayang) obj;
+            sb.append("Volume: ").append(String.format("%.2f", pll.menghitungVolume(values[0], values[1], values[4]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", pll.menghitungLuasPermukaan(values[0], values[1], values[2], values[3], values[4]))).append("\n");
+        }
+        // Limas
+        else if (obj instanceof LimasSegitiga) {
+            LimasSegitiga ls = (LimasSegitiga) obj;
+            sb.append("Volume: ").append(String.format("%.2f", ls.menghitungVolume(values[0], values[1], values[4]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", ls.menghitungLuasPermukaan(values[0], values[1], values[2], values[3], values[4]))).append("\n");
+        } else if (obj instanceof LimasPersegi) {
+            LimasPersegi lp = (LimasPersegi) obj;
+            sb.append("Volume: ").append(String.format("%.2f", lp.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", lp.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        } else if (obj instanceof LimasPersegiPanjang) {
+            LimasPersegiPanjang lpp = (LimasPersegiPanjang) obj;
+            sb.append("Volume: ").append(String.format("%.2f", lpp.menghitungVolume(values[0], values[1], values[2]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", lpp.menghitungLuasPermukaan(values[0], values[1], values[2]))).append("\n");
+        } else if (obj instanceof LimasJajaranGenjang) {
+            LimasJajaranGenjang ljg = (LimasJajaranGenjang) obj;
+            sb.append("Volume: ").append(String.format("%.2f", ljg.menghitungVolume(values[0], values[1], values[3]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", ljg.menghitungLuasPermukaan(values[0], values[1], values[2], values[3]))).append("\n");
+        } else if (obj instanceof LimasBelahKetupat) {
+            LimasBelahKetupat lbk = (LimasBelahKetupat) obj;
+            sb.append("Volume: ").append(String.format("%.2f", lbk.menghitungVolume(values[0], values[1], values[3]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", lbk.menghitungLuasPermukaan(values[0], values[1], values[2], values[3]))).append("\n");
+        } else if (obj instanceof LimasTrapesium) {
+            LimasTrapesium lt = (LimasTrapesium) obj;
+            sb.append("Volume: ").append(String.format("%.2f", lt.menghitungVolume(values[0], values[1], values[2], values[5]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", lt.menghitungLuasPermukaan(values[0], values[1], values[2], values[5]))).append("\n");
+        } else if (obj instanceof LimasLayangLayang) {
+            LimasLayangLayang lll = (LimasLayangLayang) obj;
+            sb.append("Volume: ").append(String.format("%.2f", lll.menghitungVolume(values[0], values[1], values[4]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", lll.menghitungLuasPermukaan(values[0], values[1], values[2], values[3], values[4]))).append("\n");
+        }
+        else if (obj instanceof Tabung) {
+            Tabung t = (Tabung) obj;
+            sb.append("Volume: ").append(String.format("%.2f", t.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", t.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        } else if (obj instanceof Kerucut) {
+            Kerucut k = (Kerucut) obj;
+            sb.append("Volume: ").append(String.format("%.2f", k.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", k.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        } else if (obj instanceof KerucutTerpancung) {
+            KerucutTerpancung kt = (KerucutTerpancung) obj;
+            sb.append("Volume: ").append(String.format("%.2f", kt.menghitungVolume(values[0], values[1], values[2]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", kt.menghitungLuasPermukaan(values[0], values[1], values[2]))).append("\n");
+        } else if (obj instanceof Bola) {
+            Bola b = (Bola) obj;
+            sb.append("Volume: ").append(String.format("%.2f", b.menghitungVolume(values[0]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", b.menghitungLuasPermukaan(values[0]))).append("\n");
+        } else if (obj instanceof JuringBola) {
+            JuringBola jb = (JuringBola) obj;
+            sb.append("Volume: ").append(String.format("%.2f", jb.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", jb.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        } else if (obj instanceof TemberengBola) {
+            TemberengBola tb = (TemberengBola) obj;
+            sb.append("Volume: ").append(String.format("%.2f", tb.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", tb.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        } else if (obj instanceof CincinBola) {
+            CincinBola cb = (CincinBola) obj;
+            sb.append("Volume: ").append(String.format("%.2f", cb.menghitungVolume(values[0], values[1]))).append("\n");
+            sb.append("Luas Permukaan: ").append(String.format("%.2f", cb.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
+        }
+        else if (obj instanceof Persegi) {
+            Persegi p = (Persegi) obj;
+            sb.append("Luas: ").append(String.format("%.2f", p.menghitungLuas(values[0]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", p.menghitungKeliling(values[0]))).append("\n");
+        } else if (obj instanceof PersegiPanjang) {
+            PersegiPanjang pp = (PersegiPanjang) obj;
+            sb.append("Luas: ").append(String.format("%.2f", pp.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", pp.menghitungKeliling(values[0], values[1]))).append("\n");
+        } else if (obj instanceof Segitiga) {
+            Segitiga s = (Segitiga) obj;
+            sb.append("Luas: ").append(String.format("%.2f", s.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", s.menghitungKeliling(values[2], values[3], values[0]))).append("\n");
+        } else if (obj instanceof JajaranGenjang) {
+            JajaranGenjang jg = (JajaranGenjang) obj;
+            sb.append("Luas: ").append(String.format("%.2f", jg.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", jg.menghitungKeliling(values[0], values[2]))).append("\n");
+        } else if (obj instanceof BelahKetupat) {
+            BelahKetupat bk = (BelahKetupat) obj;
+            sb.append("Luas: ").append(String.format("%.2f", bk.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", bk.menghitungKeliling(values[2]))).append("\n");
+        } else if (obj instanceof Trapesium) {
+            Trapesium t = (Trapesium) obj;
+            sb.append("Luas: ").append(String.format("%.2f", t.menghitungLuas(values[0], values[1], values[2]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", t.menghitungKeliling(values[0], values[1], values[3], values[4]))).append("\n");
+        } else if (obj instanceof LayangLayang) {
+            LayangLayang ll = (LayangLayang) obj;
+            sb.append("Luas: ").append(String.format("%.2f", ll.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", ll.menghitungKeliling(values[2], values[3]))).append("\n");
+        } else if (obj instanceof JuringLingkaran) {
+            JuringLingkaran jl = (JuringLingkaran) obj;
+            sb.append("Luas: ").append(String.format("%.2f", jl.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", jl.menghitungKeliling(values[0], values[1]))).append("\n");
+        } else if (obj instanceof TemberengLingkaran) {
+            TemberengLingkaran tl = (TemberengLingkaran) obj;
+            sb.append("Luas: ").append(String.format("%.2f", tl.menghitungLuas(values[0], values[1]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", tl.menghitungKeliling(values[0], values[1]))).append("\n");
+        } else if (obj instanceof Lingkaran) {
+            Lingkaran l = (Lingkaran) obj;
+            sb.append("Luas: ").append(String.format("%.2f", l.menghitungLuas(values[0]))).append("\n");
+            sb.append("Keliling: ").append(String.format("%.2f", l.menghitungKeliling(values[0]))).append("\n");
+        }  else {
+            sb.append("Jenis benda tidak dikenali atau perhitungan overload belum diimplementasikan.\n");
+        }
+
+        return sb.toString();
     }
 
     public static void main(String[] args) {

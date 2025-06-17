@@ -9,8 +9,8 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
 
     public TemberengLingkaran(double radius, double sudut) throws InputMismatchException {
         super(radius);
-        if (radius <= 0 || sudut <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        if (sudut <= 0 || sudut > 360) {
+            throw new InputMismatchException("Sudut tembereng lingkaran harus lebih dari nol dan tidak lebih dari 360°.");
         }
         this.sudut = sudut;
         this.isRunning = true;
@@ -26,8 +26,8 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
     }
 
     public double menghitungLuas(double radiusBaru, double sudutBaru) throws InputMismatchException {
-        if (radiusBaru <= 0 || sudutBaru <= 0) {
-            throw new InputMismatchException("Radius dan sudut harus lebih dari nol.");
+        if (radiusBaru <= 0 || sudutBaru <= 0 || sudutBaru > 360) {
+            throw new InputMismatchException("Radius,sudut harus lebih dari nol dan sudut tidak boleh lebih dari 360°.");
         }
         double sudutRadian = Math.toRadians(sudutBaru);
         double luasJuringLingkaran = (sudutBaru / 360.0) * super.PI * radiusBaru * radiusBaru;
@@ -46,8 +46,8 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
     }
 
     public double menghitungKeliling(double radiusBaru, double sudutBaru) throws InputMismatchException {
-        if (radiusBaru <= 0 || sudutBaru <= 0) {
-            throw new InputMismatchException("Radius dan sudut harus lebih dari nol.");
+        if (radiusBaru <= 0 || sudutBaru <= 0 || sudutBaru > 360) {
+            throw new InputMismatchException("Radius,sudut harus lebih dari nol dan sudut tidak boleh lebih dari 360°.");
         }
         double sudutRadian = Math.toRadians(sudutBaru);
         double panjangBusur = (sudutBaru / 360.0) * 2 * super.PI * radiusBaru;

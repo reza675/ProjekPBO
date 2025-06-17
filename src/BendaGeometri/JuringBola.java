@@ -13,8 +13,8 @@ public class JuringBola extends Bola implements Runnable {
 
     public JuringBola(double radius, double sudutBola) throws InputMismatchException {
         super(radius);
-        if (sudutBola <= 0) {
-            throw new InputMismatchException("Sudut juring bola harus lebih dari nol.");
+        if (sudutBola <= 0 || sudutBola > 360) {
+            throw new InputMismatchException("Sudut juring bola harus lebih dari nol dan tidak lebih dari 360°.");
         }
         this.sudutBola = sudutBola;
     }
@@ -26,8 +26,8 @@ public class JuringBola extends Bola implements Runnable {
     }
 
     public double menghitungVolume(double sudutBolaBaru, double radiusBolaBaru) throws InputMismatchException {
-        if (sudutBolaBaru <= 0 || radiusBolaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        if (sudutBolaBaru <= 0 || radiusBolaBaru <= 0 ||sudutBolaBaru >360) {
+            throw new InputMismatchException("sudut bola,radius bola harus lebih dari 0 dan sudut bola tidak lebih dari 360°.");
         }
         volumeBola = super.menghitungVolume(radiusBolaBaru);
         volume = volumeBola * (sudutBolaBaru / 360.0);
@@ -41,8 +41,8 @@ public class JuringBola extends Bola implements Runnable {
     }
 
     public double menghitungLuasPermukaan(double sudutBolaBaru, double radiusBolaBaru) throws InputMismatchException {
-        if (sudutBolaBaru <= 0 || radiusBolaBaru <= 0) {
-            throw new InputMismatchException("Semua nilai harus lebih dari nol.");
+        if (sudutBolaBaru <= 0 || radiusBolaBaru <= 0 || sudutBolaBaru > 360) {
+            throw new InputMismatchException("sudut bola, radius bola harus lebih dari 0 dan sudut bola tidak lebih dari 360°");
         }
         luasPermukaanBola = super.menghitungLuasPermukaan(radiusBolaBaru);
         luasPermukaan = luasPermukaanBola * (sudutBolaBaru / 360.0);
