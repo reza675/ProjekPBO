@@ -10,9 +10,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Insets;
 
 public class GeometriMainGUI extends JFrame {
     private final String[] menuUtama = {
@@ -311,7 +308,7 @@ public class GeometriMainGUI extends JFrame {
         JButton btnHome = new JButton();
         btnHome.setIcon(new ImageIcon("src/Assets/Images/icons8-home-50.png"));
         btnHome.setPreferredSize(new Dimension(70, 70));
-        btnHome.setBackground(new Color(21, 101, 192));
+        btnHome.setBackground(new Color(255,0,0));
         btnHome.setBorder(BorderFactory.createLineBorder(new Color(13, 71, 161), 2));
         btnHome.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -620,7 +617,7 @@ public class GeometriMainGUI extends JFrame {
                     sb.append("Luas ").append(bd10.getNamaBenda()).append(" (bd10): ")
                             .append(String.format("%.2f", bd10.menghitungLuas())).append(" dan Keliling : ")
                             .append(String.format("%.2f", bd10.menghitungKeliling())).append("\n");
-                    sb.append("Benda 3D\n");
+                    sb.append("\nBenda 3D\n");
                     sb.append("Volume ").append(bd11.getNamaBenda()).append(" (bd11): ")
                             .append(String.format("%.2f", bd11.menghitungVolume())).append(" dan Luas Permukaan : ")
                             .append(String.format("%.2f", bd11.menghitungLuasPermukaan())).append("\n");
@@ -898,6 +895,11 @@ public class GeometriMainGUI extends JFrame {
     }
 
     public static void main(String[] args) {
+         try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         SwingUtilities.invokeLater(() -> new GeometriMainGUI().setVisible(true));
     }
 }
