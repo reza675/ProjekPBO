@@ -24,7 +24,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
     private static double menghitungTinggiKerucutUtuh(double radiusBawah, double radiusAtas, double tinggiTerpancung) throws InputMismatchException {
         selisihRadius = (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
         if (selisihRadius <= 0) {
-            throw new InputMismatchException("Radius atas harus lebih besar dari radius bawah.");
+            throw new InputMismatchException("Radius bawah harus lebih besar dari radius atas.");
         }
         return (radiusBawah * tinggiTerpancung) / (radiusBawah - radiusAtas);
     }

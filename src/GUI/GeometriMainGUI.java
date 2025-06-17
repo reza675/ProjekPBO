@@ -66,7 +66,7 @@ public class GeometriMainGUI extends JFrame {
         turunanMap.put("Belah Ketupat", new String[] { "Prisma Belah Ketupat", "Limas Belah Ketupat" });
         turunanMap.put("Trapesium", new String[] { "Prisma Trapesium", "Limas Trapesium" });
         turunanMap.put("Layang Layang", new String[] { "Prisma Layang Layang", "Limas Layang Layang" });
-        turunanMap.put("Lingkaran", new String[] { "Juring Lingkaran", "Tembereng Lingkaran", "Bola", "Juring Bola", "Tembereng Bola", "Tabung", "Kerucut", "Kerucut Terpancung" });
+        turunanMap.put("Lingkaran", new String[] { "Juring Lingkaran", "Tembereng Lingkaran", "Bola", "Juring Bola", "Tembereng Bola", "Cincin Bola", "Tabung", "Kerucut", "Kerucut Terpancung" });
         turunanMap.put("Polymorphism", new String[] {});
         turunanMap.put("Thread", new String[] {});
 
@@ -286,7 +286,7 @@ public class GeometriMainGUI extends JFrame {
                 false));
         geometriMap.put("Cincin Bola", new GeometriInfo(
                 "BendaGeometri.CincinBola",
-                new String[] { "Radius Dalam", "Radius Luar" },
+                new String[] { "Radius", "Tinggi Cincin Bola" },
                 new Double[] { 7.0, 12.0 },
                 new String[] { "Volume", "Luas Permukaan" },
                 new String[] { "menghitungVolume", "menghitungLuasPermukaan" },
@@ -304,11 +304,12 @@ public class GeometriMainGUI extends JFrame {
         labelJudul.setForeground(Color.WHITE);
 
         JButton btnHome = new JButton();
-        btnHome.setIcon(new ImageIcon("src/Assets/Images/icons8-home-50.png"));
+        btnHome.setIcon(new ImageIcon("src/GUI/icons8-home-50.png"));
         btnHome.setPreferredSize(new Dimension(70, 70));
         btnHome.setBackground(new Color(255,0,0));
         btnHome.setBorder(BorderFactory.createLineBorder(new Color(13, 71, 161), 2));
         btnHome.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnHome.addActionListener(e -> dispose());
 
         panelAtas.add(btnHome, BorderLayout.WEST);
         panelAtas.add(labelJudul, BorderLayout.CENTER);
