@@ -683,9 +683,29 @@ public class GeometriMainGUI extends JFrame {
             btnStop.setEnabled(false);
             panelThread.add(btnStop, gbc);
 
+            gbc.gridx = 4;
+            JButton btnResume = new JButton("Lanjut Thread");
+            btnResume.setFont(new Font("Segoe UI", Font.BOLD, 14));
+            btnResume.setBackground(new Color(52, 152, 219));
+            btnResume.setForeground(Color.WHITE);
+            btnResume.setBorder(new EmptyBorder(8, 15, 8, 15));
+            btnResume.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            btnResume.setEnabled(false);
+            panelThread.add(btnResume, gbc);
+
+            gbc.gridx = 5;
+            JButton btnForceStop = new JButton("Hentikan Total");
+            btnForceStop.setFont(new Font("Segoe UI", Font.BOLD, 14));
+            btnForceStop.setBackground(new Color(192, 57, 43));
+            btnForceStop.setForeground(Color.WHITE);
+            btnForceStop.setBorder(new EmptyBorder(8, 15, 8, 15));
+            btnForceStop.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            btnForceStop.setEnabled(false);
+            panelThread.add(btnForceStop, gbc);
+
             gbc.gridx = 0;
             gbc.gridy = 1;
-            gbc.gridwidth = 4;
+            gbc.gridwidth = 6;
             gbc.insets = new Insets(20, 10, 10, 10);
 
             JTextArea areaThread = new JTextArea(15, 50);
@@ -705,9 +725,13 @@ public class GeometriMainGUI extends JFrame {
 
             // Thread management variables
             AtomicBoolean isRunning = new AtomicBoolean(false);
+            AtomicBoolean isPaused = new AtomicBoolean(false);
             java.util.List<Thread> activeThreads = new java.util.concurrent.CopyOnWriteArrayList<>();
+            java.util.List<BendaGeometri> pausedBendaList = new java.util.ArrayList<>();
             AtomicInteger completedThreads = new AtomicInteger(0);
             AtomicInteger totalThreads = new AtomicInteger(0);
+            AtomicInteger currentBendaIndex = new AtomicInteger(0);
+            AtomicInteger currentThreadIndex = new AtomicInteger(0);
 
             // Event handler for Jalankan Thread button
             btnJalankan.addActionListener(e -> {
@@ -722,8 +746,11 @@ public class GeometriMainGUI extends JFrame {
                     areaThread.setText("");
                     btnJalankan.setEnabled(false);
                     btnStop.setEnabled(true);
+                    btnResume.setEnabled(false);
+                    btnForceStop.setEnabled(true);
                     fieldJumlah.setEnabled(false);
                     isRunning.set(true);
+                    isPaused.set(false);
                     activeThreads.clear();
                     completedThreads.set(0);
 
@@ -743,7 +770,7 @@ public class GeometriMainGUI extends JFrame {
                             for (int i = 0; i < jumlahThread; i++) {
                                 if (!isRunning.get()) {
                                     SwingUtilities.invokeLater(() -> {
-                                        areaThread.append("🛑 Penghentian diminta, berhenti membuat thread baru\n");
+                                        areaThread.append("Penghentian diminta, berhenti membuat thread baru\n");
                                         areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                     });
                                     break;
@@ -756,7 +783,7 @@ public class GeometriMainGUI extends JFrame {
                                     
                                     // Display start message
                                     SwingUtilities.invokeLater(() -> {
-                                        areaThread.append("🔄 [" + thread.getName() + "] Memulai perhitungan " + getBendaName(benda) + "...\n");
+                                        areaThread.append(" [" + thread.getName() + "] Memulai perhitungan " + getBendaName(benda) + "...\n");
                                         areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                     });
                                     
@@ -770,7 +797,7 @@ public class GeometriMainGUI extends JFrame {
                                         // Display finish message with results
                                         String result = getBendaGeometriResult(benda);
                                         SwingUtilities.invokeLater(() -> {
-                                            areaThread.append("✅ [" + thread.getName() + "] " + getBendaName(benda) + " selesai\n");
+                                            areaThread.append(" [" + thread.getName() + "] " + getBendaName(benda) + " selesai\n");
                                             areaThread.append("   " + result + "\n");
                                             areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                         });
@@ -778,7 +805,7 @@ public class GeometriMainGUI extends JFrame {
                                         // Update progress
                                         int completed = completedThreads.incrementAndGet();
                                         SwingUtilities.invokeLater(() -> {
-                                            areaThread.append("📊 Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
+                                            areaThread.append(" Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
                                             areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                             
                                             if (completed >= totalThreads.get()) {
@@ -788,14 +815,19 @@ public class GeometriMainGUI extends JFrame {
                                                 // Reset UI state when all threads complete
                                                 btnJalankan.setEnabled(true);
                                                 btnStop.setEnabled(false);
+                                                btnResume.setEnabled(false);
+                                                btnForceStop.setEnabled(false);
                                                 fieldJumlah.setEnabled(true);
                                                 isRunning.set(false);
+                                                isPaused.set(false);
+                                                currentBendaIndex.set(0);
+                                                currentThreadIndex.set(0);
                                             }
                                         });
                                         
                                     } catch (InterruptedException ex) {
                                         SwingUtilities.invokeLater(() -> {
-                                            areaThread.append("⚠️ [" + thread.getName() + "] Thread diinterupsi\n");
+                                            areaThread.append("[" + thread.getName() + "] Thread diinterupsi\n");
                                             areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                         });
                                         Thread.currentThread().interrupt();
@@ -804,14 +836,14 @@ public class GeometriMainGUI extends JFrame {
                                 } else {
                                     // If benda doesn't implement Runnable, skip it
                                     SwingUtilities.invokeLater(() -> {
-                                        areaThread.append("⚠️ " + getBendaName(benda) + " tidak mengimplementasikan Runnable, dilewati\n");
+                                        areaThread.append("" + getBendaName(benda) + " tidak mengimplementasikan Runnable, dilewati\n");
                                         areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                     });
                                     
                                     // Update progress for skipped items
                                     int completed = completedThreads.incrementAndGet();
                                     SwingUtilities.invokeLater(() -> {
-                                        areaThread.append("📊 Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
+                                        areaThread.append("Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
                                         areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                         
                                         if (completed >= totalThreads.get()) {
@@ -821,8 +853,13 @@ public class GeometriMainGUI extends JFrame {
                                             // Reset UI state when all threads complete
                                             btnJalankan.setEnabled(true);
                                             btnStop.setEnabled(false);
+                                            btnResume.setEnabled(false);
+                                            btnForceStop.setEnabled(false);
                                             fieldJumlah.setEnabled(true);
                                             isRunning.set(false);
+                                            isPaused.set(false);
+                                            currentBendaIndex.set(0);
+                                            currentThreadIndex.set(0);
                                         }
                                     });
                                 }
@@ -847,11 +884,15 @@ public class GeometriMainGUI extends JFrame {
                     showErrorDialog("Input jumlah thread harus berupa angka");
                     btnJalankan.setEnabled(true);
                     btnStop.setEnabled(false);
+                    btnResume.setEnabled(false);
+                    btnForceStop.setEnabled(false);
                     fieldJumlah.setEnabled(true);
                 } catch (Exception ex) {
                     showErrorDialog("Error: " + ex.getMessage());
                     btnJalankan.setEnabled(true);
                     btnStop.setEnabled(false);
+                    btnResume.setEnabled(false);
+                    btnForceStop.setEnabled(false);
                     fieldJumlah.setEnabled(true);
                 }
             });
@@ -862,14 +903,21 @@ public class GeometriMainGUI extends JFrame {
                     areaThread.append("\n=== MENGHEMTI SEMUA THREAD ===\n");
                     
                     isRunning.set(false);
+                    isPaused.set(true);
                     AtomicInteger interruptedCount = new AtomicInteger(0);
+                    
+                    // Simpan state thread yang sedang berjalan
+                    pausedBendaList.clear();
+                    for (BendaGeometri benda : createAllBendaGeometri()) {
+                        pausedBendaList.add(benda);
+                    }
                     
                     // First, interrupt all active threads
                     for (Thread thread : activeThreads) {
                         if (thread.isAlive()) {
                             thread.interrupt();
                             interruptedCount.incrementAndGet();
-                            areaThread.append("🛑 Menginterupsi " + thread.getName() + "\n");
+                            areaThread.append("Menginterupsi " + thread.getName() + "\n");
                         }
                     }
                     
@@ -901,15 +949,13 @@ public class GeometriMainGUI extends JFrame {
                                             AtomicInteger forceStopped = new AtomicInteger(0);
                                             for (Thread thread : activeThreads) {
                                                 if (thread.isAlive()) {
-                                                    // Note: Thread.stop() is deprecated, but we can't force stop safely
-                                                    // Instead, we'll just log that they're still running
                                                     forceStopped.incrementAndGet();
                                                 }
                                             }
                                             
                                             if (forceStopped.get() > 0) {
                                                 SwingUtilities.invokeLater(() -> {
-                                                    areaThread.append("⚠️ " + forceStopped + " thread masih berjalan setelah timeout total 7 detik\n");
+                                                    areaThread.append("" + forceStopped + " thread masih berjalan setelah timeout total 7 detik\n");
                                                     areaThread.append("Thread ini akan berhenti secara otomatis ketika selesai\n");
                                                     areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                                 });
@@ -923,9 +969,11 @@ public class GeometriMainGUI extends JFrame {
                                 areaThread.setCaretPosition(areaThread.getDocument().getLength());
                                 
                                 // Reset UI state
-                                btnJalankan.setEnabled(true);
+                                btnJalankan.setEnabled(false);
                                 btnStop.setEnabled(false);
-                                fieldJumlah.setEnabled(true);
+                                btnResume.setEnabled(true);
+                                btnForceStop.setEnabled(true);
+                                fieldJumlah.setEnabled(false);
                             });
                             
                         } catch (InterruptedException ex) {
@@ -934,6 +982,146 @@ public class GeometriMainGUI extends JFrame {
                     }).start();
                     
                     areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                }
+            });
+
+            // Event handler for Resume Thread button
+            btnResume.addActionListener(e -> {
+                if (isPaused.get()) {
+                    areaThread.append("\n=== MELANJUTKAN EKSEKUSI THREAD ===\n");
+                    
+                    isRunning.set(true);
+                    isPaused.set(false);
+                    btnResume.setEnabled(false);
+                    btnStop.setEnabled(true);
+                    
+                    // Run thread execution in background to avoid blocking UI
+                    new Thread(() -> {
+                        // Start threads for each remaining BendaGeometri object
+                        for (int bendaIndex = currentBendaIndex.get(); bendaIndex < pausedBendaList.size(); bendaIndex++) {
+                            BendaGeometri benda = pausedBendaList.get(bendaIndex);
+                            for (int i = currentThreadIndex.get(); i < Integer.parseInt(fieldJumlah.getText()); i++) {
+                                if (!isRunning.get()) {
+                                    SwingUtilities.invokeLater(() -> {
+                                        areaThread.append("Penghentian diminta, berhenti membuat thread baru\n");
+                                        areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                    });
+                                    break;
+                                }
+                                
+                                // Create thread directly using the benda object
+                                if (benda instanceof Runnable) {
+                                    Thread thread = new Thread((Runnable) benda);
+                                    thread.setName("Thread-" + getBendaName(benda) + "-" + (i + 1));
+                                    
+                                    // Display start message
+                                    SwingUtilities.invokeLater(() -> {
+                                        areaThread.append(" [" + thread.getName() + "] Memulai perhitungan " + getBendaName(benda) + "...\n");
+                                        areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                    });
+                                    
+                                    activeThreads.add(thread);
+                                    thread.start();
+                                    
+                                    // Wait for thread to complete using join (in background thread)
+                                    try {
+                                        thread.join();
+                                        
+                                        // Display finish message with results
+                                        String result = getBendaGeometriResult(benda);
+                                        SwingUtilities.invokeLater(() -> {
+                                            areaThread.append(" [" + thread.getName() + "] " + getBendaName(benda) + " selesai\n");
+                                            areaThread.append("   " + result + "\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                        });
+                                        
+                                        // Update progress
+                                        int completed = completedThreads.incrementAndGet();
+                                        SwingUtilities.invokeLater(() -> {
+                                            areaThread.append(" Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                            
+                                            if (completed >= totalThreads.get()) {
+                                                areaThread.append("\n=== EKSEKUSI THREAD SELESAI ===\n");
+                                                areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                                
+                                                // Reset UI state when all threads complete
+                                                btnJalankan.setEnabled(true);
+                                                btnStop.setEnabled(false);
+                                                btnResume.setEnabled(false);
+                                                btnForceStop.setEnabled(false);
+                                                fieldJumlah.setEnabled(true);
+                                                isRunning.set(false);
+                                                isPaused.set(false);
+                                                currentBendaIndex.set(0);
+                                                currentThreadIndex.set(0);
+                                            }
+                                        });
+                                        
+                                    } catch (InterruptedException ex) {
+                                        SwingUtilities.invokeLater(() -> {
+                                            areaThread.append("[" + thread.getName() + "] Thread diinterupsi\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                        });
+                                        Thread.currentThread().interrupt();
+                                        break;
+                                    }
+                                }
+                                
+                                // Small delay between thread starts
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException ex) {
+                                    Thread.currentThread().interrupt();
+                                    break;
+                                }
+                            }
+                            
+                            // Reset thread index for next benda
+                            currentThreadIndex.set(0);
+                            currentBendaIndex.incrementAndGet();
+                            
+                            // Check if we should stop creating more threads
+                            if (!isRunning.get()) {
+                                break;
+                            }
+                        }
+                    }).start();
+                }
+            });
+
+            // Event handler for Force Stop Thread button
+            btnForceStop.addActionListener(e -> {
+                if (isRunning.get() || isPaused.get()) {
+                    areaThread.append("\n=== MENGHEMTI TOTAL SEMUA THREAD ===\n");
+                    
+                    isRunning.set(false);
+                    isPaused.set(false);
+                    
+                    // Interrupt all active threads
+                    for (Thread thread : activeThreads) {
+                        if (thread.isAlive()) {
+                            thread.interrupt();
+                            areaThread.append("Menginterupsi " + thread.getName() + "\n");
+                        }
+                    }
+                    
+                    // Clear all thread-related data
+                    activeThreads.clear();
+                    pausedBendaList.clear();
+                    completedThreads.set(0);
+                    currentBendaIndex.set(0);
+                    currentThreadIndex.set(0);
+                    
+                    areaThread.append("=== EKSEKUSI THREAD DIHENTIKAN TOTAL ===\n");
+                    areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                    
+                    // Reset UI state
+                    btnJalankan.setEnabled(true);
+                    btnStop.setEnabled(false);
+                    btnResume.setEnabled(false);
+                    btnForceStop.setEnabled(false);
+                    fieldJumlah.setEnabled(true);
                 }
             });
 
@@ -1482,7 +1670,7 @@ public class GeometriMainGUI extends JFrame {
             sb.append("Keliling: ").append(String.format("%.2f", l.menghitungKeliling(values[0]))).append("\n");
         }  else {
             sb.append("Jenis benda tidak dikenali atau perhitungan overload belum diimplementasikan.\n");
-        }
+        }   
 
         return sb.toString();
     }
