@@ -129,14 +129,28 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
     @Override
     public void run() {
         try {
-            volume = menghitungVolume();
-            luasPermukaan = menghitungLuasPermukaan();
-            System.out.println("\n=== Hasil Perhitungan " + getNamaBenda() + " ===");
-            System.out.printf("Volume: %.2f\n", volume);
-            System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
-            prosesInputDataUlang();
+            System.out.println("\n=== Perhitungan Kerucut Terpancung dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 3) {
+                if (i + 2 < 1000) {
+                    double radiusAtasBaru = dataArray[i];
+                    double radiusBawahBaru = dataArray[i + 1];
+                    double tinggiTerpancungBaru = dataArray[i + 2];
+                    try {
+                        volume = menghitungVolume(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
+                        luasPermukaan = menghitungLuasPermukaan(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
+                        System.out.printf("Data %d-%d: radiusAtas=%.1f, radiusBawah=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 3, radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru, volume, luasPermukaan);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 3, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
         } catch (Exception e) {
-            System.out.println("Terjadi kesalahan dalam perhitungan: " + e.getMessage());
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
         }
     }
 }

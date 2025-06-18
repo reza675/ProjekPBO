@@ -89,18 +89,28 @@ public class CincinBola extends Bola implements Runnable {
 
 	@Override
 	public void run() {
-		Scanner inputData = new Scanner(System.in);
 		try {
-			System.out.println("\nMenghitung Cincin Bola...");
-			System.out.printf("Volume Cincin Bola awal: %.2f\n", menghitungVolume());
-			System.out.printf("Luas Permukaan Cincin Bola awal: %.2f\n", menghitungLuasPermukaan());
-			
-			prosesInputDataUlang();
-			
+			System.out.println("\n=== Perhitungan Cincin Bola dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 2) {
+				if (i + 1 < 1000) {
+					double radiusBaru = dataArray[i];
+					double tinggiCincinBolaBaru = dataArray[i + 1];
+					try {
+						volume = menghitungVolume(radiusBaru, tinggiCincinBolaBaru);
+						luasPermukaan = menghitungLuasPermukaan(radiusBaru, tinggiCincinBolaBaru);
+						System.out.printf("Data %d-%d: radius=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 2, radiusBaru, tinggiCincinBolaBaru, volume, luasPermukaan);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+					}
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
 		} catch (Exception e) {
 			System.out.println("Terjadi kesalahan: " + e.getMessage());
-		} finally {
-			inputData.close();
 		}
 	}
 }

@@ -19,13 +19,35 @@ public class Bola extends Lingkaran implements Runnable {
 	}
 	@Override
 	public void run() {
-		// Calculate both area and perimeter in the thread
-		luas = menghitungLuas();
-		keliling = menghitungKeliling();
-		calculated = true;
-		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-		System.out.printf("Luas Permukaan: %.2f\n", luas);
-		System.out.printf("Volume: %.2f\n", keliling);
+		try {
+			System.out.println("\n=== Perhitungan Bola dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				// Check for interruption during data array initialization
+				if (ThreadInterruptionUtil.checkAndHandleInterruption("data array initialization")) {
+					return;
+				}
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i++) {
+				// Check for interruption every 50 iterations
+				if (ThreadInterruptionUtil.checkInterruptionPeriodic(i, 50, "bola calculations")) {
+					return;
+				}
+				
+				double radiusBaru = dataArray[i];
+				try {
+					volume = menghitungVolume(radiusBaru);
+					luasPermukaan = menghitungLuasPermukaan(radiusBaru);
+					System.out.printf("Data %d: radius=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, radiusBaru, volume, luasPermukaan);
+				} catch (InputMismatchException e) {
+					System.out.printf("Data %d: Error - %s\n", i + 1, e.getMessage());
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 
 

@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class AplikasiBendaGeometriGUI extends JFrame {
     private final CardLayout cardLayout = new CardLayout();
@@ -1171,30 +1173,47 @@ public class AplikasiBendaGeometriGUI extends JFrame {
     private void showThreadPoolDialog() {
         JDialog dialog = new JDialog(this, "Thread Pool", true);
         dialog.setLayout(new BorderLayout());
-        dialog.setSize(800, 600);
+        dialog.setSize(900, 700);
         dialog.setLocationRelativeTo(this);
 
         // Create components
         String[] shapeNames = {
                 "Persegi", "PersegiPanjang", "Segitiga", "Lingkaran", "BelahKetupat",
-                "JajaranGenjang", "LayangLayang", "Trapesium", "Bola", "Kerucut",
-                "Tabung", "PrismaSegitiga", "PrismaPersegiPanjang", "LimasSegitiga",
-                "LimasPersegiPanjang"
+                "JajaranGenjang", "LayangLayang", "Trapesium", "TemberengLingkaran", 
+                "JuringLingkaran", "Bola", "Kerucut", "KerucutTerpancung", "Tabung", 
+                "TemberengBola", "JuringBola", "CincinBola", "PrismaSegitiga", 
+                "PrismaPersegi", "PrismaPersegiPanjang", "PrismaJajaranGenjang", 
+                "PrismaTrapesium", "PrismaBelahKetupat", "PrismaLayangLayang", 
+                "LimasSegitiga", "LimasPersegi", "LimasPersegiPanjang", 
+                "LimasJajaranGenjang", "LimasTrapesium", "LimasBelahKetupat", 
+                "LimasLayangLayang"
         };
 
         JList<String> shapeList = new JList<>(shapeNames);
         shapeList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         shapeList.setFont(new Font("Poppins", Font.PLAIN, 14));
 
-        JTextArea outputArea = new JTextArea(15, 40);
+        JTextArea outputArea = new JTextArea(20, 50);
         outputArea.setEditable(false);
-        outputArea.setFont(new Font("Poppins", Font.PLAIN, 14));
+        outputArea.setFont(new Font("Poppins", Font.PLAIN, 12));
+        outputArea.setLineWrap(true);
+        outputArea.setWrapStyleWord(true);
 
         JSpinner valueSpinner = new JSpinner(new SpinnerNumberModel(5.0, 0.1, 100.0, 0.1));
         valueSpinner.setFont(new Font("Poppins", Font.PLAIN, 14));
 
         JButton runButton = createModernButton("Run Selected Shapes", BUTTON_COLOR_2);
         runButton.setPreferredSize(new Dimension(200, 40));
+
+        JButton stopButton = createModernButton("Stop All Threads", BUTTON_COLOR_5);
+        stopButton.setPreferredSize(new Dimension(200, 40));
+        stopButton.setEnabled(false);
+
+        // Progress tracking
+        AtomicBoolean isRunning = new AtomicBoolean(false);
+        List<Thread> activeThreads = new ArrayList<>();
+        AtomicInteger completedThreads = new AtomicInteger(0);
+        AtomicInteger totalThreads = new AtomicInteger(0);
 
         // Layout
         JPanel controlPanel = new JPanel(new BorderLayout(10, 10));
@@ -1209,6 +1228,7 @@ public class AplikasiBendaGeometriGUI extends JFrame {
         inputPanel.add(valueLabel);
         inputPanel.add(valueSpinner);
         inputPanel.add(runButton);
+        inputPanel.add(stopButton);
 
         controlPanel.add(new JScrollPane(shapeList), BorderLayout.CENTER);
         controlPanel.add(inputPanel, BorderLayout.SOUTH);
@@ -1229,184 +1249,369 @@ public class AplikasiBendaGeometriGUI extends JFrame {
 
             double value = (Double) valueSpinner.getValue();
             outputArea.setText(""); // Clear previous output
+            
+            // Reset progress tracking
+            isRunning.set(true);
+            completedThreads.set(0);
+            totalThreads.set(selected.size());
+            activeThreads.clear();
+            
+            // Update UI
+            runButton.setEnabled(false);
+            stopButton.setEnabled(true);
+            shapeList.setEnabled(false);
+            
+            outputArea.append("=== EKSEKUSI THREAD POOL DIMULAI ===\n");
+            outputArea.append("Bentuk yang dipilih: " + selected.size() + "\n");
+            outputArea.append("Nilai dasar: " + value + "\n");
+            outputArea.append("Memulai thread...\n\n");
 
-            ExecutorService executor = Executors.newFixedThreadPool(5);
+            // Create threads for each selected shape
+            List<Thread> threads = new ArrayList<>();
+            List<BendaGeometri> shapes = new ArrayList<>();
 
             for (String shapeName : selected) {
                 try {
                     BendaGeometri shape = createShape(shapeName, value);
-                    if (shape != null) {
-                        executor.execute(() -> {
+                    if (shape != null && shape instanceof Runnable) {
+                        shapes.add(shape);
+                        
+                        // Create custom thread with progress tracking
+                        Thread thread = new Thread(() -> {
+                            String threadName = Thread.currentThread().getName();
                             try {
-                                if (shape instanceof PrismaSegitiga || shape instanceof PrismaPersegi ||
-                                        shape instanceof PrismaPersegiPanjang || shape instanceof PrismaJajaranGenjang
-                                        ||
-                                        shape instanceof PrismaTrapesium || shape instanceof PrismaBelahKetupat ||
-                                        shape instanceof PrismaLayangLayang || shape instanceof LimasSegitiga ||
-                                        shape instanceof LimasPersegi || shape instanceof LimasPersegiPanjang ||
-                                        shape instanceof LimasJajaranGenjang || shape instanceof LimasTrapesium ||
-                                        shape instanceof LimasBelahKetupat || shape instanceof LimasLayangLayang ||
-                                        shape instanceof Bola || shape instanceof Kerucut ||
-                                        shape instanceof KerucutTerpancung || shape instanceof Tabung ||
-                                        shape instanceof TemberengBola || shape instanceof JuringBola ||
-                                        shape instanceof CincinBola) {
-                                    double volume = 0;
-                                    double luasPermukaan = 0;
-
-                                    if (shape instanceof PrismaSegitiga) {
-                                        PrismaSegitiga prisma = (PrismaSegitiga) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof PrismaPersegi) {
-                                        PrismaPersegi prisma = (PrismaPersegi) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof PrismaPersegiPanjang) {
-                                        PrismaPersegiPanjang prisma = (PrismaPersegiPanjang) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof PrismaJajaranGenjang) {
-                                        PrismaJajaranGenjang prisma = (PrismaJajaranGenjang) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof PrismaTrapesium) {
-                                        PrismaTrapesium prisma = (PrismaTrapesium) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof PrismaBelahKetupat) {
-                                        PrismaBelahKetupat prisma = (PrismaBelahKetupat) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof PrismaLayangLayang) {
-                                        PrismaLayangLayang prisma = (PrismaLayangLayang) shape;
-                                        volume = prisma.menghitungVolume();
-                                        luasPermukaan = prisma.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasSegitiga) {
-                                        LimasSegitiga limas = (LimasSegitiga) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasPersegi) {
-                                        LimasPersegi limas = (LimasPersegi) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasPersegiPanjang) {
-                                        LimasPersegiPanjang limas = (LimasPersegiPanjang) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasJajaranGenjang) {
-                                        LimasJajaranGenjang limas = (LimasJajaranGenjang) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasTrapesium) {
-                                        LimasTrapesium limas = (LimasTrapesium) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasBelahKetupat) {
-                                        LimasBelahKetupat limas = (LimasBelahKetupat) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof LimasLayangLayang) {
-                                        LimasLayangLayang limas = (LimasLayangLayang) shape;
-                                        volume = limas.menghitungVolume();
-                                        luasPermukaan = limas.menghitungLuasPermukaan();
-                                    } else if (shape instanceof Bola) {
-                                        Bola bola = (Bola) shape;
-                                        volume = bola.menghitungVolume();
-                                        luasPermukaan = bola.menghitungLuasPermukaan();
-                                    } else if (shape instanceof Kerucut) {
-                                        Kerucut kerucut = (Kerucut) shape;
-                                        volume = kerucut.menghitungVolume();
-                                        luasPermukaan = kerucut.menghitungLuasPermukaan();
-                                    } else if (shape instanceof KerucutTerpancung) {
-                                        KerucutTerpancung kerucut = (KerucutTerpancung) shape;
-                                        volume = kerucut.menghitungVolume();
-                                        luasPermukaan = kerucut.menghitungLuasPermukaan();
-                                    } else if (shape instanceof Tabung) {
-                                        Tabung tabung = (Tabung) shape;
-                                        volume = tabung.menghitungVolume();
-                                        luasPermukaan = tabung.menghitungLuasPermukaan();
-                                    } else if (shape instanceof TemberengBola) {
-                                        TemberengBola tembereng = (TemberengBola) shape;
-                                        volume = tembereng.menghitungVolume();
-                                        luasPermukaan = tembereng.menghitungLuasPermukaan();
-                                    } else if (shape instanceof JuringBola) {
-                                        JuringBola juring = (JuringBola) shape;
-                                        volume = juring.menghitungVolume();
-                                        luasPermukaan = juring.menghitungLuasPermukaan();
-                                    } else if (shape instanceof CincinBola) {
-                                        CincinBola cincin = (CincinBola) shape;
-                                        volume = cincin.menghitungVolume();
-                                        luasPermukaan = cincin.menghitungLuasPermukaan();
-                                    }
-
-                                    String namaBenda = "";
-                                    if (shape instanceof PrismaSegitiga)
-                                        namaBenda = "Prisma Segitiga";
-                                    else if (shape instanceof PrismaPersegi)
-                                        namaBenda = "Prisma Persegi";
-                                    else if (shape instanceof PrismaPersegiPanjang)
-                                        namaBenda = "Prisma Persegi Panjang";
-                                    else if (shape instanceof PrismaJajaranGenjang)
-                                        namaBenda = "Prisma Jajaran Genjang";
-                                    else if (shape instanceof PrismaTrapesium)
-                                        namaBenda = "Prisma Trapesium";
-                                    else if (shape instanceof PrismaBelahKetupat)
-                                        namaBenda = "Prisma Belah Ketupat";
-                                    else if (shape instanceof PrismaLayangLayang)
-                                        namaBenda = "Prisma Layang-Layang";
-                                    else if (shape instanceof LimasSegitiga)
-                                        namaBenda = "Limas Segitiga";
-                                    else if (shape instanceof LimasPersegi)
-                                        namaBenda = "Limas Persegi";
-                                    else if (shape instanceof LimasPersegiPanjang)
-                                        namaBenda = "Limas Persegi Panjang";
-                                    else if (shape instanceof LimasJajaranGenjang)
-                                        namaBenda = "Limas Jajaran Genjang";
-                                    else if (shape instanceof LimasTrapesium)
-                                        namaBenda = "Limas Trapesium";
-                                    else if (shape instanceof LimasBelahKetupat)
-                                        namaBenda = "Limas Belah Ketupat";
-                                    else if (shape instanceof LimasLayangLayang)
-                                        namaBenda = "Limas Layang-Layang";
-                                    else if (shape instanceof Bola)
-                                        namaBenda = "Bola";
-                                    else if (shape instanceof Kerucut)
-                                        namaBenda = "Kerucut";
-                                    else if (shape instanceof KerucutTerpancung)
-                                        namaBenda = "Kerucut Terpancung";
-                                    else if (shape instanceof Tabung)
-                                        namaBenda = "Tabung";
-                                    else if (shape instanceof TemberengBola)
-                                        namaBenda = "Tembereng Bola";
-                                    else if (shape instanceof JuringBola)
-                                        namaBenda = "Juring Bola";
-                                    else if (shape instanceof CincinBola)
-                                        namaBenda = "Cincin Bola";
-
-                                    String result = String.format("• %s:\n  Volume = %.2f\n  Luas Permukaan = %.2f\n\n",
-                                            namaBenda,
-                                            volume,
-                                            luasPermukaan);
-                                    SwingUtilities.invokeLater(() -> outputArea.append(result));
-                                } else if (shape instanceof Benda2D) {
-                                    Benda2D benda2D = (Benda2D) shape;
-                                    String result = String.format("• %s:\n  Luas = %.2f\n  Keliling = %.2f\n\n",
-                                            benda2D.getNamaBenda(),
-                                            benda2D.menghitungLuas(),
-                                            benda2D.menghitungKeliling());
-                                    SwingUtilities.invokeLater(() -> outputArea.append(result));
+                                // Update status to show thread is working
+                                SwingUtilities.invokeLater(() -> {
+                                    outputArea.append("🔄 [" + threadName + "] Memulai perhitungan...\n");
+                                    outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                                });
+                                
+                                // Run the actual calculation
+                                ((Runnable) shape).run();
+                                
+                                // Check if thread was interrupted after completion
+                                if (Thread.currentThread().isInterrupted()) {
+                                    SwingUtilities.invokeLater(() -> {
+                                        outputArea.append("⚠️ [" + threadName + "] Thread diinterupsi setelah selesai\n");
+                                        outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                                    });
+                                } else {
+                                    // Update status to show completion
+                                    SwingUtilities.invokeLater(() -> {
+                                        outputArea.append("✅ [" + threadName + "] Perhitungan selesai dengan sukses\n");
+                                        outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                                    });
                                 }
+                                
+                            
                             } catch (Exception ex) {
-                                SwingUtilities.invokeLater(() -> outputArea.append("Error: " + ex.getMessage() + "\n"));
+                                SwingUtilities.invokeLater(() -> {
+                                    outputArea.append("❌ [" + threadName + "] KESALAHAN: " + ex.getMessage() + "\n");
+                                    outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                                });
+                            } finally {
+                                // Remove from active threads
+                                activeThreads.remove(Thread.currentThread());
+                                
+                                // Update progress
+                                int completed = completedThreads.incrementAndGet();
+                                SwingUtilities.invokeLater(() -> {
+                                    outputArea.append("📊 Kemajuan: " + completed + "/" + totalThreads.get() + " thread selesai\n");
+                                    outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                                });
                             }
+                        });
+                        
+                        thread.setName("Thread-" + shapeName);
+                        threads.add(thread);
+                        activeThreads.add(thread);
+                        
+                        // Start the thread
+                        thread.start();
+                        
+                        // Small delay between thread starts for better visibility
+                        
+                    } else {
+                        SwingUtilities.invokeLater(() -> {
+                            outputArea.append("❌ Kesalahan: " + shapeName + " bukan objek Runnable\n");
+                            outputArea.setCaretPosition(outputArea.getDocument().getLength());
                         });
                     }
                 } catch (Exception ex) {
-                    outputArea.append("Error creating " + shapeName + ": " + ex.getMessage() + "\n");
+                    SwingUtilities.invokeLater(() -> {
+                        outputArea.append("❌ Kesalahan membuat " + shapeName + ": " + ex.getMessage() + "\n");
+                        outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                    });
                 }
             }
 
-            executor.shutdown();
+            // Wait for all threads to complete and collect results
+            new Thread(() -> {
+                try {
+                    outputArea.append("\n=== MENUNGGU SEMUA THREAD SELESAI ===\n");
+                    
+                    for (int i = 0; i < threads.size(); i++) {
+                        Thread thread = threads.get(i);
+                        BendaGeometri shape = shapes.get(i);
+                        
+                        try {
+                            // Wait for thread to complete with timeout
+                            thread.join(30000); // 30 second timeout
+                            
+                            if (thread.isAlive()) {
+                                SwingUtilities.invokeLater(() -> {
+                                    outputArea.append("⚠️ [" + thread.getName() + "] TIMEOUT: Thread memakan waktu terlalu lama untuk selesai\n");
+                                    outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                                });
+                            }
+                            
+                        } catch (InterruptedException ex) {
+                            SwingUtilities.invokeLater(() -> {
+                                outputArea.append("❌ [" + thread.getName() + "] JOIN DIINTERUPSI: " + ex.getMessage() + "\n");
+                                outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                            });
+                            Thread.currentThread().interrupt();
+                            break;
+                        }
+                    }
+                    
+                    // Collect and display results
+                    SwingUtilities.invokeLater(() -> {
+                        outputArea.append("\n=== MENGUMPULKAN HASIL ===\n");
+                    });
+                    
+                    for (int i = 0; i < shapes.size(); i++) {
+                        BendaGeometri shape = shapes.get(i);
+                        String shapeName = threads.get(i).getName().replace("Thread-", "");
+                        
+                        try {
+                            // Get results based on shape type
+                            String result = "";
+                            if (shape instanceof Benda2D) {
+                                Benda2D benda2D = (Benda2D) shape;
+                                result = String.format("📐 %s:\n   Luas = %.2f cm²\n   Keliling = %.2f cm\n\n",
+                                        shapeName,
+                                        benda2D.menghitungLuas(),
+                                        benda2D.menghitungKeliling());
+                            } else if (shape instanceof PrismaSegitiga || shape instanceof PrismaPersegi ||
+                                    shape instanceof PrismaPersegiPanjang || shape instanceof PrismaJajaranGenjang ||
+                                    shape instanceof PrismaTrapesium || shape instanceof PrismaBelahKetupat ||
+                                    shape instanceof PrismaLayangLayang || shape instanceof LimasSegitiga ||
+                                    shape instanceof LimasPersegi || shape instanceof LimasPersegiPanjang ||
+                                    shape instanceof LimasJajaranGenjang || shape instanceof LimasTrapesium ||
+                                    shape instanceof LimasBelahKetupat || shape instanceof LimasLayangLayang ||
+                                    shape instanceof Bola || shape instanceof Kerucut ||
+                                    shape instanceof KerucutTerpancung || shape instanceof Tabung ||
+                                    shape instanceof TemberengBola || shape instanceof JuringBola ||
+                                    shape instanceof CincinBola) {
+                                
+                                double volume = 0;
+                                double luasPermukaan = 0;
+                                String namaBenda = "";
+
+                                if (shape instanceof PrismaSegitiga) {
+                                    PrismaSegitiga prisma = (PrismaSegitiga) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Segitiga";
+                                } else if (shape instanceof PrismaPersegi) {
+                                    PrismaPersegi prisma = (PrismaPersegi) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Persegi";
+                                } else if (shape instanceof PrismaPersegiPanjang) {
+                                    PrismaPersegiPanjang prisma = (PrismaPersegiPanjang) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Persegi Panjang";
+                                } else if (shape instanceof PrismaJajaranGenjang) {
+                                    PrismaJajaranGenjang prisma = (PrismaJajaranGenjang) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Jajaran Genjang";
+                                } else if (shape instanceof PrismaTrapesium) {
+                                    PrismaTrapesium prisma = (PrismaTrapesium) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Trapesium";
+                                } else if (shape instanceof PrismaBelahKetupat) {
+                                    PrismaBelahKetupat prisma = (PrismaBelahKetupat) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Belah Ketupat";
+                                } else if (shape instanceof PrismaLayangLayang) {
+                                    PrismaLayangLayang prisma = (PrismaLayangLayang) shape;
+                                    volume = prisma.menghitungVolume();
+                                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                                    namaBenda = "Prisma Layang-Layang";
+                                } else if (shape instanceof LimasSegitiga) {
+                                    LimasSegitiga limas = (LimasSegitiga) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Segitiga";
+                                } else if (shape instanceof LimasPersegi) {
+                                    LimasPersegi limas = (LimasPersegi) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Persegi";
+                                } else if (shape instanceof LimasPersegiPanjang) {
+                                    LimasPersegiPanjang limas = (LimasPersegiPanjang) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Persegi Panjang";
+                                } else if (shape instanceof LimasJajaranGenjang) {
+                                    LimasJajaranGenjang limas = (LimasJajaranGenjang) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Jajaran Genjang";
+                                } else if (shape instanceof LimasTrapesium) {
+                                    LimasTrapesium limas = (LimasTrapesium) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Trapesium";
+                                } else if (shape instanceof LimasBelahKetupat) {
+                                    LimasBelahKetupat limas = (LimasBelahKetupat) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Belah Ketupat";
+                                } else if (shape instanceof LimasLayangLayang) {
+                                    LimasLayangLayang limas = (LimasLayangLayang) shape;
+                                    volume = limas.menghitungVolume();
+                                    luasPermukaan = limas.menghitungLuasPermukaan();
+                                    namaBenda = "Limas Layang-Layang";
+                                } else if (shape instanceof Bola) {
+                                    Bola bola = (Bola) shape;
+                                    volume = bola.menghitungVolume();
+                                    luasPermukaan = bola.menghitungLuasPermukaan();
+                                    namaBenda = "Bola";
+                                } else if (shape instanceof Kerucut) {
+                                    Kerucut kerucut = (Kerucut) shape;
+                                    volume = kerucut.menghitungVolume();
+                                    luasPermukaan = kerucut.menghitungLuasPermukaan();
+                                    namaBenda = "Kerucut";
+                                } else if (shape instanceof KerucutTerpancung) {
+                                    KerucutTerpancung kerucut = (KerucutTerpancung) shape;
+                                    volume = kerucut.menghitungVolume();
+                                    luasPermukaan = kerucut.menghitungLuasPermukaan();
+                                    namaBenda = "Kerucut Terpancung";
+                                } else if (shape instanceof Tabung) {
+                                    Tabung tabung = (Tabung) shape;
+                                    volume = tabung.menghitungVolume();
+                                    luasPermukaan = tabung.menghitungLuasPermukaan();
+                                    namaBenda = "Tabung";
+                                } else if (shape instanceof TemberengBola) {
+                                    TemberengBola tembereng = (TemberengBola) shape;
+                                    volume = tembereng.menghitungVolume();
+                                    luasPermukaan = tembereng.menghitungLuasPermukaan();
+                                    namaBenda = "Tembereng Bola";
+                                } else if (shape instanceof JuringBola) {
+                                    JuringBola juring = (JuringBola) shape;
+                                    volume = juring.menghitungVolume();
+                                    luasPermukaan = juring.menghitungLuasPermukaan();
+                                    namaBenda = "Juring Bola";
+                                } else if (shape instanceof CincinBola) {
+                                    CincinBola cincin = (CincinBola) shape;
+                                    volume = cincin.menghitungVolume();
+                                    luasPermukaan = cincin.menghitungLuasPermukaan();
+                                    namaBenda = "Cincin Bola";
+                                }
+
+                                result = String.format("📦 %s:\n   Volume = %.2f cm³\n   Luas Permukaan = %.2f cm²\n\n",
+                                        namaBenda, volume, luasPermukaan);
+                            }
+
+                            final String finalResult = result;
+                            SwingUtilities.invokeLater(() -> {
+                                outputArea.append(finalResult);
+                                outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                            });
+                            
+                        } catch (Exception ex) {
+                            SwingUtilities.invokeLater(() -> {
+                                outputArea.append("❌ Kesalahan memproses hasil untuk " + shapeName + ": " + ex.getMessage() + "\n");
+                                outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                            });
+                        }
+                    }
+                    
+                    SwingUtilities.invokeLater(() -> {
+                        outputArea.append("=== EKSEKUSI THREAD POOL SELESAI ===\n");
+                        outputArea.append("Total thread yang diproses: " + totalThreads.get() + "\n");
+                        outputArea.append("Berhasil diselesaikan: " + completedThreads.get() + "\n");
+                        
+                        // Reset UI
+                        runButton.setEnabled(true);
+                        stopButton.setEnabled(false);
+                        shapeList.setEnabled(true);
+                        isRunning.set(false);
+                        
+                        outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                    });
+                    
+                } catch (Exception ex) {
+                    SwingUtilities.invokeLater(() -> {
+                        outputArea.append("❌ KESALAHAN KRITIS: " + ex.getMessage() + "\n");
+                        outputArea.append("=== EKSEKUSI THREAD POOL GAGAL ===\n");
+                        
+                        // Reset UI
+                        runButton.setEnabled(true);
+                        stopButton.setEnabled(false);
+                        shapeList.setEnabled(true);
+                        isRunning.set(false);
+                        
+                        outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                    });
+                }
+            }).start();
+        });
+
+        // Stop button functionality
+        stopButton.addActionListener(e -> {
+            if (isRunning.get()) {
+                outputArea.append("\n=== MENGHEMTI SEMUA THREAD ===\n");
+                
+                AtomicInteger interruptedCount = new AtomicInteger(0);
+                // Interrupt all active threads
+                for (Thread thread : new ArrayList<>(activeThreads)) {
+                    if (thread.isAlive()) {
+                        thread.interrupt();
+                        interruptedCount.incrementAndGet();
+                        outputArea.append("🛑 Menginterupsi " + thread.getName() + "\n");
+                    }
+                }
+                
+                // Wait a bit for threads to respond to interruption
+                new Thread(() -> {
+                    try {
+                        
+                        // Check which threads are still alive
+                        AtomicInteger stillAlive = new AtomicInteger(0);
+                        for (Thread thread : new ArrayList<>(activeThreads)) {
+                            if (thread.isAlive()) {
+                                stillAlive.incrementAndGet();
+                            }
+                        }
+                        
+                        SwingUtilities.invokeLater(() -> {
+                            if (stillAlive.get() > 0) {
+                                outputArea.append("⚠️ " + stillAlive.get() + " thread masih berjalan (mungkin membutuhkan waktu untuk berhenti)\n");
+                            }
+                            outputArea.append("=== EKSEKUSI THREAD POOL DIHENTIKAN ===\n");
+                            outputArea.append("Menginterupsi " + interruptedCount.get() + " thread\n");
+                            outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                        });
+                        
+                    } catch (Exception ex) {
+                        // Ignore
+                    }
+                }).start();
+                
+                // Reset UI immediately
+                runButton.setEnabled(true);
+                stopButton.setEnabled(false);
+                shapeList.setEnabled(true);
+                isRunning.set(false);
+            }
         });
 
         dialog.setVisible(true);
@@ -1414,6 +1619,7 @@ public class AplikasiBendaGeometriGUI extends JFrame {
 
     private BendaGeometri createShape(String shapeName, double value) {
         switch (shapeName) {
+            // 2D Shapes
             case "Persegi":
                 return new Persegi(value);
             case "PersegiPanjang":
@@ -1430,20 +1636,59 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                 return new LayangLayang(value, value, value, value);
             case "Trapesium":
                 return new Trapesium(value, value, value, value, value);
+            case "TemberengLingkaran":
+                return new TemberengLingkaran(value, 60); // value as radius, 60 as angle
+            case "JuringLingkaran":
+                return new JuringLingkaran(value, 60); // value as radius, 60 as angle
+            
+            // 3D Special Objects
             case "Bola":
                 return new Bola(value);
             case "Kerucut":
                 return new Kerucut(value, value);
+            case "KerucutTerpancung":
+                return new KerucutTerpancung(value, value * 1.5, value); // radius1, radius2, height
             case "Tabung":
                 return new Tabung(value, value);
+            case "TemberengBola":
+                return new TemberengBola(value, value * 0.5); // radius, height
+            case "JuringBola":
+                return new JuringBola(value, 60); // radius, angle
+            case "CincinBola":
+                return new CincinBola(value, value * 0.5); // radius, height
+            
+            // Prisma (3D)
             case "PrismaSegitiga":
                 return new PrismaSegitiga(value, value, value, value, value);
+            case "PrismaPersegi":
+                return new PrismaPersegi(value, value);
             case "PrismaPersegiPanjang":
                 return new PrismaPersegiPanjang(value, value, value);
+            case "PrismaJajaranGenjang":
+                return new PrismaJajaranGenjang(value, value, value, value);
+            case "PrismaTrapesium":
+                return new PrismaTrapesium(value, value, value, value, value, value);
+            case "PrismaBelahKetupat":
+                return new PrismaBelahKetupat(value, value, value, value);
+            case "PrismaLayangLayang":
+                return new PrismaLayangLayang(value, value, value, value, value);
+            
+            // Limas (3D)
             case "LimasSegitiga":
                 return new LimasSegitiga(value, value, value, value, value);
+            case "LimasPersegi":
+                return new LimasPersegi(value, value);
             case "LimasPersegiPanjang":
                 return new LimasPersegiPanjang(value, value, value);
+            case "LimasJajaranGenjang":
+                return new LimasJajaranGenjang(value, value, value, value);
+            case "LimasTrapesium":
+                return new LimasTrapesium(value, value, value, value, value, value);
+            case "LimasBelahKetupat":
+                return new LimasBelahKetupat(value, value, value, value);
+            case "LimasLayangLayang":
+                return new LimasLayangLayang(value, value, value, value, value);
+            
             default:
                 return null;
         }

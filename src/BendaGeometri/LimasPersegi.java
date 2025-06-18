@@ -26,14 +26,29 @@ public class LimasPersegi extends Persegi implements Runnable {
 	@Override
 	public void run() {
 		synchronized(lock) {
-			// Calculate both volume and surface area in the thread
-			volume = menghitungVolume();
-			luasPermukaan = menghitungLuasPermukaan();
-			calculated = true;
-			System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-			System.out.printf("Volume: %.2f\n", volume);
-			System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
-			lock.notifyAll(); // Notify waiting threads that calculation is complete
+			try {
+				System.out.println("\n=== Perhitungan Limas Persegi dengan 1000 Data ===");
+				double[] dataArray = new double[1000];
+				for (int i = 0; i < 1000; i++) {
+					dataArray[i] = i + 1;
+				}
+				for (int i = 0; i < 1000; i += 2) {
+					if (i + 1 < 1000) {
+						double sisiBaru = dataArray[i];
+						double tinggiLimasBaru = dataArray[i + 1];
+						try {
+							volume = menghitungVolume(sisiBaru, tinggiLimasBaru);
+							luasPermukaan = menghitungLuasPermukaan(sisiBaru, tinggiLimasBaru);
+							System.out.printf("Data %d-%d: sisi=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 2, sisiBaru, tinggiLimasBaru, volume, luasPermukaan);
+						} catch (InputMismatchException e) {
+							System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+						}
+					}
+				}
+				System.out.println("\nPerhitungan selesai untuk 1000 data!");
+			} catch (Exception e) {
+				System.out.println("Terjadi kesalahan: " + e.getMessage());
+			}
 		}
 	}
 
@@ -87,8 +102,6 @@ public class LimasPersegi extends Persegi implements Runnable {
 		volume = (1 / 3.0) * luasAlas * tinggiLimasBaru;
 		return volume;
 	}
-
-
 
 	public double menghitungLuasPermukaan() {
 		luasAlas = super.menghitungLuas();

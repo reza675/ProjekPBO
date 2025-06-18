@@ -27,14 +27,33 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     @Override
     public void run() {
         synchronized (lock) {
-            // Calculate both volume and surface area in the thread
-            volume = menghitungVolume();
-            luasPermukaan = menghitungLuasPermukaan();
-            calculated = true;
-            System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-            System.out.printf("Volume: %.2f\n", volume);
-            System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
-            lock.notifyAll(); // Notify waiting threads that calculation is complete
+            try {
+                System.out.println("\n=== Perhitungan Prisma Trapesium dengan 1000 Data ===");
+                double[] dataArray = new double[1000];
+                for (int i = 0; i < 1000; i++) {
+                    dataArray[i] = i + 1;
+                }
+                for (int i = 0; i < 1000; i += 6) {
+                    if (i + 5 < 1000) {
+                        double alasAtasBaru = dataArray[i];
+                        double alasBawahBaru = dataArray[i + 1];
+                        double tinggiBaru = dataArray[i + 2];
+                        double sisiMiringKiriBaru = dataArray[i + 3];
+                        double sisiMiringKananBaru = dataArray[i + 4];
+                        double tinggiPrismaBaru = dataArray[i + 5];
+                        try {
+                            volume = menghitungVolume(alasAtasBaru, alasBawahBaru, tinggiBaru, tinggiPrismaBaru);
+                            luasPermukaan = menghitungLuasPermukaan(alasAtasBaru, alasBawahBaru, tinggiBaru, sisiMiringKiriBaru, sisiMiringKananBaru, tinggiPrismaBaru);
+                            System.out.printf("Data %d-%d: alasAtas=%.1f, alasBawah=%.1f, tinggi=%.1f, sisiMiringKiri=%.1f, sisiMiringKanan=%.1f, tinggiPrisma=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 6, alasAtasBaru, alasBawahBaru, tinggiBaru, sisiMiringKiriBaru, sisiMiringKananBaru, tinggiPrismaBaru, volume, luasPermukaan);
+                        } catch (InputMismatchException e) {
+                            System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 6, e.getMessage());
+                        }
+                    }
+                }
+                System.out.println("\nPerhitungan selesai untuk 1000 data!");
+            } catch (Exception e) {
+                System.out.println("Terjadi kesalahan: " + e.getMessage());
+            }
         }
     }
 

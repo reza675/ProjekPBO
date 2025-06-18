@@ -91,17 +91,16 @@ public class GeometricShapeThreadGUI extends JFrame {
             case "PersegiPanjang":
                 return new PersegiPanjang(value, value);
             case "Segitiga":
-                return new Segitiga(value, value);
+                return new Segitiga(value, value, value, value);
             case "Lingkaran":
                 return new Lingkaran(value);
             case "BelahKetupat":
-                return new BelahKetupat(value, value);
+                return new BelahKetupat(value, value, value);
             case "JajaranGenjang":
                 return new JajaranGenjang(value, value, value);
             case "LayangLayang":
                 return new LayangLayang(value, value, value, value);
-            case "Trapesium":
-                return new Trapesium(value, value, value, value);
+            
             case "Bola":
                 return new Bola(value);
             case "Kerucut":
@@ -109,11 +108,11 @@ public class GeometricShapeThreadGUI extends JFrame {
             case "Tabung":
                 return new Tabung(value, value);
             case "PrismaSegitiga":
-                return new PrismaSegitiga(value, value, value);
+                return new PrismaSegitiga(value, value, value, value, value);
             case "PrismaPersegiPanjang":
                 return new PrismaPersegiPanjang(value, value, value);
             case "LimasSegitiga":
-                return new LimasSegitiga(value, value, value);
+                return new LimasSegitiga(value, value, value, value, value);
             case "LimasPersegiPanjang":
                 return new LimasPersegiPanjang(value, value, value);
             default:

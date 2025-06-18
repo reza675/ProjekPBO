@@ -35,9 +35,6 @@ public class RunnableExecutor {
             Thread tJajaranGenjang = new Thread(new JajaranGenjang(r1, r2, r3));
             tJajaranGenjang.start();
             
-            Thread tTrapesium = new Thread(new Trapesium(r1, r2, r3, r2, r1));
-            tTrapesium.start();
-            
             Thread tBelahKetupat = new Thread(new BelahKetupat(r1, r2, r3));
             tBelahKetupat.start();
             
@@ -116,11 +113,7 @@ public class RunnableExecutor {
             Thread tKerucutTerpancung = new Thread(new KerucutTerpancung(r1, r2, r3));
             tKerucutTerpancung.start();
             
-            Thread tParaboloid = new Thread(new Paraboloid(r1, r2));
-            tParaboloid.start();
-            
-            Thread tElipsoid = new Thread(new Elipsoid(r1, r2, r3));
-            tElipsoid.start();
+           
         }
     }
 }

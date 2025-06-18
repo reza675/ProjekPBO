@@ -21,12 +21,29 @@ public class PrismaPersegi extends Persegi implements Runnable{
 
     @Override
     public void run() {
-        volume = menghitungVolume();
-        luasPermukaan = menghitungLuasPermukaan();
-        calculated = true;
-        System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-        System.out.printf("Volume: %.2f\n", volume);
-        System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+        try {
+            System.out.println("\n=== Perhitungan Prisma Persegi dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 2) {
+                if (i + 1 < 1000) {
+                    double sisiBaru = dataArray[i];
+                    double tinggiPrismaBaru = dataArray[i + 1];
+                    try {
+                        volume = menghitungVolume(sisiBaru, tinggiPrismaBaru);
+                        luasPermukaan = menghitungLuasPermukaan(sisiBaru, tinggiPrismaBaru);
+                        System.out.printf("Data %d-%d: sisi=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 2, sisiBaru, tinggiPrismaBaru, volume, luasPermukaan);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
+        }
     }
 
     public boolean isCalculated() {

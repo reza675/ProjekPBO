@@ -3,7 +3,7 @@ package BendaGeometri;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Trapesium extends Benda2D {
+public class Trapesium extends Benda2D implements Runnable {
 
     protected double alasAtas;
     protected double alasBawah;
@@ -101,6 +101,36 @@ public class Trapesium extends Benda2D {
             } else {
                 System.out.println("Jawaban hanya boleh Y atau N.");
             }
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            System.out.println("\n=== Perhitungan Trapesium dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 5) {
+                if (i + 4 < 1000) {
+                    double alasAtasBaru = dataArray[i];
+                    double alasBawahBaru = dataArray[i + 1];
+                    double tinggiBaru = dataArray[i + 2];
+                    double sisiMiringKiriBaru = dataArray[i + 3];
+                    double sisiMiringKananBaru = dataArray[i + 4];
+                    try {
+                        luas = menghitungLuas(alasAtasBaru, alasBawahBaru, tinggiBaru);
+                        keliling = menghitungKeliling(alasAtasBaru, alasBawahBaru, sisiMiringKananBaru, sisiMiringKiriBaru);
+                        System.out.printf("Data %d-%d: alasAtas=%.1f, alasBawah=%.1f, tinggi=%.1f, sisiMiringKiri=%.1f, sisiMiringKanan=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 5, alasAtasBaru, alasBawahBaru, tinggiBaru, sisiMiringKiriBaru, sisiMiringKananBaru, luas, keliling);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 5, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
         }
     }
 

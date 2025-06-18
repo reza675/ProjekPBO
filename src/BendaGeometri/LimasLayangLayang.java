@@ -112,10 +112,32 @@ public class LimasLayangLayang extends LayangLayang implements Runnable {
 
         @Override
         public void run() {
-            volume = menghitungVolume();
-		luasPermukaan = menghitungLuasPermukaan();
-		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
-		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
+            try {
+                System.out.println("\n=== Perhitungan Limas Layang-Layang dengan 1000 Data ===");
+                double[] dataArray = new double[1000];
+                for (int i = 0; i < 1000; i++) {
+                    dataArray[i] = i + 1;
+                }
+                for (int i = 0; i < 1000; i += 5) {
+                    if (i + 4 < 1000) {
+                        double diagonal1Baru = dataArray[i];
+                        double diagonal2Baru = dataArray[i + 1];
+                        double sisiPendekBaru = dataArray[i + 2];
+                        double sisiPanjangBaru = dataArray[i + 3];
+                        double tinggiLimasBaru = dataArray[i + 4];
+                        try {
+                            volume = menghitungVolume(diagonal1Baru, diagonal2Baru, tinggiLimasBaru);
+                            luasPermukaan = menghitungLuasPermukaan(diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru, tinggiLimasBaru);
+                            System.out.printf("Data %d-%d: diagonal1=%.1f, diagonal2=%.1f, sisiPendek=%.1f, sisiPanjang=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 5, diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru, tinggiLimasBaru, volume, luasPermukaan);
+                        } catch (InputMismatchException e) {
+                            System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 5, e.getMessage());
+                        }
+                    }
+                }
+                System.out.println("\nPerhitungan selesai untuk 1000 data!");
+            } catch (Exception e) {
+                System.out.println("Terjadi kesalahan: " + e.getMessage());
+            }
         }
 	
 

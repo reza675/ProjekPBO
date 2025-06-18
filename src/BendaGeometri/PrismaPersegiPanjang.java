@@ -21,13 +21,30 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
 
     @Override
     public void run() {
-        // Calculate both volume and surface area in the thread
-        volume = menghitungVolume();
-        luasPermukaan = menghitungLuasPermukaan();
-        calculated = true;
-        System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-        System.out.printf("Volume: %.2f\n", volume);
-        System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
+        try {
+            System.out.println("\n=== Perhitungan Prisma Persegi Panjang dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 3) {
+                if (i + 2 < 1000) {
+                    double panjangBaru = dataArray[i];
+                    double lebarBaru = dataArray[i + 1];
+                    double tinggiPrismaBaru = dataArray[i + 2];
+                    try {
+                        volume = menghitungVolume(panjangBaru, lebarBaru, tinggiPrismaBaru);
+                        luasPermukaan = menghitungLuasPermukaan(panjangBaru, lebarBaru, tinggiPrismaBaru);
+                        System.out.printf("Data %d-%d: panjang=%.1f, lebar=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 3, panjangBaru, lebarBaru, tinggiPrismaBaru, volume, luasPermukaan);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 3, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
+        }
     }
 
     public boolean isCalculated() {

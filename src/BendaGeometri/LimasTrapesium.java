@@ -122,9 +122,30 @@ public class LimasTrapesium extends Trapesium implements Runnable {
 
 	@Override
 	public void run() {
-		volume = menghitungVolume();
-		luasPermukaan = menghitungLuasPermukaan();
-		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
-		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
+		try {
+			System.out.println("\n=== Perhitungan Limas Trapesium dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 4) {
+				if (i + 3 < 1000) {
+					double alasAtasBaru = dataArray[i];
+					double alasBawahBaru = dataArray[i + 1];
+					double tinggiTrapesiumBaru = dataArray[i + 2];
+					double tinggiLimasBaru = dataArray[i + 3];
+					try {
+						volume = menghitungVolume(alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru, tinggiLimasBaru);
+						luasPermukaan = menghitungLuasPermukaan(alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru, tinggiLimasBaru);
+						System.out.printf("Data %d-%d: alasAtas=%.1f, alasBawah=%.1f, tinggiTrapesium=%.1f, tinggiLimas=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 4, alasAtasBaru, alasBawahBaru, tinggiTrapesiumBaru, tinggiLimasBaru, volume, luasPermukaan);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 4, e.getMessage());
+					}
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 }

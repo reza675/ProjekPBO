@@ -67,10 +67,36 @@ public class LimasPersegiPanjang extends PersegiPanjang implements Runnable {
 
 	@Override
 	public void run() {
-		volume = menghitungVolume();
-		luasPermukaan = menghitungLuasPermukaan();
-		System.out.printf("\nVolume %s: %.2f\n", getNamaBenda(), volume);
-		System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
+		try {
+			System.out.println("\n=== Perhitungan Limas Persegi Panjang dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				// Check for interruption during data array initialization
+				if (ThreadInterruptionUtil.checkAndHandleInterruption("data array initialization")) {
+					return;
+				}
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 3) {
+				// Check for interruption every 30 iterations
+				if (ThreadInterruptionUtil.checkInterruptionPeriodic(i, 30, "calculations")) {
+					return;
+				}
+				
+				if (i + 2 < 1000) {
+					double panjangBaru = dataArray[i];
+					double lebarBaru = dataArray[i + 1];
+					double tinggiLimasBaru = dataArray[i + 2];
+					volume = menghitungVolume(panjangBaru, lebarBaru, tinggiLimasBaru);
+					luasPermukaan = menghitungLuasPermukaan(panjangBaru, lebarBaru, tinggiLimasBaru);
+					System.out.printf("Data %d-%d: panjang=%.1f, lebar=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n",
+						i, i + 2, panjangBaru, lebarBaru, tinggiLimasBaru, volume, luasPermukaan);
+				}
+			}
+			System.out.printf("Luas Permukaan %s: %.2f\n", getNamaBenda(), luasPermukaan);
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 
 	public void prosesInputDataUlang() {
