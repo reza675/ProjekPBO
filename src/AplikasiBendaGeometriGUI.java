@@ -1350,13 +1350,17 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                 try {
                     outputArea.append("\n=== MENUNGGU SEMUA THREAD SELESAI ===\n");
                     
+                    // Add a safety timeout - if threads take too long, force UI reset
+                    long startTime = System.currentTimeMillis();
+                    long timeout = 60000; // 60 seconds timeout
+                    
                     for (int i = 0; i < threads.size(); i++) {
                         Thread thread = threads.get(i);
                         BendaGeometri shape = shapes.get(i);
                         
                         try {
                             // Wait for thread to complete with timeout
-                            thread.join(30000); // 30 second timeout
+                            thread.join(30000); // 30 second timeout per thread
                             
                             if (thread.isAlive()) {
                                 SwingUtilities.invokeLater(() -> {
@@ -1371,6 +1375,15 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                                 outputArea.setCaretPosition(outputArea.getDocument().getLength());
                             });
                             Thread.currentThread().interrupt();
+                            break;
+                        }
+                        
+                        // Check if we've exceeded the overall timeout
+                        if (System.currentTimeMillis() - startTime > timeout) {
+                            SwingUtilities.invokeLater(() -> {
+                                outputArea.append("⚠️ TIMEOUT GLOBAL: Memaksa reset UI karena thread terlalu lama\n");
+                                outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                            });
                             break;
                         }
                     }
@@ -1539,7 +1552,7 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         outputArea.append("Total thread yang diproses: " + totalThreads.get() + "\n");
                         outputArea.append("Berhasil diselesaikan: " + completedThreads.get() + "\n");
                         
-                        // Reset UI
+                        // Reset UI immediately
                         runButton.setEnabled(true);
                         stopButton.setEnabled(false);
                         shapeList.setEnabled(true);
@@ -1553,13 +1566,24 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         outputArea.append("❌ KESALAHAN KRITIS: " + ex.getMessage() + "\n");
                         outputArea.append("=== EKSEKUSI THREAD POOL GAGAL ===\n");
                         
-                        // Reset UI
+                        // Reset UI immediately
                         runButton.setEnabled(true);
                         stopButton.setEnabled(false);
                         shapeList.setEnabled(true);
                         isRunning.set(false);
                         
                         outputArea.setCaretPosition(outputArea.getDocument().getLength());
+                    });
+                } finally {
+                    // Final safety check - ensure UI is always reset
+                    SwingUtilities.invokeLater(() -> {
+                        if (!runButton.isEnabled()) {
+                            runButton.setEnabled(true);
+                            stopButton.setEnabled(false);
+                            shapeList.setEnabled(true);
+                            isRunning.set(false);
+                            outputArea.append("🔧 UI telah direset secara otomatis\n");
+                        }
                     });
                 }
             }).start();
@@ -1580,9 +1604,16 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                     }
                 }
                 
+                // Reset UI immediately
+                runButton.setEnabled(true);
+                stopButton.setEnabled(false);
+                shapeList.setEnabled(true);
+                isRunning.set(false);
+                
                 // Wait a bit for threads to respond to interruption
                 new Thread(() -> {
                     try {
+                        Thread.sleep(500); // Wait 0.5 second for threads to respond
                         
                         // Check which threads are still alive
                         AtomicInteger stillAlive = new AtomicInteger(0);
@@ -1605,12 +1636,6 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         // Ignore
                     }
                 }).start();
-                
-                // Reset UI immediately
-                runButton.setEnabled(true);
-                stopButton.setEnabled(false);
-                shapeList.setEnabled(true);
-                isRunning.set(false);
             }
         });
 
