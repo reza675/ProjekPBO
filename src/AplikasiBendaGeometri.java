@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
 
-        SplashScreen ui = new SplashScreen();
-        ui.setLocationRelativeTo(null);
-        ui.setVisible(true);
+        // SplashScreen ui = new SplashScreen();
+        // ui.setLocationRelativeTo(null);
+        // ui.setVisible(true);
 
         Scanner inputMenu = new Scanner(System.in);
         List<BendaGeometri> daftarBendaGeometri = new ArrayList<>();
@@ -362,9 +362,19 @@ public class AplikasiBendaGeometri {
                        
                         break;
                     case 33:
+                        System.out.print("Masukkan jumlah thread yang akan digunakan: ");
+                        int jumlahThread = inputMenu.nextInt();
+                        inputMenu.nextLine();
+                        
+                        if (jumlahThread <= 0) {
+                            System.out.println("Jumlah thread harus lebih dari 0.");
+                            break;
+                        }
+                        
                         System.out.print("Masukkan jumlah objek per bentuk geometri untuk digenerate: ");
                         int jumlahPerBentuk = inputMenu.nextInt();
                         inputMenu.nextLine();
+                        
                         daftarBendaGeometri.clear();
                         for (int i = 1; i <= 31; i++) {
                             for (int j = 0; j < jumlahPerBentuk; j++) {
@@ -376,11 +386,16 @@ public class AplikasiBendaGeometri {
                         }
 
                         if (!daftarBendaGeometri.isEmpty()) {
-                            System.out.println(
-                                    "\nMemulai pemrosesan " + daftarBendaGeometri.size()
-                                            + " objek geometri secara multi-thread...");
-                            ThreadExecutor.processShapes(daftarBendaGeometri);
-
+                            System.out.println("\nMemulai pemrosesan " + daftarBendaGeometri.size() 
+                                + " objek geometri dengan " + jumlahThread + " thread...");
+                            System.out.println("Kontrol thread:");
+                            System.out.println("- Tekan 'I' untuk interrupt/pause semua thread");
+                            System.out.println("- Tekan 'R' untuk resume semua thread");
+                            System.out.println("- Tekan 'Q' untuk keluar dari kontrol thread");
+                            System.out.println();
+                            
+                            // Create and manage threads
+                            manageGeometricThreads(daftarBendaGeometri, jumlahThread, inputMenu);
                         } else {
                             System.out.println("Tidak ada objek geometri yang berhasil digenerate.");
                         }
@@ -641,6 +656,169 @@ public class AplikasiBendaGeometri {
 
             default:
                 throw new IllegalArgumentException("Pilihan bentuk geometri tidak valid: " + choice);
+        }
+    }
+
+    private static void manageGeometricThreads(List<BendaGeometri> daftarBendaGeometri, int jumlahThread, Scanner inputMenu) {
+        List<GeometricShapeThread> threads = new ArrayList<>();
+        boolean isPaused = false;
+        
+        // Create threads for each geometric object
+        for (BendaGeometri benda : daftarBendaGeometri) {
+            for (int i = 0; i < jumlahThread; i++) {
+                GeometricShapeThread thread = new GeometricShapeThread(benda, i + 1);
+                threads.add(thread);
+                thread.start();
+            }
+        }
+        
+        System.out.println("Total " + threads.size() + " thread telah dibuat dan dimulai.");
+        
+        // Thread control loop
+        while (true) {
+            System.out.print("Masukkan perintah (I/R/Q): ");
+            String command = inputMenu.nextLine().trim().toUpperCase();
+            
+            switch (command) {
+                case "I":
+                    if (!isPaused) {
+                        System.out.println("Menginterupsi semua thread...");
+                        for (GeometricShapeThread thread : threads) {
+                            thread.interrupt();
+                        }
+                        isPaused = true;
+                        System.out.println("Semua thread telah diinterupsi.");
+                    } else {
+                        System.out.println("Thread sudah dalam keadaan pause.");
+                    }
+                    break;
+                    
+                case "R":
+                    if (isPaused) {
+                        System.out.println("Memulai ulang semua thread...");
+                        threads.clear();
+                        
+                        // Recreate and restart all threads
+                        for (BendaGeometri benda : daftarBendaGeometri) {
+                            for (int i = 0; i < jumlahThread; i++) {
+                                GeometricShapeThread thread = new GeometricShapeThread(benda, i + 1);
+                                threads.add(thread);
+                                thread.start();
+                            }
+                        }
+                        isPaused = false;
+                        System.out.println("Semua thread telah dimulai ulang.");
+                    } else {
+                        System.out.println("Thread sedang berjalan, tidak perlu resume.");
+                    }
+                    break;
+                    
+                case "Q":
+                    System.out.println("Menghentikan semua thread dan keluar...");
+                    for (GeometricShapeThread thread : threads) {
+                        thread.interrupt();
+                    }
+                    
+                    // Wait for threads to finish
+                    for (GeometricShapeThread thread : threads) {
+                        try {
+                            thread.join(2000); // Wait up to 2 seconds
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                    System.out.println("Kontrol thread selesai.");
+                    return;
+                    
+                default:
+                    System.out.println("Perintah tidak dikenali. Gunakan I (interrupt), R (resume), atau Q (quit).");
+                    break;
+            }
+        }
+    }
+
+    // Custom thread class for geometric shapes
+    private static class GeometricShapeThread extends Thread {
+        private final BendaGeometri benda;
+        private final int threadNumber;
+        
+        public GeometricShapeThread(BendaGeometri benda, int threadNumber) {
+            this.benda = benda;
+            this.threadNumber = threadNumber;
+            this.setName("Thread-" + benda.getClass().getSimpleName() + "-" + threadNumber);
+        }
+        
+        @Override
+        public void run() {
+            try {
+                while (!Thread.currentThread().isInterrupted()) {
+                    // Simulate some work
+                    Thread.sleep(100 + (int)(Math.random() * 500));
+                    
+                    // Check if thread was interrupted during sleep
+                    if (Thread.currentThread().isInterrupted()) {
+                        System.out.println("[" + getName() + "] Thread diinterupsi sebelum perhitungan.");
+                        break;
+                    }
+                    
+                    // Process the geometric object
+                    processGeometricObject(benda);
+                    
+                    // Check if thread was interrupted after processing
+                    if (Thread.currentThread().isInterrupted()) {
+                        System.out.println("[" + getName() + "] Thread diinterupsi setelah perhitungan.");
+                        break;
+                    }
+                    
+                    System.out.println("[" + getName() + "] Selesai memproses " + benda.getClass().getSimpleName() + " (iterasi berkelanjutan)");
+                    
+                    // Small delay before next iteration
+                    Thread.sleep(200);
+                }
+                
+                System.out.println("[" + getName() + "] Thread berhenti karena diinterupsi.");
+                
+            } catch (InterruptedException e) {
+                System.out.println("[" + getName() + "] Thread diinterupsi: " + e.getMessage());
+                Thread.currentThread().interrupt();
+            } catch (Exception e) {
+                System.err.println("[" + getName() + "] Error: " + e.getMessage());
+            }
+        }
+        
+        private void processGeometricObject(BendaGeometri benda) {
+            try {
+                if (benda instanceof Benda2D) {
+                    Benda2D bd = (Benda2D) benda;
+                    double keliling = bd.menghitungKeliling();
+                    double luas = bd.menghitungLuas();
+                    System.out.printf("[%s] %s - Keliling: %.2f, Luas: %.2f%n",
+                        getName(), bd.getNamaBenda(), keliling, luas);
+                } else {
+                    // Try to get volume and surface area for 3D objects
+                    try {
+                        var volumeMethod = benda.getClass().getMethod("menghitungVolume");
+                        var luasPermMethod = benda.getClass().getMethod("menghitungLuasPermukaan");
+                        double volume = (double) volumeMethod.invoke(benda);
+                        double luasPermukaan = (double) luasPermMethod.invoke(benda);
+                        
+                        // For 3D objects, use the class name since getNamaBenda() might not be available
+                        String namaBenda = benda.getClass().getSimpleName();
+                        System.out.printf("[%s] %s - Volume: %.2f, Luas Permukaan: %.2f%n",
+                            getName(), namaBenda, volume, luasPermukaan);
+                    } catch (NoSuchMethodException ignored) {
+                        // For objects without volume/surface area methods, just show the class name
+                        String namaBenda = benda.getClass().getSimpleName();
+                        System.out.printf("[%s] %s - Tidak memiliki metode volume/luas permukaan%n",
+                            getName(), namaBenda);
+                    }
+                }
+            } catch (Exception e) {
+                // Use class name for error messages as well
+                String namaBenda = benda.getClass().getSimpleName();
+                System.err.printf("[%s] Error memproses %s: %s%n", 
+                    getName(), namaBenda, e.getMessage());
+            }
         }
     }
 
