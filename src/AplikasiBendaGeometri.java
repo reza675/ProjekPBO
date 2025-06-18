@@ -8,10 +8,6 @@ import java.util.Scanner;
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
 
-        SplashScreen ui = new SplashScreen();
-        ui.setLocationRelativeTo(null);
-        ui.setVisible(true);
-
         Scanner inputMenu = new Scanner(System.in);
         List<BendaGeometri> daftarBendaGeometri = new ArrayList<>();
         int pilihanMenu;
