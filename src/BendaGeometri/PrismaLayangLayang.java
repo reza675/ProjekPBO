@@ -11,7 +11,6 @@ public class PrismaLayangLayang extends LayangLayang implements Runnable {
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
-    private volatile boolean calculated = false;
     private final Object lock = new Object();
 
     public PrismaLayangLayang(double diagonal1, double diagonal2, double sisiPendek, double sisiPanjang,

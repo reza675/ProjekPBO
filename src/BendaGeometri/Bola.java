@@ -12,7 +12,6 @@ public class Bola extends Lingkaran implements Runnable {
 	protected double luasAlas;
 	protected double volume;
 	protected double luasPermukaan;
-	private volatile boolean calculated = false;
 
 	public Bola(double radius) throws InputMismatchException {
 		super(radius);
@@ -51,10 +50,7 @@ public class Bola extends Lingkaran implements Runnable {
 	}
 
 
-	public boolean isCalculated() {
-		return calculated;
-	}
-
+	
 	
 
 	public double menghitungVolume() {

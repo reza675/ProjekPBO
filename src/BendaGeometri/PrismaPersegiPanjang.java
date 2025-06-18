@@ -9,7 +9,6 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
-    private volatile boolean calculated = false;
 
     public PrismaPersegiPanjang(double panjang, double lebar, double tinggiPrisma) throws InputMismatchException {
         super(panjang, lebar);
@@ -47,9 +46,7 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements Runnable {
         }
     }
 
-    public boolean isCalculated() {
-        return calculated;
-    }
+    
 
     public double menghitungVolume() {
         luasAlas = super.menghitungLuas();

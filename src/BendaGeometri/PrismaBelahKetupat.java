@@ -11,7 +11,6 @@ public class PrismaBelahKetupat extends BelahKetupat implements Runnable {
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
-    private volatile boolean calculated = false;
     private final Object lock = new Object();
 
     public PrismaBelahKetupat(double diagonal1, double diagonal2, double sisi, double tinggiPrisma) throws InputMismatchException {

@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Lingkaran extends Benda2D implements Runnable{
     protected double radius;
     protected final double PI = 3.14;
-	private volatile boolean calculated = false;
     
     public Lingkaran(double radius) throws InputMismatchException {
         if (radius <= 0) {
@@ -38,10 +37,7 @@ public class Lingkaran extends Benda2D implements Runnable{
 		}
 	}
 
-	public boolean isCalculated() {
-		return calculated;
-	}
-    
+	    
     @Override
     public double menghitungLuas() {
         luas = PI * radius * radius;

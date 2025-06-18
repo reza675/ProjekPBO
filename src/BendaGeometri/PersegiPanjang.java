@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class PersegiPanjang extends Benda2D implements Runnable {
 	protected double panjang;
 	protected double lebar;
-	private volatile boolean calculated = false;
 
     public PersegiPanjang(double panjang, double lebar) throws InputMismatchException {
         if (panjang <= 0 || lebar <= 0) {
@@ -48,10 +47,7 @@ public class PersegiPanjang extends Benda2D implements Runnable {
 		}
 	}
 
-	public boolean isCalculated() {
-		return calculated;
-	}
-
+	
     public double menghitungLuas(double panjangBaru, double lebarBaru) throws InputMismatchException {
         if (panjangBaru <= 0 || lebarBaru <= 0) {
             throw new InputMismatchException("Panjang dan lebar harus lebih dari nol.");

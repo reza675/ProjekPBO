@@ -11,7 +11,6 @@ public class PrismaTrapesium extends Trapesium implements Runnable {
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
-    private volatile boolean calculated = false;
     private final Object lock = new Object();
 
     public PrismaTrapesium(double alasAtas, double alasBawah, double tinggiTrapesium, double sisiMiringKiri,

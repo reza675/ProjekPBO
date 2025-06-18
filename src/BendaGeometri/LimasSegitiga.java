@@ -9,7 +9,6 @@ public class LimasSegitiga extends Segitiga implements Runnable {
     private double luasAlas;
     private double volume;
     private double luasPermukaan;
-    private volatile boolean calculated = false;
 
     public LimasSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiLimas) throws InputMismatchException {
         super(alas, tinggiSegitiga, sisiMiring1, sisiMiring2);
@@ -103,9 +102,7 @@ public class LimasSegitiga extends Segitiga implements Runnable {
         }
     }
 
-    public boolean isCalculated() {
-        return calculated;
-    }
+    
 
     @Override
     public String getNamaBenda() {

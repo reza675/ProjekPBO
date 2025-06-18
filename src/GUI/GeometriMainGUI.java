@@ -4,6 +4,9 @@ import BendaGeometri.*;
 import java.awt.*;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -653,7 +656,7 @@ public class GeometriMainGUI extends JFrame {
             panelThread.add(labelInput, gbc);
 
             gbc.gridx = 1;
-            JTextField fieldJumlah = new JTextField(8);
+            JTextField fieldJumlah = new JTextField("5", 8);
             fieldJumlah.setFont(new Font("Segoe UI", Font.PLAIN, 18));
             fieldJumlah.setPreferredSize(new Dimension(120, 35));
             fieldJumlah.setBorder(new CompoundBorder(
@@ -670,12 +673,22 @@ public class GeometriMainGUI extends JFrame {
             btnJalankan.setCursor(new Cursor(Cursor.HAND_CURSOR));
             panelThread.add(btnJalankan, gbc);
 
+            gbc.gridx = 3;
+            JButton btnStop = new JButton("Stop Thread");
+            btnStop.setFont(new Font("Segoe UI", Font.BOLD, 14));
+            btnStop.setBackground(new Color(231, 76, 60));
+            btnStop.setForeground(Color.WHITE);
+            btnStop.setBorder(new EmptyBorder(8, 15, 8, 15));
+            btnStop.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            btnStop.setEnabled(false);
+            panelThread.add(btnStop, gbc);
+
             gbc.gridx = 0;
             gbc.gridy = 1;
-            gbc.gridwidth = 3;
+            gbc.gridwidth = 4;
             gbc.insets = new Insets(20, 10, 10, 10);
 
-            JTextArea areaThread = new JTextArea(10, 40);
+            JTextArea areaThread = new JTextArea(15, 50);
             areaThread.setFont(new Font("Consolas", Font.PLAIN, 14));
             areaThread.setBackground(new Color(249, 249, 249));
             areaThread.setBorder(BorderFactory.createCompoundBorder(
@@ -684,11 +697,245 @@ public class GeometriMainGUI extends JFrame {
             areaThread.setEditable(false);
 
             JScrollPane scrollThread = new JScrollPane(areaThread);
-            scrollThread.setPreferredSize(new Dimension(700, 250));
+            scrollThread.setPreferredSize(new Dimension(800, 300));
             panelThread.add(scrollThread, gbc);
 
             areaKiriMap.put(menu, areaThread);
             btnHitungKiriMap.put(menu, btnJalankan);
+
+            // Thread management variables
+            AtomicBoolean isRunning = new AtomicBoolean(false);
+            java.util.List<Thread> activeThreads = new java.util.concurrent.CopyOnWriteArrayList<>();
+            AtomicInteger completedThreads = new AtomicInteger(0);
+            AtomicInteger totalThreads = new AtomicInteger(0);
+
+            // Event handler for Jalankan Thread button
+            btnJalankan.addActionListener(e -> {
+                try {
+                    int jumlahThread = Integer.parseInt(fieldJumlah.getText());
+                    if (jumlahThread <= 0) {
+                        showErrorDialog("Jumlah thread harus lebih dari 0");
+                        return;
+                    }
+
+                    // Reset UI
+                    areaThread.setText("");
+                    btnJalankan.setEnabled(false);
+                    btnStop.setEnabled(true);
+                    fieldJumlah.setEnabled(false);
+                    isRunning.set(true);
+                    activeThreads.clear();
+                    completedThreads.set(0);
+
+                    // Create all BendaGeometri objects (excluding parent classes)
+                    java.util.List<BendaGeometri> allBendaGeometri = createAllBendaGeometri();
+                    totalThreads.set(allBendaGeometri.size() * jumlahThread);
+
+                    areaThread.append("=== EKSEKUSI THREAD DIMULAI ===\n");
+                    areaThread.append("Jumlah thread per benda: " + jumlahThread + "\n");
+                    areaThread.append("Total benda geometri: " + allBendaGeometri.size() + "\n");
+                    areaThread.append("Total thread yang akan dijalankan: " + totalThreads.get() + "\n\n");
+
+                    // Run thread execution in background to avoid blocking UI
+                    new Thread(() -> {
+                        // Start threads for each BendaGeometri object
+                        for (BendaGeometri benda : allBendaGeometri) {
+                            for (int i = 0; i < jumlahThread; i++) {
+                                if (!isRunning.get()) {
+                                    SwingUtilities.invokeLater(() -> {
+                                        areaThread.append("🛑 Penghentian diminta, berhenti membuat thread baru\n");
+                                        areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                    });
+                                    break;
+                                }
+                                
+                                // Create thread directly using the benda object
+                                if (benda instanceof Runnable) {
+                                    Thread thread = new Thread((Runnable) benda);
+                                    thread.setName("Thread-" + getBendaName(benda) + "-" + (i + 1));
+                                    
+                                    // Display start message
+                                    SwingUtilities.invokeLater(() -> {
+                                        areaThread.append("🔄 [" + thread.getName() + "] Memulai perhitungan " + getBendaName(benda) + "...\n");
+                                        areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                    });
+                                    
+                                    activeThreads.add(thread);
+                                    thread.start();
+                                    
+                                    // Wait for thread to complete using join (in background thread)
+                                    try {
+                                        thread.join();
+                                        
+                                        // Display finish message with results
+                                        String result = getBendaGeometriResult(benda);
+                                        SwingUtilities.invokeLater(() -> {
+                                            areaThread.append("✅ [" + thread.getName() + "] " + getBendaName(benda) + " selesai\n");
+                                            areaThread.append("   " + result + "\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                        });
+                                        
+                                        // Update progress
+                                        int completed = completedThreads.incrementAndGet();
+                                        SwingUtilities.invokeLater(() -> {
+                                            areaThread.append("📊 Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                            
+                                            if (completed >= totalThreads.get()) {
+                                                areaThread.append("\n=== EKSEKUSI THREAD SELESAI ===\n");
+                                                areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                                
+                                                // Reset UI state when all threads complete
+                                                btnJalankan.setEnabled(true);
+                                                btnStop.setEnabled(false);
+                                                fieldJumlah.setEnabled(true);
+                                                isRunning.set(false);
+                                            }
+                                        });
+                                        
+                                    } catch (InterruptedException ex) {
+                                        SwingUtilities.invokeLater(() -> {
+                                            areaThread.append("⚠️ [" + thread.getName() + "] Thread diinterupsi\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                        });
+                                        Thread.currentThread().interrupt();
+                                        break;
+                                    }
+                                } else {
+                                    // If benda doesn't implement Runnable, skip it
+                                    SwingUtilities.invokeLater(() -> {
+                                        areaThread.append("⚠️ " + getBendaName(benda) + " tidak mengimplementasikan Runnable, dilewati\n");
+                                        areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                    });
+                                    
+                                    // Update progress for skipped items
+                                    int completed = completedThreads.incrementAndGet();
+                                    SwingUtilities.invokeLater(() -> {
+                                        areaThread.append("📊 Progress: " + completed + "/" + totalThreads.get() + " thread selesai\n");
+                                        areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                        
+                                        if (completed >= totalThreads.get()) {
+                                            areaThread.append("\n=== EKSEKUSI THREAD SELESAI ===\n");
+                                            areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                            
+                                            // Reset UI state when all threads complete
+                                            btnJalankan.setEnabled(true);
+                                            btnStop.setEnabled(false);
+                                            fieldJumlah.setEnabled(true);
+                                            isRunning.set(false);
+                                        }
+                                    });
+                                }
+                                
+                                // Small delay between thread starts
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException ex) {
+                                    Thread.currentThread().interrupt();
+                                    break;
+                                }
+                            }
+                            
+                            // Check if we should stop creating more threads
+                            if (!isRunning.get()) {
+                                break;
+                            }
+                        }
+                    }).start();
+
+                } catch (NumberFormatException ex) {
+                    showErrorDialog("Input jumlah thread harus berupa angka");
+                    btnJalankan.setEnabled(true);
+                    btnStop.setEnabled(false);
+                    fieldJumlah.setEnabled(true);
+                } catch (Exception ex) {
+                    showErrorDialog("Error: " + ex.getMessage());
+                    btnJalankan.setEnabled(true);
+                    btnStop.setEnabled(false);
+                    fieldJumlah.setEnabled(true);
+                }
+            });
+
+            // Event handler for Stop Thread button
+            btnStop.addActionListener(e -> {
+                if (isRunning.get()) {
+                    areaThread.append("\n=== MENGHEMTI SEMUA THREAD ===\n");
+                    
+                    isRunning.set(false);
+                    AtomicInteger interruptedCount = new AtomicInteger(0);
+                    
+                    // First, interrupt all active threads
+                    for (Thread thread : activeThreads) {
+                        if (thread.isAlive()) {
+                            thread.interrupt();
+                            interruptedCount.incrementAndGet();
+                            areaThread.append("🛑 Menginterupsi " + thread.getName() + "\n");
+                        }
+                    }
+                    
+                    areaThread.append("Total thread yang diinterupsi: " + interruptedCount.get() + "\n");
+                    
+                    // Wait for threads to respond to interruption (with timeout)
+                    new Thread(() -> {
+                        try {
+                            Thread.sleep(2000); // Wait 2 seconds for threads to respond
+                            
+                            // Check which threads are still alive
+                            AtomicInteger stillAlive = new AtomicInteger(0);
+                            for (Thread thread : activeThreads) {
+                                if (thread.isAlive()) {
+                                    stillAlive.incrementAndGet();
+                                }
+                            }
+                            
+                            SwingUtilities.invokeLater(() -> {
+                                if (stillAlive.get() > 0) {
+                                    areaThread.append("⚠️ " + stillAlive + " thread masih berjalan setelah 2 detik\n");
+                                    areaThread.append("Thread akan berhenti secara otomatis setelah selesai perhitungan\n");
+                                    
+                                    // Force stop remaining threads after additional timeout
+                                    new Thread(() -> {
+                                        try {
+                                            Thread.sleep(5000); // Wait additional 5 seconds
+                                            
+                                            AtomicInteger forceStopped = new AtomicInteger(0);
+                                            for (Thread thread : activeThreads) {
+                                                if (thread.isAlive()) {
+                                                    // Note: Thread.stop() is deprecated, but we can't force stop safely
+                                                    // Instead, we'll just log that they're still running
+                                                    forceStopped.incrementAndGet();
+                                                }
+                                            }
+                                            
+                                            if (forceStopped.get() > 0) {
+                                                SwingUtilities.invokeLater(() -> {
+                                                    areaThread.append("⚠️ " + forceStopped + " thread masih berjalan setelah timeout total 7 detik\n");
+                                                    areaThread.append("Thread ini akan berhenti secara otomatis ketika selesai\n");
+                                                    areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                                });
+                                            }
+                                        } catch (InterruptedException ex) {
+                                            // Ignore
+                                        }
+                                    }).start();
+                                }
+                                areaThread.append("=== EKSEKUSI THREAD DIHENTIKAN ===\n");
+                                areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                                
+                                // Reset UI state
+                                btnJalankan.setEnabled(true);
+                                btnStop.setEnabled(false);
+                                fieldJumlah.setEnabled(true);
+                            });
+                            
+                        } catch (InterruptedException ex) {
+                            // Ignore
+                        }
+                    }).start();
+                    
+                    areaThread.setCaretPosition(areaThread.getDocument().getLength());
+                }
+            });
 
             return panelThread;
         }
@@ -912,6 +1159,189 @@ public class GeometriMainGUI extends JFrame {
         Class<?>[] types = new Class<?>[count];
         Arrays.fill(types, double.class);
         return types;
+    }
+
+    // Safe method to get BendaGeometri name
+    private String getBendaName(BendaGeometri benda) {
+        try {
+            // Try to call getNamaBenda() using reflection
+            Method getNamaBendaMethod = benda.getClass().getMethod("getNamaBenda");
+            return (String) getNamaBendaMethod.invoke(benda);
+        } catch (Exception e) {
+            // Fallback to class name if getNamaBenda() is not available
+            return benda.getClass().getSimpleName();
+        }
+    }
+
+    // Create all BendaGeometri objects (excluding parent classes BendaGeometri and Benda2D)
+    private java.util.List<BendaGeometri> createAllBendaGeometri() {
+        java.util.List<BendaGeometri> bendaList = new CopyOnWriteArrayList<>();
+        
+        try {
+            // 2D Objects
+            bendaList.add(new Persegi(10.0));
+            bendaList.add(new PersegiPanjang(10.0, 15.0));
+            bendaList.add(new Segitiga(8.0, 10.0, 6.0, 6.0));
+            bendaList.add(new JajaranGenjang(8.0, 5.0, 6.0));
+            bendaList.add(new BelahKetupat(10.0, 12.0, 8.0));
+            bendaList.add(new Trapesium(5.0, 8.0, 6.0, 4.0, 4.0));
+            bendaList.add(new LayangLayang(8.0, 12.0, 6.0, 8.0));
+            bendaList.add(new Lingkaran(7.0));
+            bendaList.add(new JuringLingkaran(10.0, 60.0));
+            bendaList.add(new TemberengLingkaran(10.0, 90.0));
+            
+            // 3D Objects
+            bendaList.add(new PrismaSegitiga(8.0, 10.0, 6.0, 6.0, 12.0));
+            bendaList.add(new PrismaPersegi(10.0, 8.0));
+            bendaList.add(new PrismaPersegiPanjang(10.0, 8.0, 12.0));
+            bendaList.add(new PrismaJajaranGenjang(8.0, 5.0, 6.0, 12.0));
+            bendaList.add(new PrismaTrapesium(5.0, 8.0, 6.0, 4.0, 4.0, 12.0));
+            bendaList.add(new PrismaBelahKetupat(10.0, 12.0, 8.0, 12.0));
+            bendaList.add(new PrismaLayangLayang(8.0, 12.0, 6.0, 8.0, 12.0));
+            
+            bendaList.add(new LimasSegitiga(8.0, 10.0, 6.0, 6.0, 12.0));
+            bendaList.add(new LimasPersegi(10.0, 12.0));
+            bendaList.add(new LimasPersegiPanjang(10.0, 8.0, 12.0));
+            bendaList.add(new LimasJajaranGenjang(8.0, 5.0, 6.0, 12.0));
+            bendaList.add(new LimasTrapesium(5.0, 8.0, 6.0, 4.0, 4.0, 12.0));
+            bendaList.add(new LimasBelahKetupat(10.0, 12.0, 8.0, 12.0));
+            bendaList.add(new LimasLayangLayang(8.0, 12.0, 6.0, 8.0, 12.0));
+            
+            bendaList.add(new Bola(10.0));
+            bendaList.add(new Kerucut(8.0, 12.0));
+            bendaList.add(new KerucutTerpancung(6.0, 10.0, 8.0));
+            bendaList.add(new Tabung(8.0, 12.0));
+            bendaList.add(new JuringBola(10.0, 60.0));
+            bendaList.add(new TemberengBola(10.0, 6.0));
+            bendaList.add(new CincinBola(6.0, 10.0));
+            
+        } catch (Exception e) {
+            System.err.println("Error creating BendaGeometri objects: " + e.getMessage());
+        }
+        
+        return bendaList;
+    }
+
+    // Get calculation results for a BendaGeometri object
+    private String getBendaGeometriResult(BendaGeometri benda) {
+        StringBuilder result = new StringBuilder();
+        
+        try {
+            if (benda instanceof Benda2D) {
+                Benda2D benda2D = (Benda2D) benda;
+                result.append("Luas: ").append(String.format("%.2f", benda2D.menghitungLuas())).append(" cm², ");
+                result.append("Keliling: ").append(String.format("%.2f", benda2D.menghitungKeliling())).append(" cm");
+            } else if (benda instanceof PrismaSegitiga || benda instanceof PrismaPersegi ||
+                    benda instanceof PrismaPersegiPanjang || benda instanceof PrismaJajaranGenjang ||
+                    benda instanceof PrismaTrapesium || benda instanceof PrismaBelahKetupat ||
+                    benda instanceof PrismaLayangLayang || benda instanceof LimasSegitiga ||
+                    benda instanceof LimasPersegi || benda instanceof LimasPersegiPanjang ||
+                    benda instanceof LimasJajaranGenjang || benda instanceof LimasTrapesium ||
+                    benda instanceof LimasBelahKetupat || benda instanceof LimasLayangLayang ||
+                    benda instanceof Bola || benda instanceof Kerucut ||
+                    benda instanceof KerucutTerpancung || benda instanceof Tabung ||
+                    benda instanceof TemberengBola || benda instanceof JuringBola ||
+                    benda instanceof CincinBola) {
+                
+                double volume = 0;
+                double luasPermukaan = 0;
+
+                if (benda instanceof PrismaSegitiga) {
+                    PrismaSegitiga prisma = (PrismaSegitiga) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof PrismaPersegi) {
+                    PrismaPersegi prisma = (PrismaPersegi) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof PrismaPersegiPanjang) {
+                    PrismaPersegiPanjang prisma = (PrismaPersegiPanjang) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof PrismaJajaranGenjang) {
+                    PrismaJajaranGenjang prisma = (PrismaJajaranGenjang) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof PrismaTrapesium) {
+                    PrismaTrapesium prisma = (PrismaTrapesium) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof PrismaBelahKetupat) {
+                    PrismaBelahKetupat prisma = (PrismaBelahKetupat) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof PrismaLayangLayang) {
+                    PrismaLayangLayang prisma = (PrismaLayangLayang) benda;
+                    volume = prisma.menghitungVolume();
+                    luasPermukaan = prisma.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasSegitiga) {
+                    LimasSegitiga limas = (LimasSegitiga) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasPersegi) {
+                    LimasPersegi limas = (LimasPersegi) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasPersegiPanjang) {
+                    LimasPersegiPanjang limas = (LimasPersegiPanjang) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasJajaranGenjang) {
+                    LimasJajaranGenjang limas = (LimasJajaranGenjang) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasTrapesium) {
+                    LimasTrapesium limas = (LimasTrapesium) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasBelahKetupat) {
+                    LimasBelahKetupat limas = (LimasBelahKetupat) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof LimasLayangLayang) {
+                    LimasLayangLayang limas = (LimasLayangLayang) benda;
+                    volume = limas.menghitungVolume();
+                    luasPermukaan = limas.menghitungLuasPermukaan();
+                } else if (benda instanceof Bola) {
+                    Bola bola = (Bola) benda;
+                    volume = bola.menghitungVolume();
+                    luasPermukaan = bola.menghitungLuasPermukaan();
+                } else if (benda instanceof Kerucut) {
+                    Kerucut kerucut = (Kerucut) benda;
+                    volume = kerucut.menghitungVolume();
+                    luasPermukaan = kerucut.menghitungLuasPermukaan();
+                } else if (benda instanceof KerucutTerpancung) {
+                    KerucutTerpancung kerucut = (KerucutTerpancung) benda;
+                    volume = kerucut.menghitungVolume();
+                    luasPermukaan = kerucut.menghitungLuasPermukaan();
+                } else if (benda instanceof Tabung) {
+                    Tabung tabung = (Tabung) benda;
+                    volume = tabung.menghitungVolume();
+                    luasPermukaan = tabung.menghitungLuasPermukaan();
+                } else if (benda instanceof TemberengBola) {
+                    TemberengBola tembereng = (TemberengBola) benda;
+                    volume = tembereng.menghitungVolume();
+                    luasPermukaan = tembereng.menghitungLuasPermukaan();
+                } else if (benda instanceof JuringBola) {
+                    JuringBola juring = (JuringBola) benda;
+                    volume = juring.menghitungVolume();
+                    luasPermukaan = juring.menghitungLuasPermukaan();
+                } else if (benda instanceof CincinBola) {
+                    CincinBola cincin = (CincinBola) benda;
+                    volume = cincin.menghitungVolume();
+                    luasPermukaan = cincin.menghitungLuasPermukaan();
+                }
+
+                result.append("Volume: ").append(String.format("%.2f", volume)).append(" cm³, ");
+                result.append("Luas Permukaan: ").append(String.format("%.2f", luasPermukaan)).append(" cm²");
+            } else {
+                result.append("Tipe benda tidak dikenali");
+            }
+        } catch (Exception e) {
+            result.append("Error: ").append(e.getMessage());
+        }
+        
+        return result.toString();
     }
 
     // New method to handle overloaded calculations and build result string
