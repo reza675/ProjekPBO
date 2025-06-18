@@ -1388,7 +1388,6 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         }
                     }
                     
-                    // Collect and display results
                     SwingUtilities.invokeLater(() -> {
                         outputArea.append("\n=== MENGUMPULKAN HASIL ===\n");
                     });
@@ -1398,7 +1397,6 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         String shapeName = threads.get(i).getName().replace("Thread-", "");
                         
                         try {
-                            // Get results based on shape type
                             String result = "";
                             if (shape instanceof Benda2D) {
                                 Benda2D benda2D = (Benda2D) shape;
@@ -1552,7 +1550,6 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         outputArea.append("Total thread yang diproses: " + totalThreads.get() + "\n");
                         outputArea.append("Berhasil diselesaikan: " + completedThreads.get() + "\n");
                         
-                        // Reset UI immediately
                         runButton.setEnabled(true);
                         stopButton.setEnabled(false);
                         shapeList.setEnabled(true);
@@ -1563,10 +1560,9 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                     
                 } catch (Exception ex) {
                     SwingUtilities.invokeLater(() -> {
-                        outputArea.append("❌ KESALAHAN KRITIS: " + ex.getMessage() + "\n");
+                        outputArea.append(" KESALAHAN KRITIS: " + ex.getMessage() + "\n");
                         outputArea.append("=== EKSEKUSI THREAD POOL GAGAL ===\n");
                         
-                        // Reset UI immediately
                         runButton.setEnabled(true);
                         stopButton.setEnabled(false);
                         shapeList.setEnabled(true);
@@ -1575,7 +1571,6 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                         outputArea.setCaretPosition(outputArea.getDocument().getLength());
                     });
                 } finally {
-                    // Final safety check - ensure UI is always reset
                     SwingUtilities.invokeLater(() -> {
                         if (!runButton.isEnabled()) {
                             runButton.setEnabled(true);
@@ -1589,7 +1584,6 @@ public class AplikasiBendaGeometriGUI extends JFrame {
             }).start();
         });
 
-        // Stop button functionality
         stopButton.addActionListener(e -> {
             if (isRunning.get()) {
                 outputArea.append("\n=== MENGHEMTI SEMUA THREAD ===\n");
@@ -1600,11 +1594,10 @@ public class AplikasiBendaGeometriGUI extends JFrame {
                     if (thread.isAlive()) {
                         thread.interrupt();
                         interruptedCount.incrementAndGet();
-                        outputArea.append("🛑 Menginterupsi " + thread.getName() + "\n");
+                        outputArea.append(" Menginterupsi " + thread.getName() + "\n");
                     }
                 }
                 
-                // Reset UI immediately
                 runButton.setEnabled(true);
                 stopButton.setEnabled(false);
                 shapeList.setEnabled(true);

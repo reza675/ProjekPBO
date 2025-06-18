@@ -76,14 +76,14 @@ public class PrismaJajaranGenjang extends JajaranGenjang implements Runnable {
         return luasPermukaan;
     }
 
-    public double menghitungLuasPermukaan(double panjangAlas, double tinggiAlas, double sisiMiringAlas,
-            double tinggiPrisma) throws InputMismatchException {
-        if (panjangAlas <= 0 || tinggiAlas <= 0 || sisiMiringAlas <= 0 || tinggiPrisma <= 0) {
+    public double menghitungLuasPermukaan(double panjangAlasBaru, double tinggiAlasBaru, double sisiMiringAlasBaru,
+            double tinggiPrismaBaru) throws InputMismatchException {
+        if (panjangAlasBaru <= 0 || tinggiAlasBaru <= 0 || sisiMiringAlasBaru <= 0 || tinggiPrismaBaru <= 0) {
             throw new InputMismatchException("Panjang, tinggi alas, sisi miring alas, dan tinggi prisma harus lebih dari nol.");
         }
-        luasAlas = super.menghitungLuas(panjangAlas, tinggiAlas);
-        kelilingAlas = super.menghitungKeliling(panjangAlas, sisiMiringAlas);
-        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrisma;
+        luasAlas = super.menghitungLuas(panjangAlasBaru, tinggiAlasBaru);
+        kelilingAlas = super.menghitungKeliling(panjangAlasBaru, sisiMiringAlasBaru);
+        luasPermukaan = 2 * luasAlas + kelilingAlas * tinggiPrismaBaru;
         return luasPermukaan;
     }
 
