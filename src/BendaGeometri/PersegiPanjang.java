@@ -23,13 +23,29 @@ public class PersegiPanjang extends Benda2D implements Runnable {
     }
 	@Override
 	public void run() {
-		// Calculate both area and perimeter in the thread
-		luas = menghitungLuas();
-		keliling = menghitungKeliling();
-		calculated = true;
-		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-		System.out.printf("Luas: %.2f\n", luas);
-		System.out.printf("Keliling: %.2f\n", keliling);
+		try {
+			System.out.println("\n=== Perhitungan Persegi Panjang dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 2) {
+				if (i + 1 < 1000) {
+					double panjangBaru = dataArray[i];
+					double lebarBaru = dataArray[i + 1];
+					try {
+						luas = menghitungLuas(panjangBaru, lebarBaru);
+						keliling = menghitungKeliling(panjangBaru, lebarBaru);
+						System.out.printf("Data %d-%d: panjang=%.1f, lebar=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 2, panjangBaru, lebarBaru, luas, keliling);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+					}
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 
 	public boolean isCalculated() {

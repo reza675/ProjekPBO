@@ -23,13 +23,31 @@ public class Segitiga extends Benda2D implements Runnable {
 
 	@Override
 	public void run() {
-		// Calculate both area and perimeter in the thread
-		luas = menghitungLuas();
-		keliling = menghitungKeliling();
-		calculated = true;
-		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-		System.out.printf("Luas: %.2f\n", luas);
-		System.out.printf("Keliling: %.2f\n", keliling);
+		try {
+			System.out.println("\n=== Perhitungan Segitiga dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 4) {
+				if (i + 3 < 1000) {
+					double alasBaru = dataArray[i];
+					double tinggiBaru = dataArray[i + 1];
+					double sisiMiring1Baru = dataArray[i + 2];
+					double sisiMiring2Baru = dataArray[i + 3];
+					try {
+						luas = menghitungLuas(alasBaru, tinggiBaru);
+						keliling = menghitungKeliling(alasBaru, sisiMiring1Baru, sisiMiring2Baru);
+						System.out.printf("Data %d-%d: alas=%.1f, tinggi=%.1f, sisiMiring1=%.1f, sisiMiring2=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 4, alasBaru, tinggiBaru, sisiMiring1Baru, sisiMiring2Baru, luas, keliling);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 4, e.getMessage());
+					}
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 
 	public boolean isCalculated() {

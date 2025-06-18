@@ -91,9 +91,29 @@ public class JajaranGenjang extends Benda2D implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("\n=== Perhitungan Jajaran Genjang ===");
-		System.out.printf("Luas awal Jajaran Genjang: %.2f\n", menghitungLuas());
-		System.out.printf("Keliling awal Jajaran Genjang: %.2f\n", menghitungKeliling());
-		prosesInputDataUlang();
+		try {
+			System.out.println("\n=== Perhitungan Jajaran Genjang dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 3) {
+				if (i + 2 < 1000) {
+					double alasBaru = dataArray[i];
+					double tinggiBaru = dataArray[i + 1];
+					double sisiMiringBaru = dataArray[i + 2];
+					try {
+						luas = menghitungLuas(alasBaru, tinggiBaru);
+						keliling = menghitungKeliling(alasBaru, sisiMiringBaru);
+						System.out.printf("Data %d-%d: alas=%.1f, tinggi=%.1f, sisiMiring=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 3, alasBaru, tinggiBaru, sisiMiringBaru, luas, keliling);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 3, e.getMessage());
+					}
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 }

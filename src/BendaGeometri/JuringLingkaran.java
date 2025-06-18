@@ -100,25 +100,28 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
 
     @Override
     public void run() {
-        while (isRunning) {
-            try {
-                System.out.println("\n=== " + getNamaBenda() + " Calculator ===");
-                luas = menghitungLuas();
-                keliling = menghitungKeliling();
-                
-                System.out.printf("Radius: %.2f\n", super.radius);
-                System.out.printf("Sudut Juring: %.2f derajat\n", sudutJuring);
-                System.out.printf("Luas: %.2f\n", luas);
-                System.out.printf("Keliling: %.2f\n", keliling);
-                
-                prosesInputDataUlang();
-                
-                // Sleep for a bit before next calculation
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                System.out.println("Thread interrupted");
-                break;
+        try {
+            System.out.println("\n=== Perhitungan Juring Lingkaran dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
             }
+            for (int i = 0; i < 1000; i += 2) {
+                if (i + 1 < 1000) {
+                    double radiusBaru = dataArray[i];
+                    double sudutJuringBaru = dataArray[i + 1];
+                    try {
+                        luas = menghitungLuas(radiusBaru, sudutJuringBaru);
+                        keliling = menghitungKeliling(radiusBaru, sudutJuringBaru);
+                        System.out.printf("Data %d-%d: radius=%.1f, sudut=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 2, radiusBaru, sudutJuringBaru, luas, keliling);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
         }
     }
 

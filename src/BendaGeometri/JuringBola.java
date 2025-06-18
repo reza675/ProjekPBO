@@ -92,14 +92,28 @@ public class JuringBola extends Bola implements Runnable {
 
     @Override
     public void run() {
-        Scanner inputData = new Scanner(System.in);
         try {
-            System.out.println("\n=== Perhitungan Juring Bola ===");
-            System.out.printf("Volume Juring Bola: %.2f\n", menghitungVolume());
-            System.out.printf("Luas Permukaan Juring Bola: %.2f\n", menghitungLuasPermukaan());
-            prosesInputDataUlang();
-        } finally {
-            inputData.close();
+            System.out.println("\n=== Perhitungan Juring Bola dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 2) {
+                if (i + 1 < 1000) {
+                    double sudutBolaBaru = dataArray[i];
+                    double radiusBolaBaru = dataArray[i + 1];
+                    try {
+                        volume = menghitungVolume(sudutBolaBaru, radiusBolaBaru);
+                        luasPermukaan = menghitungLuasPermukaan(sudutBolaBaru, radiusBolaBaru);
+                        System.out.printf("Data %d-%d: sudut=%.1f, radius=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 2, sudutBolaBaru, radiusBolaBaru, volume, luasPermukaan);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
         }
     }
 }

@@ -63,36 +63,28 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
 
     @Override
     public void run() {
-        Scanner inputData = new Scanner(System.in);
-        while (isRunning) {
-            System.out.print("\nApakah Anda ingin mengubah nilai radius dan sudut Tembereng Lingkaran? (Y/N): ");
-            String jawaban = inputData.nextLine();
-            if (jawaban.equalsIgnoreCase("Y")) {
-                while (isRunning) {
+        try {
+            System.out.println("\n=== Perhitungan Tembereng Lingkaran dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 2) {
+                if (i + 1 < 1000) {
+                    double radiusBaru = dataArray[i];
+                    double sudutBaru = dataArray[i + 1];
                     try {
-                        System.out.print("Masukkan radius baru: ");
-                        String inputRadiusBaru = inputData.nextLine();
-                        double radiusBaru = Double.parseDouble(inputRadiusBaru);
-                        System.out.print("Masukkan sudut baru (dalam derajat): ");
-                        String inputSudutBaru = inputData.nextLine();
-                        double sudutBaru = Double.parseDouble(inputSudutBaru);
                         luas = menghitungLuas(radiusBaru, sudutBaru);
                         keliling = menghitungKeliling(radiusBaru, sudutBaru);
-                        System.out.printf("\nLuas Tembereng Lingkaran: %.2f\n", luas);
-                        System.out.printf("Keliling Tembereng Lingkaran: %.2f\n", keliling);
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("Input harus berupa angka.");
+                        System.out.printf("Data %d-%d: radius=%.1f, sudut=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 2, radiusBaru, sudutBaru, luas, keliling);
                     } catch (InputMismatchException e) {
-                        System.out.println(e.getMessage());
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
                     }
                 }
-                break;
-            } else if (jawaban.equalsIgnoreCase("N")) {
-                break;
-            } else {
-                System.out.println("Jawaban hanya boleh Y atau N.");
             }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
         }
     }
 

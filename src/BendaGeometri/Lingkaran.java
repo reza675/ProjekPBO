@@ -16,13 +16,26 @@ public class Lingkaran extends Benda2D implements Runnable{
 
     @Override
 	public void run() {
-		// Calculate both area and perimeter in the thread
-		luas = menghitungLuas();
-		keliling = menghitungKeliling();
-		calculated = true;
-		System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-		System.out.printf("Luas: %.2f\n", luas);
-		System.out.printf("Keliling: %.2f\n", keliling);
+		try {
+			System.out.println("\n=== Perhitungan Lingkaran dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i++) {
+				double radiusBaru = dataArray[i];
+				try {
+					luas = menghitungLuas(radiusBaru);
+					keliling = menghitungKeliling(radiusBaru);
+					System.out.printf("Data %d: radius=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, radiusBaru, luas, keliling);
+				} catch (InputMismatchException e) {
+					System.out.printf("Data %d: Error - %s\n", i + 1, e.getMessage());
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
+		}
 	}
 
 	public boolean isCalculated() {

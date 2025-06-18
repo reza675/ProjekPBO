@@ -90,21 +90,28 @@ public class TemberengBola extends Bola implements Runnable {
 
 	@Override
 	public void run() {
-		Scanner inputData = new Scanner(System.in);
 		try {
-			System.out.println("\nMenghitung Tembereng Bola...");
-			volume = menghitungVolume();
-			luasPermukaan = menghitungLuasPermukaan();
-			
-			System.out.printf("\nVolume Tembereng Bola: %.2f\n", volume);
-			System.out.printf("Luas Permukaan Tembereng Bola: %.2f\n", luasPermukaan);
-			
-			prosesInputDataUlang();
-			
+			System.out.println("\n=== Perhitungan Tembereng Bola dengan 1000 Data ===");
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1;
+			}
+			for (int i = 0; i < 1000; i += 2) {
+				if (i + 1 < 1000) {
+					double radiusBaru = dataArray[i];
+					double tinggiTemberengBaru = dataArray[i + 1];
+					try {
+						volume = menghitungVolume(radiusBaru, tinggiTemberengBaru);
+						luasPermukaan = menghitungLuasPermukaan(radiusBaru, tinggiTemberengBaru);
+						System.out.printf("Data %d-%d: radius=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 2, radiusBaru, tinggiTemberengBaru, volume, luasPermukaan);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
+					}
+				}
+			}
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
 		} catch (Exception e) {
 			System.out.println("Terjadi kesalahan: " + e.getMessage());
-		} finally {
-			inputData.close();
 		}
 	}
 }

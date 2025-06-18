@@ -86,31 +86,38 @@ public class BelahKetupat extends Benda2D implements Runnable {
 
 	@Override
 	public void run() {
-		Scanner scanner = new Scanner(System.in);
 		try {
-			System.out.println("\n=== Input Data Belah Ketupat ===");
-			System.out.print("Masukkan diagonal1: ");
-			diagonal1 = scanner.nextDouble();
-			System.out.print("Masukkan diagonal2: ");
-			diagonal2 = scanner.nextDouble();
-			System.out.print("Masukkan sisi: ");
-			sisi = scanner.nextDouble();
+			System.out.println("\n=== Perhitungan Belah Ketupat dengan 1000 Data ===");
 			
-			if (diagonal1 <= 0 || diagonal2 <= 0 || sisi <= 0) {
-				System.out.println("Diagonal dan sisi harus lebih dari nol.");
-				return;
+			// Create array of 1000 numbers
+			double[] dataArray = new double[1000];
+			for (int i = 0; i < 1000; i++) {
+				dataArray[i] = i + 1; // Generate numbers from 1 to 1000
 			}
 			
-			luas = menghitungLuas();
-			keliling = menghitungKeliling();
+			// Calculate area and perimeter for each set of values
+			for (int i = 0; i < 1000; i += 3) {
+				if (i + 2 < 1000) {
+					double diagonal1Baru = dataArray[i];
+					double diagonal2Baru = dataArray[i + 1];
+					double sisiBaru = dataArray[i + 2];
+					
+					try {
+						luas = menghitungLuas(diagonal1Baru, diagonal2Baru);
+						keliling = menghitungKeliling(sisiBaru);
+						
+						System.out.printf("Data %d-%d: diagonal1=%.1f, diagonal2=%.1f, sisi=%.1f | Luas=%.2f, Keliling=%.2f\n", 
+							i + 1, i + 3, diagonal1Baru, diagonal2Baru, sisiBaru, luas, keliling);
+					} catch (InputMismatchException e) {
+						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 3, e.getMessage());
+					}
+				}
+			}
 			
-			System.out.printf("\nLuas Belah Ketupat: %.2f\n", luas);
-			System.out.printf("Keliling Belah Ketupat: %.2f\n", keliling);
+			System.out.println("\nPerhitungan selesai untuk 1000 data!");
 			
-			prosesInputDataUlang();
-			
-		} catch (InputMismatchException e) {
-			System.out.println("Input tidak valid. Pastikan memasukkan angka yang benar.");
+		} catch (Exception e) {
+			System.out.println("Terjadi kesalahan: " + e.getMessage());
 		}
 	}
 }

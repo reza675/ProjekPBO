@@ -104,10 +104,30 @@ public class LayangLayang extends Benda2D implements Runnable {
 
     @Override
     public void run() {
-        luas = menghitungLuas();
-        keliling = menghitungKeliling();
-        System.out.printf("\nLuas %s: %.2f\n", getNamaBenda(), luas);
-        System.out.printf("Keliling %s: %.2f\n", getNamaBenda(), keliling);
-        prosesInputDataUlang();
+        try {
+            System.out.println("\n=== Perhitungan Layang-Layang dengan 1000 Data ===");
+            double[] dataArray = new double[1000];
+            for (int i = 0; i < 1000; i++) {
+                dataArray[i] = i + 1;
+            }
+            for (int i = 0; i < 1000; i += 4) {
+                if (i + 3 < 1000) {
+                    double diagonal1Baru = dataArray[i];
+                    double diagonal2Baru = dataArray[i + 1];
+                    double sisiPendekBaru = dataArray[i + 2];
+                    double sisiPanjangBaru = dataArray[i + 3];
+                    try {
+                        luas = menghitungLuas(diagonal1Baru, diagonal2Baru);
+                        keliling = menghitungKeliling(sisiPendekBaru, sisiPanjangBaru);
+                        System.out.printf("Data %d-%d: diagonal1=%.1f, diagonal2=%.1f, sisiPendek=%.1f, sisiPanjang=%.1f | Luas=%.2f, Keliling=%.2f\n", i + 1, i + 4, diagonal1Baru, diagonal2Baru, sisiPendekBaru, sisiPanjangBaru, luas, keliling);
+                    } catch (InputMismatchException e) {
+                        System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 4, e.getMessage());
+                    }
+                }
+            }
+            System.out.println("\nPerhitungan selesai untuk 1000 data!");
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
+        }
     }
 }

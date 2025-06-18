@@ -23,14 +23,32 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
     @Override
     public void run() {
         synchronized(lock) {
-            // Calculate both volume and surface area in the thread
-            volume = menghitungVolume();
-            luasPermukaan = menghitungLuasPermukaan();
-            calculated = true;
-            System.out.println("Thread " + Thread.currentThread().getName() + " - " + getNamaBenda() + ":");
-            System.out.printf("Volume: %.2f\n", volume);
-            System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
-            lock.notifyAll(); // Notify waiting threads that calculation is complete
+            try {
+                System.out.println("\n=== Perhitungan Prisma Segitiga dengan 1000 Data ===");
+                double[] dataArray = new double[1000];
+                for (int i = 0; i < 1000; i++) {
+                    dataArray[i] = i + 1;
+                }
+                for (int i = 0; i < 1000; i += 5) {
+                    if (i + 4 < 1000) {
+                        double alasBaru = dataArray[i];
+                        double tinggiSegitigaBaru = dataArray[i + 1];
+                        double sisiMiring1Baru = dataArray[i + 2];
+                        double sisiMiring2Baru = dataArray[i + 3];
+                        double tinggiPrismaBaru = dataArray[i + 4];
+                        try {
+                            volume = menghitungVolume(alasBaru, tinggiSegitigaBaru, tinggiPrismaBaru);
+                            luasPermukaan = menghitungLuasPermukaan(alasBaru, tinggiSegitigaBaru, sisiMiring1Baru, sisiMiring2Baru, tinggiPrismaBaru);
+                            System.out.printf("Data %d-%d: alas=%.1f, tinggiSegitiga=%.1f, sisiMiring1=%.1f, sisiMiring2=%.1f, tinggiPrisma=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 5, alasBaru, tinggiSegitigaBaru, sisiMiring1Baru, sisiMiring2Baru, tinggiPrismaBaru, volume, luasPermukaan);
+                        } catch (InputMismatchException e) {
+                            System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 5, e.getMessage());
+                        }
+                    }
+                }
+                System.out.println("\nPerhitungan selesai untuk 1000 data!");
+            } catch (Exception e) {
+                System.out.println("Terjadi kesalahan: " + e.getMessage());
+            }
         }
     }
 
