@@ -9,7 +9,6 @@ public class Segitiga extends Benda2D implements Runnable {
 	protected double tinggi;
 	protected double sisiMiring1;
 	protected double sisiMiring2;
-	private volatile boolean calculated = false;
 
 	public Segitiga(double alas, double tinggi, double sisiMiring1, double sisiMiring2) throws InputMismatchException {
 		if (alas <= 0 || tinggi <= 0 || sisiMiring1 <= 0 || sisiMiring2 <= 0) {
@@ -50,10 +49,7 @@ public class Segitiga extends Benda2D implements Runnable {
 		}
 	}
 
-	public boolean isCalculated() {
-		return calculated;
-	}
-
+	
 	@Override
 	public double menghitungLuas() {
 		luas = (0.5 * alas * tinggi);

@@ -3,13 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/View/MainMenu.java</file>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/View/SplashScreen.java</file>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/AplikasiBendaGeometri.java</file>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/View/Benda2DGUI.java</file>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/View/ThreadGUI.java</file>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/View/Benda3DGUI.java</file>
-            <file>file:/C:/AAATugas/aaTugasKuliah/Semester4/PemrogramanBerorientasiObjek/projek/ProjekPBO/src/View/TemplateKecil.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/TemberengBola.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/Kerucut.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/Bola.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/LimasLayangLayang.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/LimasSegitiga.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/AplikasiBendaGeometri.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/AplikasiBendaGeometriGUI.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/Trapesium.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/Threading/GeometricShapeThreadGUI.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/PrismaSegitiga.java</file>
+            <file>file:/home/developbyarya/NetBeansProjects/ProjekPBO/src/BendaGeometri/LimasPersegiPanjang.java</file>
         </group>
     </open-files>
 </project-private>

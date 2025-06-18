@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Persegi extends Benda2D implements Runnable {
 	public double sisi;
-	private volatile boolean calculated = false;
 
 	public Persegi(double sisi) throws InputMismatchException  {
         if (sisi <= 0) {
@@ -47,10 +46,7 @@ public class Persegi extends Benda2D implements Runnable {
 		}
 	}
 
-	public boolean isCalculated() {
-		return calculated;
-	}
-
+	
 	@Override
 	public double menghitungLuas() {
 		luas = (sisi * sisi);

@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class TemberengLingkaran extends Lingkaran implements Runnable {
     private double sudut;
-    private volatile boolean isRunning;
 
     public TemberengLingkaran(double radius, double sudut) throws InputMismatchException {
         super(radius);
@@ -13,7 +12,6 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
             throw new InputMismatchException("Sudut tembereng lingkaran harus lebih dari nol dan tidak lebih dari 360°.");
         }
         this.sudut = sudut;
-        this.isRunning = true;
     }
 
     @Override
@@ -86,10 +84,6 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
         } catch (Exception e) {
             System.out.println("Terjadi kesalahan: " + e.getMessage());
         }
-    }
-
-    public void stop() {
-        this.isRunning = false;
     }
 
     @Deprecated

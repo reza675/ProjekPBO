@@ -9,7 +9,6 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
     private double kelilingAlas;
     private double volume;
     private double luasPermukaan;
-    private volatile boolean calculated = false;
     private final Object lock = new Object();
 
     public PrismaSegitiga(double alas, double tinggiSegitiga, double sisiMiring1, double sisiMiring2, double tinggiPrisma) throws InputMismatchException {
@@ -52,41 +51,7 @@ public class PrismaSegitiga extends Segitiga implements Runnable {
         }
     }
 
-    public void waitForCalculation() throws InterruptedException {
-        synchronized(lock) {
-            while (!calculated) {
-                System.out.println("Thread " + Thread.currentThread().getName() + " waiting for " + getNamaBenda() + " calculations...");
-                lock.wait();
-            }
-            System.out.println("Thread " + Thread.currentThread().getName() + " received " + getNamaBenda() + " results:");
-            System.out.printf("Volume: %.2f\n", volume);
-            System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
-        }
-    }
-
-    public boolean isCalculated() {
-        synchronized(lock) {
-            return calculated;
-        }
-    }
-
-    public double getVolume() {
-        synchronized(lock) {
-            if (!calculated) {
-                throw new IllegalStateException("Calculations not yet complete");
-            }
-            return volume;
-        }
-    }
-
-    public double getLuasPermukaan() {
-        synchronized(lock) {
-            if (!calculated) {
-                throw new IllegalStateException("Calculations not yet complete");
-            }
-            return luasPermukaan;
-        }
-    }
+    
 
     public double menghitungVolume() {
         luasAlas = super.menghitungLuas();
