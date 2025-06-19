@@ -19,11 +19,12 @@ public class JuringBola extends Bola implements Runnable {
         this.sudutBola = sudutBola;
     }
 
-    public double menghitungVolume() {
+    public double menghitungVolumeJuring() {
         volumeBola = super.menghitungVolume();
         volume = volumeBola * (sudutBola / 360.0);
         return volume;
     }
+    
 
     public double menghitungVolume(double sudutBolaBaru, double radiusBolaBaru) throws InputMismatchException {
         if (sudutBolaBaru <= 0 || radiusBolaBaru <= 0 ||sudutBolaBaru >360) {

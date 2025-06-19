@@ -63,7 +63,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Segitiga: %.2f\n", segitiga.menghitungLuas());
                             System.out.printf("Keliling Segitiga: %.2f\n", segitiga.menghitungKeliling());
                             segitiga.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -74,7 +74,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Persegi: %.2f\n", persegi.menghitungLuas());
                             System.out.printf("Keliling Persegi: %.2f\n", persegi.menghitungKeliling());
                             persegi.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -85,7 +85,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Persegi Panjang: %.2f\n", persegiPanjang.menghitungLuas());
                             System.out.printf("Keliling Persegi Panjang: %.2f\n", persegiPanjang.menghitungKeliling());
                             persegiPanjang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -96,7 +96,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Jajaran Genjang: %.2f\n", jajaranGenjang.menghitungLuas());
                             System.out.printf("Keliling Jajaran Genjang: %.2f\n", jajaranGenjang.menghitungKeliling());
                             jajaranGenjang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -107,7 +107,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Trapesium: %.2f\n", trapesium.menghitungLuas());
                             System.out.printf("Keliling Trapesium: %.2f\n", trapesium.menghitungKeliling());
                             trapesium.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -118,7 +118,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Belah Ketupat: %.2f\n", belahKetupat.menghitungLuas());
                             System.out.printf("Keliling Belah Ketupat: %.2f\n", belahKetupat.menghitungKeliling());
                             belahKetupat.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -129,7 +129,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Layang-Layang: %.2f\n", layangLayang.menghitungLuas());
                             System.out.printf("Keliling Layang-Layang: %.2f\n", layangLayang.menghitungKeliling());
                             layangLayang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -140,7 +140,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Lingkaran: %.2f\n", lingkaran.menghitungLuas());
                             System.out.printf("Keliling Lingkaran: %.2f\n", lingkaran.menghitungKeliling());
                             lingkaran.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -153,7 +153,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Keliling Tembereng Lingkaran: %.2f\n",
                                     temberengLingkaran.menghitungKeliling());
                             temberengLingkaran.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -165,7 +165,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Keliling Juring Lingkaran: %.2f\n",
                                     juringLingkaran.menghitungKeliling());
                             juringLingkaran.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -177,7 +177,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n",
                                     prismaSegitiga.menghitungLuasPermukaan());
                             prismaSegitiga.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -189,7 +189,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n",
                                     limasSegitiga.menghitungLuasPermukaan());
                             limasSegitiga.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -201,7 +201,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan prisma persegi: %.2f\n",
                                     prismaPersegi.menghitungLuasPermukaan());
                             prismaPersegi.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -213,7 +213,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan limas persegi: %.2f\n",
                                     limasPersegi.menghitungLuasPermukaan());
                             limasPersegi.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -226,7 +226,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan prisma persegi panjang: %.2f\n",
                                     prismaPersegiPanjang.menghitungLuasPermukaan());
                             prismaPersegiPanjang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -239,7 +239,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n",
                                     limasPersegiPanjang.menghitungLuasPermukaan());
                             limasPersegiPanjang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -252,7 +252,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan prisma jajaran genjang: %.2f\n",
                                     prismaJajaranGenjang.menghitungLuasPermukaan());
                             prismaJajaranGenjang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -265,7 +265,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan limas jajaran genjang: %.2f\n",
                                     limasJajaranGenjang.menghitungLuasPermukaan());
                             limasJajaranGenjang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -277,7 +277,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan prisma trapesium: %.2f\n",
                                     prismaTrapesium.menghitungLuasPermukaan());
                             prismaTrapesium.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -289,7 +289,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan limas trapesium: %.2f\n",
                                     limasTrapesium.menghitungLuasPermukaan());
                             limasTrapesium.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -302,7 +302,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan prisma belah ketupat: %.2f\n",
                                     prismaBelahKetupat.menghitungLuasPermukaan());
                             prismaBelahKetupat.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -315,7 +315,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan limas belah ketupat: %.2f\n",
                                     limasBelahKetupat.menghitungLuasPermukaan());
                             limasBelahKetupat.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -328,7 +328,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan prisma layang layang: %.2f\n",
                                     prismaLayangLayang.menghitungLuasPermukaan());
                             prismaLayangLayang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -341,7 +341,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan limas layang layang: %.2f\n",
                                     limasLayangLayang.menghitungLuasPermukaan());
                             limasLayangLayang.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -352,7 +352,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Volume tabung: %.2f\n", tabung.menghitungVolume());
                             System.out.printf("Luas Permukaan tabung: %.2f\n", tabung.menghitungLuasPermukaan());
                             tabung.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -363,7 +363,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Volume kerucut: %.2f\n", kerucut.menghitungVolume());
                             System.out.printf("Luas Permukaan kerucut: %.2f\n", kerucut.menghitungLuasPermukaan());
                             kerucut.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -376,7 +376,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan kerucut terpancung: %.2f\n",
                                     kerucutTerpancung.menghitungLuasPermukaan());
                             kerucutTerpancung.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -387,7 +387,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Volume bola: %.2f\n", bola.menghitungVolume());
                             System.out.printf("Luas Permukaan bola: %.2f\n", bola.menghitungLuasPermukaan());
                             bola.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -399,7 +399,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan tembereng bola: %.2f\n",
                                     temberengBola.menghitungLuasPermukaan());
                             temberengBola.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -411,7 +411,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan juring bola: %.2f\n",
                                     juringBola.menghitungLuasPermukaan());
                             juringBola.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -423,7 +423,7 @@ public class AplikasiBendaGeometri {
                             System.out.printf("Luas Permukaan cincin bola: %.2f\n",
                                     cincinBola.menghitungLuasPermukaan());
                             cincinBola.prosesInputDataUlang();
-                        } catch (Exception e) {
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -442,6 +442,7 @@ public class AplikasiBendaGeometri {
                         Bola bd12 = new JuringBola(7, 60);
                         Bola bd13 = new TemberengBola(14, 10);
                         Kerucut bd14 = new KerucutTerpancung(7, 14, 10);
+                        Persegi bd15 = new PrismaPersegi(5,5);
 
                         System.out.println("Luas " + bd1.getNamaBenda() + " (bd1): " + bd1.menghitungLuas()
                                 + " dan Keliling : " + bd1.menghitungKeliling());
@@ -464,13 +465,15 @@ public class AplikasiBendaGeometri {
                         System.out.println("Luas " + bd10.getNamaBenda() + " (bd10): " + bd10.menghitungLuas()
                                 + " dan Keliling : " + bd10.menghitungKeliling());
                         System.out.println("Volume " + bd11.getNamaBenda() + " (bd11): " + bd11.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd11.menghitungLuasPermukaan());
+                                + " dan Luas Permukaan : " + bd11.menghitungLuasPermukaan() + " serta Volume Cincin: "+ ((CincinBola) bd11).menghitungVolumeCincin());
                         System.out.println("Volume " + bd12.getNamaBenda() + " (bd12): " + bd12.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd12.menghitungLuasPermukaan());
+                                + " dan Luas Permukaan : " + bd12.menghitungLuasPermukaan() + " serta Volume Juring Bola: "+ ((JuringBola) bd12).menghitungVolumeJuring());
                         System.out.println("Volume " + bd13.getNamaBenda() + " (bd13): " + bd13.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd13.menghitungLuasPermukaan());
+                                + " dan Luas Permukaan : " + bd13.menghitungLuasPermukaan()+ " serta Volume Tembereng Bola: " +((TemberengBola) bd13).menghitungVolumeTemberengBola());
                         System.out.println("Volume " + bd14.getNamaBenda() + " (bd14): " + bd14.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd14.menghitungLuasPermukaan());
+                                + " dan Luas Permukaan : " + bd14.menghitungLuasPermukaan() + " serta Volume Kerucut Terpancung: "+ ((KerucutTerpancung) bd14).menghitungVolumeKerucutTerpancung(5,14,10));
+                        System.out.println("Volume " + bd15.getNamaBenda() + " (bd15): " + ((PrismaPersegi)bd15).menghitungVolume()
+                                + " dan Luas Permukaan : " + ((PrismaPersegi)bd15).menghitungLuasPermukaan());
 
                         break;
                     case 33:
@@ -831,7 +834,7 @@ public class AplikasiBendaGeometri {
 
                     for (GeometricShapeThread thread : threads) {
                         try {
-                            thread.join(2000); // Wait up to 2 dtk
+                            thread.join(2000);
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                         }

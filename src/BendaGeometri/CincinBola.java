@@ -17,7 +17,7 @@ public class CincinBola extends Bola implements Runnable {
 
 	}
 
-	public double menghitungVolume() {
+	public double menghitungVolumeCincin() {
 		double radiusBola = super.radius;
 		volume = PI * tinggiCincinBola * tinggiCincinBola * (radiusBola - tinggiCincinBola / 3.0);
 		return volume;
@@ -45,6 +45,15 @@ public class CincinBola extends Bola implements Runnable {
 		luasPermukaan = 2 * PI * radiusBaru * tinggiCincinBolaBaru;
 		return luasPermukaan;
 	}
+
+	public void setTinggiCincin(double tinggiCincinBola) {
+		this.tinggiCincinBola = tinggiCincinBola;
+	}
+
+	public double getTinggiCincin() {
+		return tinggiCincinBola;
+	}
+
 
 	@Override
 	public String getNamaBenda() {
@@ -102,7 +111,8 @@ public class CincinBola extends Bola implements Runnable {
 					try {
 						volume = menghitungVolume(radiusBaru, tinggiCincinBolaBaru);
 						luasPermukaan = menghitungLuasPermukaan(radiusBaru, tinggiCincinBolaBaru);
-						System.out.printf("Data %d-%d: radius=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 2, radiusBaru, tinggiCincinBolaBaru, volume, luasPermukaan);
+						System.out.printf("Data %d-%d: radius=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n",
+								i + 1, i + 2, radiusBaru, tinggiCincinBolaBaru, volume, luasPermukaan);
 					} catch (InputMismatchException e) {
 						System.out.printf("Data %d-%d: Error - %s\n", i + 1, i + 2, e.getMessage());
 					}

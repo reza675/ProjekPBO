@@ -17,7 +17,7 @@ public class TemberengBola extends Bola implements Runnable {
 		this.tinggiTemberengBola = tinggiTemberengBola;
 	}
 
-	public double menghitungVolume() {
+	public double menghitungVolumeTemberengBola() {
 		volume = ((tinggiTemberengBola * tinggiTemberengBola * PI) / 3) * (3 * radius - tinggiTemberengBola);
 		return volume;
 	}

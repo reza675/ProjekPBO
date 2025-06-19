@@ -17,11 +17,11 @@ public class Lingkaran extends Benda2D implements Runnable{
 	public void run() {
 		try {
 			System.out.println("\n=== Perhitungan Lingkaran dengan 1000 Data ===");
-			double[] dataArray = new double[1000];
-			for (int i = 0; i < 1000; i++) {
+			double[] dataArray = new double[1000000];
+			for (int i = 0; i < 1000000; i++) {
 				dataArray[i] = i + 1;
 			}
-			for (int i = 0; i < 1000; i++) {
+			for (int i = 0; i < 1000000; i++) {
 				double radiusBaru = dataArray[i];
 				try {
 					luas = menghitungLuas(radiusBaru);

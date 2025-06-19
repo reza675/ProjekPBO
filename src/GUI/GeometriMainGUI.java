@@ -1609,7 +1609,7 @@ public class GeometriMainGUI extends JFrame {
             sb.append("Luas Permukaan: ").append(String.format("%.2f", k.menghitungLuasPermukaan(values[0], values[1]))).append("\n");
         } else if (obj instanceof KerucutTerpancung) {
             KerucutTerpancung kt = (KerucutTerpancung) obj;
-            sb.append("Volume: ").append(String.format("%.2f", kt.menghitungVolume(values[0], values[1], values[2]))).append("\n");
+            sb.append("Volume: ").append(String.format("%.2f", kt.menghitungVolumeKerucutTerpancung(values[0], values[1], values[2]))).append("\n");
             sb.append("Luas Permukaan: ").append(String.format("%.2f", kt.menghitungLuasPermukaan(values[0], values[1], values[2]))).append("\n");
         } else if (obj instanceof Bola) {
             Bola b = (Bola) obj;

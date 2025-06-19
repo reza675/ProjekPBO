@@ -39,7 +39,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
         return volume;
     }
 
-    public double menghitungVolume(double radiusAtasBaru, double radiusBawahBaru, double tinggiTerpancungBaru)
+    public double menghitungVolumeKerucutTerpancung(double radiusAtasBaru, double radiusBawahBaru, double tinggiTerpancungBaru)
             throws InputMismatchException {
         if (radiusAtasBaru <= 0 || radiusBawahBaru <= 0 || tinggiTerpancungBaru <= 0) {
             throw new InputMismatchException("Radius atas, radius bawah, dan tinggi terpancung harus lebih dari nol.");
@@ -105,7 +105,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
                         String inputTinggiTerpancung = inputData.nextLine();
                         double tinggiTerpancungBaru = Double.parseDouble(inputTinggiTerpancung);
 
-                        volume = menghitungVolume(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
+                        volume = menghitungVolumeKerucutTerpancung(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
                         luasPermukaan = menghitungLuasPermukaan(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
 
                         System.out.printf("\nVolume Kerucut Terpancung: %.2f\n", volume);
@@ -140,7 +140,7 @@ public class KerucutTerpancung extends Kerucut implements Runnable {
                     double radiusBawahBaru = dataArray[i + 1];
                     double tinggiTerpancungBaru = dataArray[i + 2];
                     try {
-                        volume = menghitungVolume(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
+                        volume = menghitungVolumeKerucutTerpancung(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
                         luasPermukaan = menghitungLuasPermukaan(radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru);
                         System.out.printf("Data %d-%d: radiusAtas=%.1f, radiusBawah=%.1f, tinggi=%.1f | Volume=%.2f, Luas Permukaan=%.2f\n", i + 1, i + 3, radiusAtasBaru, radiusBawahBaru, tinggiTerpancungBaru, volume, luasPermukaan);
                     } catch (InputMismatchException e) {
