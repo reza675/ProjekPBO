@@ -427,54 +427,31 @@ public class AplikasiBendaGeometri {
                             System.out.println(e.getMessage());
                         }
                         break;
-                    case 32:
-                        Benda2D bd1 = new Persegi(5);
-                        Benda2D bd2 = new PersegiPanjang(5, 10);
-                        Benda2D bd3 = new Segitiga(8, 10, 8, 8);
-                        Benda2D bd4 = new Lingkaran(5);
-                        Benda2D bd5 = new JuringLingkaran(7, 60);
-                        Benda2D bd6 = new TemberengLingkaran(14, 45);
-                        Benda2D bd7 = new Trapesium(5, 10, 8, 12, 12);
-                        Benda2D bd8 = new BelahKetupat(8, 6, 10);
-                        Benda2D bd9 = new LayangLayang(5, 8, 10, 12);
-                        Benda2D bd10 = new JajaranGenjang(7, 5, 8);
-                        Bola bd11 = new CincinBola(7, 12);
-                        Bola bd12 = new JuringBola(7, 60);
-                        Bola bd13 = new TemberengBola(14, 10);
-                        Kerucut bd14 = new KerucutTerpancung(7, 14, 10);
-                        Persegi bd15 = new PrismaPersegi(5,5);
+                    case 32:                        Lingkaran bd1 = new JuringLingkaran(7, 60);
+                        Lingkaran bd2 = new TemberengLingkaran(14, 45);
+                        Bola bd3 = new CincinBola(7, 12);
+                        Bola bd4 = new JuringBola(7, 60);
+                        Bola bd5 = new TemberengBola(14, 10);
+                        Kerucut bd6 = new KerucutTerpancung(7, 14, 10);
+                        Persegi bd7 = new PrismaPersegi(5,5);
+                        Persegi bd8 = new LimasPersegi(7,6);
 
-                        System.out.println("Luas " + bd1.getNamaBenda() + " (bd1): " + bd1.menghitungLuas()
-                                + " dan Keliling : " + bd1.menghitungKeliling());
-                        System.out.println("Luas " + bd2.getNamaBenda() + " (bd2): " + bd2.menghitungLuas()
-                                + " dan Keliling : " + bd2.menghitungKeliling());
-                        System.out.println("Luas " + bd3.getNamaBenda() + " (bd3): " + bd3.menghitungLuas()
-                                + " dan Keliling : " + bd3.menghitungKeliling());
-                        System.out.println("Luas " + bd4.getNamaBenda() + " (bd4): " + bd4.menghitungLuas()
-                                + " dan Keliling : " + bd4.menghitungKeliling());
-                        System.out.println("Luas " + bd5.getNamaBenda() + " (bd5): " + bd5.menghitungLuas()
-                                + " dan Keliling : " + bd5.menghitungKeliling());
-                        System.out.println("Luas " + bd6.getNamaBenda() + " (bd6): " + bd6.menghitungLuas()
-                                + " dan Keliling : " + bd6.menghitungKeliling());
-                        System.out.println("Luas " + bd7.getNamaBenda() + " (bd7): " + bd7.menghitungLuas()
-                                + " dan Keliling : " + bd7.menghitungKeliling());
-                        System.out.println("Luas " + bd8.getNamaBenda() + " (bd8): " + bd8.menghitungLuas()
-                                + " dan Keliling : " + bd8.menghitungKeliling());
-                        System.out.println("Luas " + bd9.getNamaBenda() + " (bd9): " + bd9.menghitungLuas()
-                                + " dan Keliling : " + bd9.menghitungKeliling());
-                        System.out.println("Luas " + bd10.getNamaBenda() + " (bd10): " + bd10.menghitungLuas()
-                                + " dan Keliling : " + bd10.menghitungKeliling());
-                        System.out.println("Volume " + bd11.getNamaBenda() + " (bd11): " + bd11.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd11.menghitungLuasPermukaan() + " serta Volume Cincin: "+ ((CincinBola) bd11).menghitungVolumeCincin());
-                        System.out.println("Volume " + bd12.getNamaBenda() + " (bd12): " + bd12.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd12.menghitungLuasPermukaan() + " serta Volume Juring Bola: "+ ((JuringBola) bd12).menghitungVolumeJuring());
-                        System.out.println("Volume " + bd13.getNamaBenda() + " (bd13): " + bd13.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd13.menghitungLuasPermukaan()+ " serta Volume Tembereng Bola: " +((TemberengBola) bd13).menghitungVolumeTemberengBola());
-                        System.out.println("Volume " + bd14.getNamaBenda() + " (bd14): " + bd14.menghitungVolume()
-                                + " dan Luas Permukaan : " + bd14.menghitungLuasPermukaan() + " serta Volume Kerucut Terpancung: "+ ((KerucutTerpancung) bd14).menghitungVolumeKerucutTerpancung(5,14,10));
-                        System.out.println("Volume " + bd15.getNamaBenda() + " (bd15): " + ((PrismaPersegi)bd15).menghitungVolume()
-                                + " dan Luas Permukaan : " + ((PrismaPersegi)bd15).menghitungLuasPermukaan());
-
+                        System.out.println("Luas Juring Lingkaran " + "(bd1): " + bd1.menghitungLuas()
+                                + " dan Keliling : " + bd1.menghitungKeliling() + " serta Luas Lingkaran: "+ ((Lingkaran) bd1).menghitungLuas(14));
+                        System.out.println("Luas Tembereng Lingkaran " + "(bd2): " + bd2.menghitungLuas()
+                                + " dan Keliling : " + bd2.menghitungKeliling() + " serta Luas Lingkaran: "+ ((Lingkaran) bd2).menghitungLuas(21));
+                        System.out.println("Volume Bola " + "(bd3): " + bd3.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd3.menghitungLuasPermukaan() + " serta Volume Cincin: "+ ((CincinBola) bd3).menghitungVolumeCincin());
+                        System.out.println("Volume Bola " + "(bd4): " + bd4.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd4.menghitungLuasPermukaan() + " serta Volume Juring Bola: "+ ((JuringBola) bd4).menghitungVolumeJuring());
+                        System.out.println("Volume Bola " + "(bd5): " + bd5.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd5.menghitungLuasPermukaan()+ " serta Volume Tembereng Bola: " +((TemberengBola) bd5).menghitungVolumeTemberengBola());
+                        System.out.println("Volume Kerucut " + "(bd6): " + bd6.menghitungVolume()
+                                + " dan Luas Permukaan : " + bd6.menghitungLuasPermukaan() + " serta Volume Kerucut Terpancung: "+ ((KerucutTerpancung) bd6).menghitungVolumeKerucutTerpancung(5,14,10));
+                        System.out.println("Volume Prisma Persegi " + "(bd7): " + ((PrismaPersegi)bd7).menghitungVolume()
+                                + " dan Luas Permukaan : " + ((PrismaPersegi)bd7).menghitungLuasPermukaan() + " serta Luas Persegi: " + bd7.menghitungLuas());
+                        System.out.println("Volume Limas Persegi " + "(bd8): " + ((LimasPersegi)bd8).menghitungVolume()
+                                + " dan Luas Permukaan : " + ((LimasPersegi)bd8).menghitungLuasPermukaan()+ " serta Luas Persegi: " + bd7.menghitungLuas());
                         break;
                     case 33:
                         System.out.print("Masukkan jumlah thread yang akan digunakan: ");
