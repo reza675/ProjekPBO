@@ -88,14 +88,12 @@ public class BelahKetupat extends Benda2D implements Runnable {
 	public void run() {
 		try {
 			System.out.println("\n=== Perhitungan Belah Ketupat dengan 1000 Data ===");
-			
-			// Create array of 1000 numbers
+
 			double[] dataArray = new double[1000];
 			for (int i = 0; i < 1000; i++) {
-				dataArray[i] = i + 1; // Generate numbers from 1 to 1000
+				dataArray[i] = i + 1;
 			}
 			
-			// Calculate area and perimeter for each set of values
 			for (int i = 0; i < 1000; i += 3) {
 				if (i + 2 < 1000) {
 					double diagonal1Baru = dataArray[i];

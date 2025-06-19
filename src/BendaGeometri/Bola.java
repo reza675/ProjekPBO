@@ -22,14 +22,12 @@ public class Bola extends Lingkaran implements Runnable {
 			System.out.println("\n=== Perhitungan Bola dengan 1000 Data ===");
 			double[] dataArray = new double[1000];
 			for (int i = 0; i < 1000; i++) {
-				// Check for interruption during data array initialization
 				if (ThreadInterruptionUtil.checkAndHandleInterruption("data array initialization")) {
 					return;
 				}
 				dataArray[i] = i + 1;
 			}
 			for (int i = 0; i < 1000; i++) {
-				// Check for interruption every 50 iterations
 				if (ThreadInterruptionUtil.checkInterruptionPeriodic(i, 50, "bola calculations")) {
 					return;
 				}
