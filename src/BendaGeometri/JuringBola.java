@@ -100,7 +100,7 @@ public class JuringBola extends Bola implements Runnable {
             }
             for (int i = 0; i < 1000; i += 2) {
                 if (i + 1 < 1000) {
-                    double sudutBolaBaru = dataArray[i];
+                    double sudutBolaBaru = dataArray[i] % 360;
                     double radiusBolaBaru = dataArray[i + 1];
                     try {
                         volume = menghitungVolume(sudutBolaBaru, radiusBolaBaru);
