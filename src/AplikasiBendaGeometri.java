@@ -8,10 +8,6 @@ import java.util.Scanner;
 public class AplikasiBendaGeometri {
     public static void main(String[] args) {
 
-        // SplashScreen ui = new SplashScreen();
-        // ui.setLocationRelativeTo(null);
-        // ui.setVisible(true);
-
         Scanner inputMenu = new Scanner(System.in);
         List<BendaGeometri> daftarBendaGeometri = new ArrayList<>();
         int pilihanMenu;
@@ -61,11 +57,15 @@ public class AplikasiBendaGeometri {
                 inputMenu.nextLine();
                 switch (pilihanMenu) {
                     case 1:
-                        Segitiga segitiga = new Segitiga(10, 15, 12, 14);
-                        System.out.println("\n" + segitiga.getNamaBenda());
-                        System.out.printf("Luas Segitiga: %.2f\n", segitiga.menghitungLuas());
-                        System.out.printf("Keliling Segitiga: %.2f\n", segitiga.menghitungKeliling());
-                        segitiga.prosesInputDataUlang();
+                        try {
+                            Segitiga segitiga = new Segitiga(10, 15, 12, 14);
+                            System.out.println("\n" + segitiga.getNamaBenda());
+                            System.out.printf("Luas Segitiga: %.2f\n", segitiga.menghitungLuas());
+                            System.out.printf("Keliling Segitiga: %.2f\n", segitiga.menghitungKeliling());
+                            segitiga.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 2:
                         try {
@@ -79,39 +79,59 @@ public class AplikasiBendaGeometri {
                         }
                         break;
                     case 3:
-                        PersegiPanjang persegiPanjang = new PersegiPanjang(10, 15);
-                        System.out.println("\n" + persegiPanjang.getNamaBenda());
-                        System.out.printf("Luas Persegi Panjang: %.2f\n", persegiPanjang.menghitungLuas());
-                        System.out.printf("Keliling Persegi Panjang: %.2f\n", persegiPanjang.menghitungKeliling());
-                        persegiPanjang.prosesInputDataUlang();
+                        try {
+                            PersegiPanjang persegiPanjang = new PersegiPanjang(10, 15);
+                            System.out.println("\n" + persegiPanjang.getNamaBenda());
+                            System.out.printf("Luas Persegi Panjang: %.2f\n", persegiPanjang.menghitungLuas());
+                            System.out.printf("Keliling Persegi Panjang: %.2f\n", persegiPanjang.menghitungKeliling());
+                            persegiPanjang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 4:
-                        JajaranGenjang jajaranGenjang = new JajaranGenjang(8, 5, 6);
-                        System.out.println("\n" + jajaranGenjang.getNamaBenda());
-                        System.out.printf("Luas Jajaran Genjang: %.2f\n", jajaranGenjang.menghitungLuas());
-                        System.out.printf("Keliling Jajaran Genjang: %.2f\n", jajaranGenjang.menghitungKeliling());
-                        jajaranGenjang.prosesInputDataUlang();
+                        try {
+                            JajaranGenjang jajaranGenjang = new JajaranGenjang(8, 5, 6);
+                            System.out.println("\n" + jajaranGenjang.getNamaBenda());
+                            System.out.printf("Luas Jajaran Genjang: %.2f\n", jajaranGenjang.menghitungLuas());
+                            System.out.printf("Keliling Jajaran Genjang: %.2f\n", jajaranGenjang.menghitungKeliling());
+                            jajaranGenjang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 5:
-                        Trapesium trapesium = new Trapesium(5, 8, 10, 6, 6);
-                        System.out.println("\n" + trapesium.getNamaBenda());
-                        System.out.printf("Luas Trapesium: %.2f\n", trapesium.menghitungLuas());
-                        System.out.printf("Keliling Trapesium: %.2f\n", trapesium.menghitungKeliling());
-                        trapesium.prosesInputDataUlang();
+                        try {
+                            Trapesium trapesium = new Trapesium(5, 8, 10, 6, 6);
+                            System.out.println("\n" + trapesium.getNamaBenda());
+                            System.out.printf("Luas Trapesium: %.2f\n", trapesium.menghitungLuas());
+                            System.out.printf("Keliling Trapesium: %.2f\n", trapesium.menghitungKeliling());
+                            trapesium.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 6:
-                        BelahKetupat belahKetupat = new BelahKetupat(10, 12, 14);
-                        System.out.println("\n" + belahKetupat.getNamaBenda());
-                        System.out.printf("Luas Belah Ketupat: %.2f\n", belahKetupat.menghitungLuas());
-                        System.out.printf("Keliling Belah Ketupat: %.2f\n", belahKetupat.menghitungKeliling());
-                        belahKetupat.prosesInputDataUlang();
+                        try {
+                            BelahKetupat belahKetupat = new BelahKetupat(10, 12, 14);
+                            System.out.println("\n" + belahKetupat.getNamaBenda());
+                            System.out.printf("Luas Belah Ketupat: %.2f\n", belahKetupat.menghitungLuas());
+                            System.out.printf("Keliling Belah Ketupat: %.2f\n", belahKetupat.menghitungKeliling());
+                            belahKetupat.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 7:
-                        LayangLayang layangLayang = new LayangLayang(10, 15, 12, 14);
-                        System.out.println("\n" + layangLayang.getNamaBenda());
-                        System.out.printf("Luas Layang-Layang: %.2f\n", layangLayang.menghitungLuas());
-                        System.out.printf("Keliling Layang-Layang: %.2f\n", layangLayang.menghitungKeliling());
-                        layangLayang.prosesInputDataUlang();
+                        try {
+                            LayangLayang layangLayang = new LayangLayang(10, 15, 12, 14);
+                            System.out.println("\n" + layangLayang.getNamaBenda());
+                            System.out.printf("Luas Layang-Layang: %.2f\n", layangLayang.menghitungLuas());
+                            System.out.printf("Keliling Layang-Layang: %.2f\n", layangLayang.menghitungKeliling());
+                            layangLayang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 8:
                         try {
@@ -126,186 +146,286 @@ public class AplikasiBendaGeometri {
                         break;
 
                     case 9:
-                        TemberengLingkaran temberengLingkaran = new TemberengLingkaran(20, 90);
-                        System.out.println("\n" + temberengLingkaran.getNamaBenda());
-                        System.out.printf("Luas Tembereng Lingkaran: %.2f\n", temberengLingkaran.menghitungLuas());
-                        System.out.printf("Keliling Tembereng Lingkaran: %.2f\n",
-                                temberengLingkaran.menghitungKeliling());
-                        temberengLingkaran.prosesInputDataUlang();
+                        try {
+                            TemberengLingkaran temberengLingkaran = new TemberengLingkaran(20, 90);
+                            System.out.println("\n" + temberengLingkaran.getNamaBenda());
+                            System.out.printf("Luas Tembereng Lingkaran: %.2f\n", temberengLingkaran.menghitungLuas());
+                            System.out.printf("Keliling Tembereng Lingkaran: %.2f\n",
+                                    temberengLingkaran.menghitungKeliling());
+                            temberengLingkaran.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 10:
-                        JuringLingkaran juringLingkaran = new JuringLingkaran(21, 60);
-                        System.out.println("\n" + juringLingkaran.getNamaBenda());
-                        System.out.printf("Luas Juring Lingkaran: %.2f\n", juringLingkaran.menghitungLuas());
-                        System.out.printf("Keliling Juring Lingkaran: %.2f\n", juringLingkaran.menghitungKeliling());
-                        juringLingkaran.prosesInputDataUlang();
+                        try {
+                            JuringLingkaran juringLingkaran = new JuringLingkaran(21, 60);
+                            System.out.println("\n" + juringLingkaran.getNamaBenda());
+                            System.out.printf("Luas Juring Lingkaran: %.2f\n", juringLingkaran.menghitungLuas());
+                            System.out.printf("Keliling Juring Lingkaran: %.2f\n",
+                                    juringLingkaran.menghitungKeliling());
+                            juringLingkaran.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 11:
-                        PrismaSegitiga prismaSegitiga = new PrismaSegitiga(8, 10, 4, 4, 15);
-                        System.out.println("\n" + prismaSegitiga.getNamaBenda());
-                        System.out.printf("Volume Prisma Segitiga: %.2f\n", prismaSegitiga.menghitungVolume());
-                        System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n",
-                                prismaSegitiga.menghitungLuasPermukaan());
-                        prismaSegitiga.prosesInputDataUlang();
+                        try {
+                            PrismaSegitiga prismaSegitiga = new PrismaSegitiga(8, 10, 4, 4, 15);
+                            System.out.println("\n" + prismaSegitiga.getNamaBenda());
+                            System.out.printf("Volume Prisma Segitiga: %.2f\n", prismaSegitiga.menghitungVolume());
+                            System.out.printf("Luas Permukaan Prisma Segitiga: %.2f\n",
+                                    prismaSegitiga.menghitungLuasPermukaan());
+                            prismaSegitiga.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 12:
-                        LimasSegitiga limasSegitiga = new LimasSegitiga(15, 10, 5, 5, 12);
-                        System.out.println("\n" + limasSegitiga.getNamaBenda());
-                        System.out.printf("Volume Limas Segitiga: %.2f\n", limasSegitiga.menghitungVolume());
-                        System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n",
-                                limasSegitiga.menghitungLuasPermukaan());
-                        limasSegitiga.prosesInputDataUlang();
+                        try {
+                            LimasSegitiga limasSegitiga = new LimasSegitiga(15, 10, 5, 5, 12);
+                            System.out.println("\n" + limasSegitiga.getNamaBenda());
+                            System.out.printf("Volume Limas Segitiga: %.2f\n", limasSegitiga.menghitungVolume());
+                            System.out.printf("Luas Permukaan Limas Segitiga: %.2f\n",
+                                    limasSegitiga.menghitungLuasPermukaan());
+                            limasSegitiga.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 13:
-                        PrismaPersegi prismaPersegi = new PrismaPersegi(10, 5);
-                        System.out.println("\n" + prismaPersegi.getNamaBenda());
-                        System.out.printf("Volume prisma persegi: %.2f\n", prismaPersegi.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma persegi: %.2f\n",
-                                prismaPersegi.menghitungLuasPermukaan());
-                        prismaPersegi.prosesInputDataUlang();
+                        try {
+                            PrismaPersegi prismaPersegi = new PrismaPersegi(10, 5);
+                            System.out.println("\n" + prismaPersegi.getNamaBenda());
+                            System.out.printf("Volume prisma persegi: %.2f\n", prismaPersegi.menghitungVolume());
+                            System.out.printf("Luas Permukaan prisma persegi: %.2f\n",
+                                    prismaPersegi.menghitungLuasPermukaan());
+                            prismaPersegi.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 14:
-                        LimasPersegi limasPersegi = new LimasPersegi(5, 10);
-                        System.out.println("\n" + limasPersegi.getNamaBenda());
-                        System.out.printf("Volume limas persegi: %.2f\n", limasPersegi.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas persegi: %.2f\n",
-                                limasPersegi.menghitungLuasPermukaan());
-                        limasPersegi.prosesInputDataUlang();
+                        try {
+                            LimasPersegi limasPersegi = new LimasPersegi(5, 10);
+                            System.out.println("\n" + limasPersegi.getNamaBenda());
+                            System.out.printf("Volume limas persegi: %.2f\n", limasPersegi.menghitungVolume());
+                            System.out.printf("Luas Permukaan limas persegi: %.2f\n",
+                                    limasPersegi.menghitungLuasPermukaan());
+                            limasPersegi.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 15:
-                        PrismaPersegiPanjang prismaPersegiPanjang = new PrismaPersegiPanjang(10, 5, 8);
-                        System.out.println("\n" + prismaPersegiPanjang.getNamaBenda());
-                        System.out.printf("Volume prisma persegi panjang: %.2f\n",
-                                prismaPersegiPanjang.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma persegi panjang: %.2f\n",
-                                prismaPersegiPanjang.menghitungLuasPermukaan());
-                        prismaPersegiPanjang.prosesInputDataUlang();
+                        try {
+                            PrismaPersegiPanjang prismaPersegiPanjang = new PrismaPersegiPanjang(10, 5, 8);
+                            System.out.println("\n" + prismaPersegiPanjang.getNamaBenda());
+                            System.out.printf("Volume prisma persegi panjang: %.2f\n",
+                                    prismaPersegiPanjang.menghitungVolume());
+                            System.out.printf("Luas Permukaan prisma persegi panjang: %.2f\n",
+                                    prismaPersegiPanjang.menghitungLuasPermukaan());
+                            prismaPersegiPanjang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 16:
-                        LimasPersegiPanjang limasPersegiPanjang = new LimasPersegiPanjang(8, 10, 12);
-                        System.out.println("\n" + limasPersegiPanjang.getNamaBenda());
-                        System.out.printf("Volume limas persegi panjang: %.2f\n",
-                                limasPersegiPanjang.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n",
-                                limasPersegiPanjang.menghitungLuasPermukaan());
-                        limasPersegiPanjang.prosesInputDataUlang();
+                        try {
+                            LimasPersegiPanjang limasPersegiPanjang = new LimasPersegiPanjang(8, 10, 12);
+                            System.out.println("\n" + limasPersegiPanjang.getNamaBenda());
+                            System.out.printf("Volume limas persegi panjang: %.2f\n",
+                                    limasPersegiPanjang.menghitungVolume());
+                            System.out.printf("Luas Permukaan limas persegi panjang: %.2f\n",
+                                    limasPersegiPanjang.menghitungLuasPermukaan());
+                            limasPersegiPanjang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 17:
-                        PrismaJajaranGenjang prismaJajaranGenjang = new PrismaJajaranGenjang(5, 9, 10, 12);
-                        System.out.println("\n" + prismaJajaranGenjang.getNamaBenda());
-                        System.out.printf("Volume prisma jajaran genjang: %.2f\n",
-                                prismaJajaranGenjang.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma jajaran genjang: %.2f\n",
-                                prismaJajaranGenjang.menghitungLuasPermukaan());
-                        prismaJajaranGenjang.prosesInputDataUlang();
+                        try {
+                            PrismaJajaranGenjang prismaJajaranGenjang = new PrismaJajaranGenjang(5, 9, 10, 12);
+                            System.out.println("\n" + prismaJajaranGenjang.getNamaBenda());
+                            System.out.printf("Volume prisma jajaran genjang: %.2f\n",
+                                    prismaJajaranGenjang.menghitungVolume());
+                            System.out.printf("Luas Permukaan prisma jajaran genjang: %.2f\n",
+                                    prismaJajaranGenjang.menghitungLuasPermukaan());
+                            prismaJajaranGenjang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 18:
-                        LimasJajaranGenjang limasJajaranGenjang = new LimasJajaranGenjang(7, 12, 10, 15);
-                        System.out.println("\n" + limasJajaranGenjang.getNamaBenda());
-                        System.out.printf("Volume limas jajaran genjang: %.2f\n",
-                                limasJajaranGenjang.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas jajaran genjang: %.2f\n",
-                                limasJajaranGenjang.menghitungLuasPermukaan());
-                        limasJajaranGenjang.prosesInputDataUlang();
+                        try {
+                            LimasJajaranGenjang limasJajaranGenjang = new LimasJajaranGenjang(7, 12, 10, 15);
+                            System.out.println("\n" + limasJajaranGenjang.getNamaBenda());
+                            System.out.printf("Volume limas jajaran genjang: %.2f\n",
+                                    limasJajaranGenjang.menghitungVolume());
+                            System.out.printf("Luas Permukaan limas jajaran genjang: %.2f\n",
+                                    limasJajaranGenjang.menghitungLuasPermukaan());
+                            limasJajaranGenjang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 19:
-                        PrismaTrapesium prismaTrapesium = new PrismaTrapesium(10, 10, 8, 6, 6, 12);
-                        System.out.println("\n" + prismaTrapesium.getNamaBenda());
-                        System.out.printf("Volume prisma trapesium: %.2f\n", prismaTrapesium.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma trapesium: %.2f\n",
-                                prismaTrapesium.menghitungLuasPermukaan());
-                        prismaTrapesium.prosesInputDataUlang();
+                        try {
+                            PrismaTrapesium prismaTrapesium = new PrismaTrapesium(10, 10, 8, 6, 6, 12);
+                            System.out.println("\n" + prismaTrapesium.getNamaBenda());
+                            System.out.printf("Volume prisma trapesium: %.2f\n", prismaTrapesium.menghitungVolume());
+                            System.out.printf("Luas Permukaan prisma trapesium: %.2f\n",
+                                    prismaTrapesium.menghitungLuasPermukaan());
+                            prismaTrapesium.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 20:
-                        LimasTrapesium limasTrapesium = new LimasTrapesium(8, 8, 12, 10, 10, 12);
-                        System.out.println("\n" + limasTrapesium.getNamaBenda());
-                        System.out.printf("Volume limas trapesium: %.2f\n", limasTrapesium.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas trapesium: %.2f\n",
-                                limasTrapesium.menghitungLuasPermukaan());
-                        limasTrapesium.prosesInputDataUlang();
+                        try {
+                            LimasTrapesium limasTrapesium = new LimasTrapesium(8, 8, 12, 10, 10, 12);
+                            System.out.println("\n" + limasTrapesium.getNamaBenda());
+                            System.out.printf("Volume limas trapesium: %.2f\n", limasTrapesium.menghitungVolume());
+                            System.out.printf("Luas Permukaan limas trapesium: %.2f\n",
+                                    limasTrapesium.menghitungLuasPermukaan());
+                            limasTrapesium.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 21:
-                        PrismaBelahKetupat prismaBelahKetupat = new PrismaBelahKetupat(8, 10, 12, 12);
-                        System.out.println("\n" + prismaBelahKetupat.getNamaBenda());
-                        System.out.printf("Volume prisma belah ketupat: %.2f\n", prismaBelahKetupat.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma belah ketupat: %.2f\n",
-                                prismaBelahKetupat.menghitungLuasPermukaan());
-                        prismaBelahKetupat.prosesInputDataUlang();
+                        try {
+                            PrismaBelahKetupat prismaBelahKetupat = new PrismaBelahKetupat(8, 10, 12, 12);
+                            System.out.println("\n" + prismaBelahKetupat.getNamaBenda());
+                            System.out.printf("Volume prisma belah ketupat: %.2f\n",
+                                    prismaBelahKetupat.menghitungVolume());
+                            System.out.printf("Luas Permukaan prisma belah ketupat: %.2f\n",
+                                    prismaBelahKetupat.menghitungLuasPermukaan());
+                            prismaBelahKetupat.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 22:
-                        LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(8, 10, 12, 12);
-                        System.out.println("\n" + limasBelahKetupat.getNamaBenda());
-                        System.out.printf("Volume limas belah ketupat: %.2f\n", limasBelahKetupat.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas belah ketupat: %.2f\n",
-                                limasBelahKetupat.menghitungLuasPermukaan());
-                        limasBelahKetupat.prosesInputDataUlang();
+                        try {
+                            LimasBelahKetupat limasBelahKetupat = new LimasBelahKetupat(8, 10, 12, 12);
+                            System.out.println("\n" + limasBelahKetupat.getNamaBenda());
+                            System.out.printf("Volume limas belah ketupat: %.2f\n",
+                                    limasBelahKetupat.menghitungVolume());
+                            System.out.printf("Luas Permukaan limas belah ketupat: %.2f\n",
+                                    limasBelahKetupat.menghitungLuasPermukaan());
+                            limasBelahKetupat.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 23:
-                        PrismaLayangLayang prismaLayangLayang = new PrismaLayangLayang(6, 8, 4, 8, 12);
-                        System.out.println("\n" + prismaLayangLayang.getNamaBenda());
-                        System.out.printf("Volume prisma layang layang: %.2f\n", prismaLayangLayang.menghitungVolume());
-                        System.out.printf("Luas Permukaan prisma layang layang: %.2f\n",
-                                prismaLayangLayang.menghitungLuasPermukaan());
-                        prismaLayangLayang.prosesInputDataUlang();
+                        try {
+                            PrismaLayangLayang prismaLayangLayang = new PrismaLayangLayang(6, 8, 4, 8, 12);
+                            System.out.println("\n" + prismaLayangLayang.getNamaBenda());
+                            System.out.printf("Volume prisma layang layang: %.2f\n",
+                                    prismaLayangLayang.menghitungVolume());
+                            System.out.printf("Luas Permukaan prisma layang layang: %.2f\n",
+                                    prismaLayangLayang.menghitungLuasPermukaan());
+                            prismaLayangLayang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 24:
-                        LimasLayangLayang limasLayangLayang = new LimasLayangLayang(8, 10, 12, 12, 12);
-                        System.out.println("\n" + limasLayangLayang.getNamaBenda());
-                        System.out.printf("Volume limas layang layang: %.2f\n", limasLayangLayang.menghitungVolume());
-                        System.out.printf("Luas Permukaan limas layang layang: %.2f\n",
-                                limasLayangLayang.menghitungLuasPermukaan());
-                        limasLayangLayang.prosesInputDataUlang();
+                        try {
+                            LimasLayangLayang limasLayangLayang = new LimasLayangLayang(8, 10, 12, 12, 12);
+                            System.out.println("\n" + limasLayangLayang.getNamaBenda());
+                            System.out.printf("Volume limas layang layang: %.2f\n",
+                                    limasLayangLayang.menghitungVolume());
+                            System.out.printf("Luas Permukaan limas layang layang: %.2f\n",
+                                    limasLayangLayang.menghitungLuasPermukaan());
+                            limasLayangLayang.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 25:
-                        Tabung tabung = new Tabung(7, 10);
-                        System.out.println("\n" + tabung.getNamaBenda());
-                        System.out.printf("Volume tabung: %.2f\n", tabung.menghitungVolume());
-                        System.out.printf("Luas Permukaan tabung: %.2f\n", tabung.menghitungLuasPermukaan());
-                        tabung.prosesInputDataUlang();
+                        try {
+                            Tabung tabung = new Tabung(7, 10);
+                            System.out.println("\n" + tabung.getNamaBenda());
+                            System.out.printf("Volume tabung: %.2f\n", tabung.menghitungVolume());
+                            System.out.printf("Luas Permukaan tabung: %.2f\n", tabung.menghitungLuasPermukaan());
+                            tabung.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 26:
-                        Kerucut kerucut = new Kerucut(14, 10);
-                        System.out.println("\n" + kerucut.getNamaBenda());
-                        System.out.printf("Volume kerucut: %.2f\n", kerucut.menghitungVolume());
-                        System.out.printf("Luas Permukaan kerucut: %.2f\n", kerucut.menghitungLuasPermukaan());
-                        kerucut.prosesInputDataUlang();
+                        try {
+                            Kerucut kerucut = new Kerucut(14, 10);
+                            System.out.println("\n" + kerucut.getNamaBenda());
+                            System.out.printf("Volume kerucut: %.2f\n", kerucut.menghitungVolume());
+                            System.out.printf("Luas Permukaan kerucut: %.2f\n", kerucut.menghitungLuasPermukaan());
+                            kerucut.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 27:
-                        KerucutTerpancung kerucutTerpancung = new KerucutTerpancung(7, 14, 12);
-                        System.out.println("\n" + kerucutTerpancung.getNamaBenda());
-                        System.out.printf("Volume kerucut terpancung: %.2f\n", kerucutTerpancung.menghitungVolume());
-                        System.out.printf("Luas Permukaan kerucut terpancung: %.2f\n",
-                                kerucutTerpancung.menghitungLuasPermukaan());
-                        kerucutTerpancung.prosesInputDataUlang();
+                        try {
+                            KerucutTerpancung kerucutTerpancung = new KerucutTerpancung(7, 14, 12);
+                            System.out.println("\n" + kerucutTerpancung.getNamaBenda());
+                            System.out.printf("Volume kerucut terpancung: %.2f\n",
+                                    kerucutTerpancung.menghitungVolume());
+                            System.out.printf("Luas Permukaan kerucut terpancung: %.2f\n",
+                                    kerucutTerpancung.menghitungLuasPermukaan());
+                            kerucutTerpancung.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 28:
-                        Bola bola = new Bola(14);
-                        System.out.println("\n" + bola.getNamaBenda());
-                        System.out.printf("Volume bola: %.2f\n", bola.menghitungVolume());
-                        System.out.printf("Luas Permukaan bola: %.2f\n", bola.menghitungLuasPermukaan());
-                        bola.prosesInputDataUlang();
+                        try {
+                            Bola bola = new Bola(14);
+                            System.out.println("\n" + bola.getNamaBenda());
+                            System.out.printf("Volume bola: %.2f\n", bola.menghitungVolume());
+                            System.out.printf("Luas Permukaan bola: %.2f\n", bola.menghitungLuasPermukaan());
+                            bola.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 29:
-                        TemberengBola temberengBola = new TemberengBola(7, 14);
-                        System.out.println("\n" + temberengBola.getNamaBenda());
-                        System.out.printf("Volume tembereng bola: %.2f\n", temberengBola.menghitungVolume());
-                        System.out.printf("Luas Permukaan tembereng bola: %.2f\n",
-                                temberengBola.menghitungLuasPermukaan());
-                        temberengBola.prosesInputDataUlang();
+                        try {
+                            TemberengBola temberengBola = new TemberengBola(7, 14);
+                            System.out.println("\n" + temberengBola.getNamaBenda());
+                            System.out.printf("Volume tembereng bola: %.2f\n", temberengBola.menghitungVolume());
+                            System.out.printf("Luas Permukaan tembereng bola: %.2f\n",
+                                    temberengBola.menghitungLuasPermukaan());
+                            temberengBola.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 30:
-                        JuringBola juringBola = new JuringBola(7, 30);
-                        System.out.println("\n" + juringBola.getNamaBenda());
-                        System.out.printf("Volume juring bola: %.2f\n", juringBola.menghitungVolume());
-                        System.out.printf("Luas Permukaan juring bola: %.2f\n", juringBola.menghitungLuasPermukaan());
-                        juringBola.prosesInputDataUlang();
+                        try {
+                            JuringBola juringBola = new JuringBola(7, 30);
+                            System.out.println("\n" + juringBola.getNamaBenda());
+                            System.out.printf("Volume juring bola: %.2f\n", juringBola.menghitungVolume());
+                            System.out.printf("Luas Permukaan juring bola: %.2f\n",
+                                    juringBola.menghitungLuasPermukaan());
+                            juringBola.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 31:
-                        CincinBola cincinBola = new CincinBola(14, 15);
-                        System.out.println("\n" + cincinBola.getNamaBenda());
-                        System.out.printf("Volume cincin bola: %.2f\n", cincinBola.menghitungVolume());
-                        System.out.printf("Luas Permukaan cincin bola: %.2f\n", cincinBola.menghitungLuasPermukaan());
-                        cincinBola.prosesInputDataUlang();
+                        try {
+                            CincinBola cincinBola = new CincinBola(14, 15);
+                            System.out.println("\n" + cincinBola.getNamaBenda());
+                            System.out.printf("Volume cincin bola: %.2f\n", cincinBola.menghitungVolume());
+                            System.out.printf("Luas Permukaan cincin bola: %.2f\n",
+                                    cincinBola.menghitungLuasPermukaan());
+                            cincinBola.prosesInputDataUlang();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 32:
                         Benda2D bd1 = new Persegi(5);
@@ -322,14 +442,6 @@ public class AplikasiBendaGeometri {
                         Bola bd12 = new JuringBola(7, 60);
                         Bola bd13 = new TemberengBola(14, 10);
                         Kerucut bd14 = new KerucutTerpancung(7, 14, 10);
-
-                        // Persegi bd11= new PrismaPersegi(7, 5);
-                        // if(bd11 instanceof PrismaPersegi) {
-                        // PrismaPersegi pp = (PrismaPersegi) bd11;
-                        // System.out.println("Volume " + pp.getNamaBenda() + " (pp): " +
-                        // pp.menghitungVolume()
-                        // + " dan Luas Permukaan : " + pp.menghitungLuasPermukaan());
-                        // }
 
                         System.out.println("Luas " + bd1.getNamaBenda() + " (bd1): " + bd1.menghitungLuas()
                                 + " dan Keliling : " + bd1.menghitungKeliling());
@@ -359,22 +471,22 @@ public class AplikasiBendaGeometri {
                                 + " dan Luas Permukaan : " + bd13.menghitungLuasPermukaan());
                         System.out.println("Volume " + bd14.getNamaBenda() + " (bd14): " + bd14.menghitungVolume()
                                 + " dan Luas Permukaan : " + bd14.menghitungLuasPermukaan());
-                       
+
                         break;
                     case 33:
                         System.out.print("Masukkan jumlah thread yang akan digunakan: ");
                         int jumlahThread = inputMenu.nextInt();
                         inputMenu.nextLine();
-                        
+
                         if (jumlahThread <= 0) {
                             System.out.println("Jumlah thread harus lebih dari 0.");
                             break;
                         }
-                        
+
                         System.out.print("Masukkan jumlah objek per bentuk geometri untuk digenerate: ");
                         int jumlahPerBentuk = inputMenu.nextInt();
                         inputMenu.nextLine();
-                        
+
                         daftarBendaGeometri.clear();
                         for (int i = 1; i <= 31; i++) {
                             for (int j = 0; j < jumlahPerBentuk; j++) {
@@ -386,15 +498,14 @@ public class AplikasiBendaGeometri {
                         }
 
                         if (!daftarBendaGeometri.isEmpty()) {
-                            System.out.println("\nMemulai pemrosesan " + daftarBendaGeometri.size() 
-                                + " objek geometri dengan " + jumlahThread + " thread...");
+                            System.out.println("\nMemulai pemrosesan " + daftarBendaGeometri.size()
+                                    + " objek geometri dengan " + jumlahThread + " thread...");
                             System.out.println("Kontrol thread:");
                             System.out.println("- Tekan 'I' untuk interrupt/pause semua thread");
                             System.out.println("- Tekan 'R' untuk resume semua thread");
                             System.out.println("- Tekan 'Q' untuk keluar dari kontrol thread");
                             System.out.println();
-                            
-                            // Create and manage threads
+
                             manageGeometricThreads(daftarBendaGeometri, jumlahThread, inputMenu);
                         } else {
                             System.out.println("Tidak ada objek geometri yang berhasil digenerate.");
@@ -659,10 +770,11 @@ public class AplikasiBendaGeometri {
         }
     }
 
-    private static void manageGeometricThreads(List<BendaGeometri> daftarBendaGeometri, int jumlahThread, Scanner inputMenu) {
+    private static void manageGeometricThreads(List<BendaGeometri> daftarBendaGeometri, int jumlahThread,
+            Scanner inputMenu) {
         List<GeometricShapeThread> threads = new ArrayList<>();
         boolean isPaused = false;
-        
+
         for (BendaGeometri benda : daftarBendaGeometri) {
             for (int i = 0; i < jumlahThread; i++) {
                 GeometricShapeThread thread = new GeometricShapeThread(benda, i + 1);
@@ -670,14 +782,14 @@ public class AplikasiBendaGeometri {
                 thread.start();
             }
         }
-        
+
         System.out.println("Total " + threads.size() + " thread telah dibuat dan dimulai.");
-        
+
         // Thread control loop
         while (true) {
             System.out.print("Masukkan perintah (I/R/Q): ");
             String command = inputMenu.nextLine().trim().toUpperCase();
-            
+
             switch (command) {
                 case "I":
                     if (!isPaused) {
@@ -691,12 +803,12 @@ public class AplikasiBendaGeometri {
                         System.out.println("Thread sudah dalam keadaan pause.");
                     }
                     break;
-                    
+
                 case "R":
                     if (isPaused) {
                         System.out.println("Memulai ulang semua thread...");
                         threads.clear();
-                        
+
                         for (BendaGeometri benda : daftarBendaGeometri) {
                             for (int i = 0; i < jumlahThread; i++) {
                                 GeometricShapeThread thread = new GeometricShapeThread(benda, i + 1);
@@ -710,13 +822,13 @@ public class AplikasiBendaGeometri {
                         System.out.println("Thread sedang berjalan, tidak perlu resume.");
                     }
                     break;
-                    
+
                 case "Q":
                     System.out.println("Menghentikan semua thread dan keluar...");
                     for (GeometricShapeThread thread : threads) {
                         thread.interrupt();
                     }
-                    
+
                     for (GeometricShapeThread thread : threads) {
                         try {
                             thread.join(2000); // Wait up to 2 dtk
@@ -726,7 +838,7 @@ public class AplikasiBendaGeometri {
                     }
                     System.out.println("Kontrol thread selesai.");
                     return;
-                    
+
                 default:
                     System.out.println("Perintah tidak dikenali. Gunakan I (interrupt), R (resume), atau Q (quit).");
                     break;
@@ -737,38 +849,39 @@ public class AplikasiBendaGeometri {
     private static class GeometricShapeThread extends Thread {
         private final BendaGeometri benda;
         private final int threadNumber;
-        
+
         public GeometricShapeThread(BendaGeometri benda, int threadNumber) {
             this.benda = benda;
             this.threadNumber = threadNumber;
             this.setName("Thread-" + benda.getClass().getSimpleName() + "-" + threadNumber);
         }
-        
+
         @Override
         public void run() {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
-                    Thread.sleep(100 + (int)(Math.random() * 500));
-                    
+                    Thread.sleep(100 + (int) (Math.random() * 500));
+
                     if (Thread.currentThread().isInterrupted()) {
                         System.out.println("[" + getName() + "] Thread diinterupsi sebelum perhitungan.");
                         break;
                     }
-                    
+
                     processGeometricObject(benda);
-                    
+
                     if (Thread.currentThread().isInterrupted()) {
                         System.out.println("[" + getName() + "] Thread diinterupsi setelah perhitungan.");
                         break;
                     }
-                    
-                    System.out.println("[" + getName() + "] Selesai memproses " + benda.getClass().getSimpleName() + " (iterasi berkelanjutan)");
-                    
-Thread.sleep(200);
+
+                    System.out.println("[" + getName() + "] Selesai memproses " + benda.getClass().getSimpleName()
+                            + " (iterasi berkelanjutan)");
+
+                    Thread.sleep(200);
                 }
-                
+
                 System.out.println("[" + getName() + "] Thread berhenti karena diinterupsi.");
-                
+
             } catch (InterruptedException e) {
                 System.out.println("[" + getName() + "] Thread diinterupsi: " + e.getMessage());
                 Thread.currentThread().interrupt();
@@ -776,7 +889,7 @@ Thread.sleep(200);
                 System.err.println("[" + getName() + "] Error: " + e.getMessage());
             }
         }
-        
+
         private void processGeometricObject(BendaGeometri benda) {
             try {
                 if (benda instanceof Benda2D) {
@@ -784,27 +897,27 @@ Thread.sleep(200);
                     double keliling = bd.menghitungKeliling();
                     double luas = bd.menghitungLuas();
                     System.out.printf("[%s] %s - Keliling: %.2f, Luas: %.2f%n",
-                        getName(), bd.getNamaBenda(), keliling, luas);
+                            getName(), bd.getNamaBenda(), keliling, luas);
                 } else {
                     try {
                         var volumeMethod = benda.getClass().getMethod("menghitungVolume");
                         var luasPermMethod = benda.getClass().getMethod("menghitungLuasPermukaan");
                         double volume = (double) volumeMethod.invoke(benda);
                         double luasPermukaan = (double) luasPermMethod.invoke(benda);
-                        
-                       String namaBenda = benda.getClass().getSimpleName();
+
+                        String namaBenda = benda.getClass().getSimpleName();
                         System.out.printf("[%s] %s - Volume: %.2f, Luas Permukaan: %.2f%n",
-                            getName(), namaBenda, volume, luasPermukaan);
+                                getName(), namaBenda, volume, luasPermukaan);
                     } catch (NoSuchMethodException ignored) {
                         String namaBenda = benda.getClass().getSimpleName();
                         System.out.printf("[%s] %s - Tidak memiliki metode volume/luas permukaan%n",
-                            getName(), namaBenda);
+                                getName(), namaBenda);
                     }
                 }
             } catch (Exception e) {
                 String namaBenda = benda.getClass().getSimpleName();
-                System.err.printf("[%s] Error memproses %s: %s%n", 
-                    getName(), namaBenda, e.getMessage());
+                System.err.printf("[%s] Error memproses %s: %s%n",
+                        getName(), namaBenda, e.getMessage());
             }
         }
     }

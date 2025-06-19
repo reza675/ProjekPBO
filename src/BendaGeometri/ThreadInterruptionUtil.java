@@ -3,7 +3,7 @@ package BendaGeometri;
 public class ThreadInterruptionUtil {
     public static void checkInterruption() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
-            throw new InterruptedException("Thread interrupted during calculation");
+            throw new InterruptedException(" Thread diinterupsi selaman perhitungan.");
         }
     }
 
@@ -13,7 +13,7 @@ public class ThreadInterruptionUtil {
     
     public static boolean checkAndHandleInterruption(String operationName) {
         if (Thread.currentThread().isInterrupted()) {
-            System.out.println("Thread interrupted during: " + operationName);
+            System.out.println("Thread diinterupsi selama: " + operationName);
             return true;
         }
         return false;
@@ -22,7 +22,7 @@ public class ThreadInterruptionUtil {
 
     public static boolean checkInterruptionPeriodic(int currentIndex, int checkInterval, String operationName) {
         if (currentIndex % checkInterval == 0 && Thread.currentThread().isInterrupted()) {
-            System.out.println("Thread interrupted during: " + operationName);
+            System.out.println("Thread diinterupsi selama: " + operationName);
             return true;
         }
         return false;
